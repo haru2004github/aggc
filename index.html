@@ -72,13 +72,7 @@
                     
                     <!-- Logo -->
                     <a href="#home" class="flex items-center cursor-pointer group hover:opacity-90 transition-opacity">
-                        <div class="w-8 h-8 md:w-10 md:h-10 bg-brand-gold flex items-center justify-center mr-2 md:mr-3">
-                            <span class="text-brand-navy font-heading font-black text-lg md:text-xl tracking-tighter">AG</span>
-                        </div>
-                        <div>
-                            <h1 class="font-heading font-black text-lg md:text-xl tracking-tight text-brand-navy leading-none">AGGC</h1>
-                            <p class="text-[9px] md:text-[10px] uppercase font-heading tracking-[0.15em] font-bold text-slate-500 mt-1">Aung Gyi Group</p>
-                        </div>
+                        <img src="./img/logo.png" class="w-40" alt="">
                     </a>
 
                     <!-- Desktop Menu -->
@@ -232,7 +226,7 @@
                     <div class="relative">
                         <div class="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-24 sm:w-32 h-24 sm:h-32 opacity-20" style="background-image: radial-gradient(#0b0430 2px, transparent 2px); background-size: 16px 16px;"></div>
                         <div class="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 w-3/4 h-full bg-white rounded-xl sm:rounded-2xl border border-slate-100 shadow-xl -z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" alt="Corporate Environment" class="rounded-xl sm:rounded-2xl shadow-lg z-10 relative object-cover h-[300px] sm:h-[500px] w-full"/>
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" alt="Corporate Environment" class="rounded-xl sm:rounded-2xl shadow-lg  relative object-cover h-[300px] sm:h-[500px] w-full"/>
                         <div class="absolute top-4 -right-4 sm:top-8 sm:-right-8 bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-slate-50 animate-bounce" style="animation-duration: 3s;">
                             <div class="flex items-center gap-3 sm:gap-4">
                                 <div class="w-10 h-10 sm:w-14 sm:h-14 bg-brand-gold/10 rounded-full flex items-center justify-center">
@@ -703,43 +697,21 @@
                 </div>
             </div>
 
-            <!-- 3 Column Grid for News -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
-                <!-- News Item 1 -->
-                <div class="w-full group/card cursor-pointer">
-                    <div class="h-56 sm:h-64 mb-5 overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm flex items-center justify-center">
-                        <img src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&q=80" alt="ISO Certificates" class="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500">
-                    </div>
-                    <h4 class="font-heading text-[16px] font-bold text-brand-gold mb-3 border-b-2 border-slate-100 pb-3 group-hover/card:text-brand-navy transition-colors">ဂုဏ်ယူပါတယ် AGGC</h4>
-                    <p class="text-[14px] text-slate-600 leading-[1.8] line-clamp-4">
-                        AGGC (Aung Gyi Group of Companies) အနေဖြင့် ISO 9001:2015 (Quality Management System), ISO 45001:2018 (Occupational Health & Safety Management System), ISO ...
-                    </p>
-                </div>
+            <!-- Loading Spinner for Live News -->
+            <div id="latest-news-loading" class="flex flex-col items-center justify-center py-10">
+                <div class="loader mb-4"></div>
+                <p class="text-slate-500 font-medium text-sm animate-pulse">Loading latest activities...</p>
+            </div>
 
-                <!-- News Item 2 -->
-                <div class="w-full group/card cursor-pointer">
-                    <div class="h-56 sm:h-64 mb-5 overflow-hidden rounded-md border border-slate-200 bg-brand-navy flex items-center justify-center relative shadow-sm">
-                        <div class="text-center p-4">
-                            <h2 class="font-heading text-white font-black text-2xl sm:text-3xl italic tracking-widest mb-4">SERVICE CAMPAIGN</h2>
-                            <div class="bg-[#e3000f] text-white rounded-full w-16 h-16 flex items-center justify-center text-[12px] font-heading font-bold absolute bottom-4 left-4 border-2 border-brand-gold leading-tight">100%<br>FREE</div>
-                        </div>
-                    </div>
-                    <h4 class="font-heading text-[16px] font-bold text-brand-gold mb-3 border-b-2 border-slate-100 pb-3 group-hover/card:text-brand-navy transition-colors">LIUGONG Service Campaign 2021</h4>
-                    <p class="text-[14px] text-slate-600 leading-[1.8] line-clamp-4">
-                        Gaungxi Liugong Machinery Co.,Ltd ၏ မြန်မာပြည်တစ်ဦးတည်း ကိုယ်စားလှယ်ဖြစ်သော ကျွန်တော်များ Aung Gyi Group Of Companies မှ တင်သွင်းသော အရည်အသွေးမြင့် ကမ္ဘာ့အဆင့်မှီ ...
-                    </p>
-                </div>
-
-                <!-- News Item 3 -->
-                <div class="w-full group/card cursor-pointer">
-                    <div class="h-56 sm:h-64 mb-5 overflow-hidden rounded-md border border-slate-200 shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80" alt="MOU Signing" class="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500">
-                    </div>
-                    <h4 class="font-heading text-[16px] font-bold text-brand-gold mb-3 border-b-2 border-slate-100 pb-3 group-hover/card:text-brand-navy transition-colors">MOU Signing Ceremony @ Naypyitaw</h4>
-                    <p class="text-[14px] text-slate-600 leading-[1.8] line-clamp-4">
-                        Myanmar Society of Civil Engineers (MSCE) နှင့် LIUGONG တို့ ၏ MOU SIGNING CEREMONY အား နေပြည်တော် သင်္ဂဟဟိုတယ်တွင် ကျင်းပပြုလုပ်ခဲ့ပါသည်။
-                    </p>
-                </div>
+            <!-- 3 Column Grid for Latest News -->
+            <div id="latest-news-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
+                <!-- Javascript will inject 3 latest cards here -->
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="news.html" class="inline-flex items-center font-heading font-bold text-[12px] uppercase tracking-widest text-brand-navy hover:text-brand-gold transition-colors bg-slate-50 px-6 py-3 rounded-md border border-slate-200 hover:border-brand-gold shadow-sm">
+                    View All News & Activities <i class="fa-solid fa-arrow-right ml-3"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -804,8 +776,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
                 <div class="col-span-1 lg:col-span-2">
                     <div class="flex items-center mb-5">
-                        <div class="w-8 h-8 rounded-lg bg-brand-gold flex items-center justify-center mr-3"><span class="font-heading font-black text-brand-navy text-lg">AG</span></div>
-                        <h2 class="font-heading font-black text-xl text-brand-navy tracking-tight">AGGC</h2>
+                        <img src="./img/logo.png" class="w-40" alt="">
                     </div>
                     <p class="text-slate-500 text-[14px] leading-[1.8] max-w-md">Aung Gyi Group of Companies. A diversified business group operating across 7 major sectors. Let's Build Together!</p>
                 </div>
@@ -875,6 +846,83 @@
                 carouselImages[currentImageIndex].classList.add('active');
             }, 3000);
         }
+
+        // --- Fetch Latest News from Google Sheet (Only Top 3) ---
+        const SHEET_ID = '1xxAFdK_VZU80LDZVNfICGP3t2Gg7CvZjtBRoM0yD-v0';
+        const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+
+        async function fetchLatestNews() {
+            try {
+                const response = await fetch(SHEET_URL);
+                if (!response.ok) throw new Error('Network response was not ok');
+                
+                const text = await response.text();
+                const jsonMatch = text.match(/google\.visualization\.Query\.setResponse\(([\s\S\w]+)\);/);
+                
+                if (jsonMatch && jsonMatch[1]) {
+                    const json = JSON.parse(jsonMatch[1]);
+                    const cols = json.table.cols.map(c => c ? c.label : '');
+                    const rows = json.table.rows;
+
+                    const idxTitle = cols.findIndex(c => c && c.toLowerCase().includes('title')) >= 0 ? cols.findIndex(c => c && c.toLowerCase().includes('title')) : 3;
+                    const idxHero = cols.findIndex(c => c && c.toLowerCase().includes('hero_image')) >= 0 ? cols.findIndex(c => c && c.toLowerCase().includes('hero_image')) : 4;
+                    const idxDesc = cols.findIndex(c => c && c.toLowerCase().includes('description')) >= 0 ? cols.findIndex(c => c && c.toLowerCase().includes('description')) : 5;
+
+                    let newsData = rows.map((row, id) => {
+                        const getVal = (idx) => (row.c && row.c[idx] && row.c[idx].v) ? row.c[idx].v : '';
+                        return {
+                            id: id,
+                            title: getVal(idxTitle) || 'Untitled News',
+                            heroImage: getVal(idxHero) || 'https://placehold.co/800x500/0b0430/f1ad18?text=News+Image',
+                            description: getVal(idxDesc) || 'No description available.'
+                        };
+                    }).filter(item => item.title !== 'Untitled News');
+
+                    // Reverse to show the latest first, then take only the top 3
+                    newsData.reverse(); 
+                    renderLatestNewsCards(newsData.slice(0, 3));
+                }
+            } catch (error) {
+                console.error("Error fetching latest news:", error);
+                document.getElementById('latest-news-loading').innerHTML = '<p class="text-slate-500 font-medium text-sm text-center">Unable to load latest news at this time.</p>';
+            }
+        }
+
+        function renderLatestNewsCards(news) {
+            const grid = document.getElementById('latest-news-grid');
+            document.getElementById('latest-news-loading').classList.add('hidden');
+            grid.innerHTML = '';
+
+            news.forEach(item => {
+                // Link directly to news.html with the specific ID for detail view
+                const cardUrl = `news.html?id=${item.id}`;
+                
+                grid.innerHTML += `
+                    <a href="${cardUrl}" class="w-full group/card cursor-pointer block bg-white rounded-2xl border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(11,4,48,0.08)] hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col">
+                        <div class="h-56 sm:h-64 overflow-hidden relative bg-slate-50">
+                            <img src="${item.heroImage}" alt="${item.title}" class="w-full h-full object-cover transform group-hover/card:scale-110 transition-transform duration-700 ease-out" onerror="this.src='https://placehold.co/800x500/0b0430/f1ad18?text=AGGC+News'">
+                            <div class="absolute inset-0 bg-brand-navy/20 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        
+                        <div class="p-6 sm:p-8 flex flex-col flex-grow relative">
+                            <div class="absolute top-0 left-0 w-0 h-1 bg-brand-gold group-hover/card:w-full transition-all duration-500"></div>
+                            <h4 class="text-[17px] sm:text-[19px] font-heading font-extrabold text-brand-navy mb-3 group-hover/card:text-brand-gold transition-colors leading-tight line-clamp-2">${item.title}</h4>
+                            <p class="text-[14px] text-slate-500 leading-[1.8] mb-6 flex-grow line-clamp-3">${item.description}</p>
+                            
+                            <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-[11px] font-heading font-black text-brand-gold uppercase tracking-[0.2em] group-hover/card:text-brand-navy transition-colors">Read Full Article</span>
+                                <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-brand-navy border border-slate-200 group-hover/card:bg-brand-navy group-hover/card:text-brand-gold group-hover/card:border-brand-navy transition-all shadow-sm">
+                                    <i class="fa-solid fa-arrow-right text-[12px] -rotate-45 group-hover/card:rotate-0 transition-transform duration-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                `;
+            });
+        }
+
+        // Initialize fetching on page load
+        window.addEventListener('load', fetchLatestNews);
     </script>
 </body>
 </html>
