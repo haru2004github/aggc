@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGGC - Aung Gyi Group Company</title>
+    
+    <!-- Poppins Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0b0430',
+                            gold: '#f1ad18'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+        
+        /* Hero Carousel Advanced Animation (Ken Burns Effect) */
+        .carousel-img {
+            opacity: 0;
+            transform: scale(1);
+            transition: opacity 1s ease-in-out, transform 4s ease-out;
+            z-index: 0;
+        }
+        .carousel-img.active {
+            opacity: 1;
+            transform: scale(1.08); /* Slow zoom effect */
+            z-index: 10;
+        }
+
+        /* Dotted Border for Brand Cards */
+        .brand-card-border {
+            border: 2px dashed #f1ad18;
+            transition: all 0.3s ease;
+        }
+        .brand-card-border:hover {
+            border: 2px solid #f1ad18;
+            box-shadow: 0 10px 25px rgba(11, 4, 48, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Hide scrollbar for News Carousel */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+    <!-- 1. Navigation Bar with Mega Menu -->
+    <nav id="navbar" class="fixed w-full z-50 bg-white border-b border-slate-200 transition-all duration-300">
+        <div class="relative w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16 md:h-20 transition-all duration-300" id="nav-container">
+                    
+                    <!-- Logo -->
+                    <a class="w-40" href="./index.html" class="flex items-center cursor-pointer group hover:opacity-90 transition-opacity">
+                        <img src="./img/logo.png" alt="">
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex h-full items-center space-x-2 lg:space-x-4">
+                        <a href="./index.html" class="px-3 h-full flex items-center text-sm font-bold text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent hover:border-brand-gold">Home</a>
+                        
+                        <!-- Mega Menu Trigger: Our Companies -->
+                        <div class="group h-full">
+                            <button class="px-3 h-full flex items-center text-sm font-bold text-brand-navy hover:text-brand-gold transition-colors border-b-2 border-transparent group-hover:border-brand-gold group-hover:bg-slate-50 outline-none">
+                                Our Companies <i class="fa-solid fa-chevron-down ml-2 text-[10px] transition-transform duration-300 group-hover:rotate-180"></i>
+                            </button>
+
+                            <!-- Mega Menu Panel -->
+                            <div class="absolute top-full left-0 w-full bg-white shadow-[0_20px_40px_rgba(0,0,0,0.08)] border-t border-slate-100 opacity-0 invisible -translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                                <div class="absolute top-0 left-0 w-full h-[2px] bg-brand-gold"></div>
+                                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                                    <div class="grid grid-cols-3 gap-10">
+                                        <!-- Company 1 -->
+                                        <div class="group/item cursor-pointer">
+                                            <div class="text-brand-gold font-bold text-[10px] uppercase tracking-widest mb-3">Construction & Mining</div>
+                                            <h3 class="font-extrabold text-brand-navy text-lg mb-2 group-hover/item:text-brand-gold transition-colors flex items-center">
+                                                Alliance Tractors <i class="fa-solid fa-arrow-right opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-2 transition-all text-sm ml-2"></i>
+                                            </h3>
+                                            <p class="text-sm text-slate-500 leading-relaxed font-medium pr-4">Strategic partner of LiuGong Machinery and Zega, providing heavy equipment, mining solutions, and comprehensive services globally.</p>
+                                        </div>
+                                        <!-- Company 2 -->
+                                        <div class="group/item cursor-pointer border-l border-slate-100 pl-10">
+                                            <div class="text-brand-gold font-bold text-[10px] uppercase tracking-widest mb-3">Energy & Power</div>
+                                            <h3 class="font-extrabold text-brand-navy text-lg mb-2 group-hover/item:text-brand-gold transition-colors flex items-center">
+                                                Powermax Industries <i class="fa-solid fa-arrow-right opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-2 transition-all text-sm ml-2"></i>
+                                            </h3>
+                                            <p class="text-sm text-slate-500 leading-relaxed font-medium pr-4">Delivering advanced power generators, electrical engineering, Delixi grid infrastructure, and sustainable solar systems.</p>
+                                        </div>
+                                        <!-- Company 3 -->
+                                        <div class="group/item cursor-pointer border-l border-slate-100 pl-10">
+                                            <div class="text-brand-gold font-bold text-[10px] uppercase tracking-widest mb-3">Premium Lubricants</div>
+                                            <h3 class="font-extrabold text-brand-navy text-lg mb-2 group-hover/item:text-brand-gold transition-colors flex items-center">
+                                                Turboil Corp <i class="fa-solid fa-arrow-right opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-2 transition-all text-sm ml-2"></i>
+                                            </h3>
+                                            <p class="text-sm text-slate-500 leading-relaxed font-medium pr-4">Providing high-performance automotive and industrial lubricants, ensuring efficiency and longevity for heavy-duty engines.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-50 border-t border-slate-100 py-4">
+                                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                                        <span class="text-xs font-medium text-slate-500">Discover the history and vision of Aung Gyi Group.</span>
+                                        <a href="#about" class="text-xs font-bold text-brand-navy uppercase tracking-widest hover:text-brand-gold transition-colors">About Us <i class="fa-solid fa-chevron-right ml-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#sectors" class="px-3 h-full flex items-center text-sm font-bold text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent hover:border-brand-gold">Sectors</a>
+                        <a href="#brands" class="px-3 h-full flex items-center text-sm font-bold text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent hover:border-brand-gold">Products</a>
+                        <a href="#news" class="px-3 h-full flex items-center text-sm font-bold text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent hover:border-brand-gold">News</a>
+                        
+                        <!-- CTA Button -->
+                        <div class="flex items-center pl-4">
+                            <a href="#contact" class="bg-brand-gold text-brand-navy px-6 py-2 text-sm font-extrabold uppercase tracking-wider hover:bg-yellow-500 transition-colors border-2 border-brand-gold hover:border-yellow-500">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden flex items-center">
+                        <button id="mobileMenuBtn" class="text-brand-navy p-2 hover:bg-slate-100 transition-colors focus:outline-none border border-slate-200">
+                            <i id="menuIcon" class="fa-solid fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-xl py-4 flex flex-col px-4 border-t border-slate-200">
+            <a href="./index.html" class="mobile-link text-brand-navy font-bold text-left py-3 border-b border-slate-100 hover:text-brand-gold transition-colors">Home</a>
+            <a href="#about" class="mobile-link text-brand-navy font-bold text-left py-3 border-b border-slate-100 hover:text-brand-gold transition-colors">Our Companies</a>
+            <a href="#sectors" class="mobile-link text-brand-navy font-bold text-left py-3 border-b border-slate-100 hover:text-brand-gold transition-colors">Sectors</a>
+            <a href="#brands" class="mobile-link text-brand-navy font-bold text-left py-3 border-b border-slate-100 hover:text-brand-gold transition-colors">Products</a>
+            <a href="#news" class="mobile-link text-brand-navy font-bold text-left py-3 border-b border-slate-100 hover:text-brand-gold transition-colors">News</a>
+            
+            <a href="#contact" class="mobile-link mt-4 bg-brand-gold text-brand-navy w-full py-3 font-extrabold text-center uppercase tracking-wider text-sm border-2 border-brand-gold">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section (Animated Carousel) -->
+    <section id="home" class="relative bg-white pt-24 pb-12 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-24 overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none z-0" style="background-image: linear-gradient(#0b0430 1px, transparent 1px), linear-gradient(90deg, #0b0430 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+                
+                <!-- Text Content -->
+                <div class="w-full lg:w-1/2 pt-6 lg:pt-0">
+                    <div class="flex items-center gap-3 mb-5 sm:mb-6">
+                        <div class="w-10 sm:w-12 h-1 bg-brand-gold"></div>
+                        <span class="text-brand-navy font-bold text-xs sm:text-sm uppercase tracking-widest">Global Partners</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-navy mb-5 sm:mb-6 leading-[1.2] lg:leading-[1.1] tracking-tight">
+                        It's What Our <br class="hidden sm:block" />
+                        <span class="relative inline-block mt-1 sm:mt-2">Products
+                            <span class="absolute bottom-1 sm:bottom-2 left-0 w-full h-3 sm:h-4 bg-brand-gold -z-10 opacity-80"></span>
+                        </span> 
+                        <br/> Make Possible.
+                    </h1>
+                    
+                    <p class="text-base sm:text-lg text-slate-600 mb-8 sm:mb-10 max-w-xl font-light leading-relaxed">
+                        For more than two decades, Alliance Global Group Company (AGGC) has built a better, more sustainable world. We are shaping the future as a leading provider of construction machinery, energy solutions, and infrastructure development.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                        <a href="#about" class="bg-brand-gold text-brand-navy w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 font-bold text-xs sm:text-sm uppercase tracking-widest hover:bg-yellow-500 transition-colors text-center flex items-center justify-center group border-2 border-brand-gold hover:border-yellow-500">
+                            About AGGC <i class="fa-solid fa-chevron-right ml-3 text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#sectors" class="bg-white border-2 border-slate-200 text-brand-navy w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 font-bold text-xs sm:text-sm uppercase tracking-widest hover:border-brand-navy transition-colors text-center">
+                            Industries We Serve
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image Carousel -->
+                <div class="w-full lg:w-1/2 relative mt-10 lg:mt-0">
+                    <!-- Geometric Accent Lines -->
+                    <div class="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-[80%] h-[80%] border-t-[8px] sm:border-t-[10px] border-r-[8px] sm:border-r-[10px] border-slate-100 z-0 hidden lg:block"></div>
+                    
+                    <div class="relative z-10 bg-brand-navy overflow-hidden shadow-2xl group border-l-4 sm:border-l-8 border-brand-gold h-[300px] sm:h-[400px] lg:h-[550px]" id="hero-carousel">
+                        <img src="https://www.aungyigroup.com/images/slider/LG-15-years-anni-00.jpg" alt="AGGC 15 Years Anniversary" class="carousel-img active absolute inset-0 w-full h-full object-cover" />
+                        <img src="https://www.aungyigroup.com/images/slider/slide-01.jpg" alt="AGGC Heavy Machinery" class="carousel-img absolute inset-0 w-full h-full object-cover" />
+                        <img src="https://www.aungyigroup.com/images/slider/slide-02.jpg" alt="AGGC Construction Equipment" class="carousel-img absolute inset-0 w-full h-full object-cover" />
+                        <img src="https://www.aungyigroup.com/images/slider/slide-03.jpg" alt="AGGC Power & Energy" class="carousel-img absolute inset-0 w-full h-full object-cover" />
+                        <img src="https://www.aungyigroup.com/images/slider/slide-04.jpg" alt="AGGC Team and Projects" class="carousel-img absolute inset-0 w-full h-full object-cover" />
+
+                        <!-- Diagonal Yellow Line Accents -->
+                        <div class="absolute -top-20 right-[15%] w-1.5 h-[150%] bg-brand-gold transform rotate-45 opacity-90 pointer-events-none shadow-lg z-20 hidden sm:block"></div>
+                        <div class="absolute -top-20 right-[25%] w-0.5 h-[150%] bg-brand-gold transform rotate-45 opacity-50 pointer-events-none z-20 hidden sm:block"></div>
+                        
+                        <div class="absolute bottom-0 right-0 bg-white p-4 sm:p-6 shadow-lg max-w-[200px] sm:max-w-xs z-30">
+                            <h3 class="font-extrabold text-xl sm:text-3xl text-brand-navy tracking-tighter mb-0 sm:mb-1">AGGC</h3>
+                            <p class="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">Let's Build Together</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. About Us Section -->
+    <section id="about" class="py-16 sm:py-24 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12 sm:gap-16">
+                <div class="w-full lg:w-1/2">
+                    <div class="relative">
+                        <div class="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-24 sm:w-32 h-24 sm:h-32 opacity-20" style="background-image: radial-gradient(#0b0430 2px, transparent 2px); background-size: 16px 16px;"></div>
+                        <div class="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 w-3/4 h-full bg-white rounded-xl sm:rounded-2xl border border-slate-100 shadow-xl -z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" alt="Corporate Environment" class="rounded-xl sm:rounded-2xl shadow-lg z-10 relative object-cover h-[300px] sm:h-[500px] w-full"/>
+                        <div class="absolute top-4 -right-4 sm:top-8 sm:-right-8 bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-slate-50 animate-bounce" style="animation-duration: 3s;">
+                            <div class="flex items-center gap-3 sm:gap-4">
+                                <div class="w-10 h-10 sm:w-14 sm:h-14 bg-brand-gold/10 rounded-full flex items-center justify-center">
+                                    <i class="fa-solid fa-trophy text-lg sm:text-2xl text-brand-gold"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl sm:text-3xl font-extrabold text-brand-navy">20+</p>
+                                    <p class="text-[8px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">Years Experience</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="w-full lg:w-1/2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-0.5 bg-brand-gold"></div>
+                        <h4 class="text-brand-gold font-bold tracking-wider uppercase text-xs sm:text-sm">About AGGC</h4>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy mb-4 sm:mb-6 leading-tight">
+                        Think Smart, Move Fast, <br/>
+                        <span class="font-light">Work Hard.</span>
+                    </h2>
+                    <p class="text-base sm:text-lg text-slate-600 leading-relaxed mb-4 sm:mb-6 font-light">
+                        Founded in 2004 as Aung Gyi Trading Limited, we have grown into the official distributor for global leaders like Guangxi LiuGong Machinery and JAC Motors.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                        <div class="flex items-center p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center mr-3 text-brand-gold flex-shrink-0"><i class="fa-solid fa-check text-sm"></i></div>
+                            <span class="text-brand-navy font-semibold text-xs sm:text-sm">Sincerity is our Strength</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center mr-3 text-brand-gold flex-shrink-0"><i class="fa-solid fa-check text-sm"></i></div>
+                            <span class="text-brand-navy font-semibold text-xs sm:text-sm">ISO Certified Group</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center mr-3 text-brand-gold flex-shrink-0"><i class="fa-solid fa-check text-sm"></i></div>
+                            <span class="text-brand-navy font-semibold text-xs sm:text-sm">Sustainable Development</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center mr-3 text-brand-gold flex-shrink-0"><i class="fa-solid fa-check text-sm"></i></div>
+                            <span class="text-brand-navy font-semibold text-xs sm:text-sm">Global Partnerships</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Business Sectors Section -->
+    <section id="sectors" class="py-16 sm:py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-20">
+                <h4 class="text-brand-gold font-bold tracking-wider uppercase text-xs sm:text-sm mb-2">What We Do</h4>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy">Our Business Sectors</h2>
+                <div class="w-20 sm:w-24 h-1 bg-brand-gold mx-auto mt-4 sm:mt-6 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Sector Cards -->
+                <div class="bg-slate-50 rounded-2xl p-6 sm:p-8 transition-all duration-300 border border-slate-100 hover:border-brand-gold/30 hover:bg-white hover:shadow-[0_20px_40px_rgba(11,4,48,0.06)] group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-navy mb-5 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-white transition-all"><i class="fa-solid fa-building text-2xl"></i></div>
+                    <h3 class="text-lg font-bold text-brand-navy mb-2">Construction & Mining</h3>
+                    <p class="text-slate-500 text-sm font-light">Strategic partner of LiuGong Machinery, providing sales, leasing, and parts for heavy machinery.</p>
+                </div>
+                <div class="bg-slate-50 rounded-2xl p-6 sm:p-8 transition-all duration-300 border border-slate-100 hover:border-brand-gold/30 hover:bg-white hover:shadow-[0_20px_40px_rgba(11,4,48,0.06)] group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-navy mb-5 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-white transition-all"><i class="fa-solid fa-bolt text-2xl"></i></div>
+                    <h3 class="text-lg font-bold text-brand-navy mb-2">Energy & Power Solution</h3>
+                    <p class="text-slate-500 text-sm font-light">POWERMAX INDUSTRIES LTD. provides advanced power generators, grid infrastructure, and solar solutions.</p>
+                </div>
+                <div class="bg-slate-50 rounded-2xl p-6 sm:p-8 transition-all duration-300 border border-slate-100 hover:border-brand-gold/30 hover:bg-white hover:shadow-[0_20px_40px_rgba(11,4,48,0.06)] group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-navy mb-5 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-white transition-all"><i class="fa-solid fa-house-chimney text-2xl"></i></div>
+                    <h3 class="text-lg font-bold text-brand-navy mb-2">Housing & Infrastructure</h3>
+                    <p class="text-slate-500 text-sm font-light">Pivotal role in housing construction, commercial buildings, and industrial estates.</p>
+                </div>
+                <div class="bg-slate-50 rounded-2xl p-6 sm:p-8 transition-all duration-300 border border-slate-100 hover:border-brand-gold/30 hover:bg-white hover:shadow-[0_20px_40px_rgba(11,4,48,0.06)] group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-navy mb-5 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-white transition-all"><i class="fa-solid fa-truck-moving text-2xl"></i></div>
+                    <h3 class="text-lg font-bold text-brand-navy mb-2">Logistics & Transport</h3>
+                    <p class="text-slate-500 text-sm font-light">Strategic partner with JAC Motors, delivering reliable multi-modal supply chain solutions.</p>
+                </div>
+                <div class="bg-slate-50 rounded-2xl p-6 sm:p-8 transition-all duration-300 border border-slate-100 hover:border-brand-gold/30 hover:bg-white hover:shadow-[0_20px_40px_rgba(11,4,48,0.06)] group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-navy mb-5 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-white transition-all"><i class="fa-solid fa-tractor text-2xl"></i></div>
+                    <h3 class="text-lg font-bold text-brand-navy mb-2">Agriculture & Farming</h3>
+                    <p class="text-slate-500 text-sm font-light">Supplying energy-efficient machinery for seeding, harvesting, and modern farming technologies.</p>
+                </div>
+                <div class="bg-slate-50 rounded-2xl p-6 sm:p-8 transition-all duration-300 border border-slate-100 hover:border-brand-gold/30 hover:bg-white hover:shadow-[0_20px_40px_rgba(11,4,48,0.06)] group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-navy mb-5 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-white transition-all"><i class="fa-solid fa-globe text-2xl"></i></div>
+                    <h3 class="text-lg font-bold text-brand-navy mb-2">General Trading</h3>
+                    <p class="text-slate-500 text-sm font-light">TRACTORS ASIA LTD. provides high-quality batteries, Turboil lubricants, and commercial tires.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Brands & Products Section (Card Grid Layout) -->
+    <section id="brands" class="py-16 sm:py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-12 sm:mb-16">
+                <h4 class="text-brand-gold font-bold tracking-wider uppercase text-xs sm:text-sm mb-2">Our Network</h4>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy">Trusted Brands & Products</h2>
+                <div class="w-20 sm:w-24 h-1 bg-brand-gold mx-auto mt-4 sm:mt-6 rounded-full"></div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                
+                <!-- LIUGONG Card -->
+                <div class="brand-card-border bg-white rounded-lg p-8 flex flex-col items-center text-center relative group">
+                    <h3 class="text-2xl font-extrabold text-brand-navy mb-4 group-hover:text-brand-gold transition-colors">LIUGONG</h3>
+                    <ul class="text-slate-500 text-sm space-y-2 mb-8 flex-grow font-light">
+                        <li>Earthmoving Machinery</li>
+                        <li>Road Equipment</li>
+                        <li>Concrete Equipment</li>
+                    </ul>
+                    <a href="#" class="bg-brand-gold text-brand-navy font-bold text-sm px-6 py-2 rounded-md hover:bg-brand-navy hover:text-white transition-all">Read More</a>
+                </div>
+
+                <!-- JAC Card -->
+                <div class="brand-card-border bg-white rounded-lg p-8 flex flex-col items-center text-center relative group">
+                    <h3 class="text-2xl font-extrabold text-[#e3000f] mb-4 group-hover:text-brand-gold transition-colors">JAC MOTORS</h3>
+                    <ul class="text-slate-500 text-sm space-y-2 mb-8 flex-grow font-light">
+                        <li>Heavy and Medium Truck</li>
+                        <li>Light Truck</li>
+                        <li>Sunray</li>
+                    </ul>
+                    <a href="#" class="bg-brand-gold text-brand-navy font-bold text-sm px-6 py-2 rounded-md hover:bg-brand-navy hover:text-white transition-all">Read More</a>
+                </div>
+
+                <!-- POWERMAX Card -->
+                <div class="brand-card-border bg-white rounded-lg p-8 flex flex-col items-center text-center relative group">
+                    <h3 class="text-2xl font-extrabold text-brand-navy mb-4 group-hover:text-brand-gold transition-colors">POWERMAX</h3>
+                    <ul class="text-slate-500 text-sm space-y-2 mb-8 flex-grow font-light">
+                        <li>Super Silent Set</li>
+                        <li>Industrial Open Set</li>
+                        <li>Lighting Tower</li>
+                    </ul>
+                    <a href="#" class="bg-brand-gold text-brand-navy font-bold text-sm px-6 py-2 rounded-md hover:bg-brand-navy hover:text-white transition-all">Read More</a>
+                </div>
+
+                <!-- IZUMI Card -->
+                <div class="brand-card-border bg-white rounded-lg p-8 flex flex-col items-center text-center relative group">
+                    <h3 class="text-2xl font-extrabold text-black mb-4 group-hover:text-brand-gold transition-colors">IZUMI</h3>
+                    <ul class="text-slate-500 text-sm space-y-2 mb-8 flex-grow font-light">
+                        <li>Air Conditioner</li>
+                        <li>Escalator & Elevator</li>
+                        <li>Sanitary ware</li>
+                    </ul>
+                    <a href="#" class="bg-brand-gold text-brand-navy font-bold text-sm px-6 py-2 rounded-md hover:bg-brand-navy hover:text-white transition-all">Read More</a>
+                </div>
+
+                <!-- ZEGA Card -->
+                <div class="brand-card-border bg-white rounded-lg p-8 flex flex-col items-center text-center relative group">
+                    <h3 class="text-2xl font-extrabold text-[#193275] mb-4 group-hover:text-brand-gold transition-colors">ZEGA</h3>
+                    <ul class="text-slate-500 text-sm space-y-2 mb-8 flex-grow font-light">
+                        <li>Down The Hole Drill</li>
+                        <li>Top Hammer</li>
+                        <li>Underground Drilling Jumbo</li>
+                    </ul>
+                    <a href="#" class="bg-brand-gold text-brand-navy font-bold text-sm px-6 py-2 rounded-md hover:bg-brand-navy hover:text-white transition-all">Read More</a>
+                </div>
+
+                <!-- ROADMAX Card -->
+                <div class="brand-card-border bg-white rounded-lg p-8 flex flex-col items-center text-center relative group">
+                    <h3 class="text-2xl font-extrabold text-black mb-4 group-hover:text-brand-gold transition-colors">ROADMAX</h3>
+                    <ul class="text-slate-500 text-sm space-y-2 mb-8 flex-grow font-light">
+                        <li>Asphalt Batch Mixing Plant</li>
+                        <li>Asphalt Drum Mixing Plant</li>
+                        <li>Chip Sealer</li>
+                    </ul>
+                    <a href="#" class="bg-brand-gold text-brand-navy font-bold text-sm px-6 py-2 rounded-md hover:bg-brand-navy hover:text-white transition-all">Read More</a>
+                </div>
+
+                <!-- TOPMAX Card -->
+                <div class="brand-card-border bg-white rounded-lg p-8 flex flex-col items-center text-center relative group">
+                    <h3 class="text-2xl font-extrabold text-black mb-4 group-hover:text-brand-gold transition-colors">TOPMAX</h3>
+                    <ul class="text-slate-500 text-sm space-y-2 mb-8 flex-grow font-light">
+                        <li>Topkit Tower Crane</li>
+                        <li>Topless Tower Crane</li>
+                        <li>Luffing Tower Crane</li>
+                    </ul>
+                    <a href="#" class="bg-brand-gold text-brand-navy font-bold text-sm px-6 py-2 rounded-md hover:bg-brand-navy hover:text-white transition-all">Read More</a>
+                </div>
+
+                <!-- TRUSTON Card -->
+                <div class="brand-card-border bg-white rounded-lg p-8 flex flex-col items-center text-center relative group">
+                    <h3 class="text-2xl font-extrabold text-[#113a6d] mb-4 group-hover:text-brand-gold transition-colors">TRUSTON</h3>
+                    <ul class="text-slate-500 text-sm space-y-2 mb-8 flex-grow font-light">
+                        <li>Mobile Crushing Plant</li>
+                        <li>Jaw Crusher</li>
+                        <li>Hydraulic Cone Crusher</li>
+                    </ul>
+                    <a href="#" class="bg-brand-gold text-brand-navy font-bold text-sm px-6 py-2 rounded-md hover:bg-brand-navy hover:text-white transition-all">Read More</a>
+                </div>
+
+                <!-- TURBOIL Card -->
+                <div class="brand-card-border bg-white rounded-lg p-8 flex flex-col items-center text-center relative group">
+                    <h3 class="text-2xl font-extrabold text-black mb-4 group-hover:text-brand-gold transition-colors">TURBOIL</h3>
+                    <ul class="text-slate-500 text-sm space-y-2 mb-8 flex-grow font-light">
+                        <li>Engine Oil</li>
+                        <li>Hydraulic Oil</li>
+                        <li>Gear Oil</li>
+                    </ul>
+                    <a href="#" class="bg-brand-gold text-brand-navy font-bold text-sm px-6 py-2 rounded-md hover:bg-brand-navy hover:text-white transition-all">Read More</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Global Network -->
+    <section id="network" class="py-16 sm:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h4 class="text-brand-gold font-bold tracking-wider uppercase text-xs sm:text-sm mb-2">We Are Global</h4>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy mb-8 sm:mb-12">Alliance Tractors Network</h2>
+            
+            <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-8 sm:mb-12 font-light">
+                With a rapidly expanding global footprint, Alliance Tractors has established a strong presence in key international markets, delivering high-quality machinery and automobile solutions.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
+                <span class="px-5 py-2.5 sm:px-6 sm:py-3 bg-slate-50 border border-slate-200 rounded-full text-brand-navy font-semibold shadow-sm text-sm sm:text-base">Myanmar</span>
+                <span class="px-5 py-2.5 sm:px-6 sm:py-3 bg-slate-50 border border-slate-200 rounded-full text-brand-navy font-semibold shadow-sm text-sm sm:text-base">UAE (Dubai)</span>
+                <span class="px-5 py-2.5 sm:px-6 sm:py-3 bg-slate-50 border border-slate-200 rounded-full text-brand-navy font-semibold shadow-sm text-sm sm:text-base">Thailand</span>
+                <span class="px-5 py-2.5 sm:px-6 sm:py-3 bg-slate-50 border border-slate-200 rounded-full text-brand-navy font-semibold shadow-sm text-sm sm:text-base">Vietnam</span>
+                <span class="px-5 py-2.5 sm:px-6 sm:py-3 bg-slate-50 border border-slate-200 rounded-full text-brand-navy font-semibold shadow-sm text-sm sm:text-base">Hong Kong</span>
+                <span class="px-5 py-2.5 sm:px-6 sm:py-3 bg-slate-50 border border-slate-200 rounded-full text-brand-navy font-semibold shadow-sm text-sm sm:text-base">Cambodia</span>
+                <span class="px-5 py-2.5 sm:px-6 sm:py-3 bg-slate-50 border border-slate-200 rounded-full text-brand-navy font-semibold shadow-sm text-sm sm:text-base">Laos</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Best Selling Items Section -->
+    <section id="best-selling" class="py-16 sm:py-24 bg-slate-50 relative border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Title with Logo integration -->
+            <div class="flex flex-col items-center justify-center mb-12 sm:mb-16">
+                <h3 class="text-lg sm:text-xl font-bold text-brand-navy uppercase tracking-widest mb-3">BEST SELLING ITEMS</h3>
+                <div class="flex items-center w-full max-w-xs justify-center">
+                    <div class="h-0.5 bg-brand-gold flex-grow"></div>
+                    <div class="w-10 h-10 bg-brand-navy rounded-full flex items-center justify-center border-2 border-brand-gold mx-2 z-10 text-brand-gold font-bold">AG</div>
+                    <div class="h-0.5 bg-brand-gold flex-grow"></div>
+                </div>
+            </div>
+
+            <!-- Product Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Item 1 -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer flex flex-col transform hover:-translate-y-1">
+                    <div class="h-56 sm:h-64 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1574513904264-981f44d852a4?auto=format&fit=crop&q=80" alt="Wheel Loader 835H Max" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="text-xl font-bold text-brand-gold mb-4 border-b-2 border-slate-100 pb-3 group-hover:text-brand-navy transition-colors">Wheel Loader 835H Max</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed font-medium">
+                            Engine HP 120-135 ကြားရှိ medium wheel loader series မှ 835H Max သည်
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer flex flex-col transform hover:-translate-y-1">
+                    <div class="h-56 sm:h-64 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1581566896263-125026771d9e?auto=format&fit=crop&q=80" alt="Liugong 922E Excavator" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="text-xl font-bold text-brand-gold mb-4 border-b-2 border-slate-100 pb-3 group-hover:text-brand-navy transition-colors">Liugong 922E Excavator</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed font-medium">
+                            ပွင့်လင်းရာသီလဲ ရောက်လာပြီဆိုတော့ မကြာခင်လုပ်ငန်းခွင်ဝင်မယ့် Customers များအတွက်
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer flex flex-col transform hover:-translate-y-1">
+                    <div class="h-56 sm:h-64 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1621501103258-3e230cecfbf3?auto=format&fit=crop&q=80" alt="Liugong Motor Grader 4140 D" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="text-xl font-bold text-brand-gold mb-4 border-b-2 border-slate-100 pb-3 group-hover:text-brand-navy transition-colors">Liugong Motor Grader 4140 D</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed font-medium">
+                            Operation Weight 14 Ton ဖြစ်ပါတယ်။
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Latest News Updates Section -->
+    <section id="news" class="py-16 sm:py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col items-center justify-center mb-12 sm:mb-16">
+                <h3 class="text-lg sm:text-xl font-bold text-brand-navy uppercase tracking-widest mb-3">LATEST NEWS UPDATES</h3>
+                <div class="flex items-center w-full max-w-xs justify-center">
+                    <div class="h-0.5 bg-brand-gold flex-grow"></div>
+                    <div class="w-10 h-10 bg-brand-navy rounded-full flex items-center justify-center border-2 border-brand-gold mx-2 z-10 text-brand-gold font-bold">AG</div>
+                    <div class="h-0.5 bg-brand-gold flex-grow"></div>
+                </div>
+            </div>
+
+            <!-- News Grid Container (3 Posts Only) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+                
+                <!-- News Post 1 -->
+                <div class="w-full group/card cursor-pointer">
+                    <div class="h-56 sm:h-64 mb-5 overflow-hidden rounded-md border border-slate-200 bg-white flex items-center justify-center shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&q=80" alt="ISO Certificates" class="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500">
+                    </div>
+                    <h4 class="text-lg font-bold text-brand-gold mb-3 border-b-2 border-slate-100 pb-3">ဂုဏ်ယူပါတယ် AGGC</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed line-clamp-4">
+                        AGGC (Aung Gyi Group of Companies) အနေဖြင့် ISO 9001:2015 (Quality Management System), ISO 45001:2018 (Occupational Health & Safety Management System), ISO ...
+                    </p>
+                </div>
+
+                <!-- News Post 2 -->
+                <div class="w-full group/card cursor-pointer">
+                    <div class="h-56 sm:h-64 mb-5 overflow-hidden rounded-md border border-slate-200 bg-brand-navy flex items-center justify-center relative shadow-sm">
+                        <div class="text-center p-4">
+                            <h2 class="text-white font-extrabold text-2xl sm:text-3xl italic tracking-wider mb-4">SERVICE CAMPAIGN</h2>
+                            <div class="bg-[#e3000f] text-white rounded-full w-16 h-16 flex items-center justify-center text-xs font-bold absolute bottom-4 left-4 border-2 border-brand-gold">100%<br>FREE</div>
+                        </div>
+                    </div>
+                    <h4 class="text-lg font-bold text-brand-gold mb-3 border-b-2 border-slate-100 pb-3">LIUGONG Service Campaign 2021</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed line-clamp-4">
+                        Gaungxi Liugong Machinery Co.,Ltd ၏ မြန်မာပြည်တစ်ဦးတည်း ကိုယ်စားလှယ်ဖြစ်သော ကျွန်တော်များ Aung Gyi Group Of Companies မှ တင်သွင်းသော အရည်အသွေးမြင့် ကမ္ဘာ့အဆင့်မှီ ...
+                    </p>
+                </div>
+
+                <!-- News Post 3 -->
+                <div class="w-full group/card cursor-pointer">
+                    <div class="h-56 sm:h-64 mb-5 overflow-hidden rounded-md border border-slate-200 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80" alt="MOU Signing" class="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500">
+                    </div>
+                    <h4 class="text-lg font-bold text-brand-gold mb-3 border-b-2 border-slate-100 pb-3">MOU Signing Ceremony @ Naypyitaw</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed line-clamp-4">
+                        Myanmar Society of Civil Engineers (MSCE) နှင့် LIUGONG တို့ ၏ MOU SIGNING CEREMONY အား နေပြည်တော် သင်္ဂဟဟိုတယ်တွင် ကျင်းပပြုလုပ်ခဲ့ပါသည်။
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 8. Contact Section (Map & Info only) -->
+    <section id="contact" class="py-16 sm:py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12 sm:gap-16">
+                
+                <!-- Contact Info & Social Media -->
+                <div class="w-full lg:w-5/12">
+                    <h4 class="text-brand-gold font-bold tracking-wider uppercase text-xs sm:text-sm mb-2">Get In Touch</h4>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy mb-6 sm:mb-8">Contact Information</h2>
+                    
+                    <div class="space-y-6 sm:space-y-8 mb-10">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center text-brand-gold mr-4 flex-shrink-0 shadow-sm"><i class="fa-solid fa-location-dot text-xl"></i></div>
+                            <div>
+                                <h5 class="font-bold text-brand-navy text-base">Head Office</h5>
+                                <p class="text-slate-500 mt-1 font-light text-sm">No.901-6, Level 9, Office Tower 3, Times City Complex,<br/>Kamayut Township, Yangon, Myanmar.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center text-brand-gold mr-4 flex-shrink-0 shadow-sm"><i class="fa-solid fa-phone text-xl"></i></div>
+                            <div>
+                                <h5 class="font-bold text-brand-navy text-base">Phone</h5>
+                                <p class="text-slate-500 mt-1 font-light text-sm">Corp: +959-890 90000 9<br/>Service: +959-78 500000 1~5</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center text-brand-gold mr-4 flex-shrink-0 shadow-sm"><i class="fa-solid fa-envelope text-xl"></i></div>
+                            <div>
+                                <h5 class="font-bold text-brand-navy text-base">Email</h5>
+                                <p class="text-slate-500 mt-1 font-light text-sm">info@aungyigroup.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media Button Icons -->
+                    <div>
+                        <h5 class="font-bold text-brand-navy text-base mb-4">Follow Us</h5>
+                        <div class="flex space-x-3">
+                            <a href="#" class="w-10 h-10 bg-brand-navy text-white rounded-full flex items-center justify-center hover:bg-[#1877F2] hover:-translate-y-1 transition-all shadow-md"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="w-10 h-10 bg-brand-navy text-white rounded-full flex items-center justify-center hover:bg-[#0A66C2] hover:-translate-y-1 transition-all shadow-md"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" class="w-10 h-10 bg-brand-navy text-white rounded-full flex items-center justify-center hover:bg-[#FF0000] hover:-translate-y-1 transition-all shadow-md"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="#" class="w-10 h-10 bg-brand-navy text-white rounded-full flex items-center justify-center hover:bg-black hover:-translate-y-1 transition-all shadow-md"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Map Embed -->
+                <div class="w-full lg:w-7/12 rounded-2xl overflow-hidden shadow-lg border border-slate-200 h-[350px] sm:h-[450px]">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3819.3496033481267!2d96.12871321481498!3d16.80901518596637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb4800000001%3A0x6333cda94084534a!2sTimes%20City!5e0!3m2!1sen!2smm!4v1680000000000!5m2!1sen!2smm" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 pt-12 pb-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+                <div class="col-span-1 lg:col-span-2">
+                    <div class="flex items-center mb-5">
+                        <div class="w-8 h-8 rounded-lg bg-brand-gold flex items-center justify-center mr-3"><span class="text-brand-navy font-bold text-lg">AG</span></div>
+                        <h2 class="font-extrabold text-xl text-brand-navy">AGGC</h2>
+                    </div>
+                    <p class="text-slate-500 text-sm font-light max-w-md">Aung Gyi Group of Companies. A diversified business group operating across 7 major sectors. Let's Build Together!</p>
+                </div>
+                <div>
+                    <h4 class="text-brand-navy font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#about" class="text-slate-500 hover:text-brand-gold font-medium">About Us</a></li>
+                        <li><a href="#sectors" class="text-slate-500 hover:text-brand-gold font-medium">Sectors</a></li>
+                        <li><a href="#news" class="text-slate-500 hover:text-brand-gold font-medium">News</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-brand-navy font-bold mb-4">Websites</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-globe mr-2 text-brand-gold"></i><a href="http://www.aungyigroup.com" class="text-slate-500 hover:text-brand-navy">www.aungyigroup.com</a></li>
+                        <li class="flex items-center"><i class="fa-solid fa-globe mr-2 text-brand-gold"></i><a href="http://www.alliancetractors.com" class="text-slate-500 hover:text-brand-navy">www.alliancetractors.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-6 border-t border-slate-100 flex flex-col md:flex-row justify-between text-[10px] sm:text-xs text-slate-400 font-medium">
+                <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
+                <p>Designed with modern web technologies.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts for Interactivity -->
+    <script>
+        // Navbar scroll behavior
+        const navbar = document.getElementById('navbar');
+        const navContainer = document.getElementById('nav-container');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md'); navbar.classList.remove('shadow-sm');
+                navContainer.classList.remove('h-20'); navContainer.classList.add('h-16');
+            } else {
+                navbar.classList.remove('shadow-md'); navbar.classList.add('shadow-sm');
+                navContainer.classList.add('h-20'); navContainer.classList.remove('h-16');
+            }
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark'); menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars'); menuIcon.classList.add('fa-xmark');
+            }
+        }
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', () => { if (!mobileMenu.classList.contains('hidden')) toggleMenu(); }));
+
+        // Hero Carousel Ken Burns Effect (3 seconds)
+        const carouselImages = document.querySelectorAll('.carousel-img');
+        let currentImageIndex = 0;
+        if (carouselImages.length > 0) {
+            carouselImages.forEach(img => img.classList.remove('active'));
+            carouselImages[0].classList.add('active');
+            setInterval(() => {
+                carouselImages[currentImageIndex].classList.remove('active');
+                currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
+                carouselImages[currentImageIndex].classList.add('active');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

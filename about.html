@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - AGGC</title>
+    
+    <!-- Poppins Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0b0430',
+                            gold: '#f1ad18'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden;}
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header Section (Same as Main Page) -->
+    <nav id="navbar" class="fixed w-full z-50 bg-white border-b border-slate-200 transition-all duration-300">
+        <div class="relative w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16 md:h-20 transition-all duration-300" id="nav-container">
+                    
+                    <!-- Logo -->
+                    <a href="index.html" class="flex items-center cursor-pointer group hover:opacity-90 transition-opacity">
+                        <div class="w-8 h-8 md:w-10 md:h-10 bg-brand-gold flex items-center justify-center mr-2 md:mr-3">
+                            <span class="text-brand-navy font-bold text-lg md:text-xl tracking-tighter">AG</span>
+                        </div>
+                        <div>
+                            <h1 class="font-extrabold text-lg md:text-xl tracking-tight text-brand-navy leading-none">AGGC</h1>
+                            <p class="text-[8px] md:text-[10px] uppercase tracking-wider font-bold text-slate-500 mt-0.5">Aung Gyi Group</p>
+                        </div>
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex h-full items-center space-x-2 lg:space-x-4">
+                        <a href="index.html" class="px-3 h-full flex items-center text-sm font-bold text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent hover:border-brand-gold">Home</a>
+                        <a href="#" class="px-3 h-full flex items-center text-sm font-bold text-brand-gold bg-slate-50 transition-colors border-b-2 border-brand-gold">About Us</a>
+                        <a href="index.html#sectors" class="px-3 h-full flex items-center text-sm font-bold text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent hover:border-brand-gold">Sectors</a>
+                        <a href="index.html#brands" class="px-3 h-full flex items-center text-sm font-bold text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent hover:border-brand-gold">Partners</a>
+                        <a href="index.html#network" class="px-3 h-full flex items-center text-sm font-bold text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent hover:border-brand-gold">Global Network</a>
+                        
+                        <!-- CTA Button -->
+                        <div class="flex items-center pl-4">
+                            <a href="index.html#contact" class="bg-brand-gold text-brand-navy px-6 py-2 text-sm font-extrabold uppercase tracking-wider hover:bg-yellow-500 transition-colors border-2 border-brand-gold hover:border-yellow-500">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden flex items-center">
+                        <button id="mobileMenuBtn" class="text-brand-navy p-2 hover:bg-slate-100 transition-colors focus:outline-none border border-slate-200">
+                            <i id="menuIcon" class="fa-solid fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-xl py-4 flex flex-col px-4 border-t border-slate-200">
+            <a href="index.html" class="mobile-link text-brand-navy font-bold text-left py-3 border-b border-slate-100 hover:text-brand-gold transition-colors">Home</a>
+            <a href="#" class="mobile-link text-brand-gold font-bold text-left py-3 border-b border-slate-100">About Us</a>
+            <a href="index.html#sectors" class="mobile-link text-brand-navy font-bold text-left py-3 border-b border-slate-100 hover:text-brand-gold transition-colors">Sectors</a>
+            <a href="index.html#brands" class="mobile-link text-brand-navy font-bold text-left py-3 border-b border-slate-100 hover:text-brand-gold transition-colors">Partners</a>
+            <a href="index.html#network" class="mobile-link text-brand-navy font-bold text-left py-3 border-b border-slate-100 hover:text-brand-gold transition-colors">Global Network</a>
+            
+            <a href="index.html#contact" class="mobile-link mt-4 bg-brand-gold text-brand-navy w-full py-3 font-extrabold text-center uppercase tracking-wider text-sm border-2 border-brand-gold">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- Page Title Header -->
+    <section class="pt-32 pb-16 bg-brand-navy text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#f1ad18 1px, transparent 1px); background-size: 20px 20px;"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4">
+                <span class="text-brand-gold">▶</span> ABOUT US <span class="text-brand-gold">◀</span>
+            </h1>
+            <p class="text-lg md:text-xl font-light text-slate-300 max-w-2xl mx-auto">Discover the history, vision, and core values that drive Aung Gyi Group of Companies forward.</p>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
+        <div class="flex justify-center">
+            
+            <!-- Main Content Column: Core Identity (Vision, Mission, Values) -->
+            <div class="w-full max-w-5xl space-y-16">
+                
+                <!-- Brief Introduction -->
+                <section class="group">
+                    <div class="flex flex-col mb-6">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight relative inline-block mb-3">
+                            Brief Introduction
+                            <span class="absolute -bottom-2 left-0 w-16 h-1 bg-brand-gold rounded-full transition-all duration-300 group-hover:w-24"></span>
+                        </h2>
+                    </div>
+                    <div class="space-y-4 text-slate-600 leading-relaxed font-light text-lg bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_10px_30px_rgba(11,4,48,0.06)] transition-all duration-300">
+                        <p>Established in 2004, AGGC stands as one of the leading machinery companies in Myanmar.</p>
+                        <p>We distribute the most reliable and cost-effective construction machinery and equipment.</p>
+                        <p>We have our own professional engineering team and service facilities providing after-sales services and warranty supports.</p>
+                        <p>We are looking forward to achieve long term business development based on customers' trust, reliability and supports.</p>
+                    </div>
+                </section>
+
+                <!-- Our Vision -->
+                <section class="group">
+                    <div class="flex flex-col mb-6">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight relative inline-block mb-3">
+                            Our Vision
+                            <span class="absolute -bottom-2 left-0 w-16 h-1 bg-brand-gold rounded-full transition-all duration-300 group-hover:w-24"></span>
+                        </h2>
+                    </div>
+                    <div class="flex items-start bg-white p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_10px_30px_rgba(11,4,48,0.08)] hover:-translate-y-1 hover:border-brand-gold/40 transition-all duration-300 group/card cursor-default overflow-hidden relative">
+                        <!-- Accent Background Line -->
+                        <div class="absolute top-0 left-0 w-1 h-full bg-brand-gold opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
+                        
+                        <div class="mt-1 flex-shrink-0 w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-brand-gold text-xl mr-5 group-hover/card:bg-brand-gold group-hover/card:text-white transition-colors duration-300 shadow-sm">
+                            <i class="fa-regular fa-eye"></i>
+                        </div>
+                        <p class="text-slate-700 font-semibold text-lg sm:text-xl leading-relaxed pt-1.5">To be the most reliable company in Global Machinery & Automobile Industries</p>
+                    </div>
+                </section>
+
+                <!-- Our Missions -->
+                <section class="group">
+                    <div class="flex flex-col mb-6">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight relative inline-block mb-3">
+                            Our Missions
+                            <span class="absolute -bottom-2 left-0 w-16 h-1 bg-brand-gold rounded-full transition-all duration-300 group-hover:w-24"></span>
+                        </h2>
+                    </div>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <li class="flex items-start bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_10px_30px_rgba(11,4,48,0.08)] hover:-translate-y-1 hover:border-brand-gold/40 transition-all duration-300 group/card relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
+                            <div class="mt-0.5 flex-shrink-0 w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-brand-gold mr-4 group-hover/card:bg-brand-gold group-hover/card:text-white transition-colors duration-300 shadow-sm">
+                                <i class="fa-solid fa-bullseye"></i>
+                            </div>
+                            <span class="text-slate-700 font-medium leading-relaxed">To develop mutual benefits between customers and company</span>
+                        </li>
+                        <li class="flex items-start bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_10px_30px_rgba(11,4,48,0.08)] hover:-translate-y-1 hover:border-brand-gold/40 transition-all duration-300 group/card relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
+                            <div class="mt-0.5 flex-shrink-0 w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-brand-gold mr-4 group-hover/card:bg-brand-gold group-hover/card:text-white transition-colors duration-300 shadow-sm">
+                                <i class="fa-solid fa-handshake"></i>
+                            </div>
+                            <span class="text-slate-700 font-medium leading-relaxed">To sustain customers satisfaction by providing quality products and utmost services</span>
+                        </li>
+                        <li class="flex items-start bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_10px_30px_rgba(11,4,48,0.08)] hover:-translate-y-1 hover:border-brand-gold/40 transition-all duration-300 group/card relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
+                            <div class="mt-0.5 flex-shrink-0 w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-brand-gold mr-4 group-hover/card:bg-brand-gold group-hover/card:text-white transition-colors duration-300 shadow-sm">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <span class="text-slate-700 font-medium leading-relaxed">To revere for the stakeholders' needs and wants</span>
+                        </li>
+                        <li class="flex items-start bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_10px_30px_rgba(11,4,48,0.08)] hover:-translate-y-1 hover:border-brand-gold/40 transition-all duration-300 group/card relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
+                            <div class="mt-0.5 flex-shrink-0 w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-brand-gold mr-4 group-hover/card:bg-brand-gold group-hover/card:text-white transition-colors duration-300 shadow-sm">
+                                <i class="fa-solid fa-gears"></i>
+                            </div>
+                            <span class="text-slate-700 font-medium leading-relaxed">To apply TQM (Total Quality Management) system in practice</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Core Values -->
+                <section class="group">
+                    <div class="flex flex-col mb-6">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight relative inline-block mb-3">
+                            Core Values
+                            <span class="absolute -bottom-2 left-0 w-16 h-1 bg-brand-gold rounded-full transition-all duration-300 group-hover:w-24"></span>
+                        </h2>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-center bg-white p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_10px_20px_rgba(11,4,48,0.06)] hover:-translate-y-1 transition-all duration-300 group/list">
+                            <div class="flex-shrink-0 w-8 h-8 rounded bg-slate-50 flex items-center justify-center text-brand-gold mr-4 group-hover/list:bg-brand-navy transition-colors duration-300">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-slate-700 font-medium">Compliance with State policies</span>
+                        </li>
+                        <li class="flex items-center bg-white p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_10px_20px_rgba(11,4,48,0.06)] hover:-translate-y-1 transition-all duration-300 group/list">
+                            <div class="flex-shrink-0 w-8 h-8 rounded bg-slate-50 flex items-center justify-center text-brand-gold mr-4 group-hover/list:bg-brand-navy transition-colors duration-300">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-slate-700 font-medium">Being above the average living standard for all</span>
+                        </li>
+                        <li class="flex items-center bg-white p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_10px_20px_rgba(11,4,48,0.06)] hover:-translate-y-1 transition-all duration-300 group/list">
+                            <div class="flex-shrink-0 w-8 h-8 rounded bg-slate-50 flex items-center justify-center text-brand-gold mr-4 group-hover/list:bg-brand-navy transition-colors duration-300">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-slate-700 font-medium">Keeping the values of business ethics</span>
+                        </li>
+                        <li class="flex items-center bg-white p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_10px_20px_rgba(11,4,48,0.06)] hover:-translate-y-1 transition-all duration-300 group/list">
+                            <div class="flex-shrink-0 w-8 h-8 rounded bg-slate-50 flex items-center justify-center text-brand-gold mr-4 group-hover/list:bg-brand-navy transition-colors duration-300">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-slate-700 font-medium">Sincere relationship with stakeholders</span>
+                        </li>
+                        <li class="flex items-center bg-white p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_10px_20px_rgba(11,4,48,0.06)] hover:-translate-y-1 transition-all duration-300 group/list">
+                            <div class="flex-shrink-0 w-8 h-8 rounded bg-slate-50 flex items-center justify-center text-brand-gold mr-4 group-hover/list:bg-brand-navy transition-colors duration-300">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-slate-700 font-medium">Elevation of our integrity and reputation</span>
+                        </li>
+                    </ul>
+                </section>
+                
+                <!-- Our Motto (Modernized) -->
+                <section class="group">
+                    <div class="flex flex-col mb-6">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight relative inline-block mb-3">
+                            Our Motto
+                            <span class="absolute -bottom-2 left-0 w-16 h-1 bg-brand-gold rounded-full transition-all duration-300 group-hover:w-24"></span>
+                        </h2>
+                    </div>
+                    <div class="relative flex items-center justify-center bg-brand-navy p-10 sm:p-12 rounded-3xl shadow-2xl overflow-hidden hover:shadow-[0_20px_50px_rgba(11,4,48,0.3)] transition-shadow duration-500">
+                        <!-- Watermark Quote -->
+                        <i class="fa-solid fa-quote-left absolute -top-4 -left-2 text-9xl text-white/5 opacity-50 transform -rotate-12"></i>
+                        <i class="fa-solid fa-quote-right absolute -bottom-8 -right-4 text-9xl text-white/5 opacity-50 transform rotate-12"></i>
+                        
+                        <p class="text-2xl sm:text-4xl font-extrabold text-white text-center italic tracking-wide relative z-10 leading-tight">
+                            "Think <span class="text-brand-gold">Smart</span>, Move <span class="text-brand-gold">Fast</span>,<br class="hidden sm:block" /> Work <span class="text-brand-gold">Hard</span>"
+                        </p>
+                    </div>
+                </section>
+
+                <!-- NEW SECTION: Headquarters and Network placed directly under Motto -->
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+                    
+                    <!-- Office Image with Hover Zoom -->
+                    <div class="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden group/img flex flex-col">
+                        <div class="overflow-hidden flex-grow">
+                            <!-- Placeholder image matching the style of the provided building photo -->
+                            <img src="./img/latest-aggc-building.jpg" alt="AGGC Headquarters" class="w-full h-full object-cover transform group-hover/img:scale-110 transition-transform duration-700 ease-in-out">
+                        </div>
+                        <div class="p-6 text-center bg-white relative z-10">
+                            <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-xl bg-brand-gold flex items-center justify-center shadow-lg transform group-hover/img:-translate-y-2 transition-transform duration-300">
+                                <span class="text-brand-navy font-bold text-lg">AG</span>
+                            </div>
+                            <h3 class="font-extrabold text-2xl text-brand-navy mt-4 mb-1">AGGC</h3>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-widest">Headquarters</p>
+                        </div>
+                    </div>
+
+                    <!-- Network -->
+                    <div class="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden group/img flex flex-col">
+                        <div class="overflow-hidden flex-grow">
+                            <!-- Placeholder image matching the style of the provided building photo -->
+                            <img src="./img/our-network-aggc.png" alt="AGGC Headquarters" class="w-full h-full object-cover transform group-hover/img:scale-110 transition-transform duration-700 ease-in-out">
+                        </div>
+                        <div class="p-6 text-center bg-white relative z-10">
+                            <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-xl bg-brand-gold flex items-center justify-center shadow-lg transform group-hover/img:-translate-y-2 transition-transform duration-300">
+                                <span class="text-brand-navy font-bold text-lg">AG</span>
+                            </div>
+                            <h3 class="font-extrabold text-2xl text-brand-navy mt-4 mb-1">AGGC</h3>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-widest">Headquarters</p>
+                        </div>
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+        <!-- Certificates Section (Full Width Grid) with Enhanced Shadows & Lifts -->
+        <section class="mt-20 pt-20 border-t border-slate-200">
+            <div class="text-center mb-16 group">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy inline-block relative">
+                    Our Certifications
+                    <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-1.5 bg-brand-gold rounded-full transition-all duration-300 group-hover:w-32"></span>
+                </h2>
+                <p class="text-slate-500 mt-6 font-light text-lg max-w-2xl mx-auto">
+                    Internationally recognized standards for environmental management, occupational health, and quality management systems.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                
+                <!-- Cert 1 (ISO 14001:2015) -->
+                <div onclick="openModal('./img/20260226-ISO-01.jpg')" class="bg-white p-5 rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_rgba(11,4,48,0.15)] hover:-translate-y-3 transition-all duration-500 group cursor-pointer">
+                    <!-- Image Container with 3:4 Aspect Ratio -->
+                    <div class="aspect-[3/4] w-full bg-slate-50 rounded-2xl overflow-hidden mb-6 border border-slate-100 relative">
+                        <!-- Replace src with actual image URL -->
+                        <img src="./img/20260226-ISO-01.jpg" alt="ISO 14001:2015" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                        <!-- Hover Overlay with Gradient -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                            <div class="bg-brand-gold text-brand-navy w-12 h-12 rounded-full flex items-center justify-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
+                                <i class="fa-solid fa-expand text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center px-2">
+                        <h4 class="font-extrabold text-brand-navy text-xl mb-1 group-hover:text-brand-gold transition-colors">ISO 14001:2015</h4>
+                        <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Environmental Management</p>
+                    </div>
+                </div>
+
+                <!-- Cert 2 (ISO 45001:2018) -->
+                <div onclick="openModal('./img/20260226-ISO-02.jpg')" class="bg-white p-5 rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_rgba(11,4,48,0.15)] hover:-translate-y-3 transition-all duration-500 group cursor-pointer delay-100">
+                    <!-- Image Container with 3:4 Aspect Ratio -->
+                    <div class="aspect-[3/4] w-full bg-slate-50 rounded-2xl overflow-hidden mb-6 border border-slate-100 relative">
+                        <!-- Replace src with actual image URL -->
+                        <img src="./img/20260226-ISO-02.jpg" alt="ISO 45001:2018" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                        <!-- Hover Overlay with Gradient -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                            <div class="bg-brand-gold text-brand-navy w-12 h-12 rounded-full flex items-center justify-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
+                                <i class="fa-solid fa-expand text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center px-2">
+                        <h4 class="font-extrabold text-brand-navy text-xl mb-1 group-hover:text-brand-gold transition-colors">ISO 45001:2018</h4>
+                        <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Occupational Health & Safety</p>
+                    </div>
+                </div>
+
+                <!-- Cert 3 (ISO 9001:2015) -->
+                <div onclick="openModal('./img/20260226-ISO-03.jpg')" class="bg-white p-5 rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_rgba(11,4,48,0.15)] hover:-translate-y-3 transition-all duration-500 group cursor-pointer delay-200">
+                    <!-- Image Container with 3:4 Aspect Ratio -->
+                    <div class="aspect-[3/4] w-full bg-slate-50 rounded-2xl overflow-hidden mb-6 border border-slate-100 relative">
+                        <!-- Replace src with actual image URL -->
+                        <img src="./img/20260226-ISO-03.jpg" alt="ISO 9001:2015" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                        <!-- Hover Overlay with Gradient -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                            <div class="bg-brand-gold text-brand-navy w-12 h-12 rounded-full flex items-center justify-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
+                                <i class="fa-solid fa-expand text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center px-2">
+                        <h4 class="font-extrabold text-brand-navy text-xl mb-1 group-hover:text-brand-gold transition-colors">ISO 9001:2015</h4>
+                        <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Quality Management System</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal for Full Screen Image -->
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8 opacity-0 transition-opacity duration-300">
+        <!-- Close Button -->
+        <button onclick="closeModal()" class="absolute top-4 right-4 sm:top-8 sm:right-8 text-white hover:text-brand-gold transition-colors w-12 h-12 flex items-center justify-center bg-black/50 rounded-full focus:outline-none z-10">
+            <i class="fa-solid fa-xmark text-3xl"></i>
+        </button>
+        
+        <!-- Image Container -->
+        <div class="relative w-full h-full max-w-5xl flex items-center justify-center transform scale-95 transition-transform duration-300" id="modalContent">
+            <img id="modalImage" src="" alt="Full Screen Certificate" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl">
+        </div>
+    </div>
+
+    <!-- Footer (Same as Main Page) -->
+    <footer class="bg-white border-t border-slate-200 pt-12 pb-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+                <div class="col-span-1 lg:col-span-2">
+                    <div class="flex items-center mb-5">
+                        <div class="w-8 h-8 rounded-lg bg-brand-gold flex items-center justify-center mr-3"><span class="text-brand-navy font-bold text-lg">AG</span></div>
+                        <h2 class="font-extrabold text-xl text-brand-navy">AGGC</h2>
+                    </div>
+                    <p class="text-slate-500 text-sm font-light max-w-md">Aung Gyi Group of Companies. A diversified business group operating across 7 major sectors. Let's Build Together!</p>
+                </div>
+                <div>
+                    <h4 class="text-brand-navy font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="text-brand-gold font-bold">About Us</a></li>
+                        <li><a href="index.html#sectors" class="text-slate-500 hover:text-brand-gold font-medium transition-colors">Sectors</a></li>
+                        <li><a href="index.html#news" class="text-slate-500 hover:text-brand-gold font-medium transition-colors">News</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-brand-navy font-bold mb-4">Websites</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-globe mr-2 text-brand-gold"></i><a href="http://www.aungyigroup.com" class="text-slate-500 hover:text-brand-navy font-medium transition-colors">www.aungyigroup.com</a></li>
+                        <li class="flex items-center"><i class="fa-solid fa-globe mr-2 text-brand-gold"></i><a href="http://www.alliancetractors.com" class="text-slate-500 hover:text-brand-navy font-medium transition-colors">www.alliancetractors.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-6 border-t border-slate-100 flex flex-col md:flex-row justify-between text-[10px] text-slate-400 font-medium">
+                <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
+                <p>Designed with modern web technologies.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts for Interactivity -->
+    <script>
+        // Navbar scroll behavior
+        const navbar = document.getElementById('navbar');
+        const navContainer = document.getElementById('nav-container');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md'); navbar.classList.remove('shadow-sm');
+                navContainer.classList.remove('h-20'); navContainer.classList.add('h-16');
+            } else {
+                navbar.classList.remove('shadow-md'); navbar.classList.add('shadow-sm');
+                navContainer.classList.add('h-20'); navContainer.classList.remove('h-16');
+            }
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark'); menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars'); menuIcon.classList.add('fa-xmark');
+            }
+        }
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', () => { if (!mobileMenu.classList.contains('hidden')) toggleMenu(); }));
+
+        // Modal Logic for Certificates
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalContent = document.getElementById('modalContent');
+
+        function openModal(imageSrc) {
+            modalImage.src = imageSrc;
+            modal.classList.remove('hidden');
+            
+            // Trigger reflow to restart animation
+            void modal.offsetWidth; 
+            
+            modal.classList.remove('opacity-0');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+            
+            // Prevent body scrolling
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            // Wait for transition to finish before hiding
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modalImage.src = '';
+                // Restore body scrolling
+                document.body.style.overflow = 'auto';
+            }, 300); // matches the duration-300 class
+        }
+
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target === modalContent) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
