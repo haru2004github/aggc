@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - AGGC</title>
+    
+    <!-- Modern Corporate Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'], 
+                        heading: ['Montserrat', 'sans-serif'], 
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0b0430',
+                            gold: '#f1ad18'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden;}
+        
+        /* Loading Spinner */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #f1ad18;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Smooth transitions for view switching */
+        .view-section {
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .view-hidden {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            transform: translateY(20px);
+            visibility: hidden;
+            height: 0;
+            overflow: hidden;
+        }
+        .view-active {
+            opacity: 1;
+            pointer-events: auto;
+            position: relative;
+            transform: translateY(0);
+            visibility: visible;
+            height: auto;
+        }
+        
+        /* Detail Text Formatting (Markdown Parsed Styles) */
+        .job-detail-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #0b0430;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #f1ad18;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        .job-detail-content h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0b0430;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .job-detail-content p {
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        .job-detail-content ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 2rem;
+        }
+        .job-detail-content ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .job-detail-content ul li::before {
+            content: '\f058'; /* FontAwesome Solid Check Circle */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 4px;
+            color: #10b981; /* Emerald Green */
+        }
+        .job-detail-content hr {
+            border-color: #e2e8f0;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- 1. Navigation Bar -->
+    <nav id="navbar" class="fixed w-full z-50 bg-white border-b border-slate-200 transition-all duration-300">
+        <div class="relative w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16 md:h-20 transition-all duration-300" id="nav-container">
+                    <a href="index.html" class="flex items-center cursor-pointer group hover:opacity-90 transition-opacity">
+                        <img src="./img/logo.png" class="w-32 sm:w-40" alt="AGGC Logo" onerror="this.src='https://placehold.co/160x40/0b0430/f1ad18?text=AGGC+Logo'">
+                    </a>
+                    <div class="hidden md:flex h-full items-center space-x-2 lg:space-x-4">
+                        <a href="index.html" class="px-3 h-full flex items-center text-[12px] font-heading font-bold uppercase tracking-widest text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent">Home</a>
+                        <a href="about.html" class="px-3 h-full flex items-center text-[12px] font-heading font-bold uppercase tracking-widest text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent">About Us</a>
+                        <a href="index.html#brands" class="px-3 h-full flex items-center text-[12px] font-heading font-bold uppercase tracking-widest text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent">Products</a>
+                        <a href="news.html" class="px-3 h-full flex items-center text-[12px] font-heading font-bold uppercase tracking-widest text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent">Activities</a>
+                        <a href="#" onclick="showListView()" class="px-3 h-full flex items-center text-[12px] font-heading font-bold uppercase tracking-widest text-brand-gold bg-slate-50 transition-colors border-b-2 border-brand-gold">Careers</a>
+                        <div class="flex items-center pl-4">
+                            <a href="index.html#contact" class="bg-brand-gold text-brand-navy px-6 py-2.5 text-[12px] font-heading font-black uppercase tracking-[0.15em] hover:bg-yellow-500 transition-colors border-2 border-brand-gold hover:border-yellow-500">Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="md:hidden flex items-center">
+                        <button id="mobileMenuBtn" class="text-brand-navy p-2 hover:bg-slate-100 transition-colors focus:outline-none border border-slate-200">
+                            <i id="menuIcon" class="fa-solid fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl py-4 flex flex-col px-4 border-t border-slate-200">
+            <a href="index.html" class="mobile-link text-[13px] font-heading uppercase tracking-wider text-brand-navy font-bold text-left py-3 border-b border-slate-100">Home</a>
+            <a href="about.html" class="mobile-link text-[13px] font-heading uppercase tracking-wider text-brand-navy font-bold text-left py-3 border-b border-slate-100">About Us</a>
+            <a href="#" class="mobile-link text-[13px] font-heading uppercase tracking-wider text-brand-gold font-bold text-left py-3 border-b border-slate-100">Careers</a>
+        </div>
+    </nav>
+
+    <!-- 2. Page Header -->
+    <header class="pt-32 pb-16 bg-white text-center relative overflow-hidden border-b border-slate-200">
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none z-0" style="background-image: linear-gradient(#0b0430 1px, transparent 1px), linear-gradient(90deg, #0b0430 1px, transparent 1px); background-size: 30px 30px;"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center justify-center mb-6">
+                <div class="flex items-center w-full max-w-[200px] justify-center mb-4">
+                    <div class="w-2 h-4 bg-brand-gold mr-2 transform -skew-x-12"></div>
+                    <h3 class="text-xl font-heading font-extrabold text-brand-navy uppercase tracking-widest">CAREERS</h3>
+                    <div class="w-2 h-4 bg-brand-gold ml-2 transform skew-x-12"></div>
+                </div>
+                <h1 class="text-2xl md:text-4xl font-heading font-black tracking-tight text-brand-navy mb-4">
+                    Be Part of Something Greater at <span class="text-brand-gold">Aung Gyi Group</span>
+                </h1>
+                <p class="text-sm md:text-base font-normal text-slate-500 max-w-3xl mx-auto leading-relaxed">
+                    We're seeking dedicated, talented, and forward-thinking individuals to help us drive innovation and sustainability across Myanmar's key industries. If you're ready to make a real impact and grow your career in a dynamic environment, we welcome your expertise and ambition.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 3. Main Content Area -->
+    <main class="flex-grow w-full bg-slate-50 relative py-12 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            
+            <!-- SECTION A: JOB LISTINGS (Graphic Cards View) -->
+            <div id="view-list" class="view-section view-active w-full">
+                <!-- Loading State -->
+                <div id="loading-indicator" class="flex flex-col items-center justify-center py-10">
+                    <div class="loader mb-4"></div>
+                    <p class="text-slate-500 font-medium text-sm animate-pulse">Loading open positions...</p>
+                </div>
+                
+                <!-- Premium Job Cards Grid -->
+                <div id="jobs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 max-w-5xl mx-auto hidden">
+                    <!-- Cards injected by JS -->
+                </div>
+            </div>
+
+            <!-- SECTION B: JOB DETAILS & APPLICATION FORM -->
+            <div id="view-detail" class="view-section view-hidden w-full max-w-4xl mx-auto bg-white rounded-[2rem] shadow-2xl border border-slate-100 overflow-hidden">
+                
+                <!-- Detail Header Area -->
+                <div class="bg-slate-50 border-b border-slate-200 p-6 sm:p-10 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-gold/5 rounded-full blur-3xl -z-10"></div>
+                    
+                    <button onclick="showListView()" class="group flex items-center text-slate-500 hover:text-brand-gold font-heading font-bold text-xs uppercase tracking-widest transition-colors mb-8">
+                        <div class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center mr-3 group-hover:border-brand-gold group-hover:shadow-md transition-all">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </div>
+                        Back to Job List
+                    </button>
+
+                    <div class="flex items-center w-full justify-start mb-2">
+                        <div class="w-2 h-5 bg-brand-gold mr-4 transform -skew-x-12 shadow-sm"></div>
+                        <h1 id="detail-title" class="text-2xl sm:text-4xl font-heading font-black text-brand-navy uppercase tracking-tight">
+                            Department Title
+                        </h1>
+                    </div>
+                </div>
+
+                <!-- Detailed Text Content Area -->
+                <div class="p-6 sm:p-12 job-detail-content" id="detail-desc">
+                    <!-- HTML Content injected by JS -->
+                </div>
+
+                <!-- Apply Now Section inside Detail -->
+                <div class="p-8 sm:p-12 bg-brand-navy border-t border-slate-200 relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#f1ad18 1px, transparent 1px), linear-gradient(90deg, #f1ad18 1px, transparent 1px); background-size: 20px 20px;"></div>
+                    <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                        <div>
+                            <h4 class="font-heading font-black text-white text-2xl mb-2">Ready to Join Our Team?</h4>
+                            <p class="text-sm text-slate-300">Fill out the application form below to submit your resume.</p>
+                        </div>
+                        <button onclick="scrollToForm()" class="bg-brand-gold text-brand-navy px-10 py-4 rounded-xl font-heading font-black text-sm uppercase tracking-widest shadow-[0_10px_30px_rgba(241,173,24,0.3)] hover:bg-white hover:-translate-y-1 transition-all flex-shrink-0">
+                            Apply Now <i class="fa-solid fa-paper-plane ml-3"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION C: APPLICATION FORM -->
+            <div id="application-form-section" class="view-section view-hidden w-full max-w-4xl mx-auto mt-10">
+                <div class="bg-white rounded-[2rem] shadow-xl border border-slate-100 p-8 sm:p-12">
+                    <h2 class="text-3xl font-heading font-black text-brand-navy mb-8 border-b-2 border-brand-gold pb-4 inline-block tracking-tight">Submit Your Application</h2>
+                    
+                    <form id="jobForm" class="space-y-8">
+                        <!-- SECURITY OPTION: Honeypot Form Field (Invisible to human, bots will autofill it) -->
+                        <div class="hidden" aria-hidden="true">
+                            <label class="block text-sm font-bold text-brand-navy mb-2">Leave this field empty</label>
+                            <input type="text" id="appHoneypot" tabindex="-1" autocomplete="off" class="w-full">
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <!-- Name -->
+                            <div>
+                                <label class="block text-sm font-bold text-brand-navy mb-2">Your Name (*)</label>
+                                <input type="text" id="appName" required class="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-colors bg-slate-50" placeholder="John Doe">
+                            </div>
+                            <!-- Email -->
+                            <div>
+                                <label class="block text-sm font-bold text-brand-navy mb-2">Your Email (*)</label>
+                                <input type="email" id="appEmail" required class="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-colors bg-slate-50" placeholder="john@example.com">
+                            </div>
+                        </div>
+
+                        <!-- Position -->
+                        <div>
+                            <label class="block text-sm font-bold text-brand-navy mb-2">Position Applying For (*)</label>
+                            <input type="text" id="appPosition" required class="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-colors bg-brand-gold/5 font-bold text-brand-navy" placeholder="e.g. Operations General Manager">
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <!-- CV Upload -->
+                            <div class="p-6 border-2 border-dashed border-slate-200 rounded-2xl bg-slate-50 hover:border-brand-gold transition-colors group">
+                                <label class="block text-sm font-bold text-brand-navy mb-3">Upload Your CV Here (*)</label>
+                                <input type="file" id="appCV" required accept=".pdf,.doc,.docx" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2.5 file:px-6 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-brand-navy file:text-brand-gold hover:file:bg-slate-800 transition-colors cursor-pointer">
+                                <p class="text-[11px] text-slate-400 mt-3 font-medium"><i class="fa-solid fa-circle-info mr-1"></i> Max 5MB (PDF or Word)</p>
+                            </div>
+                            
+                            <!-- Certificate Upload (Multiple Images Supported) -->
+                            <div class="p-6 border-2 border-dashed border-slate-200 rounded-2xl bg-slate-50 hover:border-slate-400 transition-colors">
+                                <label class="block text-sm font-bold text-brand-navy mb-3">Certificates / Images (Optional)</label>
+                                <input type="file" id="appCerts" multiple accept=".pdf,.jpg,.jpeg,.png,.zip" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2.5 file:px-6 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-slate-200 file:text-slate-700 hover:file:bg-slate-300 transition-colors cursor-pointer">
+                                <p class="text-[11px] text-slate-400 mt-3 font-medium"><i class="fa-solid fa-circle-info mr-1"></i> You can select multiple files (Max 10MB total)</p>
+                            </div>
+                        </div>
+
+                        <!-- Message -->
+                        <div>
+                            <label class="block text-sm font-bold text-brand-navy mb-2">Additional Message (*)</label>
+                            <textarea id="appMessage" required rows="5" class="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-colors bg-slate-50 resize-none" placeholder="Write a short cover letter or additional details..."></textarea>
+                        </div>
+
+                        <!-- Submit Result Messages -->
+                        <div id="formStatus" class="hidden p-5 rounded-xl text-sm font-bold text-center"></div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" id="submitBtn" class="bg-brand-navy hover:bg-[#1a0f52] text-white px-10 py-4 rounded-xl text-sm font-black uppercase tracking-widest shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all w-full md:w-auto flex items-center justify-center">
+                            Submit Application <i class="fa-solid fa-arrow-right ml-3"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Full-Screen Image Modal (Lightbox) -->
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-brand-navy/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 opacity-0 transition-opacity duration-300">
+        <!-- Close Button -->
+        <button onclick="closeImageModal()" class="absolute top-6 right-6 text-white hover:text-brand-gold transition-all w-14 h-14 flex items-center justify-center bg-white/10 rounded-full focus:outline-none z-10 shadow-lg border border-white/20 hover:bg-white/20 hover:rotate-90">
+            <i class="fa-solid fa-xmark text-2xl"></i>
+        </button>
+        <!-- Modal Content -->
+        <div class="relative w-full h-full max-w-5xl flex items-center justify-center transform scale-95 transition-transform duration-300" id="modalImageContent">
+            <img id="fullScreenImage" src="" alt="Full Screen Job Poster" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl ring-1 ring-white/10">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="bg-[#1F252E] text-center py-5 text-xs text-slate-400 font-medium tracking-wide">
+        <p>&copy; Copyright 2026 by Aung Gyi Group of Companies. All rights reserved.</p>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // =========================================================================
+        // 1. READ-ONLY DATA (Fetch Jobs from Google Sheet securely)
+        // =========================================================================
+        const JOBS_SHEET_ID = '1R_T5GlHVhvJyYqHuGA8sDejF_d9tkiuP36GgsHe5LkU'; 
+        const JOBS_SHEET_URL = `https://docs.google.com/spreadsheets/d/${JOBS_SHEET_ID}/gviz/tq?tqx=out:json`;
+
+        let jobsData = []; // Data Store
+
+        async function fetchJobsFromSheet() {
+            try {
+                const response = await fetch(JOBS_SHEET_URL);
+                if (!response.ok) throw new Error('Network response was not ok');
+                
+                const text = await response.text();
+                const jsonMatch = text.match(/google\.visualization\.Query\.setResponse\(([\s\S\w]+)\);/);
+                
+                if (jsonMatch && jsonMatch[1]) {
+                    const json = JSON.parse(jsonMatch[1]);
+                    const rows = json.table.rows;
+
+                    jobsData = rows.map((row, id) => {
+                        const getVal = (idx) => (row.c && row.c[idx] && row.c[idx].v) ? row.c[idx].v : '';
+                        return {
+                            id: id,
+                            title: getVal(3) || 'Untitled Position', 
+                            posterImage: getVal(4) || 'https://placehold.co/800x800/0b0430/f1ad18?text=We+Are+Hiring', 
+                            fallbackImage: 'https://placehold.co/800x800/0b0430/f1ad18?text=AGGC+Careers',
+                            detailsHTML: getVal(5) || 'No details provided.' 
+                        };
+                    }).filter(item => item.title !== 'Untitled Position' && item.title !== 'Title'); 
+
+                    renderJobs();
+                } else {
+                    throw new Error('Invalid JSON format');
+                }
+            } catch (error) {
+                console.error("Error fetching jobs data:", error);
+                document.getElementById('loading-indicator').innerHTML = '<p class="text-red-500 font-bold">Failed to load jobs. Please check Sheet Access Permissions.</p>';
+            }
+        }
+
+        // =========================================================================
+        // 2. WRITE-ONLY DATA (Submit Form via Google Apps Script)
+        // =========================================================================
+        
+        // သင်ရရှိထားသော Web App URL ကို အောက်တွင် ထည့်သွင်းပါ
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbza9C7B6OHLKUCEWW-2i5ZBqIBbKzemaPJ2azEeamYW90NuLYgdPJ0pKqWaXBICrMN9MQ/exec";
+        
+        // SECURITY CONFIGURATION: လျှို့ဝှက်ကုဒ် သတ်မှတ်ခြင်း (၎င်းကုဒ်အား Apps Script တွင်လည်း ထပ်တူညီစွာ ပြောင်းပေးရပါမည်)
+        const SECURE_TOKEN = "AGGC_SECURE_TOKEN_2026_PRO"; 
+
+        // DOM Elements
+        const jobsGrid = document.getElementById('jobs-grid');
+        const viewList = document.getElementById('view-list');
+        const viewDetail = document.getElementById('view-detail');
+        const applicationFormSection = document.getElementById('application-form-section');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        
+        const detailTitle = document.getElementById('detail-title');
+        const detailDesc = document.getElementById('detail-desc');
+        const positionInput = document.getElementById('appPosition');
+
+        // Modal Elements
+        const imageModal = document.getElementById('imageModal');
+        const fullScreenImage = document.getElementById('fullScreenImage');
+        const modalImageContent = document.getElementById('modalImageContent');
+
+        // Render Grid
+        function renderJobs() {
+            loadingIndicator.classList.add('hidden');
+            jobsGrid.classList.remove('hidden');
+            jobsGrid.innerHTML = '';
+            
+            jobsData.forEach(job => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-3xl shadow-[0_10px_30px_rgba(11,4,48,0.05)] border border-slate-100 overflow-hidden group flex flex-col hover:shadow-[0_20px_50px_rgba(11,4,48,0.12)] transition-all duration-500 transform hover:-translate-y-2";
+                
+                card.innerHTML = `
+                    <div class="relative w-full aspect-[4/3] bg-slate-100 overflow-hidden cursor-pointer" onclick="openImageModal('${job.posterImage}')">
+                        <img src="${job.posterImage}" onerror="this.src='${job.fallbackImage}'" alt="${job.title}" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-brand-navy/20 to-transparent opacity-40 group-hover:opacity-80 transition-opacity duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/30 transform scale-75 group-hover:scale-100 transition-all duration-300 shadow-[0_0_30px_rgba(0,0,0,0.3)]">
+                                <i class="fa-solid fa-expand text-2xl drop-shadow-md"></i>
+                            </div>
+                        </div>
+                        <div class="absolute top-5 right-5 bg-brand-gold text-brand-navy text-[10px] font-heading font-black uppercase tracking-widest px-4 py-2 rounded-full shadow-lg flex items-center">
+                            <i class="fa-solid fa-fire mr-1.5"></i> Hiring
+                        </div>
+                    </div>
+                    
+                    <div class="p-8 flex flex-col flex-grow relative bg-white">
+                        <div class="absolute top-0 left-0 w-0 h-1.5 bg-brand-gold group-hover:w-full transition-all duration-700 ease-out"></div>
+                        <h3 class="text-xl font-heading font-black text-brand-navy mb-3 group-hover:text-brand-gold transition-colors leading-tight tracking-tight">${job.title}</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">We are looking for talented individuals to join our team. Click below to view the full job description and requirements.</p>
+                        <div class="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between">
+                            <button onclick="showJobDetail(${job.id})" class="text-[13px] font-heading font-black text-brand-gold uppercase tracking-[0.15em] hover:text-brand-navy transition-colors flex items-center group/btn">
+                                See Details & Apply
+                                <i class="fa-solid fa-arrow-right ml-2 transform group-hover/btn:translate-x-1.5 transition-transform"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                jobsGrid.appendChild(card);
+            });
+        }
+
+        function openImageModal(imgSrc) {
+            fullScreenImage.src = imgSrc;
+            imageModal.classList.remove('hidden');
+            void imageModal.offsetWidth;
+            imageModal.classList.remove('opacity-0');
+            modalImageContent.classList.remove('scale-95');
+            modalImageContent.classList.add('scale-100');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeImageModal() {
+            imageModal.classList.add('opacity-0');
+            modalImageContent.classList.remove('scale-100');
+            modalImageContent.classList.add('scale-95');
+            setTimeout(() => {
+                imageModal.classList.add('hidden');
+                fullScreenImage.src = '';
+                document.body.style.overflow = 'auto'; 
+            }, 300);
+        }
+
+        imageModal.addEventListener('click', (e) => {
+            if (e.target === imageModal || e.target === modalImageContent) closeImageModal();
+        });
+
+        function showJobDetail(id) {
+            const job = jobsData.find(j => j.id === id);
+            if(!job) return;
+
+            detailTitle.textContent = job.title;
+            
+            // --- Markdown Parser ---
+            let htmlContent = job.detailsHTML;
+            htmlContent = htmlContent.replace(/^---$/gm, '<hr>'); 
+            htmlContent = htmlContent.replace(/^### (.*$)/gm, '<h3>$1</h3>'); 
+            htmlContent = htmlContent.replace(/^#### (.*$)/gm, '<h4>$1</h4>'); 
+            htmlContent = htmlContent.replace(/^- (.*$)/gm, '<li>$1</li>'); 
+            htmlContent = htmlContent.replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>'); 
+            
+            const blocks = htmlContent.split('\n\n');
+            const processedBlocks = blocks.map(block => {
+                if (block.trim() === '') return '';
+                if (block.trim().startsWith('<h') || block.trim().startsWith('<u') || block.trim().startsWith('<hr')) {
+                    return block;
+                }
+                return `<p>${block}</p>`;
+            });
+            
+            detailDesc.innerHTML = processedBlocks.join('');
+            positionInput.value = job.title; // ၎င်းအကွက်ထဲတွင် ရွေးချယ်လိုက်သော ရာထူးအား Auto ဖြည့်ပေးမည်
+
+            viewList.classList.remove('view-active');
+            viewList.classList.add('view-hidden');
+            
+            setTimeout(() => {
+                viewDetail.classList.remove('view-hidden');
+                viewDetail.classList.add('view-active');
+                applicationFormSection.classList.add('view-hidden'); 
+                applicationFormSection.classList.remove('view-active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 300);
+        }
+
+        function showListView() {
+            viewDetail.classList.remove('view-active');
+            viewDetail.classList.add('view-hidden');
+            applicationFormSection.classList.remove('view-active');
+            applicationFormSection.classList.add('view-hidden');
+            
+            setTimeout(() => {
+                viewList.classList.remove('view-hidden');
+                viewList.classList.add('view-active');
+            }, 300);
+        }
+
+        function scrollToForm() {
+            applicationFormSection.classList.remove('view-hidden');
+            applicationFormSection.classList.add('view-active');
+            setTimeout(() => {
+                applicationFormSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        function getBase64(file) {
+            return new Promise((resolve, reject) => {
+                if(!file) { resolve(null); return; }
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        // Multiple files ကို Base64 ပြောင်းပေးမည့် Function အသစ်
+        async function getMultipleBase64(files) {
+            const promises = Array.from(files).map(file => {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = () => resolve({ data: reader.result, name: file.name });
+                    reader.onerror = error => reject(error);
+                });
+            });
+            return Promise.all(promises);
+        }
+
+        // Form Submit handler
+        const jobForm = document.getElementById('jobForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formStatus = document.getElementById('formStatus');
+
+        jobForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if(WEB_APP_URL.includes("သင့်ရဲ့လင့်ခ်အစစ်")) {
+                alert("ကျေးဇူးပြု၍ Web App URL အစစ်ကို ကုဒ်ထဲတွင် အရင်ထည့်သွင်းပါရန်။");
+                return;
+            }
+
+            // 1. Bot Attack HoneyPot Security Check
+            const honeypotVal = document.getElementById('appHoneypot').value;
+            if (honeypotVal !== "") {
+                // Hacker သို့မဟုတ် Bot ဖြစ်နေပါက အောင်မြင်သည်ဟု လိမ်ညာပြသပြီး ဘာမှမလုပ်ဘဲ ရပ်တန့်မည်
+                formStatus.textContent = "Application submitted successfully! We will contact you soon.";
+                formStatus.className = "p-5 rounded-xl text-sm font-bold text-center bg-green-100 text-green-700 mt-4 block border border-green-200";
+                jobForm.reset();
+                return;
+            }
+
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Sending...';
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+            formStatus.classList.add('hidden');
+
+            try {
+                const cvFile = document.getElementById('appCV').files[0];
+                const certFiles = document.getElementById('appCerts').files; // Files အများကြီး ယူမည်
+
+                const MAX_CV_SIZE = 5 * 1024 * 1024;
+                if(cvFile && cvFile.size > MAX_CV_SIZE) throw new Error("CV file is too large (Max 5MB).");
+                
+                // ပုံအများကြီးအတွက် Total Size စစ်ဆေးခြင်း (Max 10MB)
+                const MAX_CERTS_TOTAL_SIZE = 10 * 1024 * 1024; 
+                let totalCertsSize = 0;
+                for(let i = 0; i < certFiles.length; i++) {
+                    totalCertsSize += certFiles[i].size;
+                }
+                if(totalCertsSize > MAX_CERTS_TOTAL_SIZE) throw new Error("Total size of Images/Certificates is too large (Max 10MB).");
+
+                const cvBase64 = await getBase64(cvFile);
+                const certsBase64Array = await getMultipleBase64(certFiles); // Array အဖြစ်ပြောင်းမည်
+
+                const payload = {
+                    name: document.getElementById('appName').value,
+                    email: document.getElementById('appEmail').value,
+                    position: document.getElementById('appPosition').value,
+                    message: document.getElementById('appMessage').value,
+                    cvFile: cvBase64,
+                    cvName: cvFile ? cvFile.name : "",
+                    certs: certsBase64Array, // ပုံအများကြီးပါသော Array ကို ပို့မည်
+                    
+                    // SECURITY PARAMETERS
+                    securityToken: SECURE_TOKEN, // လျှို့ဝှက်ကုဒ်ပါရှိမှသာ GAS ဘက်က လက်ခံမည်
+                    honeypot: honeypotVal
+                };
+
+                const response = await fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                formStatus.textContent = "Application submitted successfully! We will contact you soon.";
+                formStatus.className = "p-5 rounded-xl text-sm font-bold text-center bg-green-100 text-green-700 mt-4 block border border-green-200";
+                jobForm.reset();
+
+            } catch (error) {
+                console.error(error);
+                formStatus.textContent = "Error: " + error.message;
+                formStatus.className = "p-5 rounded-xl text-sm font-bold text-center bg-red-100 text-red-700 mt-4 block border border-red-200";
+            } finally {
+                submitBtn.innerHTML = 'Submit Application <i class="fa-solid fa-arrow-right ml-3"></i>';
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+            }
+        });
+
+        window.onload = () => {
+            fetchJobsFromSheet(); 
+        };
+    </script>
+</body>
+</html>
