@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - AGGC</title>
+    
+    <!-- Modern Corporate Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'], 
+                        heading: ['Montserrat', 'sans-serif'], 
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0b0430',
+                            gold: '#f1ad18'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; background-color: #f8fafc;}
+        
+        /* Fade In Up Animation for Cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0; /* Starting state */
+        }
+        
+        /* Staggered Delays for Grid Items */
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col">
+
+    <!-- 1. Navigation Bar -->
+    <nav id="navbar" class="fixed w-full z-50 bg-white border-b border-slate-200 transition-all duration-300">
+        <div class="relative w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16 md:h-20 transition-all duration-300" id="nav-container">
+                    <a href="index.html" class="flex items-center cursor-pointer group hover:opacity-90 transition-opacity">
+                        <img src="./img/logo.png" class="w-32 sm:w-40" alt="AGGC Logo" onerror="this.src='https://placehold.co/160x40/0b0430/f1ad18?text=AGGC+Logo'">
+                    </a>
+                    <div class="hidden lg:flex h-full items-center space-x-2 xl:space-x-4">
+                        <a href="index.html" class="px-3 h-full flex items-center text-[12px] font-heading font-bold uppercase tracking-widest text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent">Home</a>
+                        <a href="about.html" class="px-3 h-full flex items-center text-[12px] font-heading font-bold uppercase tracking-widest text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent">About Us</a>
+                        <a href="index.html#brands" class="px-3 h-full flex items-center text-[12px] font-heading font-bold uppercase tracking-widest text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent">Products</a>
+                        <a href="#" class="px-3 h-full flex items-center text-[12px] font-heading font-bold uppercase tracking-widest text-brand-gold bg-slate-50 transition-colors border-b-2 border-brand-gold">Services</a>
+                        <a href="activities.html" class="px-3 h-full flex items-center text-[12px] font-heading font-bold uppercase tracking-widest text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent">Activities</a>
+                        <a href="careers.html" class="px-3 h-full flex items-center text-[12px] font-heading font-bold uppercase tracking-widest text-slate-600 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b-2 border-transparent">Careers</a>
+                        <div class="flex items-center pl-4">
+                            <a href="index.html#contact" class="bg-brand-gold text-brand-navy px-6 py-2.5 text-[12px] font-heading font-black uppercase tracking-[0.15em] hover:bg-yellow-500 transition-colors border-2 border-brand-gold hover:border-yellow-500 shadow-sm">Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="lg:hidden flex items-center">
+                        <button id="mobileMenuBtn" class="text-brand-navy p-2 hover:bg-slate-100 transition-colors focus:outline-none border border-slate-200">
+                            <i id="menuIcon" class="fa-solid fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl py-4 flex flex-col px-4 border-t border-slate-200">
+            <a href="index.html" class="mobile-link text-[13px] font-heading uppercase tracking-wider text-brand-navy font-bold text-left py-3 border-b border-slate-100">Home</a>
+            <a href="about.html" class="mobile-link text-[13px] font-heading uppercase tracking-wider text-brand-navy font-bold text-left py-3 border-b border-slate-100">About Us</a>
+            <a href="#" class="mobile-link text-[13px] font-heading uppercase tracking-wider text-brand-gold font-bold text-left py-3 border-b border-slate-100">Services</a>
+            <a href="activities.html" class="mobile-link text-[13px] font-heading uppercase tracking-wider text-brand-navy font-bold text-left py-3 border-b border-slate-100">Activities</a>
+            <a href="careers.html" class="mobile-link text-[13px] font-heading uppercase tracking-wider text-brand-navy font-bold text-left py-3 border-b border-slate-100">Careers</a>
+        </div>
+    </nav>
+
+    <!-- 2. Page Header -->
+    <header class="pt-32 pb-16 bg-brand-navy text-center relative overflow-hidden">
+        <!-- Abstract Pattern Background -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#f1ad18 1.5px, transparent 1.5px); background-size: 30px 30px;"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-gold rounded-full mix-blend-multiply filter blur-[100px] opacity-20 animate-pulse"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-[100px] opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center justify-center mb-4">
+                <div class="flex items-center w-full max-w-[250px] justify-center mb-6">
+                    <div class="w-3 h-5 bg-brand-gold mr-3 transform -skew-x-12 shadow-[0_0_15px_rgba(241,173,24,0.5)]"></div>
+                    <h3 class="text-lg font-heading font-extrabold text-white uppercase tracking-[0.2em]">WHAT WE OFFER</h3>
+                    <div class="w-3 h-5 bg-brand-gold ml-3 transform skew-x-12 shadow-[0_0_15px_rgba(241,173,24,0.5)]"></div>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-black tracking-tight text-white mb-6">
+                    OUR <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-200">SERVICES</span>
+                </h1>
+                <p class="text-base md:text-lg font-light text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                    Delivering excellence through comprehensive support, expert training, and genuine parts to ensure your operations run seamlessly.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Bottom Curve Divider -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+            <svg class="relative block w-[calc(100%+1.3px)] h-[40px] md:h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,121.32,201.3,114.6Z" class="fill-[#f8fafc]"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- 3. Main Services Content (Premium Cards Grid) -->
+    <main class="flex-grow w-full relative py-16 sm:py-24 z-10 bg-[#f8fafc]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                
+                <!-- Card 1: Core Services -->
+                <div class="animate-fade-in-up delay-100 group bg-white rounded-[2rem] p-8 sm:p-10 shadow-[0_10px_40px_rgba(11,4,48,0.04)] border border-slate-100 hover:shadow-[0_25px_60px_rgba(11,4,48,0.1)] hover:-translate-y-2 transition-all duration-500 relative overflow-hidden flex flex-col h-full">
+                    <!-- Decorative Blob -->
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-brand-gold/5 rounded-bl-full -z-10 group-hover:bg-brand-gold/10 group-hover:scale-110 transition-all duration-500"></div>
+                    
+                    <!-- Header -->
+                    <div class="flex items-center mb-8 border-b border-slate-100 pb-6">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-brand-gold text-2xl group-hover:bg-brand-gold group-hover:text-white transition-colors duration-500 shadow-sm mr-5 flex-shrink-0">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-heading font-extrabold text-brand-navy tracking-tight group-hover:text-brand-gold transition-colors duration-300">Services</h2>
+                    </div>
+
+                    <!-- List Items -->
+                    <ul class="space-y-4 flex-grow">
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">Pre Purchase Consultancy Service</span>
+                        </li>
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">Preventive Maintenance Service</span>
+                        </li>
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">Warranty Service</span>
+                        </li>
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">Contract Service</span>
+                        </li>
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">On – Call Service</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 2: Spare Parts -->
+                <div class="animate-fade-in-up delay-200 group bg-white rounded-[2rem] p-8 sm:p-10 shadow-[0_10px_40px_rgba(11,4,48,0.04)] border border-slate-100 hover:shadow-[0_25px_60px_rgba(11,4,48,0.1)] hover:-translate-y-2 transition-all duration-500 relative overflow-hidden flex flex-col h-full">
+                    <!-- Decorative Blob -->
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-brand-gold/5 rounded-bl-full -z-10 group-hover:bg-brand-gold/10 group-hover:scale-110 transition-all duration-500"></div>
+                    
+                    <!-- Header -->
+                    <div class="flex items-center mb-8 border-b border-slate-100 pb-6">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-brand-gold text-2xl group-hover:bg-brand-gold group-hover:text-white transition-colors duration-500 shadow-sm mr-5 flex-shrink-0">
+                            <i class="fa-solid fa-box-open"></i>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-heading font-extrabold text-brand-navy tracking-tight group-hover:text-brand-gold transition-colors duration-300">Spare Parts</h2>
+                    </div>
+
+                    <!-- List Items -->
+                    <ul class="space-y-4 flex-grow">
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">Genuine Original Equipment Parts</span>
+                        </li>
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">OEM Parts</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: Training -->
+                <div class="animate-fade-in-up delay-300 group bg-white rounded-[2rem] p-8 sm:p-10 shadow-[0_10px_40px_rgba(11,4,48,0.04)] border border-slate-100 hover:shadow-[0_25px_60px_rgba(11,4,48,0.1)] hover:-translate-y-2 transition-all duration-500 relative overflow-hidden flex flex-col h-full">
+                    <!-- Decorative Blob -->
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-brand-gold/5 rounded-bl-full -z-10 group-hover:bg-brand-gold/10 group-hover:scale-110 transition-all duration-500"></div>
+                    
+                    <!-- Header -->
+                    <div class="flex items-center mb-8 border-b border-slate-100 pb-6">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-brand-gold text-2xl group-hover:bg-brand-gold group-hover:text-white transition-colors duration-500 shadow-sm mr-5 flex-shrink-0">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-heading font-extrabold text-brand-navy tracking-tight group-hover:text-brand-gold transition-colors duration-300">Training</h2>
+                    </div>
+
+                    <!-- List Items -->
+                    <ul class="space-y-4 flex-grow">
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">On – Job Training</span>
+                        </li>
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">Product Familiarization Training</span>
+                        </li>
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">Operation and Maintenance Training</span>
+                        </li>
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">Technical Skill Training</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 4: Customer Service -->
+                <div class="animate-fade-in-up delay-400 group bg-white rounded-[2rem] p-8 sm:p-10 shadow-[0_10px_40px_rgba(11,4,48,0.04)] border border-slate-100 hover:shadow-[0_25px_60px_rgba(11,4,48,0.1)] hover:-translate-y-2 transition-all duration-500 relative overflow-hidden flex flex-col h-full">
+                    <!-- Decorative Blob -->
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-brand-gold/5 rounded-bl-full -z-10 group-hover:bg-brand-gold/10 group-hover:scale-110 transition-all duration-500"></div>
+                    
+                    <!-- Header -->
+                    <div class="flex items-center mb-8 border-b border-slate-100 pb-6">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-brand-gold text-2xl group-hover:bg-brand-gold group-hover:text-white transition-colors duration-500 shadow-sm mr-5 flex-shrink-0">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-heading font-extrabold text-brand-navy tracking-tight group-hover:text-brand-gold transition-colors duration-300">Customer Service</h2>
+                    </div>
+
+                    <!-- List Items -->
+                    <ul class="space-y-4 flex-grow">
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">Phone customer service</span>
+                        </li>
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">Email customer service</span>
+                        </li>
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">On-site customer service</span>
+                        </li>
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">Social media customer service</span>
+                        </li>
+                        <li class="flex items-start group/item cursor-default">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold group-hover/item:bg-brand-gold group-hover/item:text-white transition-colors duration-300 mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
+                            <span class="text-slate-600 font-medium text-[15px] group-hover/item:text-brand-navy transition-colors duration-300 leading-relaxed">FAQ (Frequently Asked Questions) customer service</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div class="bg-[#1F252E] text-center py-6 border-t border-[#2A313C] mt-auto">
+        <p class="text-xs text-slate-400 font-medium tracking-wide">&copy; Copyright 2026 by Aung Gyi Group of Companies. All rights reserved.</p>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Navbar Scroll Behavior
+        const navbar = document.getElementById('navbar');
+        const navContainer = document.getElementById('nav-container');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md'); navbar.classList.remove('shadow-sm');
+                navContainer.classList.remove('h-20'); navContainer.classList.add('h-16');
+            } else {
+                navbar.classList.remove('shadow-md'); navbar.classList.add('shadow-sm');
+                navContainer.classList.add('h-20'); navContainer.classList.remove('h-16');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-xmark');
+        });
+    </script>
+</body>
+</html>
