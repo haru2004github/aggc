@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - AGGC</title>
+    
+    <!-- Modern Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="./img/logo_head.png">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                        accent: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0b0430',
+                            gold: '#f1ad18'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; background-color: #f8fafc;}
+        
+        /* Glassmorphism Header */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        /* Premium Nav Link Hover Effect */
+        .nav-link-premium {
+            position: relative;
+        }
+        .nav-link-premium::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #f1ad18;
+            transition: width 0.3s ease;
+        }
+        .nav-link-premium:hover::after, .nav-link-premium.active::after {
+            width: 100%;
+        }
+
+        /* Micro-animations and Glows */
+        .social-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .social-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1.5rem;
+            padding: 1.5px;
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+        .social-card:hover {
+            transform: translateY(-5px);
+        }
+        .facebook-glow:hover {
+            box-shadow: 0 15px 30px -10px rgba(59, 89, 152, 0.25);
+            border-color: rgba(59, 89, 152, 0.3);
+        }
+        .phone-glow:hover {
+            box-shadow: 0 15px 30px -10px rgba(34, 197, 94, 0.25);
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+        .viber-glow:hover {
+            box-shadow: 0 15px 30px -10px rgba(115, 95, 163, 0.25);
+            border-color: rgba(115, 95, 163, 0.3);
+        }
+        .email-glow:hover {
+            box-shadow: 0 15px 30px -10px rgba(241, 173, 24, 0.25);
+            border-color: rgba(241, 173, 24, 0.3);
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col">
+
+    <!-- 1. Navigation Bar (Premium Glassmorphism Design) -->
+    <nav id="navbar" class="fixed w-full z-50 glass-header bg-white border-b border-slate-200/50 transition-all duration-500 shadow-sm">
+        <div class="relative w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20 transition-all duration-500" id="nav-container">
+                    
+                    <!-- Logo -->
+                    <a href="index.html" class="flex items-center cursor-pointer group hover:opacity-90 transition-opacity">
+                        <img src="./img/logo.png" class="w-40" alt="AGGC Logo">
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden lg:flex h-full items-center space-x-7 xl:space-x-9">
+                        <a href="index.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Home</a>
+                        <a href="about.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">About</a>
+                        <a href="products.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Products</a>
+                        <a href="services.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Services</a>
+                        <a href="activites.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Activities</a>
+                        <a href="careers.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Careers</a>
+                        
+                        <a href="news.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">News</a>
+                        
+                        <!-- CTA Button -->
+                        <div class="flex items-center pl-3">
+                            <a href="contact.html" class="bg-brand-gold text-brand-navy px-7 py-3 text-[12px] font-heading font-bold uppercase tracking-[0.15em] hover:bg-brand-navy hover:text-white transition-all duration-300 rounded shadow-[0_4px_14px_0_rgba(241,173,24,0.3)] hover:shadow-[0_6px_20px_rgba(11,4,48,0.2)] hover:-translate-y-0.5">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="lg:hidden flex items-center">
+                        <button id="mobileMenuBtn" class="text-brand-navy p-2 hover:bg-slate-100 transition-colors focus:outline-none rounded-md">
+                            <i id="menuIcon" class="fa-solid fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white shadow-2xl flex flex-col border-t border-slate-100 z-50">
+            <div class="px-6 py-4 flex flex-col">
+                <a href="index.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Home</a>
+                <a href="about.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">About</a>
+                <a href="products.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Products</a>
+                <a href="services.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Services</a>
+                <a href="activites.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Activities</a>
+                <a href="careers.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Careers</a>
+                
+                <a href="news.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">News</a>
+                
+                <a href="contact.html" class="mobile-link mt-6 mb-4 bg-brand-navy text-white w-full py-4 font-heading font-bold text-center uppercase tracking-[0.2em] text-[13px] rounded shadow-md">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative bg-brand-navy pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
+        <!-- Dot Grid background watermark -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 16px 16px;"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Slanted gold block slashes tag -->
+            <div class="flex items-center justify-center gap-2 mb-5">
+                <div class="w-2.5 h-5 bg-brand-gold transform -skew-x-12"></div>
+                <span class="text-white font-heading font-black text-[11px] sm:text-xs uppercase tracking-[0.25em]">Get In Touch</span>
+                <div class="w-2.5 h-5 bg-brand-gold transform skew-x-12"></div>
+            </div>
+            
+            <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight uppercase tracking-tight">
+                Contact <span class="text-brand-gold">Us</span>
+            </h1>
+            <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mt-5 leading-relaxed font-light">
+                Have a project in mind or need heavy machinery solutions? Reach out to Aung Gyi Group of Companies today. Let's build together!
+            </p>
+        </div>
+
+        <!-- Curved Wave Divider -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[40px] sm:h-[60px]" style="fill: #f8fafc;">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C26.9,8.75,55.05,16.22,83.1,22.07,164.8,39,248.8,50.18,321.39,56.44Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow py-16 bg-[#f8fafc]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Left Column: Contact Cards & Social Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <h2 class="text-2xl sm:text-3xl font-heading font-extrabold text-brand-navy tracking-tight mb-4">Contact Information</h2>
+                    <p class="text-slate-500 font-light leading-relaxed mb-8">Feel free to contact us via any of our digital links or visit our headquarters directly. We are always ready to assist you.</p>
+                    
+                    <!-- Location Card -->
+                    <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex items-start gap-5">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-navy/5 flex items-center justify-center text-brand-gold text-lg flex-shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-extrabold text-brand-navy text-[16px] mb-1">Our Address</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">No. 152, Maung Hman Street, Shwe Lin Pan Industrial Zone, Hlaing Tharyar Township, Yangon, Myanmar</p>
+                        </div>
+                    </div>
+
+                    <!-- Viber & Phone Links Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        
+                        <!-- Phone Card -->
+                        <a href="tel:+959777555666" class="social-card phone-glow bg-white p-6 rounded-3xl border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex flex-col justify-between h-full relative overflow-hidden group">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-green-50 text-green-500 flex items-center justify-center text-md group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <i class="fa-solid fa-arrow-right text-slate-300 -rotate-45 group-hover:text-green-500 group-hover:rotate-0 transition-all duration-300"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-brand-navy text-[14px] mb-1">Call Support</h4>
+                                <p class="text-xs text-slate-400 font-semibold tracking-wider uppercase mb-2">Office Hours</p>
+                                <p class="text-[13px] text-slate-500 font-medium">+95 9 777 555 666</p>
+                            </div>
+                        </a>
+
+                        <!-- Viber Card -->
+                        <a href="viber://chat?number=%2B959777555666" class="social-card viber-glow bg-white p-6 rounded-3xl border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex flex-col justify-between h-full relative overflow-hidden group">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-[#735fa3]/10 text-[#735fa3] flex items-center justify-center text-md group-hover:bg-[#735fa3] group-hover:text-white transition-all duration-300">
+                                    <i class="fa-brands fa-viber"></i>
+                                </div>
+                                <i class="fa-solid fa-arrow-right text-slate-300 -rotate-45 group-hover:text-[#735fa3] group-hover:rotate-0 transition-all duration-300"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-brand-navy text-[14px] mb-1">Viber Chat</h4>
+                                <p class="text-xs text-slate-400 font-semibold tracking-wider uppercase mb-2">Direct Message</p>
+                                <p class="text-[13px] text-slate-500 font-medium">AGGC Viber Portal</p>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <!-- Facebook & Email Links Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        
+                        <!-- Facebook Card -->
+                        <a href="https://facebook.com/AungGyiGroup" target="_blank" class="social-card facebook-glow bg-white p-6 rounded-3xl border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex flex-col justify-between h-full relative overflow-hidden group">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-md group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </div>
+                                <i class="fa-solid fa-arrow-right text-slate-300 -rotate-45 group-hover:text-blue-600 group-hover:rotate-0 transition-all duration-300"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-brand-navy text-[14px] mb-1">Facebook Page</h4>
+                                <p class="text-xs text-slate-400 font-semibold tracking-wider uppercase mb-2">Latest Posts</p>
+                                <p class="text-[13px] text-slate-500 font-medium">Aung Gyi Group</p>
+                            </div>
+                        </a>
+
+                        <!-- Email Card -->
+                        <a href="mailto:info@aungyigroup.com" class="social-card email-glow bg-white p-6 rounded-3xl border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex flex-col justify-between h-full relative overflow-hidden group">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-md group-hover:bg-brand-gold group-hover:text-brand-navy transition-all duration-300">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <i class="fa-solid fa-arrow-right text-slate-300 -rotate-45 group-hover:text-brand-gold group-hover:rotate-0 transition-all duration-300"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-brand-navy text-[14px] mb-1">Corporate Email</h4>
+                                <p class="text-xs text-slate-400 font-semibold tracking-wider uppercase mb-2">Official Inquiry</p>
+                                <p class="text-[13px] text-slate-500 font-medium">info@aungyigroup.com</p>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+                <!-- Right Column: Contact Inquiry Form -->
+                <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(11,4,48,0.03)] relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-brand-gold/5 rounded-bl-full -z-10"></div>
+                    
+                    <h3 class="text-xl sm:text-2xl font-heading font-extrabold text-brand-navy tracking-tight mb-2">Send an Inquiry</h3>
+                    <p class="text-slate-400 text-sm font-light mb-8">Please fill out this form and our business team will respond within 24 hours.</p>
+                    
+                    <form action="#" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Name -->
+                            <div class="flex flex-col">
+                                <label for="name" class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2.5">Your Name</label>
+                                <input type="text" id="name" required placeholder="Aung Aung" class="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-5 py-3.5 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-all duration-300">
+                            </div>
+                            <!-- Phone -->
+                            <div class="flex flex-col">
+                                <label for="phone" class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2.5">Phone Number</label>
+                                <input type="tel" id="phone" required placeholder="09xxxxxxxxx" class="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-5 py-3.5 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-all duration-300">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Email -->
+                            <div class="flex flex-col">
+                                <label for="email" class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2.5">Email Address</label>
+                                <input type="email" id="email" required placeholder="aung@domain.com" class="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-5 py-3.5 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-all duration-300">
+                            </div>
+                            <!-- Subject -->
+                            <div class="flex flex-col">
+                                <label for="subject" class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2.5">Subject</label>
+                                <input type="text" id="subject" required placeholder="Machine Quotation Inquiry" class="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-5 py-3.5 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-all duration-300">
+                            </div>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="flex flex-col">
+                            <label for="message" class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2.5">Inquiry Details</label>
+                            <textarea id="message" rows="5" required placeholder="Please write details of the machinery or services you are interested in..." class="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-5 py-3.5 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-all duration-300 resize-none"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="w-full bg-brand-navy hover:bg-brand-gold text-white hover:text-brand-navy font-heading font-extrabold uppercase text-[12px] tracking-[0.2em] py-4 rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
+                            Send Message Inquiry <i class="fa-solid fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Embedded Google Map -->
+            <div class="mt-16 bg-white p-4 rounded-[2rem] border border-slate-100 shadow-[0_15px_50px_rgba(11,4,48,0.03)] overflow-hidden group">
+                <div class="relative w-full h-[350px] sm:h-[450px] rounded-2xl overflow-hidden shadow-inner border border-slate-200/40">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3817.8488344605915!2d96.06915127596001!3d16.883733017124976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1ebdb11ce49bf%3A0xeab4601b31a89b7b!2sShwe%20Lin%20Ban%20Industrial%20Zone!5e0!3m2!1sen!2smm!4v1720200000000!5m2!1sen!2smm" class="absolute inset-0 w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Redesigned Premium Footer (wePro style) -->
+    <footer class="bg-white border-t border-slate-200/60 pt-16 pb-8 mt-auto relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 lg:gap-6 mb-12">
+                
+                <div class="col-span-2 flex flex-col space-y-4">
+                    <img src="./img/logo.png" class="w-40" alt="AGGC Logo">
+                    <p class="text-slate-400 text-[13px] font-light leading-relaxed max-w-xs">
+                        Aung Gyi Group of Companies. A leading diversified business group in Myanmar operating across key industrial sectors. Let's Build Together!
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-extrabold text-[13px] text-brand-navy uppercase tracking-wider mb-4">Home</h4>
+                    <ul class="space-y-2.5 text-[12px]">
+                        <li><a href="index.html#about" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Welcome</a></li>
+                        <li><a href="index.html#sectors" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Sectors</a></li>
+                        <li><a href="products.html" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Brands</a></li>
+                        <li><a href="best_selling.html" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Best Sellers</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-extrabold text-[13px] text-brand-navy uppercase tracking-wider mb-4">About</h4>
+                    <ul class="space-y-2.5 text-[12px]">
+                        <li><a href="about.html#profile" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Profile</a></li>
+                        <li><a href="about.html#vision" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Vision</a></li>
+                        <li><a href="about.html#missions" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Missions</a></li>
+                        <li><a href="about.html#motto" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Motto</a></li>
+                        <li><a href="about.html#certificates" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Certificates</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-extrabold text-[13px] text-brand-navy uppercase tracking-wider mb-4">Services</h4>
+                    <ul class="space-y-2.5 text-[12px]">
+                        <li><a href="services.html#pre-purchase" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Pre-Purchase</a></li>
+                        <li><a href="services.html#maintenance" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Maintenance</a></li>
+                        <li><a href="services.html#warranty" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Warranty Support</a></li>
+                        <li><a href="services.html#contracts" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Contracts</a></li>
+                        <li><a href="services.html#on-call" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">On-Call Support</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-extrabold text-[13px] text-brand-navy uppercase tracking-wider mb-4">Media</h4>
+                    <ul class="space-y-2.5 text-[12px]">
+                        <li><a href="activites.html" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Gallery</a></li>
+                        <li><a href="news.html" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Announcements</a></li>
+                        <li><a href="news.html" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Latest News</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-extrabold text-[13px] text-brand-navy uppercase tracking-wider mb-4">Careers</h4>
+                    <ul class="space-y-2.5 text-[12px]">
+                        <li><a href="careers.html" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Open Roles</a></li>
+                        <li><a href="careers.html" class="text-slate-400 hover:text-brand-gold font-medium transition-colors">Join Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="flex flex-col items-center sm:items-start space-y-4">
+                    <div class="w-[100px] h-[100px] bg-slate-50 border border-slate-200/80 rounded-xl p-2 flex items-center justify-center shadow-sm">
+                        <svg viewBox="0 0 100 100" class="w-full h-full text-brand-navy" fill="currentColor">
+                            <rect x="0" y="0" width="25" height="25" /><rect x="5" y="5" width="15" height="15" fill="white" /><rect x="8" y="8" width="9" height="9" />
+                            <rect x="75" y="0" width="25" height="25" /><rect x="80" y="5" width="15" height="15" fill="white" /><rect x="83" y="8" width="9" height="9" />
+                            <rect x="0" y="75" width="25" height="25" /><rect x="5" y="80" width="15" height="15" fill="white" /><rect x="8" y="83" width="9" height="9" />
+                            <rect x="35" y="5" width="10" height="5" /><rect x="55" y="10" width="15" height="10" /><rect x="40" y="20" width="15" height="5" />
+                            <rect x="30" y="35" width="25" height="10" /><rect x="10" y="40" width="10" height="10" /><rect x="70" y="40" width="15" height="15" />
+                            <rect x="85" y="30" width="10" height="10" /><rect x="15" y="60" width="20" height="5" /><rect x="45" y="55" width="10" height="25" />
+                            <rect x="65" y="65" width="30" height="10" /><rect x="35" y="85" width="15" height="10" /><rect x="75" y="80" width="20" height="15" />
+                            <circle cx="50" cy="50" r="4" fill="#f1ad18" />
+                        </svg>
+                    </div>
+                    <span class="text-[11px] font-heading font-black text-brand-navy uppercase tracking-wider">Location</span>
+                    <div class="flex items-center space-x-2.5">
+                        <a href="https://facebook.com/AungGyiGroup" target="_blank" class="w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-[11px] transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="viber://chat?number=%2B959777555666" class="w-7 h-7 rounded-full bg-[#735fa3] hover:bg-[#5e4b8b] text-white flex items-center justify-center text-[11px] transition-colors"><i class="fa-brands fa-viber"></i></a>
+                        <a href="mailto:info@aungyigroup.com" class="w-7 h-7 rounded-full bg-brand-gold hover:bg-brand-gold/85 text-brand-navy flex items-center justify-center text-[11px] transition-colors"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-400 font-medium">
+                <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
+                <p class="mt-2 md:mt-0 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span> Designed with modern web technologies.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- NAVIGATION & MOBILE MENU SCRIPT -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        const navContainer = document.getElementById('nav-container');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md'); 
+                navbar.classList.remove('shadow-sm');
+                navContainer.classList.remove('h-20'); 
+                navContainer.classList.add('h-16');
+            } else {
+                navbar.classList.remove('shadow-md'); 
+                navbar.classList.add('shadow-sm');
+                navContainer.classList.add('h-20'); 
+                navContainer.classList.remove('h-16');
+            }
+        });
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark'); 
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars'); 
+                menuIcon.classList.add('fa-xmark');
+            }
+        }
+        
+        if(mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+        }
+        
+        mobileLinks.forEach(link => link.addEventListener('click', () => { 
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMenu(); 
+        }));
+    </script>
+</body>
+</html>
