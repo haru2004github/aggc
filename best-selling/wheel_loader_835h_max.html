@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheel Loader 835H Max - AGGC</title>
+    
+    <!-- Modern Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../img/logo_head.png">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                        accent: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0b0430',
+                            gold: '#f1ad18'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; background-color: #f8fafc;}
+        
+        /* Glassmorphism Header */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        /* Premium Nav Link Hover Effect */
+        .nav-link-premium {
+            position: relative;
+        }
+        .nav-link-premium::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #f1ad18;
+            transition: width 0.3s ease;
+        }
+        .nav-link-premium:hover::after, .nav-link-premium.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col">
+
+    <!-- 1. Navigation Bar (Premium Glassmorphism Design) -->
+    <nav id="navbar" class="fixed w-full z-50 glass-header bg-white border-b border-slate-200/50 transition-all duration-500 shadow-sm">
+        <div class="relative w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20 transition-all duration-500" id="nav-container">
+                    
+                    <!-- Logo -->
+                    <a href="../index.html" class="flex items-center cursor-pointer group hover:opacity-90 transition-opacity">
+                        <img src="../img/logo.png" class="w-40" alt="AGGC Logo">
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden lg:flex h-full items-center space-x-7 xl:space-x-9">
+                        <a href="../index.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Home</a>
+                        <a href="../about.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">About</a>
+                        <a href="../products.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Products</a>
+                        <a href="../services.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Services</a>
+                        <a href="../activites.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Activities</a>
+                        <a href="../careers.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Careers</a>
+                        
+                        <!-- CTA Button -->
+                        <div class="flex items-center pl-3">
+                            <a href="../index.html#contact" class="bg-brand-navy text-white px-7 py-3 text-[12px] font-heading font-bold uppercase tracking-[0.15em] hover:bg-brand-gold hover:text-brand-navy transition-all duration-300 rounded shadow-[0_4px_14px_0_rgba(11,4,48,0.39)] hover:shadow-[0_6px_20px_rgba(241,173,24,0.4)] hover:-translate-y-0.5">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="lg:hidden flex items-center">
+                        <button id="mobileMenuBtn" class="text-brand-navy p-2 hover:bg-slate-100 transition-colors focus:outline-none rounded-md">
+                            <i id="menuIcon" class="fa-solid fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white shadow-2xl flex flex-col border-t border-slate-100 z-50">
+            <div class="px-6 py-4 flex flex-col">
+                <a href="../index.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Home</a>
+                <a href="../about.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">About</a>
+                <a href="../products.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Products</a>
+                <a href="../services.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Services</a>
+                <a href="../activites.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Activities</a>
+                <a href="../careers.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Careers</a>
+                
+                <a href="../index.html#contact" class="mobile-link mt-6 mb-4 bg-brand-navy text-white w-full py-4 font-heading font-bold text-center uppercase tracking-[0.2em] text-[13px] rounded shadow-md">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-28 pb-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            
+            <!-- Breadcrumbs -->
+            <div class="flex items-center gap-2 text-[13px] text-slate-400 font-medium mb-6">
+                <a href="../index.html" class="hover:text-brand-gold transition-colors">Home</a>
+                <span class="text-slate-300">/</span>
+                <a href="../best_selling.html" class="hover:text-brand-gold transition-colors">Best Selling Items</a>
+                <span class="text-slate-300">/</span>
+                <span class="text-slate-600 font-semibold">Wheel Loader 835H Max</span>
+            </div>
+
+            <!-- Page Header -->
+            <div class="flex items-center justify-center gap-3 mb-10">
+                <i class="fa-solid fa-play text-brand-gold text-sm sm:text-base rotate-180"></i>
+                <h2 class="font-heading text-xl sm:text-2xl md:text-3xl font-black text-brand-navy tracking-wider uppercase text-center">WHEEL LOADER 835H MAX</h2>
+                <i class="fa-solid fa-play text-brand-gold text-sm sm:text-base"></i>
+            </div>
+
+            <!-- Specs Section -->
+            <div class="bg-white rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(11,4,48,0.03)] p-6 sm:p-10 mb-12">
+                <h3 class="font-heading text-[16px] text-brand-gold font-bold uppercase tracking-wider mb-8">Engine HP 120-135 ကြားရှိ medium wheel loader series မှ 835H Max သည်</h3>
+                
+                <!-- Power Train System section -->
+                <div class="mb-10">
+                    <h4 class="font-heading text-lg font-extrabold text-brand-navy mb-4 border-b border-slate-100 pb-2">power train system ပိုင်းတွင်</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0">
+                                <i class="fa-solid fa-check text-[11px]"></i>
+                            </div>
+                            <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+                                weichai WP6 engine ကြောင့် ဆီစားသက်သာခြင်း၊ torque အားပိုကောင်းခြင်း၊ အင်ဂျင်မှ transmission သို့ ပါဝါကူးပြောင်းရာတွင် ပါဝါဆုံးရှုံးမှုမရှိဘဲ စွမ်းအားအပြည့်ရရှိစေခြင်း။
+                            </p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0">
+                                <i class="fa-solid fa-check text-[11px]"></i>
+                            </div>
+                            <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+                                Planery power shift transmission အသုံးပြုထားခြင်းကြောင့် ဂီယာအဆိုင်းပြောင်းလဲခြင်း၊ စက်ရုတ်ဆွတ်ခြင်းတို့ကို ပိုမိုကောင်းမွန်စေခြင်း။
+                            </p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0">
+                                <i class="fa-solid fa-check text-[11px]"></i>
+                            </div>
+                            <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+                                Brake system ပိုင်းအနေဖြင့် brake booster ပိုင်းကို ပိုမိုကောင်းမွန်အောင်ပြုလုပ်ထားပါ၍ breaking force ကောင်းပြီး ဘရိတ်အတွက် အားမစိုက်ရဘဲ လျင်မြန်စွာ operator ကို သက်သာစေခြင်း။
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Design Section -->
+                <div>
+                    <h4 class="font-heading text-lg font-extrabold text-brand-navy mb-4 border-b border-slate-100 pb-2">Design ပိုင်းအနေဖြင့်</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0">
+                                <i class="fa-solid fa-check text-[11px]"></i>
+                            </div>
+                            <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+                                2.0m3 မူလထက် ခွက်ဆံ့ပိုကြီးမားလာပြီး ဝန်သယ်နိုင်စွမ်း 20% ပိုမိုလျှင်မြန်စွာ သယ်ဆောင်နိုင်ခြင်း၊ ခွက်အတွင်းသို့စောက်နက်ထား၍ မြေစာပါပါခြင်းနှင့် သဲချောတင်ခြင်းကို 3 ဆပို၍ ကာကွယ်နိုင်အောင် ပြုလုပ်ထားခြင်း။
+                            </p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0">
+                                <i class="fa-solid fa-check text-[11px]"></i>
+                            </div>
+                            <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+                                ကိုယ်ထည်နှင့် ရှေ့ပိုင်း boom ကြားရှိ ခါးဆက်အဆစ်သည် ပိုမိုကျယ်လာ၍ အလုပ်လုပ်ရာတွင် သက်ရောက်သည့် load များကို ဖြန့်ဝေကာ ကြာရှည်ခံအောင် design လုပ်ထားခြင်း။
+                            </p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0">
+                                <i class="fa-solid fa-check text-[11px]"></i>
+                            </div>
+                            <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+                                Z bar linkage သည် ခွက်၏ အကောင်းဆုံးကွေးညွှတ်နိုင်စွမ်းကို ပေးပြီး ဝန်ကိုမတင်ခြင်းနှင့် အဆင်းအတန်းကို ကြာရှည်စွာတောင့်ခံနိုင်အောင် ပြုလုပ်ထားခြင်း။
+                            </p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0">
+                                <i class="fa-solid fa-check text-[11px]"></i>
+                            </div>
+                            <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+                                Operator များအတွက် လုံခြုံစိတ်ချရသော ROPS စနစ်ရှိ၍ ပြင်ပဖုန်မှုန့်များ မဝင်ရောက်နိုင်သော စက်မောင်းခန်း၊ နှင့်အတူ မြင်ကွင်းကျယ်လမ်းမှ စက်မောင်းခန်းသို့ ဆက်သွယ်သော တံခါးများကို အဆင့်သုံးဆင့် မြှင့်တင်ထားသောကြောင့် သက်တောင့်သက်သာရှိမှုနှင့် လေထွက်ပေါက်စနစ် အားသာချက်များ တပ်ဆင်ထားခြင်း။
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Image Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="relative h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-100 group">
+                    <img src="../img/best_selling_items/wheel_loader_max.jpg" alt="Wheel Loader 835H Max Detail 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="relative h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-100 group">
+                    <img src="https://images.unsplash.com/photo-1605647540924-852290f6b0d5?q=80&w=600&auto=format&fit=crop" alt="Wheel Loader 835H Max Detail 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="relative h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-100 group">
+                    <img src="https://images.unsplash.com/photo-1579758682665-53a1a614eea6?q=80&w=600&auto=format&fit=crop" alt="Wheel Loader 835H Max Detail 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="relative h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-100 group">
+                    <img src="https://images.unsplash.com/photo-1533991390412-25809f043156?q=80&w=600&auto=format&fit=crop" alt="Wheel Loader 835H Max Detail 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="relative h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-100 group">
+                    <img src="../img/best_selling_items/wheel_loader_max.jpg" alt="Wheel Loader 835H Max Detail 5" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="relative h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-100 group">
+                    <img src="https://images.unsplash.com/photo-1605647540924-852290f6b0d5?q=80&w=600&auto=format&fit=crop" alt="Wheel Loader 835H Max Detail 6" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-400 text-xs font-medium">
+            <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- NAVIGATION & MOBILE MENU SCRIPT -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        const navContainer = document.getElementById('nav-container');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md'); 
+                navbar.classList.remove('shadow-sm');
+                navContainer.classList.remove('h-20'); 
+                navContainer.classList.add('h-16');
+            } else {
+                navbar.classList.remove('shadow-md'); 
+                navbar.classList.add('shadow-sm');
+                navContainer.classList.add('h-20'); 
+                navContainer.classList.remove('h-16');
+            }
+        });
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark'); 
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars'); 
+                menuIcon.classList.add('fa-xmark');
+            }
+        }
+        
+        if(mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+        }
+        
+        mobileLinks.forEach(link => link.addEventListener('click', () => { 
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMenu(); 
+        }));
+    </script>
+</body>
+</html>

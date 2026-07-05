@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGGC Admin Panel - Product Flow</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#2563eb', secondary: '#1e40af' } } }
+        }
+    </script>
+    <style>
+        .loader { border-top-color: #3498db; -webkit-animation: spinner 1.5s linear infinite; animation: spinner 1.5s linear infinite; }
+        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .tab-active { border-b-2 border-primary color: #2563eb; font-weight: 600; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .card-zoom:hover img { transform: scale(1.05); transition: transform 0.3s ease; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Global Loading Overlay -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-white/80 z-50 flex flex-col justify-center items-center hidden">
+        <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+        <h2 class="text-center text-xl font-semibold text-slate-700" id="loadingText">လုပ်ဆောင်နေပါသည်...</h2>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm border-b px-6 py-4 flex justify-between items-center sticky top-0 z-40">
+        <div class="flex items-center gap-3">
+            <div class="bg-primary text-white p-2 rounded-lg"><i class="fas fa-boxes-stacked"></i></div>
+            <h1 class="text-2xl font-bold text-slate-800 tracking-tight">AGGC <span class="text-primary">Admin</span></h1>
+        </div>
+        <div>
+            <button onclick="fetchData()" class="text-sm bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 px-4 rounded-lg font-medium transition-colors">
+                <i class="fas fa-sync-alt mr-2"></i> Refresh
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <!-- Main Tabs -->
+        <div class="flex border-b border-gray-200 mb-6 gap-6 text-lg">
+            <button onclick="switchMainTab('catalog')" id="tab-catalog" class="pb-3 text-slate-500 hover:text-slate-800 transition-colors tab-active"><i class="fas fa-sitemap mr-2"></i>Product Catalog</button>
+            <button onclick="switchMainTab('inquiries')" id="tab-inquiries" class="pb-3 text-slate-500 hover:text-slate-800 transition-colors"><i class="fas fa-envelope mr-2"></i>Inquiries</button>
+        </div>
+
+        <!-- Section: Catalog Flow (Brands -> Categories -> Models) -->
+        <section id="sec-catalog" class="block">
+            <!-- Breadcrumb Navigation -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-6 flex items-center gap-2 text-sm md:text-base font-medium text-slate-600">
+                <button onclick="goToBrands()" class="hover:text-primary transition-colors"><i class="fas fa-home mr-1"></i> All Brands</button>
+                <span id="bc-brand" class="hidden items-center gap-2">
+                    <i class="fas fa-chevron-right text-slate-400 text-xs"></i>
+                    <button onclick="goToCategories()" id="bc-brand-name" class="hover:text-primary transition-colors"></button>
+                </span>
+                <span id="bc-category" class="hidden items-center gap-2">
+                    <i class="fas fa-chevron-right text-slate-400 text-xs"></i>
+                    <span id="bc-category-name" class="text-primary"></span>
+                </span>
+            </div>
+
+            <!-- Header and Action Button -->
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold text-slate-800" id="currentViewTitle">Brands စီမံရန်</h2>
+                <button onclick="openCurrentModal()" class="bg-primary hover:bg-secondary text-white py-2.5 px-5 rounded-lg shadow-sm text-sm font-medium transition-colors flex items-center gap-2">
+                    <i class="fas fa-plus"></i> <span id="addBtnText">Brand အသစ်ထည့်မည်</span>
+                </button>
+            </div>
+
+            <!-- Dynamic Content Area -->
+            <div id="catalogContent" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Cards will be injected here -->
+            </div>
+        </section>
+
+        <!-- Section: Inquiries -->
+        <section id="sec-inquiries" class="hidden">
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 text-sm">
+                            <th class="p-4 font-semibold">Date</th>
+                            <th class="p-4 font-semibold">Product</th>
+                            <th class="p-4 font-semibold">Customer</th>
+                            <th class="p-4 font-semibold">Contact</th>
+                            <th class="p-4 font-semibold">Message</th>
+                            <th class="p-4 font-semibold text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inquiriesTableBody" class="divide-y divide-slate-100 text-sm">
+                        <!-- Data will be injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modals -->
+    
+    <!-- Brand Modal -->
+    <div id="brandModal" class="fixed inset-0 bg-slate-900/50 hidden z-50 flex justify-center items-center p-4">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden">
+            <div class="px-6 py-4 border-b flex justify-between items-center">
+                <h3 class="font-bold text-lg" id="brandModalTitle">Brand အသစ်ထည့်မည်</h3>
+                <button onclick="closeModal('brandModal')" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <form id="brandForm" class="p-6" onsubmit="handleBrandSubmit(event)">
+                <input type="hidden" id="brandEditId">
+                <input type="hidden" id="brandExistingUrl">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Brand Name</label>
+                    <input type="text" id="brandName" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+                </div>
+                <div class="mb-5">
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Logo Image</label>
+                    <input type="file" id="brandLogo" accept="image/*" class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 cursor-pointer">
+                    <div id="brandLogoPreview" class="mt-2 hidden">
+                        <img src="" class="h-16 rounded object-contain border p-1" alt="Preview">
+                    </div>
+                </div>
+                <div class="flex justify-end gap-3">
+                    <button type="button" onclick="closeModal('brandModal')" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-secondary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Category Modal -->
+    <div id="categoryModal" class="fixed inset-0 bg-slate-900/50 hidden z-50 flex justify-center items-center p-4">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden">
+            <div class="px-6 py-4 border-b flex justify-between items-center bg-slate-50">
+                <h3 class="font-bold text-lg" id="categoryModalTitle">Category အသစ်ထည့်မည်</h3>
+                <button onclick="closeModal('categoryModal')" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <form id="categoryForm" class="p-6" onsubmit="handleCategorySubmit(event)">
+                <input type="hidden" id="categoryEditId">
+                <input type="hidden" id="categoryExistingUrl">
+                
+                <!-- Auto Selected Brand Info (Readonly) -->
+                <div class="mb-4 bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100 flex items-center gap-2 text-sm">
+                    <i class="fas fa-tag"></i> <span>ရွေးချယ်ထားသော Brand: <strong id="catActiveBrandText"></strong></span>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Category Name</label>
+                    <input type="text" id="categoryName" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+                </div>
+                <div class="mb-5">
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Category Image</label>
+                    <input type="file" id="categoryImage" accept="image/*" class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 cursor-pointer">
+                    <div id="categoryImagePreview" class="mt-2 hidden">
+                        <img src="" class="h-16 rounded object-cover border p-1" alt="Preview">
+                    </div>
+                </div>
+                <div class="flex justify-end gap-3">
+                    <button type="button" onclick="closeModal('categoryModal')" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-secondary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Model Modal -->
+    <div id="modelModal" class="fixed inset-0 bg-slate-900/50 hidden z-50 flex justify-center items-center p-4">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden">
+            <div class="px-6 py-4 border-b flex justify-between items-center bg-slate-50">
+                <h3 class="font-bold text-lg" id="modelModalTitle">Model အသစ်ထည့်မည်</h3>
+                <button onclick="closeModal('modelModal')" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <form id="modelForm" class="p-6" onsubmit="handleModelSubmit(event)">
+                <input type="hidden" id="modelEditId">
+                
+                <!-- Auto Selected Category Info (Readonly) -->
+                <div class="mb-4 bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100 flex items-center gap-2 text-sm">
+                    <i class="fas fa-layer-group"></i> <span>ရွေးချယ်ထားသော Category: <strong id="modActiveCatText"></strong></span>
+                </div>
+
+                <div class="mb-5">
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Model Name</label>
+                    <input type="text" id="modelName" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+                </div>
+                <div class="flex justify-end gap-3">
+                    <button type="button" onclick="closeModal('modelModal')" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-secondary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        //  CONFIG (Replace with your actual URL)
+        // ==========================================
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyEiSI3XrJqBcfVYgWGsud0WY7yVfr8C7xiPOuoeMgW4hwBKtPy-ZBaKsR9KTlBOgxJlA/exec'; 
+        
+        let appData = { brands: [], categories: [], models: [], inquiries: [] };
+        
+        // State Management for Drill-down
+        let appState = {
+            view: 'brands', // 'brands', 'categories', 'models'
+            activeBrand: null,
+            activeCategory: null
+        };
+
+        document.addEventListener('DOMContentLoaded', () => fetchData());
+
+        function toggleLoader(show, text = 'လုပ်ဆောင်နေပါသည်...') {
+            const loader = document.getElementById('loadingOverlay');
+            document.getElementById('loadingText').innerText = text;
+            if (show) loader.classList.remove('hidden'); else loader.classList.add('hidden');
+        }
+
+        function getDirectImageUrl(url) {
+            if (!url) return '';
+            const match = url.match(/id=([a-zA-Z0-9_-]+)/);
+            if (match && match[1]) {
+                return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w800`;
+            }
+            return url;
+        }
+
+        // ==========================================
+        //  API CALLS & ERROR HANDLING
+        // ==========================================
+        async function apiCall(action, data = {}) {
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ action, data }),
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+                });
+                const result = await response.json();
+                if (result.status === 'error') throw new Error(result.message);
+                return result;
+            } catch (error) {
+                console.error("API Error Response:", error);
+                alert("ချို့ယွင်းချက်ဖြစ်ပေါ်နေပါသည်။ " + error.message);
+                throw error;
+            }
+        }
+
+        async function fetchData() {
+            toggleLoader(true, "ဒေတာများ ရယူနေပါသည်...");
+            try {
+                const result = await apiCall('getAllData');
+                appData.brands = result.brands || [];
+                appData.categories = result.categories || [];
+                appData.models = result.models || [];
+                appData.inquiries = result.inquiries || [];
+                
+                renderCurrentView();
+                renderInquiries();
+            } catch(e) {} finally { toggleLoader(false); }
+        }
+
+        // --- FIXED DELETE FUNCTION ---
+        async function deleteRecord(action, id, event) {
+            // Prevent card click event from triggering when clicking delete
+            if(event) event.stopPropagation(); 
+            
+            if(confirm("ဤဒေတာကို ဖျက်ရန် သေချာပါသလား? ဖျက်ပြီးပါက ပြန်ယူ၍မရပါ။")) {
+                toggleLoader(true, "ဖျက်နေပါသည်...");
+                try {
+                    // Send exactly the ID object the backend expects
+                    const payload = action === 'deleteInquiry' ? { Date: id } : { ID: id };
+                    const res = await apiCall(action, payload);
+                    
+                    if(res && res.status === 'success') {
+                        await fetchData(); // Refresh data on success
+                    }
+                } catch(e) {
+                    console.error("Delete failed:", e);
+                    // alert is handled in apiCall already
+                } finally { 
+                    toggleLoader(false); 
+                }
+            }
+        }
+
+        // ==========================================
+        //  UI RENDERING (DRILL-DOWN)
+        // ==========================================
+        function switchMainTab(tab) {
+            document.getElementById('sec-catalog').classList.add('hidden');
+            document.getElementById('sec-inquiries').classList.add('hidden');
+            document.getElementById('tab-catalog').classList.remove('tab-active');
+            document.getElementById('tab-inquiries').classList.remove('tab-active');
+            
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).classList.add('tab-active');
+        }
+
+        function renderCurrentView() {
+            if (appState.view === 'brands') renderBrands();
+            else if (appState.view === 'categories') renderCategories();
+            else if (appState.view === 'models') renderModels();
+            updateBreadcrumbs();
+        }
+
+        function updateBreadcrumbs() {
+            const bcBrand = document.getElementById('bc-brand');
+            const bcCategory = document.getElementById('bc-category');
+            const btnText = document.getElementById('addBtnText');
+            const title = document.getElementById('currentViewTitle');
+
+            if (appState.view === 'brands') {
+                bcBrand.style.display = 'none';
+                bcCategory.style.display = 'none';
+                title.innerText = 'Brands စီမံရန်';
+                btnText.innerText = 'Brand အသစ်ထည့်မည်';
+            } 
+            else if (appState.view === 'categories') {
+                bcBrand.style.display = 'flex';
+                bcCategory.style.display = 'none';
+                document.getElementById('bc-brand-name').innerText = appState.activeBrand.BrandName;
+                title.innerText = `${appState.activeBrand.BrandName} ၏ Categories`;
+                btnText.innerText = 'Category အသစ်ထည့်မည်';
+            } 
+            else if (appState.view === 'models') {
+                bcBrand.style.display = 'flex';
+                bcCategory.style.display = 'flex';
+                document.getElementById('bc-brand-name').innerText = appState.activeBrand.BrandName;
+                document.getElementById('bc-category-name').innerText = appState.activeCategory.CategoryName;
+                title.innerText = `${appState.activeCategory.CategoryName} ၏ Models`;
+                btnText.innerText = 'Model အသစ်ထည့်မည်';
+            }
+        }
+
+        // Navigation Controllers
+        function goToBrands() { appState.view = 'brands'; appState.activeBrand = null; appState.activeCategory = null; renderCurrentView(); }
+        function goToCategories() { appState.view = 'categories'; appState.activeCategory = null; renderCurrentView(); }
+        
+        function selectBrand(encodedBrand) {
+            appState.activeBrand = JSON.parse(decodeURIComponent(encodedBrand));
+            appState.view = 'categories';
+            renderCurrentView();
+        }
+
+        function selectCategory(encodedCat) {
+            appState.activeCategory = JSON.parse(decodeURIComponent(encodedCat));
+            appState.view = 'models';
+            renderCurrentView();
+        }
+
+        // Renders Grid of Brands
+        function renderBrands() {
+            const container = document.getElementById('catalogContent');
+            container.className = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6";
+            
+            if (appData.brands.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-10 text-slate-500 bg-white rounded-xl border border-dashed">Data မရှိသေးပါ။</div>`;
+                return;
+            }
+
+            container.innerHTML = appData.brands.map(b => {
+                const encodedData = encodeURIComponent(JSON.stringify(b));
+                const imgUrl = getDirectImageUrl(b.LogoURL) || 'https://placehold.co/400x300/f8fafc/94a3b8?text=No+Logo';
+                return `
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow group flex flex-col h-full cursor-pointer card-zoom" onclick="selectBrand('${encodedData}')">
+                    <div class="h-40 bg-white flex items-center justify-center p-4 border-b border-slate-100 overflow-hidden relative">
+                        <img src="${imgUrl}" class="max-h-full max-w-full object-contain z-10 relative">
+                        <!-- Blur backdrop for aesthetics -->
+                        <div class="absolute inset-0 bg-cover bg-center opacity-10 blur-xl" style="background-image: url('${imgUrl}')"></div>
+                    </div>
+                    <div class="p-4 flex flex-col flex-1 justify-between bg-slate-50">
+                        <h3 class="font-bold text-slate-800 text-lg mb-1 truncate">${b.BrandName}</h3>
+                        <div class="text-xs text-slate-500 mb-4 font-mono">${b.ID}</div>
+                        <div class="flex justify-between items-center mt-auto pt-3 border-t border-slate-200">
+                            <span class="text-sm text-primary font-medium group-hover:underline">Categories ကြည့်မည် &rarr;</span>
+                            <div class="flex gap-1">
+                                <button onclick="editBrand('${encodedData}', event)" class="text-blue-600 hover:bg-blue-100 p-2 rounded transition-colors"><i class="fas fa-edit"></i></button>
+                                <button onclick="deleteRecord('deleteBrand', '${b.ID}', event)" class="text-red-600 hover:bg-red-100 p-2 rounded transition-colors"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        // Renders Grid of Categories (Filtered by Active Brand)
+        function renderCategories() {
+            const container = document.getElementById('catalogContent');
+            container.className = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6";
+            
+            const filteredCats = appData.categories.filter(c => c.BrandID === appState.activeBrand.ID);
+            
+            if (filteredCats.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-10 text-slate-500 bg-white rounded-xl border border-dashed">ဤ Brand အောက်တွင် Category မရှိသေးပါ။</div>`;
+                return;
+            }
+
+            container.innerHTML = filteredCats.map(c => {
+                const encodedData = encodeURIComponent(JSON.stringify(c));
+                const imgUrl = getDirectImageUrl(c.ImageURL) || 'https://placehold.co/400x300/f8fafc/94a3b8?text=No+Image';
+                return `
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow group flex flex-col h-full cursor-pointer card-zoom" onclick="selectCategory('${encodedData}')">
+                    <div class="h-40 bg-slate-100 overflow-hidden">
+                        <img src="${imgUrl}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4 flex flex-col flex-1 justify-between">
+                        <h3 class="font-bold text-slate-800 text-lg mb-1 truncate">${c.CategoryName}</h3>
+                        <div class="text-xs text-slate-500 mb-4 font-mono">${c.ID}</div>
+                        <div class="flex justify-between items-center mt-auto pt-3 border-t border-slate-100">
+                            <span class="text-sm text-primary font-medium group-hover:underline">Models ကြည့်မည် &rarr;</span>
+                            <div class="flex gap-1">
+                                <button onclick="editCategory('${encodedData}', event)" class="text-blue-600 hover:bg-blue-50 p-2 rounded transition-colors"><i class="fas fa-edit"></i></button>
+                                <button onclick="deleteRecord('deleteCategory', '${c.ID}', event)" class="text-red-600 hover:bg-red-50 p-2 rounded transition-colors"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        // Renders List of Models (Filtered by Active Category)
+        function renderModels() {
+            const container = document.getElementById('catalogContent');
+            // Use table format for models as they don't have images
+            container.className = "bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden w-full";
+            
+            const filteredModels = appData.models.filter(m => m.CategoryID === appState.activeCategory.ID);
+            
+            if (filteredModels.length === 0) {
+                container.innerHTML = `<div class="text-center py-10 text-slate-500">ဤ Category အောက်တွင် Model မရှိသေးပါ။</div>`;
+                return;
+            }
+
+            let tableHTML = `
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 text-sm">
+                        <th class="p-4 font-semibold w-1/4">Model ID</th>
+                        <th class="p-4 font-semibold">Model Name</th>
+                        <th class="p-4 font-semibold text-right w-1/4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-sm">
+            `;
+            
+            tableHTML += filteredModels.map(m => {
+                const encodedData = encodeURIComponent(JSON.stringify(m));
+                return `
+                <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="p-4 font-mono text-xs text-slate-500">${m.ID}</td>
+                    <td class="p-4 font-bold text-slate-800">${m.ModelName}</td>
+                    <td class="p-4 text-right">
+                        <button onclick="editModel('${encodedData}')" class="text-blue-600 hover:bg-blue-100 p-2 rounded mr-2 transition-colors"><i class="fas fa-edit"></i></button>
+                        <button onclick="deleteRecord('deleteModel', '${m.ID}')" class="text-red-600 hover:bg-red-100 p-2 rounded transition-colors"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>`;
+            }).join('');
+            
+            tableHTML += `</tbody></table>`;
+            container.innerHTML = tableHTML;
+        }
+
+        function renderInquiries() {
+            const tbody = document.getElementById('inquiriesTableBody');
+            tbody.innerHTML = appData.inquiries.map(i => {
+                const d = new Date(i.Date);
+                const dateStr = d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                return `
+                <tr class="hover:bg-slate-50 transition-colors align-top">
+                    <td class="p-4 text-sm whitespace-nowrap">${dateStr}</td>
+                    <td class="p-4 font-bold text-primary">${i.ProductName || '-'}</td>
+                    <td class="p-4 font-medium">${i.CustomerName || '-'}</td>
+                    <td class="p-4 text-sm">
+                        <div><i class="fas fa-envelope text-slate-400 w-4"></i> <a href="mailto:${i.Email}" class="hover:underline">${i.Email || '-'}</a></div>
+                        <div class="mt-1"><i class="fas fa-phone text-slate-400 w-4"></i> <a href="tel:${i.Phone}" class="hover:underline">${i.Phone || '-'}</a></div>
+                    </td>
+                    <td class="p-4 text-sm max-w-xs truncate" title="${i.Message || ''}">${i.Message || '-'}</td>
+                    <td class="p-4 text-right">
+                        <button onclick="deleteRecord('deleteInquiry', '${i.Date}')" class="text-red-600 hover:bg-red-50 p-2 rounded transition-colors" title="Delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>`;
+            }).join('');
+        }
+
+        // ==========================================
+        //  MODALS & FORMS
+        // ==========================================
+        function openCurrentModal() {
+            if (appState.view === 'brands') {
+                openModal('brandModal');
+            } else if (appState.view === 'categories') {
+                document.getElementById('catActiveBrandText').innerText = appState.activeBrand.BrandName;
+                openModal('categoryModal');
+            } else if (appState.view === 'models') {
+                document.getElementById('modActiveCatText').innerText = appState.activeCategory.CategoryName;
+                openModal('modelModal');
+            }
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+            document.getElementById(modalId.replace('Modal', 'Form')).reset();
+            document.querySelectorAll('[id$="Preview"]').forEach(p => p.classList.add('hidden'));
+            ['brandEditId', 'categoryEditId', 'modelEditId'].forEach(id => {
+                if(document.getElementById(id)) document.getElementById(id).value = '';
+            });
+            document.getElementById(modalId + 'Title').innerText = 'အသစ်ထည့်မည်';
+        }
+
+        function closeModal(modalId) { document.getElementById(modalId).classList.add('hidden'); }
+
+        const fileToBase64 = (file) => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve({ base64: reader.result.split(',')[1], name: file.name, type: file.type });
+            reader.onerror = error => reject(error);
+        });
+        function generateId(prefix) { return prefix + '-' + Date.now(); }
+
+        // --- Brand Form ---
+        async function handleBrandSubmit(e) {
+            e.preventDefault();
+            const id = document.getElementById('brandEditId').value;
+            const fileInput = document.getElementById('brandLogo');
+            let data = { 
+                ID: id || generateId('BRD'), 
+                BrandName: document.getElementById('brandName').value, 
+                existingUrl: document.getElementById('brandExistingUrl').value 
+            };
+            toggleLoader(true, "Brand သိမ်းဆည်းနေပါသည်...");
+            try {
+                if (fileInput.files.length > 0) {
+                    const fileData = await fileToBase64(fileInput.files[0]);
+                    data.imageBase64 = fileData.base64; data.imageName = data.ID + '_' + fileData.name; data.imageMimeType = fileData.type;
+                }
+                await apiCall(id ? 'updateBrand' : 'addBrand', data);
+                closeModal('brandModal'); await fetchData();
+            } catch(e) {} finally { toggleLoader(false); }
+        }
+
+        function editBrand(encodedData, event) {
+            if(event) event.stopPropagation(); // Prevent card click
+            const b = JSON.parse(decodeURIComponent(encodedData));
+            openModal('brandModal');
+            document.getElementById('brandModalTitle').innerText = 'Brand ပြင်ဆင်မည်';
+            document.getElementById('brandEditId').value = b.ID;
+            document.getElementById('brandName').value = b.BrandName;
+            document.getElementById('brandExistingUrl').value = b.LogoURL || '';
+            if(b.LogoURL) {
+                const preview = document.getElementById('brandLogoPreview');
+                preview.classList.remove('hidden');
+                preview.querySelector('img').src = getDirectImageUrl(b.LogoURL);
+            }
+        }
+
+        // --- Category Form (Auto-uses activeBrand) ---
+        async function handleCategorySubmit(e) {
+            e.preventDefault();
+            const id = document.getElementById('categoryEditId').value;
+            const fileInput = document.getElementById('categoryImage');
+            
+            // Scalability logic: We automatically assign to the currently viewed Brand!
+            let data = { 
+                ID: id || generateId('CAT'), 
+                BrandID: appState.activeBrand.ID, 
+                CategoryName: document.getElementById('categoryName').value, 
+                existingUrl: document.getElementById('categoryExistingUrl').value 
+            };
+            toggleLoader(true, "Category သိမ်းဆည်းနေပါသည်...");
+            try {
+                if (fileInput.files.length > 0) {
+                    const fileData = await fileToBase64(fileInput.files[0]);
+                    data.imageBase64 = fileData.base64; data.imageName = data.ID + '_' + fileData.name; data.imageMimeType = fileData.type;
+                }
+                await apiCall(id ? 'updateCategory' : 'addCategory', data);
+                closeModal('categoryModal'); await fetchData();
+            } catch(e) {} finally { toggleLoader(false); }
+        }
+
+        function editCategory(encodedData, event) {
+            if(event) event.stopPropagation(); // Prevent card click
+            const c = JSON.parse(decodeURIComponent(encodedData));
+            
+            document.getElementById('catActiveBrandText').innerText = appState.activeBrand.BrandName;
+            openModal('categoryModal');
+            document.getElementById('categoryModalTitle').innerText = 'Category ပြင်ဆင်မည်';
+            document.getElementById('categoryEditId').value = c.ID;
+            document.getElementById('categoryName').value = c.CategoryName;
+            document.getElementById('categoryExistingUrl').value = c.ImageURL || '';
+            if(c.ImageURL) {
+                const preview = document.getElementById('categoryImagePreview');
+                preview.classList.remove('hidden');
+                preview.querySelector('img').src = getDirectImageUrl(c.ImageURL);
+            }
+        }
+
+        // --- Model Form (Auto-uses activeCategory) ---
+        async function handleModelSubmit(e) {
+            e.preventDefault();
+            const id = document.getElementById('modelEditId').value;
+            
+            // Automatically assign to the currently viewed Category!
+            let data = { 
+                ID: id || generateId('MDL'), 
+                CategoryID: appState.activeCategory.ID, 
+                ModelName: document.getElementById('modelName').value 
+            };
+            toggleLoader(true, "Model သိမ်းဆည်းနေပါသည်...");
+            try {
+                await apiCall(id ? 'updateModel' : 'addModel', data);
+                closeModal('modelModal'); await fetchData();
+            } catch(e) {} finally { toggleLoader(false); }
+        }
+
+        function editModel(encodedData) {
+            const m = JSON.parse(decodeURIComponent(encodedData));
+            
+            document.getElementById('modActiveCatText').innerText = appState.activeCategory.CategoryName;
+            openModal('modelModal');
+            document.getElementById('modelModalTitle').innerText = 'Model ပြင်ဆင်မည်';
+            document.getElementById('modelEditId').value = m.ID;
+            document.getElementById('modelName').value = m.ModelName;
+        }
+
+    </script>
+</body>
+</html>

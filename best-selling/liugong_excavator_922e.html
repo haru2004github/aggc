@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liugong 922E Excavator - AGGC</title>
+    
+    <!-- Modern Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../img/logo_head.png">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                        accent: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0b0430',
+                            gold: '#f1ad18'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; background-color: #f8fafc;}
+        
+        /* Glassmorphism Header */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        /* Premium Nav Link Hover Effect */
+        .nav-link-premium {
+            position: relative;
+        }
+        .nav-link-premium::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #f1ad18;
+            transition: width 0.3s ease;
+        }
+        .nav-link-premium:hover::after, .nav-link-premium.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col">
+
+    <!-- 1. Navigation Bar (Premium Glassmorphism Design) -->
+    <nav id="navbar" class="fixed w-full z-50 glass-header bg-white border-b border-slate-200/50 transition-all duration-500 shadow-sm">
+        <div class="relative w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20 transition-all duration-500" id="nav-container">
+                    
+                    <!-- Logo -->
+                    <a href="../index.html" class="flex items-center cursor-pointer group hover:opacity-90 transition-opacity">
+                        <img src="../img/logo.png" class="w-40" alt="AGGC Logo">
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden lg:flex h-full items-center space-x-7 xl:space-x-9">
+                        <a href="../index.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Home</a>
+                        <a href="../about.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">About</a>
+                        <a href="../products.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Products</a>
+                        <a href="../services.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Services</a>
+                        <a href="../activites.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Activities</a>
+                        <a href="../careers.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Careers</a>
+                        
+                        <!-- CTA Button -->
+                        <div class="flex items-center pl-3">
+                            <a href="../index.html#contact" class="bg-brand-navy text-white px-7 py-3 text-[12px] font-heading font-bold uppercase tracking-[0.15em] hover:bg-brand-gold hover:text-brand-navy transition-all duration-300 rounded shadow-[0_4px_14px_0_rgba(11,4,48,0.39)] hover:shadow-[0_6px_20px_rgba(241,173,24,0.4)] hover:-translate-y-0.5">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="lg:hidden flex items-center">
+                        <button id="mobileMenuBtn" class="text-brand-navy p-2 hover:bg-slate-100 transition-colors focus:outline-none rounded-md">
+                            <i id="menuIcon" class="fa-solid fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white shadow-2xl flex flex-col border-t border-slate-100 z-50">
+            <div class="px-6 py-4 flex flex-col">
+                <a href="../index.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Home</a>
+                <a href="../about.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">About</a>
+                <a href="../products.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Products</a>
+                <a href="../services.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Services</a>
+                <a href="../activites.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Activities</a>
+                <a href="../careers.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Careers</a>
+                
+                <a href="../index.html#contact" class="mobile-link mt-6 mb-4 bg-brand-navy text-white w-full py-4 font-heading font-bold text-center uppercase tracking-[0.2em] text-[13px] rounded shadow-md">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-28 pb-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            
+            <!-- Breadcrumbs -->
+            <div class="flex items-center gap-2 text-[13px] text-slate-400 font-medium mb-6">
+                <a href="../index.html" class="hover:text-brand-gold transition-colors">Home</a>
+                <span class="text-slate-300">/</span>
+                <a href="../best_selling.html" class="hover:text-brand-gold transition-colors">Best Selling Items</a>
+                <span class="text-slate-300">/</span>
+                <span class="text-slate-600 font-semibold">Liugong 922E Excavator</span>
+            </div>
+
+            <!-- Page Header -->
+            <div class="flex items-center justify-center gap-3 mb-10">
+                <i class="fa-solid fa-play text-brand-gold text-sm sm:text-base rotate-180"></i>
+                <h2 class="font-heading text-xl sm:text-2xl md:text-3xl font-black text-brand-navy tracking-wider uppercase text-center">LIUGONG 922E EXCAVATOR</h2>
+                <i class="fa-solid fa-play text-brand-gold text-sm sm:text-base"></i>
+            </div>
+
+            <!-- Specs Section -->
+            <div class="bg-white rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(11,4,48,0.03)] p-6 sm:p-10 mb-12">
+                <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed mb-6">
+                    ပွင့်လင်းရာသီလဲ ရောက်လာပြီဆိုတော့ မကြာခင်လုပ်ငန်းခွင်ဝင်မယ့် Customers များအတွက် ရွေးချယ်နိုင်စွမ်း အကြိုက်စီ လမ်းတံတား ဆောက်လုပ်ရေး လုပ်ငန်းခွင်များအပြင် ကွန်ကရစ်လမ်းခင်းလုပ်ငန်း လုပ်ဆောင်ရန် အဆင်သင့်ရှိသည့် Excavator LiuGong 922E ဖြစ်ပါတယ်။
+                </p>
+                <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed mb-6 italic border-l-4 border-brand-gold pl-4 bg-slate-50/50 py-3 rounded-r-xl">
+                    LG စက်များ၏ ဒီဇိုင်းပညာရှင် Executive Director Mr.Gary Major က "LG စက်များ၏ဒီဇိုင်းများပြုလုပ်ရာတွင် အဓိကတန်ဖိုးထားရမှာရှိပြီး ၎င်းထဲမှ အဓိကတန်ဖိုးတစ်ခုသည် မောင်းနှင်သူ operator ကို ပရမဦးစားပေးဖြစ်သည်ဟု စက်၏လှုပ်ရှားမှုများသည် operator ၏စွမ်းအား အရှိဆုံးအသုံးပြုမှုဆီသို့ ထိရောက်မှုရှိရန် စိတ်ပတ်ဝန်းကျင်ရှိ အချက်ပြမှုများကို စိတ်ကြိုက်ဖြစ်စေရန်" ပြောကြားခဲ့ပါသည်။
+                </p>
+                <p class="text-[#2c7a7b] font-heading font-bold text-[14px] sm:text-[15px] leading-relaxed mb-8">
+                    တန်ဖိုးကြီးမားသော စက်ယန္တရားများထဲတွင် အသုံးပြုရလွယ်ကူတယ် အလွယ်တကူထိန်းသိမ်းပြုပြင်နိုင်တယ် ပိုင်ဆိုင်နိုင်ဖို့လွယ်ကူတယ် ဆီစားနှုန်းသက်သာပြီး လုပ်ငန်းခွင်၌ မြန်ဆန်စွာ အချက်ကျကျလုပ်ဆောင်နိုင်သော Liugong 922E excavator များသည် ဆောက်လုပ်ရေးလုပ်ငန်းခွင်၏ မိတ်ဖက်ကောင်း လိုက်ဖက်ပါတယ်။
+                </p>
+                
+                <!-- Bullet list with Checkmarks -->
+                <ul class="space-y-5">
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0">
+                            <i class="fa-solid fa-check text-[11px]"></i>
+                        </div>
+                        <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+                            operator တစ်ယောက်အတွက် စက်အားအလွယ်တကူ ထိန်းချုပ်နိုင်သော ခလုတ်များကွန်ရက်ခွဲများထည့်သွင်းပေးထားပြီး သက်တောင့်သက်သာရှိပြီး မြင်ကွင်းကျယ်လမ်းမှ ရာသီဥတုဒဏ် ခံရခြင်းအကာအကွယ်ပါဝင်သည့် ROPS စက်မောင်းခန်း။
+                        </p>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0">
+                            <i class="fa-solid fa-check text-[11px]"></i>
+                        </div>
+                        <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+                            အလုပ်ပြီးမြောက်မှုမြန်ဆန်ရန် ဘက်ကက်ကို breakout force သည် စက်မှလုပ်ဆောင်နိုင်စွမ်း ထက်ဝက်ခန့်သန်သော်လည်း 4.7% သာလျော့၍ ကောင်းမွန်သည်။ (breakout force ကောင်းစေရန် hydraulic cylinder, system pressure, linkage နှင့် relief valve များကို အချိုးကျထည့်သွင်းပြုလုပ်ထားသည်။)
+                        </p>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0">
+                            <i class="fa-solid fa-check text-[11px]"></i>
+                        </div>
+                        <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+                            မြေဖြိုကျင်းဖို့ပိုမိုကောင်းမွန်၍ တူးဆွနိုင်အားအဆင်သင့်ဖြစ်စေရန် စက်မောင်းခန်းဘေးတံခါး 2.76m ရှိသည့် အပေါ်ပိုင်းကိုယ်ထည်အလွယ်တကူ လှည့်လည်နိုင်ရန် အထိုင်ဗဟိုကို နေရာချထားသည်။
+                        </p>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0">
+                            <i class="fa-solid fa-check text-[11px]"></i>
+                        </div>
+                        <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+                            အော်တိုစက်နှုန်းခမ်းအားဖြင့် power boost function သည် စက်၏ performance ကောင်းမွန်စေရန် operator လိုအပ်ပါက hydraulic စွမ်းအားကို 8.7% အထိတိုးမြှင့်ပေးနိုင်သည်။
+                        </p>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0">
+                            <i class="fa-solid fa-check text-[11px]"></i>
+                        </div>
+                        <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+                            Boom intelligent hydraulic system တွင် regeneration valve နှင့် flow confluence ပါဝင်သော ၎င်းသည် ၎င်းအလုပ်လုပ်ရာတွင် hydraulic စွမ်းအားကို အထိရောက်ဆုံးအသုံးပြုစေပြီး work cycle ပိုမိုမြန်ဆန်စေသည်။
+                        </p>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0">
+                            <i class="fa-solid fa-check text-[11px]"></i>
+                        </div>
+                        <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+                            922E တွင် ကမ္ဘာ့အဆင့်မီ world class component ဖြစ်သည့် Cummins QSB6.7 electronic engine ကိုအသုံးပြုထားပြီး High output torque ရပြီး အသံဆူညံမှုလျော့နည်းသည်။
+                        </p>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0">
+                            <i class="fa-solid fa-check text-[11px]"></i>
+                        </div>
+                        <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+                            နာရီအလိုက်စက်ပိုင်းထိန်းသိမ်းမှု လုပ်ငန်းစဉ်သည် စက်အတွင်းအစိတ်ပိုင်းများကို အလွယ်တကူ ကြည့်ရှုစစ်ဆေး လဲလှယ်နိုင်ရန် အဖွင့်အပိတ်အဆင်ပြေစေရန် ပြုလုပ်ထားသည်။ စက်မောင်းလမ်းသုံးသတ်မှတ်ချက်ထက် 14% သာလျော့သော အမြင့်ဆုံးဗုန်းစွမ်းအားပါဝင်မှုကြောင့် ရုန်းအားကောင်းမွန်ပြီး အလုပ်အမြန်ပြီးမြောက်စေသည်။
+                        </p>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0">
+                            <i class="fa-solid fa-check text-[11px]"></i>
+                        </div>
+                        <p class="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed font-bold text-brand-navy">
+                            ဖော်ပြပါအချက်များကြောင့် 922E excavator ရဲ့အားသာချက်များကို ဂုဏ်ယူစွာတင်ပြခြင်းဖြစ်ပြီး ပိုမိုသာလွန်သော 922E series excavator များကို AGGC တွင် ဝယ်ယူရရှိနိုင်ပါပြီ။
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Image Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="relative h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-100 group">
+                    <img src="../img/best_selling_items/liugong_922E.jpg" alt="Liugong 922E Excavator Detail 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="relative h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-100 group">
+                    <img src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?q=80&w=600&auto=format&fit=crop" alt="Liugong 922E Excavator Detail 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="relative h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-100 group">
+                    <img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?q=80&w=600&auto=format&fit=crop" alt="Liugong 922E Excavator Detail 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="relative h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-100 group">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop" alt="Liugong 922E Excavator Detail 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="relative h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-100 group">
+                    <img src="../img/best_selling_items/liugong_922E.jpg" alt="Liugong 922E Excavator Detail 5" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="relative h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-100 group">
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=600&auto=format&fit=crop" alt="Liugong 922E Excavator Detail 6" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-400 text-xs font-medium">
+            <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- NAVIGATION & MOBILE MENU SCRIPT -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        const navContainer = document.getElementById('nav-container');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md'); 
+                navbar.classList.remove('shadow-sm');
+                navContainer.classList.remove('h-20'); 
+                navContainer.classList.add('h-16');
+            } else {
+                navbar.classList.remove('shadow-md'); 
+                navbar.classList.add('shadow-sm');
+                navContainer.classList.add('h-20'); 
+                navContainer.classList.remove('h-16');
+            }
+        });
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark'); 
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars'); 
+                menuIcon.classList.add('fa-xmark');
+            }
+        }
+        
+        if(mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+        }
+        
+        mobileLinks.forEach(link => link.addEventListener('click', () => { 
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMenu(); 
+        }));
+    </script>
+</body>
+</html>

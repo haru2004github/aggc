@@ -1,0 +1,18 @@
+/* Premium Nav Link Hover Effect */
+        .nav-link-premium {
+            position: relative;
+        }
+        .nav-link-premium::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #f1ad18; /* brand gold */
+            transition: width 0.3s ease;
+        }
+        .nav-link-premium:hover::after, .nav-link-premium.active::after {
+            width: 100%;
+        }
