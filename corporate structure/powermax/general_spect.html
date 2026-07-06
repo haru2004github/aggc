@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Specifications - Powermax Industries</title>
+
+    <!-- Modern Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../img/logo_head.png">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0b0430',
+                            gold: '#f1ad18',
+                            darkGrey: '#22252a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Header */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Premium Nav Link Hover Effect */
+        .nav-link-premium {
+            position: relative;
+        }
+
+        .nav-link-premium::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #f1ad18;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link-premium:hover::after,
+        .nav-link-premium.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Navigation Bar (Premium Glassmorphism Design) -->
+    <nav id="navbar" class="fixed w-full z-50 glass-header bg-white border-b border-slate-200/50 shadow-sm">
+        <div class="relative w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div id="nav-container" class="flex justify-between items-center h-20 transition-all duration-300">
+                    <!-- Brand Logo -->
+                    <a href="../../index.html" class="flex items-center gap-3">
+                        <img src="../../img/logo.png" class="w-40" alt="AGGC Logo">
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden lg:flex h-full items-center space-x-7 xl:space-x-9">
+                        <a href="../../index.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Home</a>
+                        <a href="../../about.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">About</a>
+                        <a href="../../products.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Products</a>
+                        <a href="../../services.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Services</a>
+                        <a href="../../activites.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Activities</a>
+                        <a href="../../careers.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Careers</a>
+                        <a href="../../news.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">News</a>
+
+                        <!-- CTA Button -->
+                        <div class="flex items-center pl-3">
+                            <a href="../../contact.html" class="bg-brand-navy text-white px-7 py-3 text-[12px] font-heading font-bold uppercase tracking-[0.15em] hover:bg-brand-gold hover:text-brand-navy transition-all duration-300 rounded shadow-md">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="lg:hidden flex items-center">
+                        <button id="mobileMenuBtn" class="text-brand-navy p-2 hover:bg-slate-100 transition-colors focus:outline-none rounded-md">
+                            <i id="menuIcon" class="fa-solid fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white shadow-2xl flex flex-col border-t border-slate-100 z-50">
+            <div class="px-6 py-4 flex flex-col">
+                <a href="../../index.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Home</a>
+                <a href="../../about.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">About</a>
+                <a href="../../products.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Products</a>
+                <a href="../../services.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Services</a>
+                <a href="../../activites.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Activities</a>
+                <a href="../../careers.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Careers</a>
+                <a href="../../news.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">News</a>
+                <a href="../../contact.html" class="mobile-link mt-6 mb-4 bg-brand-navy text-white w-full py-4 font-heading font-bold text-center uppercase tracking-[0.2em] text-[13px] rounded shadow-md">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-brand-navy pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 16px 16px;"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center gap-2 mb-5">
+                <a href="Powermax.html" class="text-brand-gold hover:text-white transition-colors text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Powermax
+                </a>
+            </div>
+
+            <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight uppercase tracking-tight">
+                General <span class="text-brand-gold">Specifications</span>
+            </h1>
+            <p class="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto mt-4 leading-relaxed font-light">
+                Specifications overview for Powermax Generator Series.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Image specs container -->
+    <main class="flex-grow w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+
+        <!-- Stamford Cummins specs -->
+        <div class="bg-white border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col items-center">
+            <img src="img/spect/stamford-logo.jpg" alt="Cummins Stamford Brand Logo" class="max-w-xs w-full h-auto object-contain mb-8">
+            <img src="img/spect/stamford-table.jpg" alt="Cummins Stamford Specifications Table" class="w-full h-auto object-contain rounded-xl shadow-inner border border-slate-100">
+        </div>
+
+        <!-- Volvo specs -->
+        <div class="bg-white border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col items-center">
+            <img src="img/spect/volvo-logo.jpg" alt="Volvo Penta Stamford Logo" class="max-w-xs w-full h-auto object-contain mb-8">
+            <img src="img/spect/volvo-table.jpg" alt="Volvo Stamford Specifications Table" class="w-full h-auto object-contain rounded-xl shadow-inner border border-slate-100">
+        </div>
+
+        <!-- Dimensions schema specs -->
+        <div class="bg-white border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col items-center">
+            <img src="img/spect/general-spec.jpg" alt="Generator dimensions and outline diagrams" class="w-full h-auto object-contain rounded-xl shadow-inner border border-slate-100">
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-navy text-white pt-12 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <img src="../../img/logo.png" class="w-36 mx-auto mb-6 opacity-80" alt="AGGC Logo">
+            <p class="text-xs text-slate-400 font-light">&copy; 2026 Aung Gyi Group of Companies (AGGC). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        const navContainer = document.getElementById('nav-container');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('shadow-sm');
+                navContainer.classList.remove('h-20');
+                navContainer.classList.add('h-16');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('shadow-sm');
+                navContainer.classList.add('h-20');
+                navContainer.classList.remove('h-16');
+            }
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        }
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        mobileLinks.forEach(link => link.addEventListener('click', () => {
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMenu();
+        }));
+    </script>
+</body>
+
+</html>

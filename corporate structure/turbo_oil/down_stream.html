@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Down Stream Services - Turbo Oil Corporation</title>
+
+    <!-- Modern Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../img/logo_head.png">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0b0430',
+                            gold: '#f1ad18',
+                            darkGrey: '#22252a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Header */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Premium Nav Link Hover Effect */
+        .nav-link-premium {
+            position: relative;
+        }
+
+        .nav-link-premium::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #f1ad18;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link-premium:hover::after,
+        .nav-link-premium.active::after {
+            width: 100%;
+        }
+
+        /* Subtle Glow Animation */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.15; transform: scale(1); }
+            50% { opacity: 0.25; transform: scale(1.05); }
+        }
+        .animate-pulse-glow {
+            animation: pulseGlow 6s infinite ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-[#07031a] text-slate-100 min-h-screen flex flex-col selection:bg-brand-gold selection:text-brand-navy">
+
+    <!-- Navigation Bar (Premium Glassmorphism Design) -->
+    <nav id="navbar" class="fixed w-full z-50 glass-header bg-white border-b border-slate-200/50 shadow-sm">
+        <div class="relative w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div id="nav-container" class="flex justify-between items-center h-20 transition-all duration-300">
+                    <!-- Brand Logo -->
+                    <a href="../../index.html" class="flex items-center gap-3">
+                        <img src="../../img/logo.png" class="w-40" alt="AGGC Logo">
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden lg:flex h-full items-center space-x-7 xl:space-x-9">
+                        <a href="../../index.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Home</a>
+                        <a href="../../about.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">About</a>
+                        <a href="../../products.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Products</a>
+                        <a href="../../services.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Services</a>
+                        <a href="../../activites.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Activities</a>
+                        <a href="../../careers.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Careers</a>
+                        <a href="../../news.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">News</a>
+
+                        <!-- CTA Button -->
+                        <div class="flex items-center pl-3">
+                            <a href="../../contact.html" class="bg-brand-navy text-white px-7 py-3 text-[12px] font-heading font-bold uppercase tracking-[0.15em] hover:bg-brand-gold hover:text-brand-navy transition-all duration-300 rounded shadow-md">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="lg:hidden flex items-center">
+                        <button id="mobileMenuBtn" class="text-brand-navy p-2 hover:bg-slate-100 transition-colors focus:outline-none rounded-md">
+                            <i id="menuIcon" class="fa-solid fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white shadow-2xl flex flex-col border-t border-slate-100 z-50">
+            <div class="px-6 py-4 flex flex-col">
+                <a href="../../index.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Home</a>
+                <a href="../../about.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">About</a>
+                <a href="../../products.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Products</a>
+                <a href="../../services.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Services</a>
+                <a href="../../activites.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Activities</a>
+                <a href="../../careers.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Careers</a>
+                <a href="../../news.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">News</a>
+                <a href="../../contact.html" class="mobile-link mt-6 mb-4 bg-brand-navy text-white w-full py-4 font-heading font-bold text-center uppercase tracking-[0.2em] text-[13px] rounded shadow-md">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-brand-navy pt-32 pb-16 sm:pt-36 sm:pb-20 overflow-hidden text-center border-b border-white/10">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#f1ad18 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-gold/15 rounded-full blur-[120px] pointer-events-none animate-pulse-glow"></div>
+        
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center gap-2 mb-5">
+                <a href="Turbo_Oil.html" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-brand-gold text-xs font-bold uppercase tracking-widest transition-all duration-300">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Turbo Oil Division
+                </a>
+            </div>
+            <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight uppercase tracking-tight">
+                Down<span class="text-brand-gold">stream</span> Products
+            </h1>
+            <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mt-4 font-light">
+                Refining, processing, and distributing high-grade petroleum, LPG, LNG, commercial fuels, and advanced petrochemicals.
+            </p>
+            <div class="w-16 h-[3px] bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto mt-6"></div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid (Ultra-Premium Dark Luxury Executive Cards) -->
+    <main class="flex-grow max-w-6xl mx-auto px-6 lg:px-8 py-14 sm:py-20 space-y-12 sm:space-y-16">
+
+        <!-- Card 1: Petroleum Products -->
+        <div class="bg-gradient-to-br from-[#0e0730] via-[#0b0426] to-[#070217] rounded-[2.5rem] p-6 sm:p-10 border border-white/10 hover:border-brand-gold/50 shadow-2xl hover:shadow-brand-gold/10 transition-all duration-500 relative overflow-hidden group">
+            <span class="absolute -right-2 -top-6 text-8xl sm:text-9xl font-black text-white/[0.03] select-none pointer-events-none group-hover:text-brand-gold/[0.07] transition-colors duration-500 font-heading">01</span>
+            <div class="absolute -left-20 -bottom-20 w-72 h-72 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none group-hover:bg-brand-gold/20 transition-all duration-500"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+                <div class="lg:col-span-6">
+                    <div class="w-full aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 border border-white/15 relative shadow-2xl group-hover:border-brand-gold/40 transition-all duration-500">
+                        <img src="img/petroleum-product.jpg" alt="Petroleum Products" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0e0730]/90 sm:from-transparent via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-brand-gold text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 shadow-lg">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span> Refined Fuels
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 space-y-4">
+                    <span class="inline-block text-brand-gold font-heading font-extrabold text-xs uppercase tracking-[0.2em]">01 / Gasoline & Diesel</span>
+                    <h3 class="font-heading font-black text-2xl sm:text-3xl text-white group-hover:text-brand-gold transition-colors duration-300 uppercase tracking-tight">Petroleum Products</h3>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
+                        Turbo Oil Corporation provides high-grade gasoline and diesel products engineered for superior efficiency and cleanliness:
+                    </p>
+                    <div class="bg-white/5 backdrop-blur-sm p-5 rounded-2xl border border-white/10 mt-4">
+                        <h4 class="font-heading font-bold text-xs text-brand-gold uppercase tracking-widest mb-3 flex items-center gap-2"><i class="fa-solid fa-gas-pump"></i> Available Gasoline Types</h4>
+                        <ul class="text-slate-300 text-xs sm:text-sm space-y-2 font-light">
+                            <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span> Automotive gasoline</li>
+                            <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span> Automotive ethanol gasoline</li>
+                        </ul>
+                    </div>
+                    <div class="pt-2">
+                        <a href="../../contact.html" class="inline-flex items-center gap-3 px-7 py-3.5 rounded-xl bg-gradient-to-r from-brand-gold via-[#f5c042] to-brand-gold text-brand-navy font-heading font-extrabold text-xs uppercase tracking-widest shadow-lg shadow-brand-gold/20 hover:shadow-brand-gold/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                            <span>Inquire About Petroleum</span> <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: Liquid Petroleum Gas (LPG) -->
+        <div class="bg-gradient-to-br from-[#0e0730] via-[#0b0426] to-[#070217] rounded-[2.5rem] p-6 sm:p-10 border border-white/10 hover:border-brand-gold/50 shadow-2xl hover:shadow-brand-gold/10 transition-all duration-500 relative overflow-hidden group">
+            <span class="absolute -left-2 -top-6 text-8xl sm:text-9xl font-black text-white/[0.03] select-none pointer-events-none group-hover:text-brand-gold/[0.07] transition-colors duration-500 font-heading">02</span>
+            <div class="absolute -right-20 -bottom-20 w-72 h-72 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none group-hover:bg-brand-gold/20 transition-all duration-500"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+                <div class="lg:col-span-6 lg:order-2">
+                    <div class="w-full aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 border border-white/15 relative shadow-2xl group-hover:border-brand-gold/40 transition-all duration-500">
+                        <img src="img/LPG-480x480.jpg" alt="Liquid Petroleum Gas (LPG)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0e0730]/90 sm:from-transparent via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-brand-gold text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 shadow-lg">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span> Liquefied Gas
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 lg:order-1 space-y-4">
+                    <span class="inline-block text-brand-gold font-heading font-extrabold text-xs uppercase tracking-[0.2em]">02 / Clean Storage & Transit</span>
+                    <h3 class="font-heading font-black text-2xl sm:text-3xl text-white group-hover:text-brand-gold transition-colors duration-300 uppercase tracking-tight">Liquid Petroleum Gas (LPG)</h3>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
+                        Liquefied petroleum gas (LPG) is one of our premier petrochemical products, referring to petroleum gas that can be liquefied, stored, and transported in the liquid phase under appropriate ambient temperature and pressure for optimal efficiency.
+                    </p>
+                    <div class="pt-2">
+                        <a href="../../contact.html" class="inline-flex items-center gap-3 px-7 py-3.5 rounded-xl bg-gradient-to-r from-brand-gold via-[#f5c042] to-brand-gold text-brand-navy font-heading font-extrabold text-xs uppercase tracking-widest shadow-lg shadow-brand-gold/20 hover:shadow-brand-gold/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                            <span>Order LPG Supply</span> <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: Liquefied Natural Gas (LNG) -->
+        <div class="bg-gradient-to-br from-[#0e0730] via-[#0b0426] to-[#070217] rounded-[2.5rem] p-6 sm:p-10 border border-white/10 hover:border-brand-gold/50 shadow-2xl hover:shadow-brand-gold/10 transition-all duration-500 relative overflow-hidden group">
+            <span class="absolute -right-2 -top-6 text-8xl sm:text-9xl font-black text-white/[0.03] select-none pointer-events-none group-hover:text-brand-gold/[0.07] transition-colors duration-500 font-heading">03</span>
+            <div class="absolute -left-20 -bottom-20 w-72 h-72 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none group-hover:bg-brand-gold/20 transition-all duration-500"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+                <div class="lg:col-span-6">
+                    <div class="w-full aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 border border-white/15 relative shadow-2xl group-hover:border-brand-gold/40 transition-all duration-500">
+                        <img src="img/LNG-480x277.jpg" alt="Liquefied Natural Gas (LNG)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0e0730]/90 sm:from-transparent via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-brand-gold text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 shadow-lg">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span> Energy Transition
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 space-y-4">
+                    <span class="inline-block text-brand-gold font-heading font-extrabold text-xs uppercase tracking-[0.2em]">03 / Sustainable Gas</span>
+                    <h3 class="font-heading font-black text-2xl sm:text-3xl text-white group-hover:text-brand-gold transition-colors duration-300 uppercase tracking-tight">Liquefied Natural Gas (LNG)</h3>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
+                        Natural gas has an important role to play in the energy transition now and for decades to come, alongside other energy sources and technologies. We recognize that gas markets are region specific, and through our respective business we ensure clean and efficient supply.
+                    </p>
+                    <div class="pt-2">
+                        <a href="../../contact.html" class="inline-flex items-center gap-3 px-7 py-3.5 rounded-xl bg-gradient-to-r from-brand-gold via-[#f5c042] to-brand-gold text-brand-navy font-heading font-extrabold text-xs uppercase tracking-widest shadow-lg shadow-brand-gold/20 hover:shadow-brand-gold/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                            <span>Explore LNG Solutions</span> <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4: Fuel -->
+        <div class="bg-gradient-to-br from-[#0e0730] via-[#0b0426] to-[#070217] rounded-[2.5rem] p-6 sm:p-10 border border-white/10 hover:border-brand-gold/50 shadow-2xl hover:shadow-brand-gold/10 transition-all duration-500 relative overflow-hidden group">
+            <span class="absolute -left-2 -top-6 text-8xl sm:text-9xl font-black text-white/[0.03] select-none pointer-events-none group-hover:text-brand-gold/[0.07] transition-colors duration-500 font-heading">04</span>
+            <div class="absolute -right-20 -bottom-20 w-72 h-72 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none group-hover:bg-brand-gold/20 transition-all duration-500"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+                <div class="lg:col-span-6 lg:order-2">
+                    <div class="w-full aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 border border-white/15 relative shadow-2xl group-hover:border-brand-gold/40 transition-all duration-500">
+                        <img src="img/fuel-480x320.jpg" alt="Fuel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0e0730]/90 sm:from-transparent via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-brand-gold text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 shadow-lg">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span> Commercial Fuel
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 lg:order-1 space-y-4">
+                    <span class="inline-block text-brand-gold font-heading font-extrabold text-xs uppercase tracking-[0.2em]">04 / Fleet Supply</span>
+                    <h3 class="font-heading font-black text-2xl sm:text-3xl text-white group-hover:text-brand-gold transition-colors duration-300 uppercase tracking-tight">Commercial Fuel</h3>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
+                        We supply two main types of high-performance commercial fuel tailored for large-scale enterprise operations:
+                    </p>
+                    <div class="bg-white/5 backdrop-blur-sm p-5 rounded-2xl border border-white/10 mt-4">
+                        <span class="font-heading font-bold text-xs text-brand-gold block mb-2 uppercase tracking-widest flex items-center gap-2"><i class="fa-solid fa-fire-flame-simple"></i> Gasoline (91, 95 and 98 Octane)</span>
+                        <p class="text-slate-300 text-xs sm:text-sm font-light leading-relaxed">
+                            Engineered specifically for commercial and government sector fleets, ministries, transport corporations, and industrial applications.
+                        </p>
+                    </div>
+                    <div class="pt-2">
+                        <a href="../../contact.html" class="inline-flex items-center gap-3 px-7 py-3.5 rounded-xl bg-gradient-to-r from-brand-gold via-[#f5c042] to-brand-gold text-brand-navy font-heading font-extrabold text-xs uppercase tracking-widest shadow-lg shadow-brand-gold/20 hover:shadow-brand-gold/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                            <span>Request Fuel Delivery</span> <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5: Petrochemicals -->
+        <div class="bg-gradient-to-br from-[#0e0730] via-[#0b0426] to-[#070217] rounded-[2.5rem] p-6 sm:p-10 border border-white/10 hover:border-brand-gold/50 shadow-2xl hover:shadow-brand-gold/10 transition-all duration-500 relative overflow-hidden group">
+            <span class="absolute -right-2 -top-6 text-8xl sm:text-9xl font-black text-white/[0.03] select-none pointer-events-none group-hover:text-brand-gold/[0.07] transition-colors duration-500 font-heading">05</span>
+            <div class="absolute -left-20 -bottom-20 w-72 h-72 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none group-hover:bg-brand-gold/20 transition-all duration-500"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+                <div class="lg:col-span-6">
+                    <div class="w-full aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 border border-white/15 relative shadow-2xl group-hover:border-brand-gold/40 transition-all duration-500">
+                        <img src="img/petrol-chemical-480x480.jpg" alt="Petrochemicals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0e0730]/90 sm:from-transparent via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-brand-gold text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 shadow-lg">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span> Chemical Engineering
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 space-y-4">
+                    <span class="inline-block text-brand-gold font-heading font-extrabold text-xs uppercase tracking-[0.2em]">05 / Innovation & Synthesis</span>
+                    <h3 class="font-heading font-black text-2xl sm:text-3xl text-white group-hover:text-brand-gold transition-colors duration-300 uppercase tracking-tight">Petrochemicals</h3>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
+                        The oil and gas industry is constantly innovating and evolving to meet the challenges of the modern world while addressing concerns about sustainability and environmental impact. Discover how this growing industry is adopting eco-friendly solutions as it continues to provide long-term value to consumers.
+                    </p>
+                    <div class="pt-2">
+                        <a href="../../contact.html" class="inline-flex items-center gap-3 px-7 py-3.5 rounded-xl bg-gradient-to-r from-brand-gold via-[#f5c042] to-brand-gold text-brand-navy font-heading font-extrabold text-xs uppercase tracking-widest shadow-lg shadow-brand-gold/20 hover:shadow-brand-gold/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                            <span>Inquire About Chemicals</span> <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#050212] text-white pt-12 pb-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <img src="../../img/logo.png" class="w-36 mx-auto mb-6 opacity-80" alt="AGGC Logo">
+            <p class="text-xs text-slate-400 font-light">&copy; 2026 Aung Gyi Group of Companies (AGGC). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        const navContainer = document.getElementById('nav-container');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('shadow-sm');
+                navContainer.classList.remove('h-20');
+                navContainer.classList.add('h-16');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('shadow-sm');
+                navContainer.classList.add('h-20');
+                navContainer.classList.remove('h-16');
+            }
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        }
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        mobileLinks.forEach(link => link.addEventListener('click', () => {
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMenu();
+        }));
+    </script>
+</body>
+
+</html>

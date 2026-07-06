@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Powermax Industries - AGGC</title>
+
+    <!-- Modern Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../img/logo_head.png">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0b0430',
+                            gold: '#f1ad18',
+                            darkGrey: '#22252a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Header */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Premium Nav Link Hover Effect */
+        .nav-link-premium {
+            position: relative;
+        }
+
+        .nav-link-premium::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #f1ad18;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link-premium:hover::after,
+        .nav-link-premium.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Navigation Bar (Premium Glassmorphism Design) -->
+    <nav id="navbar" class="fixed w-full z-50 glass-header bg-white border-b border-slate-200/50 shadow-sm">
+        <div class="relative w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div id="nav-container" class="flex justify-between items-center h-20 transition-all duration-300">
+                    <!-- Brand Logo -->
+                    <a href="../../index.html" class="flex items-center gap-3">
+                        <img src="../../img/logo.png" class="w-40" alt="AGGC Logo">
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden lg:flex h-full items-center space-x-7 xl:space-x-9">
+                        <a href="../../index.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Home</a>
+                        <a href="../../about.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">About</a>
+                        <a href="../../products.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Products</a>
+                        <a href="../../services.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Services</a>
+                        <a href="../../activites.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Activities</a>
+                        <a href="../../careers.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Careers</a>
+                        <a href="../../news.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">News</a>
+
+                        <!-- CTA Button -->
+                        <div class="flex items-center pl-3">
+                            <a href="../../contact.html" class="bg-brand-navy text-white px-7 py-3 text-[12px] font-heading font-bold uppercase tracking-[0.15em] hover:bg-brand-gold hover:text-brand-navy transition-all duration-300 rounded shadow-md">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="lg:hidden flex items-center">
+                        <button id="mobileMenuBtn" class="text-brand-navy p-2 hover:bg-slate-100 transition-colors focus:outline-none rounded-md">
+                            <i id="menuIcon" class="fa-solid fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white shadow-2xl flex flex-col border-t border-slate-100 z-50">
+            <div class="px-6 py-4 flex flex-col">
+                <a href="../../index.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Home</a>
+                <a href="../../about.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">About</a>
+                <a href="../../products.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Products</a>
+                <a href="../../services.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Services</a>
+                <a href="../../activites.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Activities</a>
+                <a href="../../careers.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Careers</a>
+                <a href="../../news.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">News</a>
+                <a href="../../contact.html" class="mobile-link mt-6 mb-4 bg-brand-navy text-white w-full py-4 font-heading font-bold text-center uppercase tracking-[0.2em] text-[13px] rounded shadow-md">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-brand-navy pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 16px 16px;"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center gap-2 mb-5">
+                <div class="w-2.5 h-5 bg-brand-gold transform -skew-x-12"></div>
+                <span class="text-white font-heading font-black text-[11px] sm:text-xs uppercase tracking-[0.25em]">AGGC Energy Division</span>
+                <div class="w-2.5 h-5 bg-brand-gold transform -skew-x-12"></div>
+            </div>
+
+            <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight uppercase tracking-tight">
+                Powermax <span class="text-brand-gold">Industries</span>
+            </h1>
+            <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mt-5 leading-relaxed font-light">
+                Professional manufacturer of diesel generators, electrical components, and industrial water pumps.
+            </p>
+        </div>
+    </section>
+
+    <main class="flex-grow w-full">
+
+        <!-- Welcome Banner Section (Yellow Background layout as in Image 2) -->
+        <section class="py-16 sm:py-24 bg-brand-gold text-brand-navy relative overflow-hidden">
+            <div class="max-w-5xl mx-auto px-6 lg:px-8">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] opacity-80">Powermax Industries Pte Ltd.</span>
+                </div>
+                <h2 class="font-heading text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-8 uppercase">
+                    One Stop Power Provider
+                </h2>
+                <div class="space-y-6 text-brand-navy/95 text-sm sm:text-base leading-relaxed font-light max-w-4xl">
+                    <p>
+                        We are a well-established professional manufacturer for Diesel Generators, Electrical components, and Industrial water pumps.
+                    </p>
+                    <p>
+                        Based on years of experience, we "Powermax" are trying to keep abreast with rapidly changing latest Technologies and Designs to be your reliable One Stop power provider.
+                    </p>
+                    <p>
+                        We have our own professional Engineering Team and Service facilities providing after-sales services and warranty support.
+                    </p>
+                    <p>
+                        We are looking forward to achieving long-term business development based on Customers' reliability and support.
+                    </p>
+                </div>
+                <div class="mt-10">
+                    <a href="#products" class="inline-block bg-white text-brand-navy hover:bg-brand-navy hover:text-white px-8 py-4 text-xs font-bold uppercase tracking-wider rounded-full shadow-md transition-all duration-300">
+                        View Products
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Products List Section (Image 3 layout) -->
+        <section id="products" class="py-16 sm:py-24 bg-white relative overflow-hidden">
+            <div class="max-w-6xl mx-auto px-6 lg:px-8">
+                <!-- Section Title & Link -->
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-slate-100 pb-6 mb-12">
+                    <div>
+                        <span class="text-brand-gold font-heading font-bold text-xs uppercase tracking-widest">Power Generation Systems</span>
+                        <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight mt-2 uppercase">Products</h2>
+                    </div>
+                    <a href="general_spect.html" class="text-brand-gold hover:text-brand-navy text-xs font-semibold uppercase tracking-widest mt-4 sm:mt-0 flex items-center gap-1 transition-colors">
+                        General Specifications <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Product 1: Industrial Open Set -->
+                    <div class="bg-slate-50 border border-slate-200/60 rounded-3xl p-6 flex flex-col justify-between shadow-sm relative group overflow-hidden">
+                        <div class="w-full bg-brand-gold text-brand-navy font-bold text-center py-2 text-xs uppercase tracking-wider rounded-lg mb-6">
+                            Industrial Open Set
+                        </div>
+                        <div class="w-full aspect-[4/3] bg-slate-900 rounded-2xl flex items-center justify-center overflow-hidden relative">
+                            <img src="img/industrial-open-set.jpg" alt="Industrial Open Set Model" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                    </div>
+
+                    <!-- Product 2: Super Silent Set -->
+                    <div class="bg-slate-50 border border-slate-200/60 rounded-3xl p-6 flex flex-col justify-between shadow-sm relative group overflow-hidden">
+                        <div class="w-full bg-brand-gold text-brand-navy font-bold text-center py-2 text-xs uppercase tracking-wider rounded-lg mb-6">
+                            Super Silent Set
+                        </div>
+                        <div class="w-full aspect-[4/3] bg-slate-900 rounded-2xl flex items-center justify-center overflow-hidden relative">
+                            <img src="img/super-silent-set.jpg" alt="Super Silent Set Model" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                    </div>
+
+                    <!-- Product 3: Trailer & Container Set -->
+                    <div class="bg-slate-50 border border-slate-200/60 rounded-3xl p-6 flex flex-col justify-between shadow-sm relative group overflow-hidden">
+                        <div class="w-full bg-brand-gold text-brand-navy font-bold text-center py-2 text-xs uppercase tracking-wider rounded-lg mb-6">
+                            Trailer & Container Set
+                        </div>
+                        <div class="w-full aspect-[4/3] bg-slate-900 rounded-2xl flex items-center justify-center overflow-hidden relative">
+                            <img src="img/trailer-01.jpg" alt="Trailer & Container Set Model A" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                    </div>
+
+                    <!-- Product 4: Trailer & Container Set -->
+                    <div class="bg-slate-50 border border-slate-200/60 rounded-3xl p-6 flex flex-col justify-between shadow-sm relative group overflow-hidden">
+                        <div class="w-full bg-brand-gold text-brand-navy font-bold text-center py-2 text-xs uppercase tracking-wider rounded-lg mb-6">
+                            Trailer & Container Set
+                        </div>
+                        <div class="w-full aspect-[4/3] bg-slate-900 rounded-2xl flex items-center justify-center overflow-hidden relative">
+                            <img src="img/trailer-02.jpg" alt="Trailer & Container Set Model B" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Control System Details -->
+                <div class="mt-16 bg-slate-50 border border-slate-200/60 rounded-3xl p-8 sm:p-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-8 h-8 rounded bg-brand-gold/15 text-brand-gold flex items-center justify-center text-sm shadow-sm flex-shrink-0">
+                                    <i class="fa-solid fa-gamepad"></i>
+                                </div>
+                                <h3 class="font-heading font-black text-brand-navy text-xl uppercase tracking-wide">Control System</h3>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 font-light">
+                                The PLC-5110 control system is used to automatically start and stop the generator via remote control signal. It is configurable in three positions: manual, auto, and stop.
+                            </p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-4">
+                                    <span class="font-heading font-bold text-xs text-brand-gold bg-brand-navy text-white px-2 py-0.5 rounded mt-0.5 flex-shrink-0">Stop</span>
+                                    <span class="text-slate-600 text-sm leading-relaxed font-light">stop generator / failure indication</span>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <span class="font-heading font-bold text-xs text-brand-gold bg-brand-navy text-white px-2 py-0.5 rounded mt-0.5 flex-shrink-0">Manual</span>
+                                    <span class="text-slate-600 text-sm leading-relaxed font-light">Only green manual button to start generator</span>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <span class="font-heading font-bold text-xs text-brand-gold bg-brand-navy text-white px-2 py-0.5 rounded mt-0.5 flex-shrink-0">Auto</span>
+                                    <span class="text-slate-600 text-sm leading-relaxed font-light">Under working conditions when it is energized, automatically start generator if receiving remote control signal.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="lg:col-span-5">
+                            <div class="w-full bg-slate-900 rounded-2xl flex items-center justify-center overflow-hidden p-4 shadow-md border border-slate-800">
+                                <img src="img/system-control-01.jpg" alt="Control System Interface" class="max-h-[220px] object-contain rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spare Parts & Electrical Components Section -->
+                <div class="mt-12 bg-slate-50 border border-slate-200/60 rounded-3xl p-8 sm:p-10 animate-fade-in">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-8 h-8 rounded bg-brand-gold/15 text-brand-gold flex items-center justify-center text-sm shadow-sm flex-shrink-0">
+                                    <i class="fa-solid fa-gears"></i>
+                                </div>
+                                <h3 class="font-heading font-black text-brand-navy text-xl uppercase tracking-wide">Spare Parts & Electrical Components</h3>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4 font-light">
+                                In charge of managing stocks and procurements, the SPD (Spare Parts Department) is responsible for service traceability and ensures the ongoing improvement of quality.
+                            </p>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 font-light">
+                                The SPD also provides our customers with interactive computer-assisted spare parts selection tools.
+                            </p>
+                            <div class="bg-slate-100 rounded-2xl p-5 border border-slate-200">
+                                <h4 class="font-heading font-bold text-xs text-brand-gold bg-brand-navy text-white px-3 py-1 rounded inline-block uppercase tracking-wider mb-3">Electric Components Included</h4>
+                                <ul class="text-slate-600 text-xs sm:text-sm space-y-2 font-light">
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-circle-check text-brand-gold mt-1 text-xs"></i>
+                                        <span>MCCB, Air Circuit Breakers, switches</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-circle-check text-brand-gold mt-1 text-xs"></i>
+                                        <span>Digital Controller units & analogue meters</span>
+                                    </li>
+                                    <li class="flex items-start gap-2.5">
+                                        <i class="fa-solid fa-circle-check text-brand-gold mt-1 text-xs"></i>
+                                        <span>Piston rings, cylinder linings, fuel filters</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5">
+                            <div class="w-full bg-slate-900 rounded-2xl flex items-center justify-center overflow-hidden p-6 border border-slate-800 shadow-md">
+                                <img src="img/genuine-spare-parts.jpg" alt="Electric Components Catalog" class="max-w-full h-auto object-contain rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Architecture (Diagram placeholders as in Image 4) -->
+        <section class="py-16 sm:py-24 bg-slate-50 border-t border-b border-slate-200/50">
+            <div class="max-w-6xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight uppercase">System Architecture</h2>
+                    <div class="w-16 h-[2px] bg-brand-gold mx-auto mt-4"></div>
+                </div>
+
+                <div class="space-y-12">
+                    <!-- Paralleling Working System -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-200/60 shadow-sm">
+                        <h3 class="font-heading font-black text-brand-navy text-lg uppercase tracking-wide mb-6">Paralleling Working System</h3>
+                        <div class="w-full bg-slate-900 rounded-2xl flex items-center justify-center p-6 border border-slate-800 shadow-inner">
+                            <img src="img/system-control-02.jpg" alt="Paralleling Working System Diagram" class="max-w-full h-auto object-contain rounded-lg">
+                        </div>
+                    </div>
+
+                    <!-- Auto Transfer Switch -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-200/60 shadow-sm">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-7">
+                                <h3 class="font-heading font-black text-brand-navy text-xl uppercase tracking-wide mb-6">Auto Transfer Switch (ATS)</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-6 font-light">
+                                    For emergency power in buildings, an Auto Transfer Switch (ATS) is essential. The ATS can automatically transfer load from main power to emergency power without operator intervention.
+                                </p>
+                                <p class="text-slate-600 text-sm leading-relaxed mb-6 font-light">
+                                    When the main power fails or voltage drops below 80% of normal voltage, the ATS will start the emergency generator, after a preset time of 0 to 10 seconds (adjustable). At rated speed, the ATS will transfer load to emergency power with available size ranging from 63A to 3150 A. There is a switch suitable for every project's need.
+                                </p>
+                                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+                                    <h4 class="font-heading font-bold text-xs text-brand-gold uppercase tracking-wider mb-3">Key Features</h4>
+                                    <ul class="text-slate-600 text-xs sm:text-sm space-y-2 font-light">
+                                        <li class="flex items-start gap-2.5">
+                                            <i class="fa-solid fa-check text-brand-gold mt-1"></i>
+                                            <span>Mechanically held contactor</span>
+                                        </li>
+                                        <li class="flex items-start gap-2.5">
+                                            <i class="fa-solid fa-check text-brand-gold mt-1"></i>
+                                            <span>4 pole, 3 pole option</span>
+                                        </li>
+                                        <li class="flex items-start gap-2.5">
+                                            <i class="fa-solid fa-check text-brand-gold mt-1"></i>
+                                            <span>Rating range from 63 to 3150 Amps</span>
+                                        </li>
+                                        <li class="flex items-start gap-2.5">
+                                            <i class="fa-solid fa-check text-brand-gold mt-1"></i>
+                                            <span>NEMA 1, 3R, 4, 4X and 12 enclosures</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-5">
+                                <div class="w-full bg-slate-900 rounded-2xl flex items-center justify-center p-6 border border-slate-800 shadow-inner">
+                                    <img src="img/system-control-03.jpg" alt="ATS Connection Diagram" class="max-w-full h-auto object-contain rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Support Section (Image 5 layout) -->
+        <section id="support" class="py-16 sm:py-24 bg-white relative overflow-hidden">
+            <div class="max-w-6xl mx-auto px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <span class="text-brand-gold font-heading font-bold text-xs uppercase tracking-widest">Global Service Center</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight mt-2 uppercase">Product Support</h2>
+                    <div class="w-16 h-[2px] bg-brand-gold mx-auto mt-4"></div>
+                    <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed font-light">
+                        The service center has three parts: Service department, Customer complaints department, and Repair department.
+                    </p>
+                </div>
+
+                <div class="space-y-16">
+                    <!-- Pre-sales Service -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center border-b border-slate-100 pb-12">
+                        <div class="lg:col-span-5">
+                            <div class="w-full aspect-[4/3] bg-slate-900 rounded-3xl flex items-center justify-center overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80" alt="Pre-sales Service Consultation" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="lg:col-span-7">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-1.5 h-6 bg-brand-gold rounded-full"></div>
+                                <h3 class="font-heading font-black text-brand-navy text-lg uppercase tracking-wide">Pre-sales Service</h3>
+                            </div>
+                            <p class="text-slate-500 text-xs sm:text-sm font-light mb-6">Our service department is at your service to reply to all questions regarding:</p>
+                            
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">P</span>
+                                    <span>roduct information</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">E</span>
+                                    <span>ngine information</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">A</span>
+                                    <span>lternator information</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">A</span>
+                                    <span>utomatic Start-Stop Systems info</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">I</span>
+                                    <span>nsulation Protection information</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">H</span>
+                                    <span>elp power consumption assessment</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">C</span>
+                                    <span>hoose diesel generators correctly</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">O</span>
+                                    <span>ffer tech consultation & lecture</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">D</span>
+                                    <span>esign specially for special users</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- After sales service -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                        <div class="lg:col-span-5 lg:order-last">
+                            <div class="w-full aspect-[4/3] bg-slate-900 rounded-3xl flex items-center justify-center overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1605787020600-b9ebd5df1d07?auto=format&fit=crop&w=600&q=80" alt="After-sales Technical Service" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="lg:col-span-7">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-1.5 h-6 bg-brand-gold rounded-full"></div>
+                                <h3 class="font-heading font-black text-brand-navy text-lg uppercase tracking-wide">After sales service</h3>
+                            </div>
+                            <p class="text-slate-500 text-xs sm:text-sm font-light mb-6">Our service department handles the following assistance protocols:</p>
+                            
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">T</span>
+                                    <span>echnical questions</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">G</span>
+                                    <span>uide and install</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">T</span>
+                                    <span>he generators debugging</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">O</span>
+                                    <span>rganizing operator training</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">A</span>
+                                    <span>ccept generators' commission</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">O</span>
+                                    <span>ffer long-term fittings supply</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">S</span>
+                                    <span>cheme design & env. protection</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">A</span>
+                                    <span>ssistance for our dealers</span>
+                                </li>
+                                <li class="flex items-start gap-2.5 text-slate-600 text-xs sm:text-sm font-light">
+                                    <span class="font-bold text-brand-gold flex-shrink-0">R</span>
+                                    <span>epairs and services</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-navy text-white pt-12 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <img src="../../img/logo.png" class="w-36 mx-auto mb-6 opacity-80" alt="AGGC Logo">
+            <p class="text-xs text-slate-400 font-light">&copy; 2026 Aung Gyi Group of Companies (AGGC). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        const navContainer = document.getElementById('nav-container');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('shadow-sm');
+                navContainer.classList.remove('h-20');
+                navContainer.classList.add('h-16');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('shadow-sm');
+                navContainer.classList.add('h-20');
+                navContainer.classList.remove('h-16');
+            }
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        }
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        mobileLinks.forEach(link => link.addEventListener('click', () => {
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMenu();
+        }));
+    </script>
+</body>
+
+</html>

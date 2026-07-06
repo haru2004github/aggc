@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turbo Oil Corporation - AGGC</title>
+
+    <!-- Modern Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../img/logo_head.png">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0b0430',
+                            gold: '#f1ad18',
+                            darkGrey: '#22252a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Header */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Premium Nav Link Hover Effect */
+        .nav-link-premium {
+            position: relative;
+        }
+
+        .nav-link-premium::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #f1ad18;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link-premium:hover::after,
+        .nav-link-premium.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Navigation Bar (Premium Glassmorphism Design) -->
+    <nav id="navbar" class="fixed w-full z-50 glass-header bg-white border-b border-slate-200/50 shadow-sm">
+        <div class="relative w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div id="nav-container" class="flex justify-between items-center h-20 transition-all duration-300">
+                    <!-- Brand Logo -->
+                    <a href="../../index.html" class="flex items-center gap-3">
+                        <img src="../../img/logo.png" class="w-40" alt="AGGC Logo">
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden lg:flex h-full items-center space-x-7 xl:space-x-9">
+                        <a href="../../index.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Home</a>
+                        <a href="../../about.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">About</a>
+                        <a href="../../products.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Products</a>
+                        <a href="../../services.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Services</a>
+                        <a href="../../activites.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Activities</a>
+                        <a href="../../careers.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Careers</a>
+                        <a href="../../news.html" class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">News</a>
+
+                        <!-- CTA Button -->
+                        <div class="flex items-center pl-3">
+                            <a href="../../contact.html" class="bg-brand-navy text-white px-7 py-3 text-[12px] font-heading font-bold uppercase tracking-[0.15em] hover:bg-brand-gold hover:text-brand-navy transition-all duration-300 rounded shadow-md">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="lg:hidden flex items-center">
+                        <button id="mobileMenuBtn" class="text-brand-navy p-2 hover:bg-slate-100 transition-colors focus:outline-none rounded-md">
+                            <i id="menuIcon" class="fa-solid fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white shadow-2xl flex flex-col border-t border-slate-100 z-50">
+            <div class="px-6 py-4 flex flex-col">
+                <a href="../../index.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Home</a>
+                <a href="../../about.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">About</a>
+                <a href="../../products.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Products</a>
+                <a href="../../services.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Services</a>
+                <a href="../../activites.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Activities</a>
+                <a href="../../careers.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">Careers</a>
+                <a href="../../news.html" class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy">News</a>
+                <a href="../../contact.html" class="mobile-link mt-6 mb-4 bg-brand-navy text-white w-full py-4 font-heading font-bold text-center uppercase tracking-[0.2em] text-[13px] rounded shadow-md">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-brand-navy pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 16px 16px;"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center gap-2 mb-5">
+                <div class="w-2.5 h-5 bg-brand-gold transform -skew-x-12"></div>
+                <span class="text-white font-heading font-black text-[11px] sm:text-xs uppercase tracking-[0.25em]">AGGC Energy Division</span>
+                <div class="w-2.5 h-5 bg-brand-gold transform -skew-x-12"></div>
+            </div>
+
+            <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight uppercase tracking-tight">
+                Turbo Oil <span class="text-brand-gold">Corporation</span>
+            </h1>
+            <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mt-5 leading-relaxed font-light">
+                Exploration, Production, and Distribution of Petroleum Products and Premium Lubricants.
+            </p>
+        </div>
+    </section>
+
+    <main class="flex-grow w-full">
+
+        <!-- Welcome Banner Section (Yellow Background layout as in Image 2) -->
+        <section class="py-16 sm:py-24 bg-brand-gold text-brand-navy relative overflow-hidden">
+            <div class="max-w-5xl mx-auto px-6 lg:px-8">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] opacity-80">Turbo Oil Corporation Pte Ltd.</span>
+                </div>
+                <h2 class="font-heading text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-8">
+                    Welcome To Turbo Oil Corporation
+                </h2>
+                <div class="space-y-6 text-brand-navy/95 text-sm sm:text-base leading-relaxed font-light max-w-4xl">
+                    <p>
+                        Turbo Oil Corporation is a dynamic energy corporation which is forward-thinking energy specializing in exploration, production and distribution sector of oil and gas products worldwide. With a focus on technical innovation and operational excellence, Turbo Oil Corporation is dedicated to meeting the global demand for energy while prioritizing sustainability and environmental responsibility.
+                    </p>
+                    <p>
+                        Allocating headquarter in Dubai- UAE with a diverse portfolio of operations spanning across Thailand, Vietnam, Cambodia, Laos, Hong Kong and Singapore. Turbo Oil Corporation is well-positioned to serve the energy needs of a rapidly evolving global economy in all upstream, midstream and downstream sectors.
+                    </p>
+                </div>
+                <div class="mt-10">
+                    <a href="#brands" class="inline-block bg-white text-brand-navy hover:bg-brand-navy hover:text-white px-8 py-4 text-xs font-bold uppercase tracking-wider rounded-full shadow-md transition-all duration-300">
+                        See More
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Brands Section (Image 3 layout) -->
+        <section id="brands" class="py-10 sm:py-14 bg-white relative overflow-hidden">
+            <div class="max-w-5xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-8 sm:mb-10">
+                    <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-brand-navy tracking-tight uppercase">Our Brands</h2>
+                    <div class="w-12 h-[2px] bg-brand-gold mx-auto mt-3"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                    <!-- Brand 1: Turboil -->
+                    <div class="flex flex-col h-full bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group">
+                        <div class="aspect-[16/8] bg-white flex items-center justify-center p-4 border-b border-slate-100 overflow-hidden">
+                            <img src="../../img/Products/turboil-logo.png" alt="Turboil Premium Lubricants Logo" class="max-h-[110px] max-w-[85%] object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 flex flex-col justify-between flex-grow">
+                            <div>
+                                <h3 class="font-heading font-black text-brand-navy text-base uppercase tracking-wide mb-3">Turboil</h3>
+                                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light mb-4">
+                                    Turboil Premium Engine Oil is a high-performance lubricant used in on-road diesel technology. Contains excellent viscosity stability in service, guaranteeing effective engine lubrication in severe conditions. Outstanding detergent, dispersant and anti-wear properties keep the engine clean and enable efficient control of soot, sludge and piston deposits.
+                                </p>
+                            </div>
+                            <a href="../../contact.html" class="inline-block border border-brand-gold text-brand-navy hover:bg-brand-gold hover:text-brand-navy text-center py-2 px-5 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors mt-auto self-start">
+                                See More
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Brand 2: Emarat -->
+                    <div class="flex flex-col h-full bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group">
+                        <div class="aspect-[16/8] bg-white flex items-center justify-center p-4 border-b border-slate-100 overflow-hidden">
+                            <img src="../../img/Products/emarat-logo.png" alt="Emarat Logo" class="max-h-[110px] max-w-[85%] object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 flex flex-col justify-between flex-grow">
+                            <div>
+                                <h3 class="font-heading font-black text-brand-navy text-base uppercase tracking-wide mb-3">Emarat</h3>
+                                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light mb-4">
+                                    For nearly 40 years, Emarat has manufactured and marketed high quality lubricants. The combined resources and technology of Emarat and its partners - ExxonMobil & BP at MELUBCO (Middle East Lubricants Company) Blending Plant in Jebel Ali, Dubai, United Arab Emirates produce powerful lubricants with large competitive advantage.
+                                </p>
+                            </div>
+                            <a href="../../contact.html" class="inline-block border border-brand-gold text-brand-navy hover:bg-brand-gold hover:text-brand-navy text-center py-2 px-5 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors mt-auto self-start">
+                                See More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Do Section (Image 4 layout) -->
+        <section class="py-12 sm:py-16 bg-[#07031a] text-white border-t border-b border-white/10 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#f1ad18 1px, transparent 1px); background-size: 20px 20px;"></div>
+            <div class="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-10 sm:mb-12">
+                    <span class="inline-block text-brand-gold font-heading font-extrabold text-xs uppercase tracking-[0.25em] mb-2">Our Core Capabilities</span>
+                    <h2 class="font-heading text-2xl sm:text-4xl font-black text-white tracking-tight uppercase">What We Do</h2>
+                    <div class="w-16 h-[3px] bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto mt-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Up Stream -->
+                    <div class="bg-gradient-to-br from-[#0e0730] via-[#0b0426] to-[#070217] rounded-[2rem] p-6 border border-white/10 hover:border-brand-gold/50 shadow-2xl hover:shadow-brand-gold/10 flex flex-col justify-between h-full group overflow-hidden relative transition-all duration-500">
+                        <span class="absolute -right-2 -top-4 text-7xl font-black text-white/[0.03] select-none pointer-events-none group-hover:text-brand-gold/[0.08] transition-colors duration-500 font-heading">01</span>
+                        <div>
+                            <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden mb-6 bg-slate-950 border border-white/15 flex items-center justify-center relative shadow-inner">
+                                <img src="img/up-stream-480x320.jpg" alt="Upstream Oil Rig" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0e0730]/80 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+                                <span class="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 text-brand-gold text-[9px] font-bold uppercase tracking-widest">Exploration</span>
+                            </div>
+                            <h3 class="font-heading font-black text-white group-hover:text-brand-gold text-lg uppercase tracking-wide mb-3 transition-colors">Up Stream</h3>
+                            <p class="text-slate-300 text-xs font-light leading-relaxed mb-6">
+                                Offshore & onshore drilling rig rentals, vessels, seismic surveys, aviation support, and specialized drilling equipment.
+                            </p>
+                        </div>
+                        <a href="up_stream.html" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-brand-gold via-[#f5c042] to-brand-gold text-brand-navy font-heading font-extrabold text-[11px] text-center uppercase tracking-widest shadow-md hover:shadow-brand-gold/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2">
+                            <span>Explore Sector</span> <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Mid Stream -->
+                    <div class="bg-gradient-to-br from-[#0e0730] via-[#0b0426] to-[#070217] rounded-[2rem] p-6 border border-white/10 hover:border-brand-gold/50 shadow-2xl hover:shadow-brand-gold/10 flex flex-col justify-between h-full group overflow-hidden relative transition-all duration-500">
+                        <span class="absolute -right-2 -top-4 text-7xl font-black text-white/[0.03] select-none pointer-events-none group-hover:text-brand-gold/[0.08] transition-colors duration-500 font-heading">02</span>
+                        <div>
+                            <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden mb-6 bg-slate-950 border border-white/15 flex items-center justify-center relative shadow-inner">
+                                <img src="img/mid-stream-480x320.jpg" alt="Midstream Cargo Transport" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0e0730]/80 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+                                <span class="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 text-brand-gold text-[9px] font-bold uppercase tracking-widest">Logistics</span>
+                            </div>
+                            <h3 class="font-heading font-black text-white group-hover:text-brand-gold text-lg uppercase tracking-wide mb-3 transition-colors">Mid Stream</h3>
+                            <p class="text-slate-300 text-xs font-light leading-relaxed mb-6">
+                                True industry-leading logistics and cargo transport expertise, moving vital energy products to global markets safely and on schedule.
+                            </p>
+                        </div>
+                        <a href="mid_stream.html" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-brand-gold via-[#f5c042] to-brand-gold text-brand-navy font-heading font-extrabold text-[11px] text-center uppercase tracking-widest shadow-md hover:shadow-brand-gold/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2">
+                            <span>Explore Sector</span> <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Down Stream -->
+                    <div class="bg-gradient-to-br from-[#0e0730] via-[#0b0426] to-[#070217] rounded-[2rem] p-6 border border-white/10 hover:border-brand-gold/50 shadow-2xl hover:shadow-brand-gold/10 flex flex-col justify-between h-full group overflow-hidden relative transition-all duration-500">
+                        <span class="absolute -right-2 -top-4 text-7xl font-black text-white/[0.03] select-none pointer-events-none group-hover:text-brand-gold/[0.08] transition-colors duration-500 font-heading">03</span>
+                        <div>
+                            <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden mb-6 bg-slate-950 border border-white/15 flex items-center justify-center relative shadow-inner">
+                                <img src="img/down-stream-480x320.jpg" alt="Downstream Refinery Blending" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0e0730]/80 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+                                <span class="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 text-brand-gold text-[9px] font-bold uppercase tracking-widest">Refining & Fuels</span>
+                            </div>
+                            <h3 class="font-heading font-black text-white group-hover:text-brand-gold text-lg uppercase tracking-wide mb-3 transition-colors">Down Stream</h3>
+                            <p class="text-slate-300 text-xs font-light leading-relaxed mb-6">
+                                High-grade petroleum products, LPG, LNG, commercial fleet fuels, and advanced eco-friendly petrochemical solutions.
+                            </p>
+                        </div>
+                        <a href="down_stream.html" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-brand-gold via-[#f5c042] to-brand-gold text-brand-navy font-heading font-extrabold text-[11px] text-center uppercase tracking-widest shadow-md hover:shadow-brand-gold/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2">
+                            <span>Explore Sector</span> <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section (Image 5 layout) -->
+        <section id="about-us" class="py-10 sm:py-14 bg-white relative overflow-hidden">
+            <div class="max-w-4xl mx-auto px-6 lg:px-8">
+                <div class="border-b border-slate-100 pb-4 mb-8">
+                    <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-brand-navy tracking-tight uppercase">About Us</h2>
+                </div>
+
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="font-heading font-bold text-base text-brand-navy mb-2 border-l-4 border-brand-gold pl-3">Our Vision</h3>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
+                            Turbo Oil Corporation is a customer-centric lubricant company in UAE Near Dubai, driven by our core values of quality, reliability, and efficiency. We are committed to delivering top-quality lubricant products to our regional and global customers that exceed international best practice standards to achieve complete customer satisfaction. We aim to ensure consistent, long-term growth to become one of the leading lubricants companies in UAE market by increasing operating efficiency, improving our product and service quality, and delivering the latest technologies to provide total lubricant solutions in UAE and become the lubricants partner of choice.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading font-bold text-base text-brand-navy mb-2 border-l-4 border-brand-gold pl-3">Our Mission</h3>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
+                            Turbo Oil Corporation to be at the top of its client's considerations providing the highest quality lubricant products and solutions. We are driven by a deep understanding of industry needs to ensure that we bring our visionary innovation to the lubricants technology space both in the UAE and to our global customers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HSE Section (Health, Safety, and Environment) -->
+        <section id="hse" class="py-10 sm:py-12 bg-brand-navy text-white relative overflow-hidden">
+            <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 16px 16px;"></div>
+            <div class="max-w-4xl mx-auto px-6 lg:px-8">
+                <div class="border-b border-white/10 pb-4 mb-8 flex items-center gap-3">
+                    <div class="w-6 h-6 rounded bg-brand-gold/15 text-brand-gold flex items-center justify-center text-xs shadow-sm flex-shrink-0">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-white tracking-tight uppercase">HSE</h2>
+                </div>
+                <div class="space-y-4 text-slate-300 text-xs sm:text-sm leading-relaxed font-light">
+                    <p>
+                        Appropriate health, safety and environment management is central to Turbo Oil Corporation operations across all departments, from staff at our corporate headquarters to our service station attendants. Taking care of the people we employ directly or as contractors is critical to our success in delivering exceptional standards of customer service. Providing a safe and healthy workplace with quality environmental management is of paramount importance to Turbo Oil Corporation.
+                    </p>
+                    <p>
+                        Our corporation operates on policies, processes, procedures and technical systems that help us to identify HSE hazards and control risks to keep our employees, and anybody who might come into contact with our activities, safe and healthy.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Section (Image 6 layout) -->
+        <section class="py-10 sm:py-14 bg-slate-50 border-t border-slate-200/50">
+            <div class="max-w-4xl mx-auto px-6 lg:px-8">
+                <div class="border-b border-slate-100 pb-4 mb-8">
+                    <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-brand-navy tracking-tight uppercase">Technology</h2>
+                </div>
+
+                <div class="space-y-8">
+                    
+                    <!-- END TO END SOLUTION -->
+                    <div class="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm">
+                        <h3 class="font-heading font-bold text-base text-brand-navy mb-4 uppercase tracking-wider">End to End Solution</h3>
+                        <ul class="space-y-3 text-slate-600 text-xs sm:text-sm font-light">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
+                                <span>The team of Armor lubricant masters perfects direct point-to-point delivery from our factory to our customers.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
+                                <span>Our sales consultants work closely with leads to learn about your specific equipment and lubrication needs, recommending lubricants, application methods, usage amounts and providing all the information required.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
+                                <span>It is our commitment to manufacture Quality Lubricants in UAE and provide reliable services to our customers and distributors.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
+                                <span>We continue to stay ahead of international best practices and strive to develop new formulas, refining raw materials into new products.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
+                                <span>Armor lubricant experts address ecological aspects, occupational safety, and sustainability throughout the development of our technology.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
+                                <span>We continue to develop new formulas, refining raw materials into further new products. We ensure that no two special lubricants are alike.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
+                                <span>Our experts continue to address ecological aspects, occupational safety, and sustainability throughout the development of our technology.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
+                                <span>We shifted our process of innovation from R&D (Research & Development) to RD&D (Research, Development, and deployment) to ensure our customers benefit from the most advanced technology.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- RESEARCH, DEVELOPMENT & DEPLOYMENT -->
+                    <div class="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm">
+                        <h3 class="font-heading font-bold text-base text-brand-navy mb-4 uppercase tracking-wider">Research, Development & Deployment</h3>
+                        <div class="space-y-4 text-slate-600 text-xs sm:text-sm font-light">
+                            <p class="leading-relaxed">
+                                Turbo Oil Corporation RD&D believes that innovation is extremely important to our manufacturing process. We (chemists, physicists, engineers, tribologists, testing and application engineers, analysts, and production experts) manufacture a comprehensive range of lubricant oils in our blending plants with high-rank virgin base oil paired up with advanced additives. Our products are eco-friendly and sustainable.
+                            </p>
+                            <div class="bg-slate-50 border border-slate-200/60 rounded-2xl p-4 flex items-start gap-3">
+                                <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-check text-[10px]"></i>
+                                </div>
+                                <p class="text-xs leading-relaxed">
+                                    In our Testing Laboratory, which is well-equipped and staffed by skilled R&D specialists, we do exhaustive quality inspections on all of our raw materials, intermediate products, and finished lubricants.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UNRIVALED PERFORMANCE -->
+                    <div class="bg-white border border-slate-200/60 rounded-3xl p-6 shadow-sm">
+                        <h3 class="font-heading font-bold text-base text-brand-navy mb-4 uppercase tracking-wider">Unrivaled Performance</h3>
+                        <div class="space-y-4 text-slate-600 text-xs sm:text-sm font-light">
+                            <p class="leading-relaxed">
+                                At Turbo Oil Corporation Lubricants, we are focused on using ingenious technology in our products to extend equipment life and deliver optimum performance, guaranteeing that our customers benefit from the high-quality products we are manufacturing.
+                            </p>
+                            <p class="leading-relaxed">
+                                Our QC team has the best practices to elaborate excel in extreme environments, in heavy industry, and in engine performance.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-navy text-white pt-12 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <img src="../../img/logo.png" class="w-36 mx-auto mb-6 opacity-80" alt="AGGC Logo">
+            <p class="text-xs text-slate-400 font-light">&copy; 2026 Aung Gyi Group of Companies (AGGC). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        const navContainer = document.getElementById('nav-container');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('shadow-sm');
+                navContainer.classList.remove('h-20');
+                navContainer.classList.add('h-16');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('shadow-sm');
+                navContainer.classList.add('h-20');
+                navContainer.classList.remove('h-16');
+            }
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        }
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        mobileLinks.forEach(link => link.addEventListener('click', () => {
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMenu();
+        }));
+    </script>
+</body>
+
+</html>
