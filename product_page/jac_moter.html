@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiuGong Machinery Catalog - AGGC</title>
+    <title>JAC Motors Catalog - AGGC</title>
 
     <!-- Modern Premium Fonts: Poppins for Primary, Playfair Display for Accent, Inter for fallback body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -227,9 +227,9 @@
                             <div
                                 class="absolute top-full left-0 w-52 bg-white border border-slate-100 shadow-xl rounded-xl py-3 hidden group-hover/drop:block transition-all duration-300 z-[100] mt-1">
                                 <a href="Liugong.html"
-                                    class="block px-5 py-2.5 text-[11px] font-heading font-bold text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Liugong</a>
+                                    class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Liugong</a>
                                 <a href="jac_moter.html"
-                                    class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Jac
+                                    class="block px-5 py-2.5 text-[11px] font-heading font-bold text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Jac
                                     Motors</a>
                                 <a href="powermax.html"
                                     class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Powermax</a>
@@ -345,15 +345,48 @@
                 <span class="text-slate-300">/</span>
                 <a href="../products.html" class="hover:text-brand-gold transition-colors">Products</a>
                 <span class="text-slate-300">/</span>
-                <span class="text-slate-600 font-semibold">LiuGong Machinery</span>
+                <span class="text-slate-600 font-semibold">JAC Motors</span>
             </div>
 
             <!-- Dynamic Product Catalog Target Container -->
-            <div id="product-catalog-container" class="w-full">
+            <div id="product-catalog-container" class="w-full mb-16">
                 <!-- Javascript will render products list here -->
                 <div class="flex flex-col items-center justify-center py-20 text-slate-400">
                     <i class="fa-solid fa-circle-notch fa-spin text-3xl mb-4 text-brand-gold"></i>
                     <p class="font-heading text-sm font-medium">Loading catalog...</p>
+                </div>
+            </div>
+
+            <!-- Additional Business Units Section -->
+            <div class="mt-16 pt-12 border-t border-slate-200/80 animate-fade-in-up" style="animation-delay: 200ms;">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Petroleum Products Card -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200/60 hover-gold-glow flex flex-col justify-between transition-all duration-500 group">
+                        <div>
+                            <span class="bg-brand-gold/10 text-brand-gold text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-md">Petroleum Products</span>
+                            <h4 class="font-heading font-extrabold text-brand-navy text-xl mt-4 mb-3 group-hover:text-brand-gold transition-colors duration-300">Fuels, LPG & LNG Supply</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed font-light">Wholesale supply of industrial grade diesel, gasoline, liquefied petroleum gas (LPG), and liquefied natural gas (LNG) across our global networks.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100/50">
+                            <a href="../contact.html" class="inline-flex items-center text-xs font-bold text-brand-gold hover:text-brand-navy transition-colors gap-1.5 group/link">
+                                Inquire Now <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover/link:translate-x-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Upstream Support Card -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200/60 hover-gold-glow flex flex-col justify-between transition-all duration-500 group">
+                        <div>
+                            <span class="bg-brand-gold/10 text-brand-gold text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-md">Upstream Support</span>
+                            <h4 class="font-heading font-extrabold text-brand-navy text-xl mt-4 mb-3 group-hover:text-brand-gold transition-colors duration-300">Drilling Rig & Vessel Supply</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed font-light">Rig supply, head supply, helicopter services, seismic survey logistics, and offshore supply vessel management for deep-well petroleum exploration.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100/50">
+                            <a href="../contact.html" class="inline-flex items-center text-xs font-bold text-brand-gold hover:text-brand-navy transition-colors gap-1.5 group/link">
+                                Inquire Now <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover/link:translate-x-1"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -560,6 +593,7 @@
             mobileMenuBtn.addEventListener('click', toggleMenu);
         }
 
+        // Toggle mobile menu dropdowns
         function toggleMobileDropdown(id, btn) {
             const el = document.getElementById(id);
             const icon = btn.querySelector('i');
@@ -575,7 +609,7 @@
     <!-- Catalog Integration Scripts -->
     <script>
         // Tell the renderer which brand to render
-        const CURRENT_BRAND = 'liugong';
+        const CURRENT_BRAND = 'jac';
     </script>
     <script src="products_data.js"></script>
     <script src="product_renderer.js"></script>
