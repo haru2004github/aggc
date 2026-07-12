@@ -47,7 +47,7 @@
             overflow-x: hidden;
         }
 
-        /* Hero Carousel Advanced Animation (Ken Burns Effect) */
+        /* Hero Carousel Gentle Animation (Comfortable & Eye-Pleasing Pace) */
         .carousel-img {
             opacity: 0;
             position: absolute;
@@ -57,14 +57,14 @@
             height: 100%;
             object-fit: cover;
             transform: scale(1);
-            transition: opacity 1s ease-in-out, transform 6s ease-out;
+            transition: opacity 1.4s ease-in-out, transform 8s ease-out;
             z-index: 0;
         }
 
         .carousel-img.active {
             opacity: 1;
-            transform: scale(1.08);
-            /* Smooth zoom */
+            transform: scale(1.05);
+            /* Gentle smooth zoom */
             z-index: 10;
         }
 
@@ -257,72 +257,116 @@
     <div class="h-20 w-full"></div>
 
     <section id="home"
-        class="relative bg-brand-navy min-h-[450px] md:min-h-[calc(100vh-80px)] flex items-center overflow-hidden w-full">
-        <!-- Full Width Background Carousel -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://www.aungyigroup.com/images/slider/LG-15-years-anni-00.jpg" alt="AGGC 15 Years Anniversary"
-                class="carousel-img active absolute inset-0 w-full h-full object-cover object-center" />
-            <img src="https://www.aungyigroup.com/images/slider/slide-01.jpg" alt="AGGC Heavy Machinery"
-                class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
-            <img src="https://www.aungyigroup.com/images/slider/slide-02.jpg" alt="AGGC Construction Equipment"
-                class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
-            <img src="https://www.aungyigroup.com/images/slider/slide-03.jpg" alt="AGGC Power & Energy"
-                class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
-            <img src="https://www.aungyigroup.com/images/slider/slide-04.jpg" alt="AGGC Team and Projects"
-                class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
+        class="relative min-h-[580px] lg:min-h-[calc(100vh-80px)] flex items-center overflow-hidden w-full py-6 lg:py-0 border-b border-white/10 bg-gradient-to-r from-[#101438] via-[#161c52] to-[#1a2366]">
 
-            <!-- Highly Readable Dark Gradient Overlay (Balanced for transparent text layout) -->
-            <!-- Solid dark base is lightened to make background images bright -->
-            <div class="absolute inset-0 bg-[#0b0430]/20 z-10"></div>
-            <!-- Strong gradient on the left side to provide high contrast for floating text -->
-            <div
-                class="absolute inset-0 bg-gradient-to-r from-[#0b0430]/85 via-[#0b0430]/55 to-transparent w-full md:w-[85%] lg:w-[70%] z-10">
-            </div>
-        </div>
+        <!-- Gradient Pro Vibrant Mesh Lighting -->
+        <div class="absolute -left-20 top-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[140px] pointer-events-none z-0"></div>
+        <div class="absolute left-1/3 bottom-0 w-[450px] h-[450px] bg-brand-gold/15 rounded-full blur-[130px] pointer-events-none z-0"></div>
+        <div class="absolute right-1/4 top-0 w-[550px] h-[550px] bg-indigo-500/20 rounded-full blur-[150px] pointer-events-none z-0"></div>
+        <div class="absolute inset-0 opacity-[0.05] pointer-events-none z-0"
+            style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 28px 28px;"></div>
 
-        <!-- Hero Content Overlay -->
-        <div class="absolute inset-0 z-20 flex items-center pt-8 pb-8">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <!-- Transparent Wrapper for premium floating text -->
-                <div class="w-full md:w-[85%] lg:w-[75%] xl:w-[65%] p-0 bg-transparent border-0 shadow-none">
+        <!-- Responsive Hero Grid Container -->
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col lg:block py-4 lg:py-16">
 
-                    <div class="flex items-center gap-4 mb-5">
-                        <div class="w-12 sm:w-16 h-[3.5px] bg-brand-gold shadow-[0_0_10px_rgba(241,173,24,0.5)]"></div>
-                        <!-- Using Accent Font (Playfair Display) here for a premium touch -->
-                        <span
-                            class="text-brand-gold font-accent italic font-semibold text-[13px] sm:text-[15px] md:text-[16px] tracking-wide">Building
-                            the Future</span>
+            <!-- TOP ON MOBILE (order-1) / RIGHT FULL-BLEED ON DESKTOP (lg:absolute) -->
+            <div class="order-1 w-full h-[240px] sm:h-[340px] md:h-[400px] rounded-2xl sm:rounded-3xl border border-white/20 shadow-2xl overflow-hidden relative mb-7 lg:mb-0 lg:absolute lg:right-0 lg:top-8 lg:bottom-8 lg:w-[58%] xl:w-[60%] lg:h-auto lg:rounded-none lg:rounded-l-[2.5rem] lg:border-r-0">
+
+                <!-- Carousel Images (Bright, vivid, crystal clear) -->
+                <img src="./img/slider_1.png" alt="AGGC 15 Years Anniversary"
+                    class="carousel-img active absolute inset-0 w-full h-full object-cover object-center" />
+                <img src="./img/slider_2.png" alt="AGGC Heavy Machinery"
+                    class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
+                <img src="./img/slider_3.png" alt="AGGC Construction Equipment"
+                    class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
+                <img src="./img/slider_4.png" alt="AGGC Power & Energy"
+                    class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
+                <img src="./img/slider_5.png" alt="AGGC Team and Projects"
+                    class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
+
+                <!-- Seamless gentle left gradient seam where slider meets left area on desktop -->
+                <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#141b50] via-[#141b50]/60 to-transparent z-10 hidden lg:block pointer-events-none"></div>
+
+                <!-- Subtle bottom gradient only for HUD readability -->
+                <div class="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#101438] via-[#101438]/40 to-transparent z-10 pointer-events-none"></div>
+
+                <!-- Showcase Bottom Control HUD Bar -->
+                <div class="absolute bottom-3 sm:bottom-5 left-4 right-4 sm:left-6 sm:right-8 z-20 flex items-center justify-end gap-3 pt-2 sm:pt-3.5 border-t border-white/20">
+                    <div class="flex items-center gap-2" id="heroCarouselIndicators">
+                        <button type="button" onclick="goToHeroSlide(0)" aria-label="Slide 1" class="hero-indicator group py-2 focus:outline-none">
+                            <span class="indicator-bar block h-1.5 rounded-full transition-all duration-500 w-7 bg-brand-gold shadow-[0_0_10px_rgba(241,173,24,0.8)]"></span>
+                        </button>
+                        <button type="button" onclick="goToHeroSlide(1)" aria-label="Slide 2" class="hero-indicator group py-2 focus:outline-none">
+                            <span class="indicator-bar block h-1.5 rounded-full transition-all duration-500 w-2 bg-white/30 group-hover:bg-white/70 group-hover:w-3"></span>
+                        </button>
+                        <button type="button" onclick="goToHeroSlide(2)" aria-label="Slide 3" class="hero-indicator group py-2 focus:outline-none">
+                            <span class="indicator-bar block h-1.5 rounded-full transition-all duration-500 w-2 bg-white/30 group-hover:bg-white/70 group-hover:w-3"></span>
+                        </button>
+                        <button type="button" onclick="goToHeroSlide(3)" aria-label="Slide 4" class="hero-indicator group py-2 focus:outline-none">
+                            <span class="indicator-bar block h-1.5 rounded-full transition-all duration-500 w-2 bg-white/30 group-hover:bg-white/70 group-hover:w-3"></span>
+                        </button>
+                        <button type="button" onclick="goToHeroSlide(4)" aria-label="Slide 5" class="hero-indicator group py-2 focus:outline-none">
+                            <span class="indicator-bar block h-1.5 rounded-full transition-all duration-500 w-2 bg-white/30 group-hover:bg-white/70 group-hover:w-3"></span>
+                        </button>
                     </div>
-
-                    <!-- Premium Responsive Sizing & Drop Shadow for contrast -->
-                    <h1
-                        class="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[56px] font-black text-white mb-5 leading-[1.2] tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
-                        It's What Our <br class="hidden sm:block" />
-                        <span class="text-brand-gold relative inline-block">
-                            Products
-                            <div class="absolute -bottom-1 left-0 w-full h-1.5 bg-brand-gold/30 blur-sm"></div>
-                        </span> Make <br class="hidden sm:block" /> Possible.
-                    </h1>
-
-                    <p
-                        class="text-[13px] sm:text-[15px] lg:text-[16px] text-slate-200 mb-8 max-w-md md:max-w-xl font-light leading-[1.8] drop-shadow-[0_1.5px_6px_rgba(0,0,0,0.85)]">
-                        For more than two decades, Alliance Global Group Company (AGGC) has built a better, more
-                        sustainable world. Leading provider of construction machinery and energy solutions.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
-                        <a href="#about"
-                            class="bg-brand-gold text-brand-navy px-8 py-3.5 font-heading font-bold text-[13px] uppercase tracking-[0.15em] hover:bg-yellow-400 transition-all text-center flex items-center justify-center group rounded shadow-[0_10px_20px_rgba(0,0,0,0.3)] hover:-translate-y-1 hover:shadow-[0_15px_25px_rgba(241,173,24,0.4)]">
-                            Explore AGGC <i
-                                class="fa-solid fa-arrow-right ml-3 text-[14px] group-hover:translate-x-1.5 transition-transform"></i>
-                        </a>
-                        <a href="products.html"
-                            class="bg-transparent border-2 border-white/80 text-white px-8 py-3.5 font-heading font-bold text-[13px] uppercase tracking-[0.15em] hover:bg-white hover:text-brand-navy transition-all text-center rounded backdrop-blur-sm shadow-[0_10px_20px_rgba(0,0,0,0.2)] hover:-translate-y-1">
-                            View Products
-                        </a>
-                    </div>
-
                 </div>
+            </div>
+
+            <!-- BELOW SLIDER ON MOBILE (order-2) / LEFT COLUMN ON DESKTOP -->
+            <div class="order-2 w-full lg:w-[40%] xl:w-[38%] pr-0 lg:pr-6 relative z-20">
+
+                <!-- Compact Subtitle Tag -->
+                <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/[0.08] border border-white/15 w-fit mb-3 sm:mb-4">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span>
+                    <span class="text-brand-gold font-heading font-bold text-[10px] uppercase tracking-[0.2em]">
+                        Est. 2003 • Myanmar
+                    </span>
+                </div>
+
+                <!-- Punchy High-Impact Headline -->
+                <h1
+                    class="font-heading text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] font-black text-white mb-4 leading-[1.2] tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
+                    Powering <br />
+                    <span class="text-brand-gold relative inline-block">
+                        Myanmar's
+                        <span class="absolute -bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-brand-gold to-transparent rounded-full"></span>
+                    </span> <br />
+                    Infrastructure.
+                </h1>
+
+                <!-- Concise Editorial Copy -->
+                <p class="text-xs sm:text-[13px] text-slate-200 mb-6 font-light leading-[1.7] drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
+                    Premier distributor of heavy construction machinery, mining equipment, and industrial energy solutions across Myanmar for over two decades.
+                </p>
+
+                <!-- Refined Action Buttons -->
+                <div class="flex flex-wrap items-center gap-3 mb-7">
+                    <a href="products.html"
+                        class="bg-brand-gold text-brand-navy px-6 py-2.5 font-heading font-bold text-[11px] uppercase tracking-[0.15em] hover:bg-yellow-400 transition-all rounded-lg shadow-[0_4px_16px_rgba(241,173,24,0.35)] hover:-translate-y-0.5">
+                        View Products
+                    </a>
+                    <a href="#about"
+                        class="bg-white/10 hover:bg-white/15 border border-white/20 text-white px-5 py-2.5 font-heading font-semibold text-[11px] uppercase tracking-[0.15em] transition-all rounded-lg flex items-center gap-2">
+                        <span>About AGGC</span> <i class="fa-solid fa-arrow-right text-[10px] text-brand-gold"></i>
+                    </a>
+                </div>
+
+                <!-- Compact Industrial Key Metrics Bar -->
+                <div class="grid grid-cols-3 gap-3 pt-5 border-t border-white/15">
+                    <div>
+                        <div class="text-white font-heading font-black text-base sm:text-lg">20+</div>
+                        <div class="text-slate-300 text-[9.5px] uppercase tracking-wider font-medium">Years Exp.</div>
+                    </div>
+                    <div class="border-l border-white/15 pl-3">
+                        <div class="text-brand-gold font-heading font-black text-base sm:text-lg">9+</div>
+                        <div class="text-slate-300 text-[9.5px] uppercase tracking-wider font-medium">Top Brands</div>
+                    </div>
+                    <div class="border-l border-white/15 pl-3">
+                        <div class="text-white font-heading font-black text-base sm:text-lg">100%</div>
+                        <div class="text-slate-300 text-[9.5px] uppercase tracking-wider font-medium">Genuine</div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -344,7 +388,8 @@
                     <div class="h-[2px] bg-brand-gold flex-grow"></div>
                     <div
                         class="w-10 h-10 bg-brand-navy rounded-full flex items-center justify-center border-2 border-brand-gold mx-2 z-10 p-1.5 shadow-lg">
-                        <img src="img/logo_head.png" alt="AGGC Logo Head" class="w-full h-full object-contain"></div>
+                        <img src="img/logo_head.png" alt="AGGC Logo Head" class="w-full h-full object-contain">
+                    </div>
                     <div class="h-[2px] bg-brand-gold flex-grow"></div>
                 </div>
             </div>
@@ -461,7 +506,7 @@
                                 ကျွန်တော်များ Aung Gyi Group Of Companies မှ တင်သွင်းသော အရည်အသွေးမြင့် ကမ္ဘာ့အဆင့်မီ
                                 Liugong Heavy Machinery စက်ကြီးများကို စဉ်ဆက်မပြတ် ဝယ်ယူအားပေးကြသော Customer
                                 လူကြီးမင်းများအား ကျေးဇူးတုံ့ပြန်သောအားဖြင့် နှစ်စဉ်မပျက် ကျင်းပပြုလုပ်လျက်ရှိသည့်
-                                Liugong Service Campaign ကြီးကို ယခုနှစ်တွင် ၁ လတိုက် ကျင်းပပြုလုပ်သွားမည် ဖြစ်ပါသည်။
+                                Liugong Service Campaign ကြီးကို ယခုနှစ်တွင် ၁ လတိုင်တိုင်ှှ ကျင်းပပြုလုပ်သွားမည် ဖြစ်ပါသည်။
                             </p>
 
                             <!-- Highlights Bullet Points -->
@@ -469,28 +514,32 @@
                                 <div class="flex items-start gap-3">
                                     <div
                                         class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 mt-1 flex-shrink-0">
-                                        <i class="fa-solid fa-check text-[10px]"></i></div>
+                                        <i class="fa-solid fa-check text-[10px]"></i>
+                                    </div>
                                     <span class="text-slate-300 text-sm leading-relaxed">၁၀၀% အခမဲ့
                                         ဝန်ဆောင်မှုပေးခြင်း</span>
                                 </div>
                                 <div class="flex items-start gap-3">
                                     <div
                                         class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 mt-1 flex-shrink-0">
-                                        <i class="fa-solid fa-check text-[10px]"></i></div>
+                                        <i class="fa-solid fa-check text-[10px]"></i>
+                                    </div>
                                     <span class="text-slate-300 text-sm leading-relaxed">ဖစ်လ်တာများ
                                         အခမဲ့လဲလှယ်ပေးခြင်း</span>
                                 </div>
                                 <div class="flex items-start gap-3">
                                     <div
                                         class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 mt-1 flex-shrink-0">
-                                        <i class="fa-solid fa-check text-[10px]"></i></div>
+                                        <i class="fa-solid fa-check text-[10px]"></i>
+                                    </div>
                                     <span class="text-slate-300 text-sm leading-relaxed">ကျွမ်းကျင်အင်ဂျင်နီယာကြီးများမှ
                                         စစ်ဆေးပေးခြင်း</span>
                                 </div>
                                 <div class="flex items-start gap-3">
                                     <div
                                         class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 mt-1 flex-shrink-0">
-                                        <i class="fa-solid fa-check text-[10px]"></i></div>
+                                        <i class="fa-solid fa-check text-[10px]"></i>
+                                    </div>
                                     <span class="text-slate-300 text-sm leading-relaxed">မေတ္တာတုံ့ပြန်လက်ဆောင်များ
                                         ပေးအပ်ခြင်း</span>
                                 </div>
@@ -531,10 +580,13 @@
                     </div>
                     <div
                         class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-navy mb-5 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-white transition-all">
-                        <i class="fa-solid fa-building text-2xl"></i></div>
+                        <i class="fa-solid fa-building text-2xl"></i>
+                    </div>
                     <h3 class="font-heading text-[18px] font-bold text-brand-navy mb-2 tracking-tight">Construction &
                         Mining</h3>
-                    <p class="text-slate-500 text-[14px] leading-[1.7]">Driven by <strong class="text-brand-navy">Alliance Tractors</strong>, supplying world-class heavy equipment, earthmoving machinery, and parts for mining and infrastructure projects.</p>
+                    <p class="text-slate-500 text-[14px] leading-[1.7]">Driven by <strong
+                            class="text-brand-navy">Alliance Tractors</strong>, supplying world-class heavy equipment,
+                        earthmoving machinery, and parts for mining and infrastructure projects.</p>
                 </div>
                 <div
                     class="bg-slate-50 rounded-2xl p-6 sm:p-8 transition-all duration-300 border border-slate-100 hover:border-brand-gold/30 hover:bg-white hover:shadow-[0_20px_40px_rgba(11,4,48,0.06)] group relative overflow-hidden">
@@ -543,10 +595,13 @@
                     </div>
                     <div
                         class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-navy mb-5 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-white transition-all">
-                        <i class="fa-solid fa-bolt text-2xl"></i></div>
+                        <i class="fa-solid fa-bolt text-2xl"></i>
+                    </div>
                     <h3 class="font-heading text-[18px] font-bold text-brand-navy mb-2 tracking-tight">Energy & Power
                         Solution</h3>
-                    <p class="text-slate-500 text-[14px] leading-[1.7]">Specialized power solutions by <strong class="text-brand-navy">Powermax Industries</strong>, including advanced diesel generators, solar solutions, and grid system integration.</p>
+                    <p class="text-slate-500 text-[14px] leading-[1.7]">Specialized power solutions by <strong
+                            class="text-brand-navy">Powermax Industries</strong>, including advanced diesel generators,
+                        solar solutions, and grid system integration.</p>
                 </div>
                 <div
                     class="bg-slate-50 rounded-2xl p-6 sm:p-8 transition-all duration-300 border border-slate-100 hover:border-brand-gold/30 hover:bg-white hover:shadow-[0_20px_40px_rgba(11,4,48,0.06)] group relative overflow-hidden">
@@ -555,9 +610,13 @@
                     </div>
                     <div
                         class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-navy mb-5 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-white transition-all">
-                        <i class="fa-solid fa-oil-can text-2xl"></i></div>
-                    <h3 class="font-heading text-[18px] font-bold text-brand-navy mb-2 tracking-tight">Oil, Gas & Lubricants</h3>
-                    <p class="text-slate-500 text-[14px] leading-[1.7]">Managed by <strong class="text-brand-navy">Turbo Oil Corporation</strong>, providing oil exploration services, logistical transport, and high-performance lubricants worldwide.</p>
+                        <i class="fa-solid fa-oil-can text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-[18px] font-bold text-brand-navy mb-2 tracking-tight">Oil, Gas &
+                        Lubricants</h3>
+                    <p class="text-slate-500 text-[14px] leading-[1.7]">Managed by <strong class="text-brand-navy">Turbo
+                            Oil Corporation</strong>, providing oil exploration services, logistical transport, and
+                        high-performance lubricants worldwide.</p>
                 </div>
             </div>
         </div>
@@ -572,35 +631,48 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <!-- Center Header -->
             <div class="text-center mb-16 group">
-                <h4 class="text-brand-gold font-heading font-bold tracking-[0.2em] uppercase text-[11px] sm:text-[12px] mb-2">Member Entities</h4>
-                <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-brand-navy tracking-tight uppercase">
+                <h4
+                    class="text-brand-gold font-heading font-bold tracking-[0.2em] uppercase text-[11px] sm:text-[12px] mb-2">
+                    Member Entities</h4>
+                <h2
+                    class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-brand-navy tracking-tight uppercase">
                     Corporate Divisions
                 </h2>
                 <div class="w-20 sm:w-24 h-[3px] bg-brand-gold mx-auto mt-4 sm:mt-5 rounded-full"></div>
                 <p class="text-slate-500 mt-5 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed font-light">
-                    Unifying heavy industrial capabilities, power networks, and energy solutions to build a sustainable global future.
+                    Unifying heavy industrial capabilities, power networks, and energy solutions to build a sustainable
+                    global future.
                 </p>
             </div>
 
             <!-- Divisions Cards Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Card 1: Alliance Tractors -->
-                <div class="bg-white rounded-[2rem] p-8 sm:p-10 border border-slate-200/60 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between h-full relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div
+                    class="bg-white rounded-[2rem] p-8 sm:p-10 border border-slate-200/60 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between h-full relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
                     <div>
                         <div class="flex justify-between items-center mb-6">
                             <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 bg-white rounded-2xl border border-slate-100 flex items-center justify-center p-1.5 shadow-sm overflow-hidden flex-shrink-0">
-                                    <img src="img/alliance_logo.png" alt="Alliance Tractors Logo" class="max-w-full max-h-full object-contain">
+                                <div
+                                    class="w-12 h-12 bg-white rounded-2xl border border-slate-100 flex items-center justify-center p-1.5 shadow-sm overflow-hidden flex-shrink-0">
+                                    <img src="img/alliance_logo.png" alt="Alliance Tractors Logo"
+                                        class="max-w-full max-h-full object-contain">
                                 </div>
                                 <div>
-                                    <h3 class="font-heading font-extrabold text-brand-navy text-lg leading-tight">Alliance Tractors</h3>
-                                    <p class="text-[10px] text-brand-gold font-bold uppercase tracking-wider">Heavy Machinery Platform</p>
+                                    <h3 class="font-heading font-extrabold text-brand-navy text-lg leading-tight">
+                                        Alliance Tractors</h3>
+                                    <p class="text-[10px] text-brand-gold font-bold uppercase tracking-wider">Heavy
+                                        Machinery Platform</p>
                                 </div>
                             </div>
                         </div>
                         <p class="text-slate-500 text-sm leading-relaxed mb-6 font-light">
-                            Strategically positioned in key global locations, Alliance Tractors acts as the premier platform for heavy construction equipment, mining machinery, and comprehensive post-purchase parts supply.
+                            Strategically positioned in key global locations, Alliance Tractors acts as the premier
+                            platform for heavy construction equipment, mining machinery, and comprehensive post-purchase
+                            parts supply.
                         </p>
                         <div class="space-y-2 mb-8">
                             <div class="flex items-center gap-2.5 text-xs text-slate-400">
@@ -610,29 +682,39 @@
                         </div>
                     </div>
                     <div class="pt-5 border-t border-slate-100 flex items-center justify-center mt-auto">
-                        <a href="corporate structure/aliance_tractor/Alliance Tractors.html" class="text-xs font-bold text-brand-navy hover:text-brand-gold flex items-center gap-1 transition-colors">
+                        <a href="corporate structure/aliance_tractor/Alliance Tractors.html"
+                            class="text-xs font-bold text-brand-navy hover:text-brand-gold flex items-center gap-1 transition-colors">
                             See More &rarr;
                         </a>
                     </div>
                 </div>
 
                 <!-- Card 2: Powermax Industries -->
-                <div class="bg-white rounded-[2rem] p-8 sm:p-10 border border-slate-200/60 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between h-full relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div
+                    class="bg-white rounded-[2rem] p-8 sm:p-10 border border-slate-200/60 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between h-full relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
                     <div>
                         <div class="flex justify-between items-center mb-6">
                             <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 bg-white rounded-2xl border border-slate-100 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
-                                    <img src="img/Products/powermax-logo.png" alt="Powermax Logo" class="max-w-full max-h-full object-contain">
+                                <div
+                                    class="w-12 h-12 bg-white rounded-2xl border border-slate-100 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                                    <img src="img/Products/powermax-logo.png" alt="Powermax Logo"
+                                        class="max-w-full max-h-full object-contain">
                                 </div>
                                 <div>
-                                    <h3 class="font-heading font-extrabold text-brand-navy text-lg leading-tight">Powermax Industries</h3>
-                                    <p class="text-[10px] text-brand-gold font-bold uppercase tracking-wider">Energy & Power Solutions</p>
+                                    <h3 class="font-heading font-extrabold text-brand-navy text-lg leading-tight">
+                                        Powermax Industries</h3>
+                                    <p class="text-[10px] text-brand-gold font-bold uppercase tracking-wider">Energy &
+                                        Power Solutions</p>
                                 </div>
                             </div>
                         </div>
                         <p class="text-slate-500 text-sm leading-relaxed mb-6 font-light">
-                            Powermax Industries provides one-stop power generation solutions, manufacturing diesel generator sets, automatic transfer switches (ATS), water pumps, and intelligent generator controllers.
+                            Powermax Industries provides one-stop power generation solutions, manufacturing diesel
+                            generator sets, automatic transfer switches (ATS), water pumps, and intelligent generator
+                            controllers.
                         </p>
                         <div class="space-y-2 mb-8">
                             <div class="flex items-center gap-2.5 text-xs text-slate-400">
@@ -642,29 +724,39 @@
                         </div>
                     </div>
                     <div class="pt-5 border-t border-slate-100 flex items-center justify-center mt-auto">
-                        <a href="corporate structure/powermax/Powermax.html" class="text-xs font-bold text-brand-navy hover:text-brand-gold flex items-center gap-1 transition-colors">
+                        <a href="corporate structure/powermax/Powermax.html"
+                            class="text-xs font-bold text-brand-navy hover:text-brand-gold flex items-center gap-1 transition-colors">
                             See More &rarr;
                         </a>
                     </div>
                 </div>
 
                 <!-- Card 3: Turbo Oil Corporation -->
-                <div class="bg-white rounded-[2rem] p-8 sm:p-10 border border-slate-200/60 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between h-full relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div
+                    class="bg-white rounded-[2rem] p-8 sm:p-10 border border-slate-200/60 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between h-full relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
                     <div>
                         <div class="flex justify-between items-center mb-6">
                             <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 bg-white rounded-2xl border border-slate-100 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
-                                    <img src="img/Products/turboil-logo.png" alt="Turbo Oil Logo" class="max-w-full max-h-full object-contain">
+                                <div
+                                    class="w-12 h-12 bg-white rounded-2xl border border-slate-100 flex items-center justify-center p-1 shadow-sm overflow-hidden flex-shrink-0">
+                                    <img src="img/Products/turboil-logo.png" alt="Turbo Oil Logo"
+                                        class="max-w-full max-h-full object-contain">
                                 </div>
                                 <div>
-                                    <h3 class="font-heading font-extrabold text-brand-navy text-lg leading-tight">Turbo Oil Corp.</h3>
-                                    <p class="text-[10px] text-brand-gold font-bold uppercase tracking-wider">Oil, Gas & Energy Resources</p>
+                                    <h3 class="font-heading font-extrabold text-brand-navy text-lg leading-tight">Turbo
+                                        Oil Corp.</h3>
+                                    <p class="text-[10px] text-brand-gold font-bold uppercase tracking-wider">Oil, Gas &
+                                        Energy Resources</p>
                                 </div>
                             </div>
                         </div>
                         <p class="text-slate-500 text-sm leading-relaxed mb-6 font-light">
-                            Turbo Oil Corporation specializes in the exploration, production, and distribution of energy products worldwide, delivering downstream lubricants, midstream logistics, and upstream rig supply.
+                            Turbo Oil Corporation specializes in the exploration, production, and distribution of energy
+                            products worldwide, delivering downstream lubricants, midstream logistics, and upstream rig
+                            supply.
                         </p>
                         <div class="space-y-2 mb-8">
                             <div class="flex items-center gap-2.5 text-xs text-slate-400">
@@ -674,7 +766,8 @@
                         </div>
                     </div>
                     <div class="pt-5 border-t border-slate-100 flex items-center justify-center mt-auto">
-                        <a href="corporate structure/turbo_oil/Turbo_Oil.html" class="text-xs font-bold text-brand-navy hover:text-brand-gold flex items-center gap-1 transition-colors">
+                        <a href="corporate structure/turbo_oil/Turbo_Oil.html"
+                            class="text-xs font-bold text-brand-navy hover:text-brand-gold flex items-center gap-1 transition-colors">
                             See More &rarr;
                         </a>
                     </div>
@@ -1085,7 +1178,8 @@
                     <div class="h-[2px] bg-brand-gold flex-grow"></div>
                     <div
                         class="w-10 h-10 bg-brand-navy rounded-full flex items-center justify-center border-2 border-brand-gold mx-2 z-10 p-1.5 shadow-md">
-                        <img src="img/logo_head.png" alt="AGGC Logo Head" class="w-full h-full object-contain"></div>
+                        <img src="img/logo_head.png" alt="AGGC Logo Head" class="w-full h-full object-contain">
+                    </div>
                     <div class="h-[2px] bg-brand-gold flex-grow"></div>
                 </div>
             </div>
@@ -1265,7 +1359,8 @@
                     <div class="h-[2px] bg-brand-gold flex-grow"></div>
                     <div
                         class="w-10 h-10 bg-brand-navy rounded-full flex items-center justify-center border-2 border-brand-gold mx-2 z-10 p-1.5 shadow-md">
-                        <img src="img/logo_head.png" alt="AGGC Logo Head" class="w-full h-full object-contain"></div>
+                        <img src="img/logo_head.png" alt="AGGC Logo Head" class="w-full h-full object-contain">
+                    </div>
                     <div class="h-[2px] bg-brand-gold flex-grow"></div>
                 </div>
             </div>
@@ -1307,7 +1402,8 @@
                         <div class="flex items-start">
                             <div
                                 class="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center text-brand-gold mr-4 flex-shrink-0 shadow-sm">
-                                <i class="fa-solid fa-location-dot text-xl"></i></div>
+                                <i class="fa-solid fa-location-dot text-xl"></i>
+                            </div>
                             <div>
                                 <h5 class="font-heading font-bold text-brand-navy text-[16px]">Head Office</h5>
                                 <p class="text-slate-500 mt-1.5 text-[14px] leading-[1.7]">No.901-6, Level 9, Office
@@ -1317,7 +1413,8 @@
                         <div class="flex items-start">
                             <div
                                 class="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center text-brand-gold mr-4 flex-shrink-0 shadow-sm">
-                                <i class="fa-solid fa-phone text-xl"></i></div>
+                                <i class="fa-solid fa-phone text-xl"></i>
+                            </div>
                             <div>
                                 <h5 class="font-heading font-bold text-brand-navy text-[16px]">Phone</h5>
                                 <p class="text-slate-500 mt-1.5 text-[14px] leading-[1.7]">Corp: +959-890 90000
@@ -1327,7 +1424,8 @@
                         <div class="flex items-start">
                             <div
                                 class="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center text-brand-gold mr-4 flex-shrink-0 shadow-sm">
-                                <i class="fa-solid fa-envelope text-xl"></i></div>
+                                <i class="fa-solid fa-envelope text-xl"></i>
+                            </div>
                             <div>
                                 <h5 class="font-heading font-bold text-brand-navy text-[16px]">Email</h5>
                                 <p class="text-slate-500 mt-1.5 text-[14px] leading-[1.7]">info@aungyigroup.com</p>
@@ -1581,22 +1679,58 @@
     </script>
 
     <!-- ========================================== -->
-    <!-- 2. HERO CAROUSEL SCRIPT                    -->
+    <!-- 2. HERO CAROUSEL INTERACTIVE SCRIPT        -->
     <!-- ========================================== -->
     <script>
-        // Hero Carousel Ken Burns Effect
+        // Hero Carousel with Ken Burns Effect, Interactive Indicators & Dynamic Slide Titles
         const carouselImages = document.querySelectorAll('.carousel-img');
+        const slideCategoryLabel = document.getElementById('slideCategoryLabel');
         let currentImageIndex = 0;
+        let heroCarouselInterval = null;
+
+        function updateHeroSlide(index) {
+            if (carouselImages.length === 0) return;
+
+            // Remove active state from current image
+            carouselImages.forEach(img => img.classList.remove('active'));
+            currentImageIndex = index;
+            carouselImages[currentImageIndex].classList.add('active');
+
+            // Update interactive indicators
+            const indicators = document.querySelectorAll('.hero-indicator .indicator-bar');
+            indicators.forEach((bar, idx) => {
+                if (idx === currentImageIndex) {
+                    bar.className = 'indicator-bar block h-1.5 rounded-full transition-all duration-500 w-7 bg-brand-gold shadow-[0_0_10px_rgba(241,173,24,0.8)]';
+                } else {
+                    bar.className = 'indicator-bar block h-1.5 rounded-full transition-all duration-500 w-2 bg-white/30 group-hover:bg-white/70 group-hover:w-3';
+                }
+            });
+
+            // Update dynamic slide title / counter
+            if (slideCategoryLabel && carouselImages[currentImageIndex]) {
+                const altText = carouselImages[currentImageIndex].getAttribute('alt') || 'Featured Equipment';
+                const slideNum = String(currentImageIndex + 1).padStart(2, '0');
+                const totalSlides = String(carouselImages.length).padStart(2, '0');
+                slideCategoryLabel.textContent = `${slideNum} / ${totalSlides} • ${altText}`;
+            }
+        }
+
+        function startHeroCarousel() {
+            if (heroCarouselInterval) clearInterval(heroCarouselInterval);
+            heroCarouselInterval = setInterval(() => {
+                const nextIndex = (currentImageIndex + 1) % carouselImages.length;
+                updateHeroSlide(nextIndex);
+            }, 5500);
+        }
+
+        function goToHeroSlide(index) {
+            updateHeroSlide(index);
+            startHeroCarousel(); // Reset autoplay timer when manually clicked
+        }
 
         if (carouselImages.length > 0) {
-            carouselImages.forEach(img => img.classList.remove('active'));
-            carouselImages[0].classList.add('active');
-
-            setInterval(() => {
-                carouselImages[currentImageIndex].classList.remove('active');
-                currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
-                carouselImages[currentImageIndex].classList.add('active');
-            }, 3000);
+            updateHeroSlide(0);
+            startHeroCarousel();
         }
     </script>
 
