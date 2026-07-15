@@ -32,8 +32,8 @@
                     },
                     colors: {
                         brand: {
-                            navy: '#0b0430',
-                            gold: '#f1ad18'
+                            navy: '#180733',
+                            gold: '#e1ae31'
                         }
                     }
                 }
@@ -67,7 +67,7 @@
             transform: translateX(-50%);
             width: 0;
             height: 2px;
-            background-color: #f1ad18;
+            background-color: #e1ae31;
             /* brand gold */
             transition: width 0.3s ease;
         }
@@ -75,6 +75,71 @@
         .nav-link-premium:hover::after,
         .nav-link-premium.active::after {
             width: 100%;
+        }
+
+        /* ===== SCROLL REVEAL ANIMATION SYSTEM ===== */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .scroll-reveal-left.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .scroll-reveal-right.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-scale-up {
+            opacity: 0;
+            transform: scale(0.92) translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-scale-up.revealed {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+        @keyframes float-medium {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(-3deg); }
+        }
+        @keyframes float-wobble {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(-8px, 12px) scale(1.02); }
+            66% { transform: translate(12px, -8px) scale(0.98); }
+        }
+        .animate-float-slow {
+            animation: float-slow 7s ease-in-out infinite;
+        }
+        .animate-float-medium {
+            animation: float-medium 5s ease-in-out infinite;
+        }
+        .animate-float-wobble {
+            animation: float-wobble 9s ease-in-out infinite;
         }
     </style>
 </head>
@@ -334,7 +399,7 @@
         <section id="chairman-message" class="py-16 sm:py-24 bg-white relative overflow-hidden border-b border-slate-200/60">
             <!-- Decorative background elements -->
             <div class="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
-                style="background-image: radial-gradient(#0b0430 2px, transparent 2px); background-size: 24px 24px;"></div>
+                style="background-image: radial-gradient(#180733 2px, transparent 2px); background-size: 24px 24px;"></div>
             <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl pointer-events-none"></div>
             
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -455,7 +520,7 @@
         <section id="structure" class="py-16 sm:py-24 bg-white relative border-t border-slate-200">
             <!-- Decorative background elements -->
             <div class="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
-                style="background-image: radial-gradient(#0b0430 2px, transparent 2px); background-size: 24px 24px;"></div>
+                style="background-image: radial-gradient(#180733 2px, transparent 2px); background-size: 24px 24px;"></div>
             
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <!-- Section Header -->
@@ -657,93 +722,145 @@
         </section>
 
         <!-- Core Values Section -->
-        <section id="values" class="py-16 sm:py-20 bg-white relative overflow-hidden">
-            <div
-                class="absolute left-0 top-1/2 -translate-y-1/2 w-80 h-80 bg-brand-navy/3 rounded-full blur-3xl pointer-events-none">
-            </div>
+        <section id="values" class="py-16 sm:py-24 bg-white relative overflow-hidden">
+            <!-- Ambient mesh glow elements -->
+            <div class="absolute -left-20 top-1/4 w-[300px] h-[300px] bg-[#180733]/5 rounded-full blur-[100px] pointer-events-none z-0 animate-float-slow"></div>
+            <div class="absolute right-1/3 bottom-10 w-[250px] h-[250px] bg-[#e1ae31]/5 rounded-full blur-[80px] pointer-events-none z-0 animate-float-wobble"></div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="text-center mb-12">
-                    <div class="flex items-center justify-center gap-3 mb-4">
-                        <div class="w-8 h-[2px] bg-brand-gold rounded-full"></div>
-                        <span
-                            class="text-brand-gold font-heading font-bold text-[11px] sm:text-xs uppercase tracking-[0.2em]">Our
-                            Standards</span>
-                        <div class="w-8 h-[2px] bg-brand-gold rounded-full"></div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Side: Title & Staggered Core Values Cards (7 cols) -->
+                    <div class="lg:col-span-7 space-y-8">
+                        <!-- Heading -->
+                        <div class="scroll-reveal">
+                            <h2 class="font-heading text-4xl sm:text-5xl font-black text-brand-navy tracking-tight uppercase mb-3">
+                                CORE VALUES
+                            </h2>
+                            <div class="w-24 h-[4px] bg-brand-gold rounded-full"></div>
+                        </div>
+
+                        <!-- 5 Staggered Modern Cards -->
+                        <div class="space-y-4 max-w-xl">
+                            
+                            <!-- Card 1: Integrity & Corporate Ethics -->
+                            <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/40 hover:bg-[#180733] hover:text-white hover:border-brand-gold/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-400 group cursor-default reveal-scale-up">
+                                <div class="w-12 h-12 bg-white group-hover:bg-brand-gold rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm transition-colors duration-300">
+                                    <i class="fa-solid fa-scale-balanced text-brand-gold group-hover:text-brand-navy text-lg transition-colors duration-300"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-extrabold text-brand-navy text-[15px] sm:text-[16px] group-hover:text-white transition-colors duration-300">
+                                        Integrity & Corporate Ethics
+                                    </h3>
+                                    <p class="text-[11px] text-slate-500 group-hover:text-slate-300 transition-colors duration-300 mt-0.5">
+                                        Upholding honesty, fair practices, and code compliance in all decisions.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Quality & Excellence -->
+                            <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/40 hover:bg-[#180733] hover:text-white hover:border-brand-gold/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-400 group cursor-default reveal-scale-up delay-100">
+                                <div class="w-12 h-12 bg-white group-hover:bg-brand-gold rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm transition-colors duration-300">
+                                    <i class="fa-solid fa-medal text-brand-gold group-hover:text-brand-navy text-lg transition-colors duration-300"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-extrabold text-brand-navy text-[15px] sm:text-[16px] group-hover:text-white transition-colors duration-300">
+                                        Quality & Excellence
+                                    </h3>
+                                    <p class="text-[11px] text-slate-500 group-hover:text-slate-300 transition-colors duration-300 mt-0.5">
+                                        Setting top benchmark standards for machinery parts, tools, and services.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Card 3: Innovation & Technology -->
+                            <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/40 hover:bg-[#180733] hover:text-white hover:border-brand-gold/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-400 group cursor-default reveal-scale-up delay-200">
+                                <div class="w-12 h-12 bg-white group-hover:bg-brand-gold rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm transition-colors duration-300">
+                                    <i class="fa-solid fa-microchip text-brand-gold group-hover:text-brand-navy text-lg transition-colors duration-300"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-extrabold text-brand-navy text-[15px] sm:text-[16px] group-hover:text-white transition-colors duration-300">
+                                        Innovation & Technology
+                                    </h3>
+                                    <p class="text-[11px] text-slate-500 group-hover:text-slate-300 transition-colors duration-300 mt-0.5">
+                                        Adapting advanced mechanics, power automation, and engineering tech.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Card 4: Sustainability & Responsibility -->
+                            <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/40 hover:bg-[#180733] hover:text-white hover:border-brand-gold/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-400 group cursor-default reveal-scale-up delay-300">
+                                <div class="w-12 h-12 bg-white group-hover:bg-brand-gold rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm transition-colors duration-300">
+                                    <i class="fa-solid fa-leaf text-brand-gold group-hover:text-brand-navy text-lg transition-colors duration-300"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-extrabold text-brand-navy text-[15px] sm:text-[16px] group-hover:text-white transition-colors duration-300">
+                                        Sustainability & Responsibility
+                                    </h3>
+                                    <p class="text-[11px] text-slate-500 group-hover:text-slate-300 transition-colors duration-300 mt-0.5">
+                                        Embracing clean resource logistics, solar fields, and community support.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Card 5: Customer Commitment -->
+                            <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/40 hover:bg-[#180733] hover:text-white hover:border-brand-gold/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-400 group cursor-default reveal-scale-up delay-400">
+                                <div class="w-12 h-12 bg-white group-hover:bg-brand-gold rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm transition-colors duration-300">
+                                    <i class="fa-solid fa-handshake text-brand-gold group-hover:text-brand-navy text-lg transition-colors duration-300"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-extrabold text-brand-navy text-[15px] sm:text-[16px] group-hover:text-white transition-colors duration-300">
+                                        Customer Commitment
+                                    </h3>
+                                    <p class="text-[11px] text-slate-500 group-hover:text-slate-300 transition-colors duration-300 mt-0.5">
+                                        Maintaining trust, transparent warranty terms, and active maintenance help.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                    <h2 class="font-heading text-3xl sm:text-4xl font-black text-brand-navy tracking-tight">Core Values
-                    </h2>
+
+                    <!-- Right Side: Pointed Shield Hologram Image Container (5 cols) -->
+                    <div class="lg:col-span-5 relative w-full h-[400px] lg:h-[500px] group/skew-img animate-float-medium scroll-reveal">
+                        <!-- Holographic image container with pointed shield clip-path -->
+                        <div class="absolute inset-0 w-full h-full shadow-2xl border border-slate-200/30 overflow-hidden" 
+                             style="clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);">
+                            <img src="./img/core_values_hologram.png" alt="AGGC Holographic Core Values" 
+                                 class="w-full h-full object-cover transform scale-100 group-hover/skew-img:scale-108 transition-transform duration-[1200ms] ease-out">
+                            <!-- High tech gradient overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-tr from-[#180733]/45 via-transparent to-brand-gold/15"></div>
+                            <!-- Sweep shimmer effect -->
+                            <div class="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg] group-hover/skew-img:left-[200%] transition-all duration-[1500ms] ease-out"></div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 max-w-6xl mx-auto">
-                    <!-- Value 1 -->
-                    <div
-                        class="group bg-slate-50 hover:bg-brand-navy rounded-2xl p-6 text-center border border-slate-100 hover:border-brand-navy shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-400 cursor-default">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-white group-hover:bg-brand-gold flex items-center justify-center mx-auto mb-4 shadow-sm transition-colors duration-300">
-                            <i
-                                class="fa-solid fa-scale-balanced text-brand-gold group-hover:text-brand-navy text-lg transition-colors duration-300"></i>
-                        </div>
-                        <p
-                            class="text-slate-700 group-hover:text-white font-semibold text-[13px] sm:text-[14px] leading-relaxed transition-colors duration-300">
-                            Compliance with State policies</p>
+                <!-- Bottom Banner: ISO Certified Group -->
+                <div class="mt-16 bg-[#fcfbfa] border border-slate-200/50 rounded-[2rem] p-6 sm:p-10 shadow-sm flex flex-col md:flex-row items-center gap-8 hover:shadow-2xl hover:border-brand-gold/30 transition-all duration-500 reveal-scale-up delay-100">
+                    <!-- Left: Gold Medal Badge -->
+                    <div class="w-32 h-32 flex-shrink-0 animate-float-slow flex items-center justify-center bg-white rounded-full border border-slate-100 p-2 shadow-inner group cursor-pointer hover:rotate-12 transition-transform duration-500">
+                        <img src="./img/iso_seal_gold.png" alt="AGGC ISO Seal Medal Badge" class="max-w-full max-h-full object-contain">
                     </div>
-                    <!-- Value 2 -->
-                    <div
-                        class="group bg-slate-50 hover:bg-brand-navy rounded-2xl p-6 text-center border border-slate-100 hover:border-brand-navy shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-400 cursor-default">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-white group-hover:bg-brand-gold flex items-center justify-center mx-auto mb-4 shadow-sm transition-colors duration-300">
-                            <i
-                                class="fa-solid fa-arrow-trend-up text-brand-gold group-hover:text-brand-navy text-lg transition-colors duration-300"></i>
-                        </div>
-                        <p
-                            class="text-slate-700 group-hover:text-white font-semibold text-[13px] sm:text-[14px] leading-relaxed transition-colors duration-300">
-                            Being above the average living standard for all</p>
-                    </div>
-                    <!-- Value 3 -->
-                    <div
-                        class="group bg-slate-50 hover:bg-brand-navy rounded-2xl p-6 text-center border border-slate-100 hover:border-brand-navy shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-400 cursor-default">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-white group-hover:bg-brand-gold flex items-center justify-center mx-auto mb-4 shadow-sm transition-colors duration-300">
-                            <i
-                                class="fa-solid fa-briefcase text-brand-gold group-hover:text-brand-navy text-lg transition-colors duration-300"></i>
-                        </div>
-                        <p
-                            class="text-slate-700 group-hover:text-white font-semibold text-[13px] sm:text-[14px] leading-relaxed transition-colors duration-300">
-                            Keeping the values of business ethics</p>
-                    </div>
-                    <!-- Value 4 -->
-                    <div
-                        class="group bg-slate-50 hover:bg-brand-navy rounded-2xl p-6 text-center border border-slate-100 hover:border-brand-navy shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-400 cursor-default">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-white group-hover:bg-brand-gold flex items-center justify-center mx-auto mb-4 shadow-sm transition-colors duration-300">
-                            <i
-                                class="fa-solid fa-handshake text-brand-gold group-hover:text-brand-navy text-lg transition-colors duration-300"></i>
-                        </div>
-                        <p
-                            class="text-slate-700 group-hover:text-white font-semibold text-[13px] sm:text-[14px] leading-relaxed transition-colors duration-300">
-                            Sincere relationship with stakeholders</p>
-                    </div>
-                    <!-- Value 5 -->
-                    <div
-                        class="group bg-slate-50 hover:bg-brand-navy rounded-2xl p-6 text-center border border-slate-100 hover:border-brand-navy shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-400 cursor-default">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-white group-hover:bg-brand-gold flex items-center justify-center mx-auto mb-4 shadow-sm transition-colors duration-300">
-                            <i
-                                class="fa-solid fa-shield-halved text-brand-gold group-hover:text-brand-navy text-lg transition-colors duration-300"></i>
-                        </div>
-                        <p
-                            class="text-slate-700 group-hover:text-white font-semibold text-[13px] sm:text-[14px] leading-relaxed transition-colors duration-300">
-                            Elevation of our integrity and reputation</p>
+                    <!-- Right: Info Content -->
+                    <div class="text-center md:text-left space-y-2">
+                        <h4 class="text-[#e1ae31] font-heading font-black text-lg sm:text-xl tracking-wider uppercase">
+                            ISO CERTIFIED GROUP
+                        </h4>
+                        <p class="text-slate-600 text-sm sm:text-[15px] leading-relaxed font-light">
+                            AGGC operates under internationally recognized ISO standards (<strong class="text-brand-navy font-semibold">ISO 9001, ISO 14001, ISO 45001</strong>), ensuring quality management, environmental responsibility, and workplace safety across all operations.
+                        </p>
                     </div>
                 </div>
+
             </div>
         </section>
 
         <!-- Our Motto (Modernized) -->
         <section id="motto" class="py-16 sm:py-24 bg-slate-50 relative overflow-hidden rounded-xl overflow-hidden">
             <div class="absolute inset-0 opacity-[0.025]"
-                style="background-image: radial-gradient(#0b0430 2px, transparent 2px); background-size: 24px 24px;">
+                style="background-image: radial-gradient(#180733 2px, transparent 2px); background-size: 24px 24px;">
             </div>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center mb-12">
@@ -1225,7 +1342,7 @@
                             <rect x="65" y="65" width="30" height="10" />
                             <rect x="35" y="85" width="15" height="10" />
                             <rect x="75" y="80" width="20" height="15" />
-                            <circle cx="50" cy="50" r="4" fill="#f1ad18" />
+                            <circle cx="50" cy="50" r="4" fill="#e1ae31" />
                         </svg>
                     </div>
                     <span
@@ -1345,6 +1462,19 @@
             if (e.key === 'Escape' && !imageModal.classList.contains('hidden')) {
                 closeModal();
             }
+        });
+
+        // IntersectionObserver for staggered reveals
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .reveal-scale-up');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, { threshold: 0.1 });
+            revealElements.forEach((el) => observer.observe(el));
         });
     </script>
 </body>

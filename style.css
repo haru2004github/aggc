@@ -10,7 +10,7 @@
             transform: translateX(-50%);
             width: 0;
             height: 2px;
-            background-color: #f1ad18; /* brand gold */
+            background-color: #e1ae31; /* brand gold */
             transition: width 0.3s ease;
         }
         .nav-link-premium:hover::after, .nav-link-premium.active::after {

@@ -84,10 +84,10 @@ function sendEmailNotification(product, name, email, phone, message, timestamp) 
   
   var htmlBody = 
     "<div style='font-family: \"Segoe UI\", Helvetica, Arial, sans-serif; max-width: 600px; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; margin: 0 auto; box-shadow: 0 4px 12px rgba(0,0,0,0.04);'>" +
-      // Header Banner with AGGC brand colors (navy #0b0430 & gold #f1ad18)
-      "<div style='background-color: #0b0430; padding: 28px 24px; text-align: center; border-bottom: 4px solid #f1ad18;'>" +
+      // Header Banner with AGGC brand colors (navy #180733 & gold #e1ae31)
+      "<div style='background-color: #180733; padding: 28px 24px; text-align: center; border-bottom: 4px solid #e1ae31;'>" +
         "<h2 style='color: #ffffff; margin: 0; font-size: 20px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;'>Aung Gyi Group of Companies</h2>" +
-        "<p style='color: #f1ad18; margin: 6px 0 0 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;'>Product Enquiry Notification</p>" +
+        "<p style='color: #e1ae31; margin: 6px 0 0 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;'>Product Enquiry Notification</p>" +
       "</div>" +
       
       // Content Area
@@ -99,7 +99,7 @@ function sendEmailNotification(product, name, email, phone, message, timestamp) 
         "<table style='width: 100%; border-collapse: collapse; margin-bottom: 28px; font-size: 14px;'>" +
           "<tr style='border-bottom: 1px solid #edf2f7;'>" +
             "<td style='padding: 12px 0; font-weight: bold; width: 35%; color: #718096;'>Product Requested</td>" +
-            "<td style='padding: 12px 0; font-weight: 700; color: #0b0430;'>" + product + "</td>" +
+            "<td style='padding: 12px 0; font-weight: 700; color: #180733;'>" + product + "</td>" +
           "</tr>" +
           "<tr style='border-bottom: 1px solid #edf2f7;'>" +
             "<td style='padding: 12px 0; font-weight: bold; color: #718096;'>Customer Name</td>" +
@@ -107,7 +107,7 @@ function sendEmailNotification(product, name, email, phone, message, timestamp) 
           "</tr>" +
           "<tr style='border-bottom: 1px solid #edf2f7;'>" +
             "<td style='padding: 12px 0; font-weight: bold; color: #718096;'>Email Address</td>" +
-            "<td style='padding: 12px 0;'><a href='mailto:" + email + "' style='color: #f1ad18; text-decoration: none; font-weight: 600;'>" + email + "</a></td>" +
+            "<td style='padding: 12px 0;'><a href='mailto:" + email + "' style='color: #e1ae31; text-decoration: none; font-weight: 600;'>" + email + "</a></td>" +
           "</tr>" +
           "<tr style='border-bottom: 1px solid #edf2f7;'>" +
             "<td style='padding: 12px 0; font-weight: bold; color: #718096;'>Phone Number</td>" +
@@ -120,7 +120,7 @@ function sendEmailNotification(product, name, email, phone, message, timestamp) 
         "</table>" +
         
         // Message Block
-        "<div style='background-color: #f8fafc; border-left: 4px solid #f1ad18; padding: 18px; border-radius: 8px; margin-bottom: 12px;'>" +
+        "<div style='background-color: #f8fafc; border-left: 4px solid #e1ae31; padding: 18px; border-radius: 8px; margin-bottom: 12px;'>" +
           "<h4 style='margin: 0 0 10px 0; font-size: 12px; color: #718096; text-transform: uppercase; letter-spacing: 0.5px;'>Message / Requirement Details:</h4>" +
           "<p style='margin: 0; font-size: 14px; font-style: italic; color: #2d3748; white-space: pre-wrap;'>" + message + "</p>" +
         "</div>" +

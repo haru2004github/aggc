@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${product.models.map((model, idx) => `
                     <div class="bg-[#fdf9ee] border border-slate-100 rounded-xl px-5 py-4 flex items-center justify-between shadow-sm hover:shadow-md hover:border-brand-gold/20 border transition-all duration-300 animate-fade-in-up" style="animation-delay: ${idx * 60}ms">
                         <span class="font-heading font-bold text-brand-navy text-[15px] tracking-wide">${model}</span>
-                        <button class="enquire-btn btn-shine bg-[#22292f] hover:bg-brand-gold text-[#f1ad18] hover:text-white px-5 py-2.5 rounded-lg font-heading font-extrabold text-[11px] tracking-wider uppercase shadow transition-all duration-300" data-model="${model}">
+                        <button class="enquire-btn btn-shine bg-[#22292f] hover:bg-brand-gold text-[#e1ae31] hover:text-white px-5 py-2.5 rounded-lg font-heading font-extrabold text-[11px] tracking-wider uppercase shadow transition-all duration-300" data-model="${model}">
                             ENQUIRE NOW
                         </button>
                     </div>
