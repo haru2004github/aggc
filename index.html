@@ -818,7 +818,7 @@
                     <div
                         class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/[0.08] border border-white/15 w-fit">
                         <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span>
-                        <span
+                        <span id="slideCategoryLabel"
                             class="text-brand-gold font-heading font-bold text-[9px] sm:text-[10px] uppercase tracking-[0.2em]">
                             Est. 2003 • Myanmar
                         </span>
@@ -876,155 +876,115 @@
             </div>
         </div>
     </section>
-
     <!-- 3. Welcome & About Us Section -->
-    <section id="about"
-        class="relative overflow-hidden bg-[#faf9f6] border-t border-[#180733]/5 min-h-[600px] flex items-stretch">
+    <section id="about" class="py-16 sm:py-24 bg-gradient-to-br from-[#faf9f6] via-[#f3f2ee] to-[#e6e4dc] relative overflow-hidden border-t border-[#180733]/5">
         <!-- Section scroll progress indicator -->
         <div class="section-scroll-indicator" id="section-scroll-bar"></div>
 
-        <!-- Split Grid Layout -->
-        <div class="w-full grid grid-cols-1 lg:grid-cols-12 items-stretch">
+        <!-- Shifting Mesh Lighting Blobs for warmth -->
+        <div class="absolute -left-20 top-1/4 w-[300px] h-[300px] bg-[#e1ae31]/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute right-10 bottom-10 w-[250px] h-[250px] bg-brand-navy/5 rounded-full blur-[80px] pointer-events-none"></div>
 
-            <!-- Left Side: Light Grey/White Column (5 cols) -->
-            <div
-                class="lg:col-span-5 bg-[#faf9f6] p-8 sm:p-12 md:p-16 flex flex-col justify-between relative overflow-hidden min-h-[450px] lg:min-h-auto scroll-reveal-left">
-                <!-- Architectural line overlay in background -->
-                <div class="absolute inset-0 opacity-[0.04] pointer-events-none z-0"
-                    style="background-image: linear-gradient(to right, #180733 1px, transparent 1px), linear-gradient(to bottom, #180733 1px, transparent 1px); background-size: 30px 30px;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 items-center">
+                
+                <!-- Left Side: Architectural Collage/Image (5 cols) -->
+                <div class="lg:col-span-5 scroll-reveal-left flex flex-col justify-between min-h-[400px] lg:min-h-auto relative">
+                    <!-- Architectural line overlay in background of image for depth -->
+                    <div class="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
+                        style="background-image: linear-gradient(to right, #180733 1px, transparent 1px), linear-gradient(to bottom, #180733 1px, transparent 1px); background-size: 24px 24px;">
+                    </div>
+
+                    <!-- Skyscraper Building Photo -->
+                    <div class="relative z-10 my-auto w-full max-w-md mx-auto aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-slate-200/50 group/img-container">
+                        <img src="./img/latest-aggc-building.jpg" alt="AGGC Headquarters"
+                            class="w-full h-full object-cover transform group-hover/img-container:scale-105 transition-transform duration-1000 ease-out">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#180733]/15 to-transparent"></div>
+
+                        <!-- Decorative gold accent bracket -->
+                        <div class="absolute bottom-4 left-4 w-6 h-6 border-l-4 border-b-4 border-brand-gold"></div>
+                        <div class="absolute top-4 right-4 w-6 h-6 border-r-4 border-t-4 border-brand-gold"></div>
+                    </div>
+
+                    <!-- Decorative Subtle Text at bottom -->
+                    <div class="relative z-10 mt-8 text-[11px] font-heading font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2 justify-center lg:justify-start">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-ping"></span>
+                        Aung Gyi Group Of Companies
+                    </div>
                 </div>
 
-                <!-- Floating mesh light -->
-                <div
-                    class="absolute -left-10 -top-10 w-60 h-60 bg-[#e1ae31]/10 rounded-full blur-[80px] animate-float-slow pointer-events-none">
+                <!-- Right Side: Content Column (7 cols) -->
+                <div class="lg:col-span-7 scroll-reveal-right space-y-8">
+                    <!-- Text Content Wrapper -->
+                    <div class="relative z-10">
+                        <!-- Gold mini label -->
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#180733]/5 border border-[#180733]/10 mb-6">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span>
+                            <span class="text-brand-navy font-heading font-extrabold text-[9px] uppercase tracking-[0.25em]">Global Presence</span>
+                        </div>
+
+                        <!-- ABOUT US Heading -->
+                        <h2 class="font-heading text-4xl sm:text-5xl font-black text-brand-navy tracking-tight uppercase mb-8 relative inline-block group/title">
+                            ABOUT US
+                            <span class="absolute -bottom-2 left-0 w-16 h-[3px] bg-brand-gold transition-all duration-500 group-hover/title:w-full rounded-full"></span>
+                        </h2>
+
+                        <!-- Text Paragraphs with staggered hover effects -->
+                        <div class="space-y-6 text-slate-600 font-sans text-sm sm:text-[15px] leading-relaxed">
+                            <p class="text-justify hover:text-brand-navy transition-colors duration-300 transform hover:translate-x-1 cursor-default">
+                                AGGC is a diversified industrial and engineering group formed through the integration of
+                                Aung Gyi Group of Companies and Alliance Global Group Company.
+                            </p>
+                            <p class="text-justify hover:text-brand-navy transition-colors duration-300 transform hover:translate-x-1 cursor-default">
+                                With operations across Myanmar, Thailand, Vietnam, Cambodia, Singapore, Hong Kong, and the
+                                UAE, the Group maintains an expanding regional presence across Asia and the Middle East. It
+                                connects regional and international partners to deliver coordinated engineering,
+                                manufacturing, and project execution services.
+                            </p>
+                            <p class="text-justify hover:text-brand-navy transition-colors duration-300 transform hover:translate-x-1 cursor-default">
+                                The Group is organized into four main divisions: Electric & Energy, Machinery & Automobile,
+                                AGGC Industries, and EPC + Finance, which collectively support its engineering, production,
+                                and service capabilities across multiple sectors.
+                            </p>
+                        </div>
+
+                        <!-- Interactive Quick Stats Row -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-10 mt-10 border-t border-slate-300/40">
+                            <div class="group/stat cursor-pointer flex flex-col justify-center">
+                                <div class="text-brand-navy font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-left flex items-center">
+                                    <span class="counter" data-target="7">0</span><span>+</span>
+                                </div>
+                                <div class="text-slate-500 text-[10px] uppercase tracking-wider font-semibold mt-1">Countries</div>
+                            </div>
+                            <div class="group/stat cursor-pointer flex flex-col justify-center">
+                                <div class="text-brand-gold font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-left flex items-center">
+                                    <span class="counter" data-target="4">0</span>
+                                </div>
+                                <div class="text-slate-500 text-[10px] uppercase tracking-wider font-semibold mt-1">Divisions</div>
+                            </div>
+                            <div class="group/stat cursor-pointer flex flex-col justify-center">
+                                <div class="text-brand-navy font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-left flex items-center">
+                                    <span class="counter" data-target="20">0</span><span>+</span>
+                                </div>
+                                <div class="text-slate-500 text-[10px] uppercase tracking-wider font-semibold mt-1">Years Exp.</div>
+                            </div>
+                            <div class="group/stat cursor-pointer flex flex-col justify-center">
+                                <div class="text-brand-gold font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-left flex items-center">
+                                    <span class="counter" data-target="100">0</span><span>%</span>
+                                </div>
+                                <div class="text-slate-500 text-[10px] uppercase tracking-wider font-semibold mt-1">Reliability</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- AGGC Logo and Partners (top left) -->
-                <div class="relative z-10 mb-8 animate-float-medium flex items-center justify-between">
-                    <img src="./img/logo.png" class="w-36 sm:w-44" alt="AGGC Logo">
-                </div>
-
-                <!-- Skyscraper Building Photo (middle) -->
-                <div
-                    class="relative z-10 my-auto w-full max-w-md mx-auto aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-slate-200/50 group/img-container animate-float-slow">
-                    <img src="./img/latest-aggc-building.jpg" alt="AGGC Headquarters"
-                        class="w-full h-full object-cover transform group-hover/img-container:scale-105 transition-transform duration-1000 ease-out">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#180733]/20 to-transparent"></div>
-
-                    <!-- Decorative gold accent bracket -->
-                    <div class="absolute bottom-4 left-4 w-6 h-6 border-l-4 border-b-4 border-brand-gold"></div>
-                    <div class="absolute top-4 right-4 w-6 h-6 border-r-4 border-t-4 border-brand-gold"></div>
-                </div>
-
-                <!-- Decorative Subtle Text at bottom -->
-                <div
-                    class="relative z-10 mt-8 text-[11px] font-heading font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-ping"></span>
-                    Aung Gyi Group Of Companies
-                </div>
             </div>
-
-            <!-- Right Side: Dark Navy Column (7 cols) -->
-            <div
-                class="lg:col-span-7 bg-gradient-to-br from-[#180733] via-[#0f0422] to-[#1a0a38] p-8 sm:p-12 md:p-16 flex flex-col justify-center relative overflow-hidden min-h-[500px] lg:min-h-auto scroll-reveal-right">
-                <!-- High-tech grid overlay in background -->
-                <div class="absolute inset-0 opacity-[0.02] pointer-events-none"
-                    style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 24px 24px;">
-                </div>
-
-                <!-- Neon ambient glows -->
-                <div
-                    class="absolute -right-20 top-1/4 w-[350px] h-[350px] bg-[#e1ae31]/10 rounded-full blur-[100px] animate-float-wobble pointer-events-none">
-                </div>
-                <div
-                    class="absolute left-1/3 bottom-10 w-[250px] h-[250px] bg-blue-500/10 rounded-full blur-[80px] animate-float-slow pointer-events-none">
-                </div>
-
-                <!-- Text Content Wrapper -->
-                <div class="relative z-10 max-w-2xl">
-                    <!-- Gold mini label -->
-                    <div
-                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 mb-6 animate-pulse">
-                        <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
-                        <span
-                            class="text-brand-gold font-heading font-extrabold text-[9px] uppercase tracking-[0.25em]">Global
-                            Presence</span>
-                    </div>
-
-                    <!-- ABOUT US Heading -->
-                    <h2
-                        class="font-heading text-4xl sm:text-5xl font-black text-white tracking-tight uppercase mb-8 relative inline-block group/title">
-                        ABOUT US
-                        <span
-                            class="absolute -bottom-2 left-0 w-16 h-[3px] bg-brand-gold transition-all duration-500 group-hover/title:w-full rounded-full"></span>
-                    </h2>
-
-                    <!-- Text Paragraphs with staggered hover effects -->
-                    <div class="space-y-6 text-slate-300 font-sans text-sm sm:text-base leading-relaxed">
-                        <p
-                            class="text-justify hover:text-white transition-colors duration-300 transform hover:translate-x-1 duration-300 cursor-default">
-                            AGGC is a diversified industrial and engineering group formed through the integration of
-                            Aung Gyi Group of Companies and Alliance Global Group Company.
-                        </p>
-                        <p
-                            class="text-justify hover:text-white transition-colors duration-300 transform hover:translate-x-1 duration-300 cursor-default">
-                            With operations across Myanmar, Thailand, Vietnam, Cambodia, Singapore, Hong Kong, and the
-                            UAE, the Group maintains an expanding regional presence across Asia and the Middle East. It
-                            connects regional and international partners to deliver coordinated engineering,
-                            manufacturing, and project execution services.
-                        </p>
-                        <p
-                            class="text-justify hover:text-white transition-colors duration-300 transform hover:translate-x-1 duration-300 cursor-default">
-                            The Group is organized into four main divisions: Electric & Energy, Machinery & Automobile,
-                            AGGC Industries, and EPC + Finance, which collectively support its engineering, production,
-                            and service capabilities across multiple sectors.
-                        </p>
-                    </div>
-
-                    <!-- Interactive Quick Stats Row -->
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-10 mt-10 border-t border-white/10">
-                        <div class="group/stat cursor-pointer flex flex-col justify-center">
-                            <div
-                                class="text-brand-gold font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-left flex items-center">
-                                <span class="counter" data-target="7">0</span><span>+</span>
-                            </div>
-                            <div class="text-slate-400 text-[10px] uppercase tracking-wider font-semibold mt-1">
-                                Countries</div>
-                        </div>
-                        <div class="group/stat cursor-pointer flex flex-col justify-center">
-                            <div
-                                class="text-white font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-left flex items-center">
-                                <span class="counter" data-target="4">0</span>
-                            </div>
-                            <div class="text-slate-400 text-[10px] uppercase tracking-wider font-semibold mt-1">
-                                Divisions</div>
-                        </div>
-                        <div class="group/stat cursor-pointer flex flex-col justify-center">
-                            <div
-                                class="text-brand-gold font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-left flex items-center">
-                                <span class="counter" data-target="20">0</span><span>+</span>
-                            </div>
-                            <div class="text-slate-400 text-[10px] uppercase tracking-wider font-semibold mt-1">Years
-                                Exp.</div>
-                        </div>
-                        <div class="group/stat cursor-pointer flex flex-col justify-center">
-                            <div
-                                class="text-white font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-left flex items-center">
-                                <span class="counter" data-target="100">0</span><span>%</span>
-                            </div>
-                            <div class="text-slate-400 text-[10px] uppercase tracking-wider font-semibold mt-1">
-                                Reliability</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
     <!-- 4. Business Sectors Section (WHAT WE DO) -->
     <section id="sectors"
-        class="py-16 sm:py-24 bg-gradient-to-br from-[#180733] via-[#0f0422] to-[#180733] relative border-t border-white/5 overflow-hidden">
+        class="py-16 sm:py-24 bg-gradient-to-br from-[#180733] via-[#0d041e] to-[#14062a] relative border-t border-white/5 overflow-hidden">
         <!-- Floating ambient mesh light -->
         <div
             class="absolute -right-20 top-1/4 w-[300px] h-[300px] bg-[#e1ae31]/10 rounded-full blur-[100px] pointer-events-none z-0 animate-float-slow">
@@ -1054,7 +1014,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                         <!-- Sector Card 1 -->
                         <div
-                            class="flex items-center gap-4 p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold hover:shadow-2xl transition-all duration-500 group cursor-pointer reveal-scale-up">
+                            class="flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-br from-white/[0.04] to-transparent border border-white/10 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold hover:shadow-2xl transition-all duration-500 group cursor-pointer reveal-scale-up">
                             <!-- Gold Hexagon Number Badge -->
                             <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-lg transition-all duration-500 group-hover:rotate-[360deg] group-hover:bg-[#180733] group-hover:text-brand-gold flex-shrink-0 flex items-center justify-center"
                                 style="clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);">
@@ -1074,7 +1034,7 @@
 
                         <!-- Sector Card 2 -->
                         <div
-                            class="flex items-center gap-4 p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold hover:shadow-2xl transition-all duration-500 group cursor-pointer reveal-scale-up delay-100">
+                            class="flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-br from-white/[0.04] to-transparent border border-white/10 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold hover:shadow-2xl transition-all duration-500 group cursor-pointer reveal-scale-up delay-100">
                             <!-- Gold Hexagon Number Badge -->
                             <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-lg transition-all duration-500 group-hover:rotate-[360deg] group-hover:bg-[#180733] group-hover:text-brand-gold flex-shrink-0 flex items-center justify-center"
                                 style="clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);">
@@ -1094,7 +1054,7 @@
 
                         <!-- Sector Card 3 -->
                         <div
-                            class="flex items-center gap-4 p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold hover:shadow-2xl transition-all duration-500 group cursor-pointer reveal-scale-up delay-200">
+                            class="flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-br from-white/[0.04] to-transparent border border-white/10 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold hover:shadow-2xl transition-all duration-500 group cursor-pointer reveal-scale-up delay-200">
                             <!-- Gold Hexagon Number Badge -->
                             <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-lg transition-all duration-500 group-hover:rotate-[360deg] group-hover:bg-[#180733] group-hover:text-brand-gold flex-shrink-0 flex items-center justify-center"
                                 style="clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);">
@@ -1114,7 +1074,7 @@
 
                         <!-- Sector Card 4 -->
                         <div
-                            class="flex items-center gap-4 p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold hover:shadow-2xl transition-all duration-500 group cursor-pointer reveal-scale-up delay-300">
+                            class="flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-br from-white/[0.04] to-transparent border border-white/10 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold hover:shadow-2xl transition-all duration-500 group cursor-pointer reveal-scale-up delay-300">
                             <!-- Gold Hexagon Number Badge -->
                             <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-lg transition-all duration-500 group-hover:rotate-[360deg] group-hover:bg-[#180733] group-hover:text-brand-gold flex-shrink-0 flex items-center justify-center"
                                 style="clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);">
