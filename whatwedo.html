@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What We Do - AGGC (Aung Gyi Group of Companies)</title>
+
+    <!-- Modern Premium Fonts: Poppins for Primary, Playfair Display for Accent -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="./img/logo_head.png">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                        accent: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#180733',
+                            gold: '#e1ae31'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Header */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Premium Nav Link Hover Effect */
+        .nav-link-premium {
+            position: relative;
+        }
+
+        .nav-link-premium::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #e1ae31;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link-premium:hover::after,
+        .nav-link-premium.active::after {
+            width: 100%;
+        }
+
+        /* Hexagon Clip Path */
+        .clip-hexagon {
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        }
+
+        /* ===== SCROLL REVEAL ANIMATION SYSTEM ===== */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scroll-reveal-left.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scroll-reveal-right.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale-up {
+            opacity: 0;
+            transform: scale(0.92) translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-scale-up.revealed {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+
+        /* Custom Sector Card Hover Effect */
+        .sector-hub-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .sector-hub-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(24, 7, 51, 0.15), 0 0 20px rgba(225, 174, 49, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- 1. Navigation Bar (Premium Glassmorphism Design) -->
+    <nav id="navbar"
+        class="fixed w-full z-50 glass-header bg-white border-b border-slate-200/50 transition-all duration-500 shadow-sm">
+        <div class="relative w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20 transition-all duration-500" id="nav-container">
+
+                    <!-- Logo -->
+                    <a href="index.html"
+                        class="flex items-center cursor-pointer group hover:opacity-90 transition-opacity">
+                        <img src="./img/logo.png" class="w-40" alt="AGGC Logo">
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden lg:flex h-full items-center space-x-7 xl:space-x-9">
+                        <a href="index.html"
+                            class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Home</a>
+                        <a href="about.html"
+                            class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">About</a>
+
+                        <!-- Products Dropdown Link (Desktop) -->
+                        <div class="relative group/drop py-2">
+                            <a href="products.html"
+                                class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors">
+                                Products <i
+                                    class="fa-solid fa-chevron-down ml-1.5 text-[8px] transition-transform duration-300 group-hover/drop:rotate-180"></i>
+                            </a>
+                            <!-- Dropdown Menu -->
+                            <div
+                                class="absolute top-full left-0 w-52 bg-white border border-slate-100 shadow-xl rounded-xl py-3 hidden group-hover/drop:block transition-all duration-300 z-[100] mt-1">
+                                <a href="product_page/Liugong.html"
+                                    class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Liugong</a>
+                                <a href="product_page/jac_moter.html"
+                                    class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Jac
+                                    Motors</a>
+                                <a href="product_page/powermax.html"
+                                    class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Powermax</a>
+                                <a href="product_page/izumi.html"
+                                    class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Izumi</a>
+                                <a href="product_page/zega.html"
+                                    class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Zega</a>
+                                <a href="product_page/roadmax.html"
+                                    class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Roadmax</a>
+                                <a href="product_page/topmax.html"
+                                    class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Topmax</a>
+                                <a href="product_page/truston.html"
+                                    class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Truston</a>
+                                <a href="products.html#brand-turboil"
+                                    class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider">Turboil</a>
+                            </div>
+                        </div>
+
+                        <a href="whatwedo.html"
+                            class="nav-link-premium active relative flex items-center text-[12px] font-heading font-bold uppercase tracking-[0.15em] text-brand-navy transition-colors py-2">What We Do</a>
+                        <a href="activites.html"
+                            class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Activities</a>
+                        <a href="careers.html"
+                            class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">Careers</a>
+
+                        <a href="news.html"
+                            class="nav-link-premium relative flex items-center text-[12px] font-heading font-semibold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-navy transition-colors py-2">News</a>
+
+                        <!-- CTA Button -->
+                        <div class="flex items-center pl-3">
+                            <a href="contact.html"
+                                class="bg-brand-navy text-white px-7 py-3 text-[12px] font-heading font-bold uppercase tracking-[0.15em] hover:bg-brand-gold hover:text-brand-navy transition-all duration-300 rounded shadow-[0_4px_14px_0_rgba(11,4,48,0.39)] hover:shadow-[0_6px_20px_rgba(241,173,24,0.4)] hover:-translate-y-0.5">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="lg:hidden flex items-center">
+                        <button id="mobileMenuBtn"
+                            class="text-brand-navy p-2 hover:bg-slate-100 transition-colors focus:outline-none rounded-md">
+                            <i id="menuIcon" class="fa-solid fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu"
+            class="hidden lg:hidden absolute top-full left-0 w-full bg-white shadow-2xl flex flex-col border-t border-slate-100 z-50">
+            <div class="px-6 py-4 flex flex-col">
+                <a href="index.html"
+                    class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Home</a>
+                <a href="about.html"
+                    class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">About</a>
+
+                <!-- Products Dropdown Link (Mobile) -->
+                <div class="py-2 border-b border-slate-50">
+                    <div class="flex items-center justify-between py-2">
+                        <a href="products.html"
+                            class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left">Products</a>
+                        <button onclick="toggleMobileDropdown('mob-products-drop', this)"
+                            class="text-slate-400 p-2 focus:outline-none">
+                            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300"></i>
+                        </button>
+                    </div>
+                    <div id="mob-products-drop" class="hidden pl-4 flex flex-col space-y-3 pb-3">
+                        <a href="product_page/Liugong.html"
+                            class="text-[12px] font-heading font-medium text-slate-500 hover:text-brand-navy">Liugong</a>
+                        <a href="product_page/jac_moter.html"
+                            class="text-[12px] font-heading font-medium text-slate-500 hover:text-brand-navy">Jac
+                            Motors</a>
+                        <a href="product_page/powermax.html"
+                            class="text-[12px] font-heading font-medium text-slate-500 hover:text-brand-navy">Powermax</a>
+                        <a href="product_page/izumi.html"
+                            class="text-[12px] font-heading font-medium text-slate-500 hover:text-brand-navy">Izumi</a>
+                        <a href="product_page/zega.html"
+                            class="text-[12px] font-heading font-medium text-slate-500 hover:text-brand-navy">Zega</a>
+                        <a href="product_page/roadmax.html"
+                            class="text-[12px] font-heading font-medium text-slate-500 hover:text-brand-navy">Roadmax</a>
+                        <a href="product_page/topmax.html"
+                            class="text-[12px] font-heading font-medium text-slate-500 hover:text-brand-navy">Topmax</a>
+                        <a href="product_page/truston.html"
+                            class="text-[12px] font-heading font-medium text-slate-500 hover:text-brand-navy">Truston</a>
+                        <a href="products.html#brand-turboil"
+                            class="text-[12px] font-heading font-medium text-slate-500 hover:text-brand-navy">Turboil</a>
+                    </div>
+                </div>
+
+                <a href="whatwedo.html"
+                    class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-brand-gold font-bold text-left py-4 border-b border-slate-50 transition-colors">What We Do</a>
+                <a href="activites.html"
+                    class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Activities</a>
+                <a href="careers.html"
+                    class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">Careers</a>
+
+                <a href="news.html"
+                    class="mobile-link text-[13px] font-heading uppercase tracking-[0.15em] text-slate-600 font-semibold text-left py-4 border-b border-slate-50 hover:text-brand-navy hover:pl-2 transition-all">News</a>
+
+                <a href="contact.html"
+                    class="mobile-link mt-6 mb-4 bg-brand-navy text-white w-full py-4 font-heading font-bold text-center uppercase tracking-[0.2em] text-[13px] rounded shadow-md">Contact
+                    Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section (Executive Dark Luxury Theme) -->
+    <section class="relative bg-gradient-to-b from-[#06091e] via-[#0d143a] to-[#131d52] pt-28 pb-24 sm:pt-36 sm:pb-32 overflow-hidden text-center">
+        <!-- Subtle Starry Night & Grid Watermark -->
+        <div class="absolute inset-0 opacity-[0.05]"
+            style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-gold/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/3 -left-40 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- Pine Forest & Mountain Horizon Silhouette Background Decoration -->
+        <div class="absolute bottom-[35px] sm:bottom-[45px] left-0 right-0 w-full overflow-hidden pointer-events-none z-0 opacity-45">
+            <svg viewBox="0 0 1440 220" preserveAspectRatio="none" class="w-full h-[120px] sm:h-[180px] md:h-[220px]">
+                <defs>
+                    <linearGradient id="pineHorizonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#18235c" stop-opacity="0.2" />
+                        <stop offset="50%" stop-color="#0d143a" stop-opacity="0.7" />
+                        <stop offset="100%" stop-color="#070a21" stop-opacity="0.95" />
+                    </linearGradient>
+                </defs>
+                <path fill="#162056" fill-opacity="0.35"
+                    d="M0,140 Q180,90 360,130 T720,100 T1080,125 T1440,95 L1440,220 L0,220 Z" />
+                <path fill="#0f1742" fill-opacity="0.55"
+                    d="M0,165 C240,125 450,175 700,140 C950,105 1200,165 1440,135 L1440,220 L0,220 Z" />
+                <path fill="url(#pineHorizonGrad)"
+                    d="M0,220 L0,185 L12,170 L18,178 L28,155 L38,175 L50,145 L62,172 L75,138 L88,168 L102,142 L115,165 L130,130 L145,162 L160,128 L175,160 L190,135 L205,162 L220,125 L235,158 L250,132 L265,160 L280,122 L295,155 L310,130 L325,158 L340,120 L355,152 L370,126 L385,154 L400,118 L415,150 L430,125 L445,155 L460,115 L475,148 L490,122 L505,152 L520,112 L535,145 L550,120 L565,150 L580,110 L595,142 L610,118 L625,148 L640,108 L655,140 L670,115 L685,145 L700,105 L715,138 L730,112 L745,142 L760,102 L775,135 L790,110 L805,140 L820,100 L835,132 L850,108 L865,138 L880,98 L895,130 L910,105 L925,135 L940,95 L955,128 L970,102 L985,132 L1000,92 L1015,125 L1030,100 L1045,130 L1060,90 L1075,122 L1090,98 L1105,128 L1120,88 L1135,120 L1150,95 L1165,125 L1180,85 L1195,118 L1210,92 L1225,122 L1240,82 L1255,115 L1270,90 L1285,120 L1300,80 L1315,112 L1330,88 L1345,118 L1360,78 L1375,110 L1390,85 L1405,115 L1420,80 L1435,110 L1440,105 L1440,220 Z" />
+            </svg>
+        </div>
+
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Slanted gold block tag -->
+            <div class="inline-flex items-center justify-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.08] border border-white/15 mb-6 backdrop-blur-sm">
+                <div class="w-2 h-4 bg-brand-gold transform -skew-x-12"></div>
+                <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Operations</span>
+                <div class="w-2 h-4 bg-brand-gold transform -skew-x-12"></div>
+            </div>
+
+            <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight uppercase tracking-tight drop-shadow-md">
+                WHAT WE <span class="text-brand-gold">DO</span>
+            </h1>
+            <p class="text-slate-200 text-sm sm:text-base md:text-lg max-w-3xl mx-auto mt-5 leading-relaxed font-light drop-shadow">
+                Today, Aung Gyi Group of Companies (AGGC) operates across four core strategic sectors, delivering innovative solutions, engineering excellence, and infrastructure development nationwide.
+            </p>
+        </div>
+
+        <!-- Ultra-Smooth Pro Multi-Layer Wave Divider -->
+        <div class="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
+            <svg viewBox="0 0 1440 110" preserveAspectRatio="none" class="relative block w-full h-[45px] sm:h-[70px] md:h-[85px]">
+                <path fill="#ffffff" fill-opacity="0.25" d="M0,36 C240,82 480,12 720,44 C960,76 1200,28 1440,54 L1440,110 L0,110 Z"></path>
+                <path fill="#ffffff" fill-opacity="0.55" d="M0,58 C320,18 640,88 960,48 C1120,28 1280,62 1440,42 L1440,110 L0,110 Z"></path>
+                <path fill="#ffffff" d="M0,68 C280,112 580,25 880,65 C1120,95 1300,45 1440,62 L1440,110 L0,110 Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full">
+
+        <!-- 3. Four Strategic Sectors Interactive Hub (Overview Grid) -->
+        <section class="py-16 sm:py-24 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Overview Header Block -->
+                <div class="bg-gradient-to-r from-brand-navy via-[#1f0a42] to-brand-navy rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-2xl border border-brand-gold/20 mb-16 scroll-reveal">
+                    <div class="absolute -right-20 -top-20 w-80 h-80 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+                    
+                    <div class="relative z-10 text-center max-w-3xl mx-auto">
+                        <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em] mb-2 block">Four Core Pillars</span>
+                        <h2 class="font-heading text-3xl sm:text-4xl font-black uppercase tracking-tight text-white mb-4">
+                            AGGC Operates Across Four Strategic Sectors
+                        </h2>
+                        <div class="w-20 h-1 bg-brand-gold mx-auto mb-6 rounded-full"></div>
+                        <p class="text-slate-300 text-sm sm:text-base font-light leading-relaxed">
+                            Through specialized corporate divisions and international partnerships, we power infrastructure, manufacture equipment, distribute heavy machinery, and structure high-impact project financing.
+                        </p>
+                    </div>
+
+                    <!-- 4 Hexagon Sectors Hub Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 relative z-10">
+                        
+                        <!-- Sector 01 Hub Card -->
+                        <a href="#electric-energy" class="sector-hub-card group bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15 hover:border-brand-gold/80 hover:bg-white/15 flex flex-col items-center text-center transition-all duration-300">
+                            <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-xl flex items-center justify-center clip-hexagon mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                01
+                            </div>
+                            <h3 class="font-heading font-bold text-white text-base group-hover:text-brand-gold transition-colors">Electric & Energy</h3>
+                            <p class="text-[11px] text-slate-300 mt-2 font-light">Power grids, renewable energy, and electrical systems.</p>
+                            <span class="mt-4 text-xs text-brand-gold font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                                Explore <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </a>
+
+                        <!-- Sector 02 Hub Card -->
+                        <a href="#machinery-automobile" class="sector-hub-card group bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15 hover:border-brand-gold/80 hover:bg-white/15 flex flex-col items-center text-center transition-all duration-300">
+                            <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-xl flex items-center justify-center clip-hexagon mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                02
+                            </div>
+                            <h3 class="font-heading font-bold text-white text-base group-hover:text-brand-gold transition-colors">Machinery & Automobile</h3>
+                            <p class="text-[11px] text-slate-300 mt-2 font-light">Heavy equipment, commercial trucks, and spare parts.</p>
+                            <span class="mt-4 text-xs text-brand-gold font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                                Explore <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </a>
+
+                        <!-- Sector 03 Hub Card -->
+                        <a href="#aggc-industries" class="sector-hub-card group bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15 hover:border-brand-gold/80 hover:bg-white/15 flex flex-col items-center text-center transition-all duration-300">
+                            <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-xl flex items-center justify-center clip-hexagon mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                03
+                            </div>
+                            <h3 class="font-heading font-bold text-white text-base group-hover:text-brand-gold transition-colors">AGGC Industries</h3>
+                            <p class="text-[11px] text-slate-300 mt-2 font-light">SKD vehicle assembly, manufacturing & vocational education.</p>
+                            <span class="mt-4 text-xs text-brand-gold font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                                Explore <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </a>
+
+                        <!-- Sector 04 Hub Card -->
+                        <a href="#epc-finance" class="sector-hub-card group bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15 hover:border-brand-gold/80 hover:bg-white/15 flex flex-col items-center text-center transition-all duration-300">
+                            <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-xl flex items-center justify-center clip-hexagon mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                04
+                            </div>
+                            <h3 class="font-heading font-bold text-white text-base group-hover:text-brand-gold transition-colors">EPC + Finance</h3>
+                            <p class="text-[11px] text-slate-300 mt-2 font-light">Turnkey project execution & structured investment solutions.</p>
+                            <span class="mt-4 text-xs text-brand-gold font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                                Explore <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTOR 01: ELECTRIC & ENERGY ==================== -->
+        <section id="electric-energy" class="py-20 sm:py-28 bg-slate-50 relative overflow-hidden border-t border-slate-200/80">
+            <!-- Decorative background elements -->
+            <div class="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
+                style="background-image: radial-gradient(#180733 2px, transparent 2px); background-size: 28px 28px;"></div>
+            <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    
+                    <!-- Left Column: Image Stack / Showcase Cards -->
+                    <div class="lg:col-span-5 space-y-4 scroll-reveal-left">
+                        <!-- Image Card 1: High Voltage Power Station -->
+                        <div class="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 group cursor-pointer h-52 sm:h-60">
+                            <img src="./img/Products/powermax-logo.png" alt="Electric & Energy Infrastructure" class="hidden">
+                            <img src="./img/slider_1.png" alt="High Voltage Substation & Power Grid" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-4 text-white">
+                                <span class="text-[10px] font-heading font-bold text-brand-gold uppercase tracking-wider block">Grid Substation</span>
+                                <h4 class="font-heading font-extrabold text-sm">Power Transmission & Distribution</h4>
+                            </div>
+                        </div>
+
+                        <!-- Image Grid 2: Storage Tanks & Solar Farm -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40">
+                                <img src="./img/slider_2.png" alt="Fuel Storage & Oil Terminal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
+                                <span class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">Fuel Terminals</span>
+                            </div>
+                            <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40">
+                                <img src="./img/slider_3.png" alt="Solar & Wind Renewable Energy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
+                                <span class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">Renewable Solar Fields</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Strategic Content Card -->
+                    <div class="lg:col-span-7 scroll-reveal-right">
+                        <!-- Sector Header Badge -->
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
+                                01
+                            </div>
+                            <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
+                        </div>
+
+                        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-brand-navy uppercase tracking-tight leading-tight mb-6">
+                            ELECTRIC & <span class="text-brand-gold">ENERGY</span>
+                        </h2>
+
+                        <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed mb-8">
+                            We design, build, and supply full-scale electrical and energy infrastructure solutions to power cities, industrial hubs, and commercial operations across Myanmar and Southeast Asia.
+                        </p>
+
+                        <!-- High Tech Data Card (From Slide Data) -->
+                        <div class="bg-gradient-to-br from-brand-navy via-[#180733] to-[#250b4d] rounded-3xl p-6 sm:p-8 text-white shadow-2xl border-l-8 border-l-brand-gold relative overflow-hidden">
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-bolt text-sm"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Electrical engineering and power system solutions</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-tower-cell text-sm"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Power generation, transmission, and distribution</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-plug text-sm"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Electrical equipment supply and installation</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-screwdriver-wrench text-sm"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Operation and maintenance (O&M) services</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-solar-panel text-sm"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Industrial and commercial energy solutions</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTOR 02: MACHINERY & AUTOMOBILE ==================== -->
+        <section id="machinery-automobile" class="py-20 sm:py-28 bg-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    
+                    <!-- Left Column: Strategic Content Card -->
+                    <div class="lg:col-span-7 order-2 lg:order-1 scroll-reveal-left">
+                        <!-- Sector Header Badge -->
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
+                                02
+                            </div>
+                            <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
+                        </div>
+
+                        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-brand-navy uppercase tracking-tight leading-tight mb-6">
+                            MACHINERY & <span class="text-brand-gold">AUTOMOBILE</span>
+                        </h2>
+
+                        <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed mb-8">
+                            As premier authorized distributors for global brands including LiuGong, JAC Motors, and Zega, we provide heavy machinery, commercial trucks, and technical after-sales support.
+                        </p>
+
+                        <!-- High Tech Data Card (From Slide Data) -->
+                        <div class="bg-gradient-to-br from-brand-navy via-[#180733] to-[#250b4d] rounded-3xl p-6 sm:p-8 text-white shadow-2xl border-r-8 border-r-brand-gold relative overflow-hidden">
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-truck-monster text-sm"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Heavy machinery supply and distribution</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-truck-front text-sm"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Commercial vehicles and automotive solutions</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-gears text-sm"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Equipment maintenance and after-sales support</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-boxes-packing text-sm"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Spare parts supply and technical services</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-headset text-sm"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Fleet management and customer support</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Image Stack / Showcase Cards -->
+                    <div class="lg:col-span-5 order-1 lg:order-2 space-y-4 scroll-reveal-right">
+                        <!-- Image 1: LiuGong Heavy Fleet -->
+                        <div class="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 group cursor-pointer h-52 sm:h-60">
+                            <img src="./img/slider_4.png" alt="LiuGong Construction Equipment Fleet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-4 text-white">
+                                <span class="text-[10px] font-heading font-bold text-brand-gold uppercase tracking-wider block">LiuGong Official Dealer</span>
+                                <h4 class="font-heading font-extrabold text-sm">Mining & Construction Fleet</h4>
+                            </div>
+                        </div>
+
+                        <!-- Image Grid 2: JAC Motors & Powermax -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40">
+                                <img src="./img/slider_5.png" alt="JAC Motors Commercial Truck Fleet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
+                                <span class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">JAC Heavy Trucks</span>
+                            </div>
+                            <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40 bg-slate-900 flex items-center justify-center p-3">
+                                <img src="./img/Products/powermax-logo.png" alt="Powermax Generators & Transformers" class="max-w-full max-h-full object-contain filter brightness-0 invert group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">Power Generators</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTOR 03: AGGC INDUSTRIES ==================== -->
+        <section id="aggc-industries" class="py-20 sm:py-28 bg-slate-50 relative overflow-hidden border-t border-slate-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    
+                    <!-- Left Column: Image Stack / Showcase Cards -->
+                    <div class="lg:col-span-5 space-y-4 scroll-reveal-left">
+                        <!-- Image 1: Manufacturing Robotic Assembly -->
+                        <div class="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 group cursor-pointer h-52 sm:h-60">
+                            <img src="./img/about_us_section_new.png" alt="SKD Assembly Line & Manufacturing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-4 text-white">
+                                <span class="text-[10px] font-heading font-bold text-brand-gold uppercase tracking-wider block">SKD Vehicle Assembly</span>
+                                <h4 class="font-heading font-extrabold text-sm">Industrial Manufacturing Plant</h4>
+                            </div>
+                        </div>
+
+                        <!-- Image Grid 2: Vocational Skills & Warehouse -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40">
+                                <img src="./img/top_hero_section_new.png" alt="Engineering Vocational Skills Training" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
+                                <span class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">Engineering Education</span>
+                            </div>
+                            <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40">
+                                <img src="./img/what_we_do_sectors.png" alt="Spare Parts Warehousing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
+                                <span class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">Parts Warehousing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Strategic Content Card -->
+                    <div class="lg:col-span-7 scroll-reveal-right">
+                        <!-- Sector Header Badge -->
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
+                                03
+                            </div>
+                            <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
+                        </div>
+
+                        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-brand-navy uppercase tracking-tight leading-tight mb-6">
+                            AGGC <span class="text-brand-gold">INDUSTRIES</span>
+                        </h2>
+
+                        <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed mb-8">
+                            We drive industrial localization through SKD vehicle assembly plants, transformer manufacturing, vocational technical training academies, and supply chain warehousing.
+                        </p>
+
+                        <!-- High Tech Data Card (From Slide Data) -->
+                        <div class="bg-gradient-to-br from-brand-navy via-[#180733] to-[#250b4d] rounded-3xl p-6 sm:p-8 text-white shadow-2xl border-l-8 border-l-brand-gold relative overflow-hidden">
+                            <div class="space-y-3.5">
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-7 h-7 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-graduation-cap text-xs"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Engineering Vocational Education & Skills Development</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-7 h-7 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-car-side text-xs"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">SKD Assembly of JAC Vehicles</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-7 h-7 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-microchip text-xs"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">SKD Manufacturing of Powermax Transformers, Cabinets & Generators</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-7 h-7 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-tractor text-xs"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">SKD Assembly of Black Bull Agricultural Machinery</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-7 h-7 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-industry text-xs"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">SKD Assembly of Sigma Machinery</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-7 h-7 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-wrench text-xs"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Service Workshop & Technical Support</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-7 h-7 rounded-xl bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-warehouse text-xs"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Spare Parts Warehousing & Supply Chain Management</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTOR 04: EPC + FINANCE ==================== -->
+        <section id="epc-finance" class="py-20 sm:py-28 bg-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    
+                    <!-- Left Column: Strategic Content Card -->
+                    <div class="lg:col-span-7 order-2 lg:order-1 scroll-reveal-left">
+                        <!-- Sector Header Badge -->
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
+                                04
+                            </div>
+                            <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
+                        </div>
+
+                        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-brand-navy uppercase tracking-tight leading-tight mb-6">
+                            EPC + <span class="text-brand-gold">FINANCE</span>
+                        </h2>
+
+                        <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed mb-8">
+                            We combine full Engineering, Procurement, and Construction (EPC) delivery with tailored project financing, financial advisory, and risk management to execute turnkey industrial projects.
+                        </p>
+
+                        <!-- High Tech Data Card (From Slide Data) -->
+                        <div class="bg-gradient-to-br from-brand-navy via-[#180733] to-[#250b4d] rounded-3xl p-6 sm:p-8 text-white shadow-2xl border-r-8 border-r-brand-gold relative overflow-hidden">
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-helmet-safety text-sm"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Engineering, Procurement & Construction (EPC) project delivery</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-building text-sm"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Turnkey infrastructure and industrial projects</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-sack-dollar text-sm"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Project financing and investment solutions</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-chart-line text-sm"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Financial advisory and structured funding</span>
+                                </div>
+
+                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-[#180733] fa-shield-halved text-sm"></i>
+                                    </div>
+                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Project management, contract administration, and risk management</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Image Stack / Showcase Cards -->
+                    <div class="lg:col-span-5 order-1 lg:order-2 space-y-4 scroll-reveal-right">
+                        <!-- Image 1: High Rise Construction Cranes -->
+                        <div class="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 group cursor-pointer h-52 sm:h-60">
+                            <img src="./img/alliance-new-04.jpg" alt="Turnkey EPC Infrastructure Development" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-4 text-white">
+                                <span class="text-[10px] font-heading font-bold text-brand-gold uppercase tracking-wider block">Turnkey Construction</span>
+                                <h4 class="font-heading font-extrabold text-sm">EPC Infrastructure Projects</h4>
+                            </div>
+                        </div>
+
+                        <!-- Image Grid 2: Industrial Engineers & Financial Analytics -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40">
+                                <img src="./img/chairman-about.jpg" alt="Industrial Engineers & Project Management" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
+                                <span class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">Engineers & Management</span>
+                            </div>
+                            <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40">
+                                <img src="./img/global_network_map_dark.png" alt="Structured Project Financing Analytics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
+                                <span class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">Structured Funding</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Executive Partner CTA Section -->
+        <section class="py-16 sm:py-24 bg-gradient-to-br from-brand-navy via-[#100424] to-[#1d0b3e] text-white relative overflow-hidden border-t border-brand-gold/20">
+            <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 scroll-reveal">
+                <div class="inline-flex items-center justify-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 mb-6 backdrop-blur-sm">
+                    <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Collaboration</span>
+                </div>
+                
+                <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white mb-6 leading-tight">
+                    Partner With <span class="text-brand-gold">Aung Gyi Group</span>
+                </h2>
+                
+                <p class="text-slate-300 text-sm sm:text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto mb-10">
+                    Whether powering energy grids, supplying heavy machinery, assembling SKD vehicles, or delivering EPC projects, AGGC provides high-impact solutions built on trust and technical excellence.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="products.html" class="w-full sm:w-auto bg-brand-gold text-brand-navy px-8 py-4 text-xs font-heading font-bold uppercase tracking-[0.2em] rounded-xl hover:bg-white transition-all duration-300 shadow-[0_6px_20px_rgba(225,174,49,0.35)] hover:-translate-y-1 text-center">
+                        Explore Our Products
+                    </a>
+                    <a href="contact.html" class="w-full sm:w-auto bg-white/10 text-white border border-white/20 px-8 py-4 text-xs font-heading font-bold uppercase tracking-[0.2em] rounded-xl hover:bg-white hover:text-brand-navy transition-all duration-300 hover:-translate-y-1 text-center">
+                        Contact Our Experts
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (Same as Main Page index.html) -->
+    <!-- Redesigned Premium Footer (wePro style) -->
+    <footer class="bg-gradient-to-br from-[#0e0520] via-[#180733] to-[#120525] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 lg:gap-6 mb-12">
+
+                <div class="col-span-2 flex flex-col space-y-4">
+                    <!-- Glass badge logo wrapper -->
+                    <div class="bg-white/95 p-2 rounded-xl w-fit shadow-lg">
+                        <img src="./img/logo.png" class="w-40" alt="AGGC Logo">
+                    </div>
+                    <p class="text-slate-300 text-[13px] font-light leading-relaxed max-w-xs">
+                        Aung Gyi Group of Companies. A leading diversified business group in Myanmar operating across
+                        key industrial sectors. Let's Build Together!
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-extrabold text-[13px] text-white uppercase tracking-wider mb-4">
+                        Home</h4>
+                    <ul class="space-y-2.5 text-[12px]">
+                        <li><a href="index.html#about"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Welcome</a>
+                        </li>
+                        <li><a href="index.html#sectors"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Sectors</a>
+                        </li>
+                        <li><a href="products.html"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Brands</a>
+                        </li>
+                        <li><a href="best_selling.html"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Best
+                                Sellers</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-extrabold text-[13px] text-white uppercase tracking-wider mb-4">
+                        About</h4>
+                    <ul class="space-y-2.5 text-[12px]">
+                        <li><a href="about.html#profile"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Profile</a>
+                        </li>
+                        <li><a href="about.html#vision"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Vision</a>
+                        </li>
+                        <li><a href="about.html#missions"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Missions</a>
+                        </li>
+                        <li><a href="about.html#motto"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Motto</a>
+                        </li>
+                        <li><a href="about.html#certificates"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Certificates</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-extrabold text-[13px] text-white uppercase tracking-wider mb-4">
+                        What We Do</h4>
+                    <ul class="space-y-2.5 text-[12px]">
+                        <li><a href="whatwedo.html#electric-energy"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Electric & Energy</a>
+                        </li>
+                        <li><a href="whatwedo.html#machinery-automobile"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Machinery & Automobile</a>
+                        </li>
+                        <li><a href="whatwedo.html#aggc-industries"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">AGGC Industries</a></li>
+                        <li><a href="whatwedo.html#epc-finance"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">EPC + Finance</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-extrabold text-[13px] text-white uppercase tracking-wider mb-4">
+                        Media</h4>
+                    <ul class="space-y-2.5 text-[12px]">
+                        <li><a href="activites.html"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Gallery</a>
+                        </li>
+                        <li><a href="news.html"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Announcements</a>
+                        </li>
+                        <li><a href="news.html"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Latest
+                                News</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-extrabold text-[13px] text-white uppercase tracking-wider mb-4">
+                        Careers</h4>
+                    <ul class="space-y-2.5 text-[12px]">
+                        <li><a href="careers.html"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Open
+                                Roles</a></li>
+                        <li><a href="careers.html"
+                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Join Us</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="flex flex-col items-center sm:items-start space-y-4">
+                    <div
+                        class="w-[100px] h-[100px] bg-white/10 border border-white/15 rounded-xl p-2 flex items-center justify-center shadow-sm">
+                        <svg viewBox="0 0 100 100" class="w-full h-full text-white" fill="currentColor">
+                            <rect x="0" y="0" width="25" height="25" />
+                            <rect x="5" y="5" width="15" height="15" fill="white" />
+                            <rect x="8" y="8" width="9" height="9" fill="black" />
+                            <rect x="75" y="0" width="25" height="25" />
+                            <rect x="80" y="5" width="15" height="15" fill="white" />
+                            <rect x="83" y="8" width="9" height="9" fill="black" />
+                            <rect x="0" y="75" width="25" height="25" />
+                            <rect x="5" y="80" width="15" height="15" fill="white" />
+                            <rect x="8" y="83" width="9" height="9" fill="black" />
+                            <rect x="35" y="5" width="10" height="5" />
+                            <rect x="55" y="10" width="15" height="10" />
+                            <rect x="40" y="20" width="15" height="5" />
+                            <rect x="30" y="35" width="25" height="10" />
+                            <rect x="10" y="40" width="10" height="10" />
+                            <rect x="70" y="40" width="15" height="15" />
+                            <rect x="85" y="30" width="10" height="10" />
+                            <rect x="15" y="60" width="20" height="5" />
+                            <rect x="45" y="55" width="10" height="25" />
+                            <rect x="65" y="65" width="30" height="10" />
+                            <rect x="35" y="85" width="15" height="10" />
+                            <rect x="75" y="80" width="20" height="15" />
+                            <circle cx="50" cy="50" r="4" fill="#e1ae31" />
+                        </svg>
+                    </div>
+                    <span
+                        class="text-[11px] font-heading font-black text-white uppercase tracking-wider">Location</span>
+                    <div class="flex items-center space-x-2.5">
+                        <a href="https://facebook.com/AungGyiGroup" target="_blank"
+                            class="w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-[11px] transition-colors"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                        <a href="viber://chat?number=%2B959777555666"
+                            class="w-7 h-7 rounded-full bg-[#735fa3] hover:bg-[#5e4b8b] text-white flex items-center justify-center text-[11px] transition-colors"><i
+                                class="fa-brands fa-viber"></i></a>
+                        <a href="mailto:info@aungyigroup.com"
+                            class="w-7 h-7 rounded-full bg-brand-gold hover:bg-brand-gold/85 text-brand-navy flex items-center justify-center text-[11px] transition-colors"><i
+                                class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <div
+                class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-300 font-medium">
+                <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
+                <p class="mt-2 md:mt-0 flex items-center gap-1.5"><span
+                        class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span> Designed with modern web technologies.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Navbar scroll behavior
+        const navbar = document.getElementById('navbar');
+        const navContainer = document.getElementById('nav-container');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('shadow-sm');
+                navContainer.classList.remove('h-20');
+                navContainer.classList.add('h-16');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('shadow-sm');
+                navContainer.classList.add('h-20');
+                navContainer.classList.remove('h-16');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        }
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+        }
+
+        function toggleMobileDropdown(id, btn) {
+            const el = document.getElementById(id);
+            const icon = btn.querySelector('i');
+            el.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // IntersectionObserver for staggered reveals
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .reveal-scale-up');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, { threshold: 0.1 });
+            revealElements.forEach((el) => observer.observe(el));
+        });
+    </script>
+
+</body>
+</html>
