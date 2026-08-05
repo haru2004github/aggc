@@ -140,6 +140,266 @@
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(24, 7, 51, 0.15), 0 0 20px rgba(225, 174, 49, 0.2);
         }
+
+        /* ===== BENTO GRID IMAGE LAYOUT SYSTEM ===== */
+        .bento-grid {
+            display: grid;
+            gap: 12px;
+            width: 100%;
+        }
+
+        /* Sector layout: images take 60% on desktop */
+        .sector-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        @media (min-width: 1024px) {
+            .sector-layout {
+                grid-template-columns: 1.3fr 1fr;
+                gap: 32px;
+            }
+            .sector-layout.reverse {
+                grid-template-columns: 1fr 1.3fr;
+            }
+        }
+
+        /* Bento grid patterns for 3 images */
+        .bento-grid {
+            display: grid;
+            gap: 16px;
+            height: 100%;
+        }
+        
+        .bento-3 {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+        }
+
+        .bento-3 .bento-hero {
+            grid-column: 1 / -1;
+            min-height: 280px;
+        }
+
+        @media (min-width: 640px) {
+            .bento-3 .bento-hero {
+                min-height: 320px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .bento-3 {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1.4fr 1fr;
+            }
+            .bento-3 .bento-hero {
+                grid-column: 1 / -1;
+                grid-row: 1;
+                min-height: 100%;
+            }
+            .bento-3 .bento-sub {
+                grid-row: 2;
+                min-height: 100%;
+            }
+        }
+
+        /* Bento image card */
+        .bento-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            min-height: 200px;
+        }
+
+        .bento-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+        }
+
+        .bento-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .bento-card .bento-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(24, 7, 51, 0.85) 0%, rgba(24, 7, 51, 0.25) 40%, transparent 70%);
+            transition: background 0.5s ease;
+        }
+
+        .bento-card:hover .bento-overlay {
+            background: linear-gradient(to top, rgba(24, 7, 51, 0.9) 0%, rgba(24, 7, 51, 0.35) 45%, transparent 75%);
+        }
+
+        .bento-card .bento-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .bento-card .bento-label .bento-tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: #e1ae31;
+            margin-bottom: 4px;
+        }
+
+        .bento-card .bento-label h4 {
+            font-weight: 800;
+            color: white;
+            font-size: 15px;
+            line-height: 1.3;
+        }
+
+        .bento-card .bento-label-sm {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 14px 16px;
+            z-index: 2;
+        }
+
+        .bento-card .bento-label-sm span {
+            font-size: 12px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        }
+
+        /* Floating glass badge on bento cards */
+        .bento-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 12px;
+            padding: 6px 12px;
+            z-index: 3;
+            transition: all 0.3s ease;
+        }
+
+        .bento-card:hover .bento-badge {
+            background: rgba(225, 174, 49, 0.25);
+            border-color: rgba(225, 174, 49, 0.4);
+        }
+
+        /* Modern data card for service lists */
+        .modern-data-card {
+            background: linear-gradient(135deg, #180733 0%, #1f0a42 50%, #250b4d 100%);
+            border-radius: 24px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(225, 174, 49, 0.15);
+        }
+
+        .modern-data-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(225, 174, 49, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .modern-data-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #e1ae31, transparent);
+        }
+
+        .data-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .data-row:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(225, 174, 49, 0.25);
+            transform: translateX(6px);
+        }
+
+        .data-row .data-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(225, 174, 49, 0.2), rgba(225, 174, 49, 0.08));
+            color: #e1ae31;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+
+        .data-row span {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* Sector section header */
+        .sector-header {
+            margin-bottom: 20px;
+        }
+
+        .sector-header .sector-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .sector-header h2 {
+            margin-bottom: 16px;
+        }
+
+        .sector-header p {
+            margin-bottom: 24px;
+        }
+
+        /* Subtle animated border glow for bento hero */
+        @keyframes borderGlow {
+            0%, 100% { box-shadow: 0 8px 32px rgba(24, 7, 51, 0.1), inset 0 0 0 1px rgba(225, 174, 49, 0.08); }
+            50% { box-shadow: 0 12px 48px rgba(24, 7, 51, 0.15), inset 0 0 0 1px rgba(225, 174, 49, 0.2); }
+        }
+
+        .bento-card {
+            box-shadow: 0 8px 32px rgba(24, 7, 51, 0.1);
+            animation: borderGlow 4s ease-in-out infinite;
+        }
+
+        .bento-card:hover {
+            box-shadow: 0 16px 48px rgba(24, 7, 51, 0.2), 0 0 24px rgba(225, 174, 49, 0.15);
+        }
     </style>
 </head>
 
@@ -360,55 +620,78 @@
                         </p>
                     </div>
 
-                    <!-- 4 Hexagon Sectors Hub Grid -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 relative z-10">
+                    <!-- 4 Strategic Sectors Hub Grid (Landscape Image Cards) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 relative z-10">
                         
                         <!-- Sector 01 Hub Card -->
-                        <a href="#electric-energy" class="sector-hub-card group bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15 hover:border-brand-gold/80 hover:bg-white/15 flex flex-col items-center text-center transition-all duration-300">
-                            <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-xl flex items-center justify-center clip-hexagon mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                01
+                        <a href="#electric-energy" class="group relative rounded-2xl overflow-hidden min-h-[280px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 hover:border-brand-gold/60 transition-all duration-500 shadow-xl">
+                            <!-- Background Image -->
+                            <img src="./img/what_we_do/tower.png" alt="Electric & Energy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                            <!-- Gradient Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#180733]/95 via-[#180733]/50 to-transparent group-hover:from-[#180733] transition-colors duration-500"></div>
+                            
+                            <!-- Content -->
+                            <div class="relative z-10 transform group-hover:-translate-y-2 transition-transform duration-500">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="w-12 h-12 bg-brand-gold text-brand-navy font-heading font-black text-lg flex items-center justify-center clip-hexagon shadow-lg">01</div>
+                                    <h3 class="font-heading font-bold text-white text-xl sm:text-2xl tracking-wide group-hover:text-brand-gold transition-colors">Electric & Energy</h3>
+                                </div>
+                                <p class="text-slate-300 text-sm font-light mb-4 max-w-md line-clamp-2">Power grids, renewable energy, and electrical systems.</p>
+                                <span class="inline-flex items-center gap-2 text-xs text-brand-gold font-bold uppercase tracking-wider group-hover:translate-x-2 transition-transform">
+                                    Explore Sector <i class="fa-solid fa-arrow-right"></i>
+                                </span>
                             </div>
-                            <h3 class="font-heading font-bold text-white text-base group-hover:text-brand-gold transition-colors">Electric & Energy</h3>
-                            <p class="text-[11px] text-slate-300 mt-2 font-light">Power grids, renewable energy, and electrical systems.</p>
-                            <span class="mt-4 text-xs text-brand-gold font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                                Explore <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                            </span>
                         </a>
 
                         <!-- Sector 02 Hub Card -->
-                        <a href="#machinery-automobile" class="sector-hub-card group bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15 hover:border-brand-gold/80 hover:bg-white/15 flex flex-col items-center text-center transition-all duration-300">
-                            <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-xl flex items-center justify-center clip-hexagon mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                02
+                        <a href="#machinery-automobile" class="group relative rounded-2xl overflow-hidden min-h-[280px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 hover:border-brand-gold/60 transition-all duration-500 shadow-xl">
+                            <img src="./img/what_we_do/machinary1.jpg" alt="Machinery & Automobile" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#180733]/95 via-[#180733]/50 to-transparent group-hover:from-[#180733] transition-colors duration-500"></div>
+                            
+                            <div class="relative z-10 transform group-hover:-translate-y-2 transition-transform duration-500">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="w-12 h-12 bg-brand-gold text-brand-navy font-heading font-black text-lg flex items-center justify-center clip-hexagon shadow-lg">02</div>
+                                    <h3 class="font-heading font-bold text-white text-xl sm:text-2xl tracking-wide group-hover:text-brand-gold transition-colors">Machinery & Automobile</h3>
+                                </div>
+                                <p class="text-slate-300 text-sm font-light mb-4 max-w-md line-clamp-2">Heavy equipment, commercial trucks, and spare parts.</p>
+                                <span class="inline-flex items-center gap-2 text-xs text-brand-gold font-bold uppercase tracking-wider group-hover:translate-x-2 transition-transform">
+                                    Explore Sector <i class="fa-solid fa-arrow-right"></i>
+                                </span>
                             </div>
-                            <h3 class="font-heading font-bold text-white text-base group-hover:text-brand-gold transition-colors">Machinery & Automobile</h3>
-                            <p class="text-[11px] text-slate-300 mt-2 font-light">Heavy equipment, commercial trucks, and spare parts.</p>
-                            <span class="mt-4 text-xs text-brand-gold font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                                Explore <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                            </span>
                         </a>
 
                         <!-- Sector 03 Hub Card -->
-                        <a href="#aggc-industries" class="sector-hub-card group bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15 hover:border-brand-gold/80 hover:bg-white/15 flex flex-col items-center text-center transition-all duration-300">
-                            <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-xl flex items-center justify-center clip-hexagon mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                03
+                        <a href="#aggc-industries" class="group relative rounded-2xl overflow-hidden min-h-[280px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 hover:border-brand-gold/60 transition-all duration-500 shadow-xl">
+                            <img src="./img/what_we_do/skd.png" alt="AGGC Industries" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#180733]/95 via-[#180733]/50 to-transparent group-hover:from-[#180733] transition-colors duration-500"></div>
+                            
+                            <div class="relative z-10 transform group-hover:-translate-y-2 transition-transform duration-500">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="w-12 h-12 bg-brand-gold text-brand-navy font-heading font-black text-lg flex items-center justify-center clip-hexagon shadow-lg">03</div>
+                                    <h3 class="font-heading font-bold text-white text-xl sm:text-2xl tracking-wide group-hover:text-brand-gold transition-colors">AGGC Industries</h3>
+                                </div>
+                                <p class="text-slate-300 text-sm font-light mb-4 max-w-md line-clamp-2">SKD vehicle assembly, manufacturing & vocational education.</p>
+                                <span class="inline-flex items-center gap-2 text-xs text-brand-gold font-bold uppercase tracking-wider group-hover:translate-x-2 transition-transform">
+                                    Explore Sector <i class="fa-solid fa-arrow-right"></i>
+                                </span>
                             </div>
-                            <h3 class="font-heading font-bold text-white text-base group-hover:text-brand-gold transition-colors">AGGC Industries</h3>
-                            <p class="text-[11px] text-slate-300 mt-2 font-light">SKD vehicle assembly, manufacturing & vocational education.</p>
-                            <span class="mt-4 text-xs text-brand-gold font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                                Explore <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                            </span>
                         </a>
 
                         <!-- Sector 04 Hub Card -->
-                        <a href="#epc-finance" class="sector-hub-card group bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15 hover:border-brand-gold/80 hover:bg-white/15 flex flex-col items-center text-center transition-all duration-300">
-                            <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-xl flex items-center justify-center clip-hexagon mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                04
+                        <a href="#epc-finance" class="group relative rounded-2xl overflow-hidden min-h-[280px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 hover:border-brand-gold/60 transition-all duration-500 shadow-xl">
+                            <img src="./img/what_we_do/epc.png" alt="EPC + Finance" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#180733]/95 via-[#180733]/50 to-transparent group-hover:from-[#180733] transition-colors duration-500"></div>
+                            
+                            <div class="relative z-10 transform group-hover:-translate-y-2 transition-transform duration-500">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div class="w-12 h-12 bg-brand-gold text-brand-navy font-heading font-black text-lg flex items-center justify-center clip-hexagon shadow-lg">04</div>
+                                    <h3 class="font-heading font-bold text-white text-xl sm:text-2xl tracking-wide group-hover:text-brand-gold transition-colors">EPC + Finance</h3>
+                                </div>
+                                <p class="text-slate-300 text-sm font-light mb-4 max-w-md line-clamp-2">Turnkey project execution & structured investment solutions.</p>
+                                <span class="inline-flex items-center gap-2 text-xs text-brand-gold font-bold uppercase tracking-wider group-hover:translate-x-2 transition-transform">
+                                    Explore Sector <i class="fa-solid fa-arrow-right"></i>
+                                </span>
                             </div>
-                            <h3 class="font-heading font-bold text-white text-base group-hover:text-brand-gold transition-colors">EPC + Finance</h3>
-                            <p class="text-[11px] text-slate-300 mt-2 font-light">Turnkey project execution & structured investment solutions.</p>
-                            <span class="mt-4 text-xs text-brand-gold font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                                Explore <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                            </span>
                         </a>
 
                     </div>
@@ -417,101 +700,93 @@
         </section>
 
         <!-- ==================== SECTOR 01: ELECTRIC & ENERGY ==================== -->
-        <section id="electric-energy" class="py-20 sm:py-28 bg-slate-50 relative overflow-hidden border-t border-slate-200/80">
+        <section id="electric-energy" class="py-16 sm:py-24 bg-slate-50 relative overflow-hidden border-t border-slate-200/80">
             <!-- Decorative background elements -->
             <div class="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
                 style="background-image: radial-gradient(#180733 2px, transparent 2px); background-size: 28px 28px;"></div>
             <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <div class="sector-layout">
                     
-                    <!-- Left Column: Image Stack / Showcase Cards -->
-                    <div class="lg:col-span-5 space-y-4 scroll-reveal-left">
-                        <!-- Image Card 1: High Voltage Power Station -->
-                        <div class="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 group cursor-pointer h-52 sm:h-60">
-                            <img src="./img/Products/powermax-logo.png" alt="Electric & Energy Infrastructure" class="hidden">
-                            <img src="./img/what_we_do/tower.png" alt="High Voltage Substation & Power Grid" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent"></div>
-                            <div class="absolute bottom-3 left-4 text-white">
-                                <span class="text-[10px] font-heading font-bold text-brand-gold uppercase tracking-wider block">Grid Substation</span>
-                                <h4 class="font-heading font-extrabold text-sm">Power Transmission & Distribution</h4>
+                    <!-- Left Column: Bento Image Grid (Dominant) -->
+                    <div class="scroll-reveal-left">
+                        <div class="bento-grid bento-3">
+                            <!-- Hero Image: Power Tower -->
+                            <div class="bento-card bento-hero">
+                                <img src="./img/what_we_do/tower.png" alt="High Voltage Substation & Power Grid">
+                                <div class="bento-overlay"></div>
+                                <div class="bento-badge">
+                                    <img src="./img/Products/powermax-logo.png" alt="Powermax" class="h-5 w-auto" style="object-fit: contain;">
+                                </div>
+                                <div class="bento-label">
+                                    <span class="bento-tag font-heading">Grid Substation</span>
+                                    <h4 class="font-heading">Power Transmission & Distribution</h4>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Image Grid 2: Storage Tanks & Solar Farm -->
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40">
-                                <img src="./img/what_we_do/turbooil_tank.jpg" alt="Fuel Storage & Oil Terminal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
-                                <span class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">Fuel Terminals</span>
+                            <!-- Sub Image: Fuel Terminals -->
+                            <div class="bento-card bento-sub">
+                                <img src="./img/what_we_do/turbooil_tank.jpg" alt="Fuel Storage & Oil Terminal">
+                                <div class="bento-overlay"></div>
+                                <div class="bento-label-sm">
+                                    <span class="font-heading">Fuel Terminals</span>
+                                </div>
                             </div>
-                            <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40">
-                                <img src="./img/what_we_do/solar.png" alt="Solar & Wind Renewable Energy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
-                                <span class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">Renewable Solar Fields</span>
+                            <!-- Sub Image: Solar -->
+                            <div class="bento-card bento-sub">
+                                <img src="./img/what_we_do/solar.png" alt="Solar & Wind Renewable Energy">
+                                <div class="bento-overlay"></div>
+                                <div class="bento-label-sm">
+                                    <span class="font-heading">Renewable Solar Fields</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Right Column: Strategic Content Card -->
-                    <div class="lg:col-span-7 scroll-reveal-right">
-                        <!-- Sector Header Badge -->
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
-                                01
+                    <!-- Right Column: Content & Data Card -->
+                    <div class="scroll-reveal-right flex flex-col justify-center">
+                        <div class="sector-header">
+                            <div class="sector-badge">
+                                <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
+                                    01
+                                </div>
+                                <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
                             </div>
-                            <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
+
+                            <h2 class="font-heading text-3xl sm:text-4xl md:text-[2.8rem] font-black text-brand-navy uppercase tracking-tight leading-tight">
+                                ELECTRIC & <span class="text-brand-gold">ENERGY</span>
+                            </h2>
+
+                            <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed">
+                                We design, build, and supply full-scale electrical and energy infrastructure solutions to power cities, industrial hubs, and commercial operations across Myanmar and Southeast Asia.
+                            </p>
                         </div>
 
-                        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-brand-navy uppercase tracking-tight leading-tight mb-6">
-                            ELECTRIC & <span class="text-brand-gold">ENERGY</span>
-                        </h2>
-
-                        <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed mb-8">
-                            We design, build, and supply full-scale electrical and energy infrastructure solutions to power cities, industrial hubs, and commercial operations across Myanmar and Southeast Asia.
-                        </p>
-
-                        <!-- High Tech Data Card (From Slide Data) -->
-                        <div class="bg-gradient-to-br from-brand-navy via-[#180733] to-[#250b4d] rounded-3xl p-6 sm:p-8 text-white shadow-2xl border-l-8 border-l-brand-gold relative overflow-hidden">
-                            <div class="space-y-4">
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-bolt text-sm"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Electrical engineering and power system solutions</span>
+                        <!-- Modern Data Card -->
+                        <div class="modern-data-card">
+                            <div class="space-y-3">
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-bolt"></i></div>
+                                    <span>Electrical engineering and power system solutions</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-tower-cell text-sm"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Power generation, transmission, and distribution</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-tower-cell"></i></div>
+                                    <span>Power generation, transmission, and distribution</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-plug text-sm"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Electrical equipment supply and installation</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-plug"></i></div>
+                                    <span>Electrical equipment supply and installation</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-screwdriver-wrench text-sm"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Operation and maintenance (O&M) services</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                                    <span>Operation and maintenance (O&M) services</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-solar-panel text-sm"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Industrial and commercial energy solutions</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-solar-panel"></i></div>
+                                    <span>Industrial and commercial energy solutions</span>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
                 </div>
@@ -519,93 +794,86 @@
         </section>
 
         <!-- ==================== SECTOR 02: MACHINERY & AUTOMOBILE ==================== -->
-        <section id="machinery-automobile" class="py-20 sm:py-28 bg-white relative overflow-hidden">
+        <section id="machinery-automobile" class="py-16 sm:py-24 bg-white relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <div class="sector-layout reverse">
                     
-                    <!-- Left Column: Strategic Content Card -->
-                    <div class="lg:col-span-7 order-2 lg:order-1 scroll-reveal-left">
-                        <!-- Sector Header Badge -->
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
-                                02
+                    <!-- Left Column: Content & Data Card -->
+                    <div class="order-2 lg:order-1 scroll-reveal-left flex flex-col justify-center">
+                        <div class="sector-header">
+                            <div class="sector-badge">
+                                <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
+                                    02
+                                </div>
+                                <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
                             </div>
-                            <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
+
+                            <h2 class="font-heading text-3xl sm:text-4xl md:text-[2.8rem] font-black text-brand-navy uppercase tracking-tight leading-tight">
+                                MACHINERY &amp; <span class="text-brand-gold">AUTOMOBILE</span>
+                            </h2>
+
+                            <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed">
+                                As premier authorized distributors for global brands including LiuGong, JAC Motors, and Zega, we provide heavy machinery, commercial trucks, and technical after-sales support.
+                            </p>
                         </div>
 
-                        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-brand-navy uppercase tracking-tight leading-tight mb-6">
-                            MACHINERY & <span class="text-brand-gold">AUTOMOBILE</span>
-                        </h2>
-
-                        <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed mb-8">
-                            As premier authorized distributors for global brands including LiuGong, JAC Motors, and Zega, we provide heavy machinery, commercial trucks, and technical after-sales support.
-                        </p>
-
-                        <!-- High Tech Data Card (From Slide Data) -->
-                        <div class="bg-gradient-to-br from-brand-navy via-[#180733] to-[#250b4d] rounded-3xl p-6 sm:p-8 text-white shadow-2xl border-r-8 border-r-brand-gold relative overflow-hidden">
-                            <div class="space-y-4">
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-truck-monster text-sm"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Heavy machinery supply and distribution</span>
+                        <!-- Modern Data Card -->
+                        <div class="modern-data-card">
+                            <div class="space-y-3">
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-truck-monster"></i></div>
+                                    <span>Heavy machinery supply and distribution</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-truck-front text-sm"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Commercial vehicles and automotive solutions</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-truck-front"></i></div>
+                                    <span>Commercial vehicles and automotive solutions</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-gears text-sm"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Equipment maintenance and after-sales support</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-gears"></i></div>
+                                    <span>Equipment maintenance and after-sales support</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-boxes-packing text-sm"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Spare parts supply and technical services</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-boxes-packing"></i></div>
+                                    <span>Spare parts supply and technical services</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-headset text-sm"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Fleet management and customer support</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-headset"></i></div>
+                                    <span>Fleet management and customer support</span>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
-                    <!-- Right Column: Image Stack / Showcase Cards -->
-                    <div class="lg:col-span-5 order-1 lg:order-2 space-y-4 scroll-reveal-right">
-                        <!-- Image 1: LiuGong Heavy Fleet -->
-                        <div class="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 group cursor-pointer h-52 sm:h-60">
-                            <img src="./img/what_we_do/machinary1.jpg" alt="LiuGong Construction Equipment Fleet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent"></div>
-                            <div class="absolute bottom-3 left-4 text-white">
-                                <span class="text-[10px] font-heading font-bold text-brand-gold uppercase tracking-wider block">LiuGong Official Dealer</span>
-                                <h4 class="font-heading font-extrabold text-sm">Mining & Construction Fleet</h4>
+                    <!-- Right Column: Bento Image Grid (Dominant) -->
+                    <div class="order-1 lg:order-2 scroll-reveal-right">
+                        <div class="bento-grid bento-3">
+                            <!-- Hero Image: LiuGong Fleet -->
+                            <div class="bento-card bento-hero">
+                                <img src="./img/what_we_do/machinary1.jpg" alt="LiuGong Construction Equipment Fleet">
+                                <div class="bento-overlay"></div>
+                                <div class="bento-badge">
+                                    <span class="text-white text-[10px] font-heading font-bold uppercase tracking-wider">LiuGong</span>
+                                </div>
+                                <div class="bento-label">
+                                    <span class="bento-tag font-heading">LiuGong Official Dealer</span>
+                                    <h4 class="font-heading">Mining &amp; Construction Fleet</h4>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Image Grid 2: JAC Motors & Powermax -->
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40">
-                                <img src="./img/what_we_do/machinary3.jpg" alt="JAC Motors Commercial Truck Fleet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
-                                <span class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">JAC Heavy Trucks</span>
+                            <!-- Sub Image: JAC Heavy Trucks -->
+                            <div class="bento-card bento-sub">
+                                <img src="./img/what_we_do/machinary3.jpg" alt="JAC Motors Commercial Truck Fleet">
+                                <div class="bento-overlay"></div>
+                                <div class="bento-label-sm">
+                                    <span class="font-heading">JAC Heavy Trucks</span>
+                                </div>
                             </div>
-                             <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40">
-                                <img src="./img/what_we_do/machinary2.jpg" alt="JAC Motors Commercial Truck Fleet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
-                                <span class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">Power Generators</span>
+                            <!-- Sub Image: Power Generators -->
+                            <div class="bento-card bento-sub">
+                                <img src="./img/what_we_do/machinary2.jpg" alt="Power Generators">
+                                <div class="bento-overlay"></div>
+                                <div class="bento-label-sm">
+                                    <span class="font-heading">Power Generators</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -615,109 +883,96 @@
         </section>
 
         <!-- ==================== SECTOR 03: AGGC INDUSTRIES ==================== -->
-        <section id="aggc-industries" class="py-20 sm:py-28 bg-slate-50 relative overflow-hidden border-t border-slate-200/80">
+        <section id="aggc-industries" class="py-16 sm:py-24 bg-slate-50 relative overflow-hidden border-t border-slate-200/80">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <div class="sector-layout">
                     
-                    <!-- Left Column: Image Stack / Showcase Cards -->
-                    <div class="lg:col-span-5 space-y-4 scroll-reveal-left">
-                        <!-- Image 1: Manufacturing Robotic Assembly -->
-                        <div class="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 group cursor-pointer h-52 sm:h-60">
-                            <img src="./img/what_we_do/skd.png" alt="SKD Assembly Line & Manufacturing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent"></div>
-                            <div class="absolute bottom-3 left-4 text-white">
-                                <span class="text-[10px] font-heading font-bold text-brand-gold uppercase tracking-wider block">SKD Vehicle Assembly</span>
-                                <h4 class="font-heading font-extrabold text-sm">Industrial Manufacturing Plant</h4>
+                    <!-- Left Column: Bento Image Grid (Dominant) -->
+                    <div class="scroll-reveal-left">
+                        <div class="bento-grid bento-3">
+                            <!-- Hero Image: SKD Assembly -->
+                            <div class="bento-card bento-hero">
+                                <img src="./img/what_we_do/skd.png" alt="SKD Assembly Line &amp; Manufacturing">
+                                <div class="bento-overlay"></div>
+                                <div class="bento-badge">
+                                    <span class="text-white text-[10px] font-heading font-bold uppercase tracking-wider">SKD Plant</span>
+                                </div>
+                                <div class="bento-label">
+                                    <span class="bento-tag font-heading">SKD Vehicle Assembly</span>
+                                    <h4 class="font-heading">Industrial Manufacturing Plant</h4>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Image Grid 2: Vocational Skills & Warehouse -->
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40">
-                                <img src="./img/what_we_do/education.png" alt="Engineering Vocational Skills Training" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
-                                <span class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">Engineering Education</span>
+                            <!-- Sub Image: Engineering Education -->
+                            <div class="bento-card bento-sub">
+                                <img src="./img/what_we_do/education.png" alt="Engineering Vocational Skills Training">
+                                <div class="bento-overlay"></div>
+                                <div class="bento-label-sm">
+                                    <span class="font-heading">Engineering Education</span>
+                                </div>
                             </div>
-                            <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40">
-                                <img src="./img/what_we_do/parts_warehousing.png" alt="Spare Parts Warehousing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
-                                <span class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">Parts Warehousing</span>
+                            <!-- Sub Image: Parts Warehousing -->
+                            <div class="bento-card bento-sub">
+                                <img src="./img/what_we_do/parts_warehousing.png" alt="Spare Parts Warehousing">
+                                <div class="bento-overlay"></div>
+                                <div class="bento-label-sm">
+                                    <span class="font-heading">Parts Warehousing</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Right Column: Strategic Content Card -->
-                    <div class="lg:col-span-7 scroll-reveal-right">
-                        <!-- Sector Header Badge -->
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
-                                03
+                    <!-- Right Column: Content & Data Card -->
+                    <div class="scroll-reveal-right flex flex-col justify-center">
+                        <div class="sector-header">
+                            <div class="sector-badge">
+                                <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
+                                    03
+                                </div>
+                                <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
                             </div>
-                            <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
+
+                            <h2 class="font-heading text-3xl sm:text-4xl md:text-[2.8rem] font-black text-brand-navy uppercase tracking-tight leading-tight">
+                                AGGC <span class="text-brand-gold">INDUSTRIES</span>
+                            </h2>
+
+                            <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed">
+                                We drive industrial localization through SKD vehicle assembly plants, transformer manufacturing, vocational technical training academies, and supply chain warehousing.
+                            </p>
                         </div>
 
-                        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-brand-navy uppercase tracking-tight leading-tight mb-6">
-                            AGGC <span class="text-brand-gold">INDUSTRIES</span>
-                        </h2>
-
-                        <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed mb-8">
-                            We drive industrial localization through SKD vehicle assembly plants, transformer manufacturing, vocational technical training academies, and supply chain warehousing.
-                        </p>
-
-                        <!-- High Tech Data Card (From Slide Data) -->
-                        <div class="bg-gradient-to-br from-brand-navy via-[#180733] to-[#250b4d] rounded-3xl p-6 sm:p-8 text-white shadow-2xl border-l-8 border-l-brand-gold relative overflow-hidden">
-                            <div class="space-y-3.5">
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-7 h-7 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-graduation-cap text-xs"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Engineering Vocational Education & Skills Development</span>
+                        <!-- Modern Data Card -->
+                        <div class="modern-data-card">
+                            <div class="space-y-2.5">
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                                    <span>Engineering Vocational Education &amp; Skills Development</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-7 h-7 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-car-side text-xs"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">SKD Assembly of JAC Vehicles</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-car-side"></i></div>
+                                    <span>SKD Assembly of JAC Vehicles</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-7 h-7 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-microchip text-xs"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">SKD Manufacturing of Powermax Transformers, Cabinets & Generators</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-microchip"></i></div>
+                                    <span>SKD Manufacturing of Powermax Transformers, Cabinets &amp; Generators</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-7 h-7 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-tractor text-xs"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">SKD Assembly of Black Bull Agricultural Machinery</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-tractor"></i></div>
+                                    <span>SKD Assembly of Black Bull Agricultural Machinery</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-7 h-7 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-industry text-xs"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">SKD Assembly of Sigma Machinery</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-industry"></i></div>
+                                    <span>SKD Assembly of Sigma Machinery</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-7 h-7 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-wrench text-xs"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Service Workshop & Technical Support</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-wrench"></i></div>
+                                    <span>Service Workshop &amp; Technical Support</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-7 h-7 rounded-xl bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-warehouse text-xs"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Spare Parts Warehousing & Supply Chain Management</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-warehouse"></i></div>
+                                    <span>Spare Parts Warehousing &amp; Supply Chain Management</span>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
                 </div>
@@ -725,93 +980,86 @@
         </section>
 
         <!-- ==================== SECTOR 04: EPC + FINANCE ==================== -->
-        <section id="epc-finance" class="py-20 sm:py-28 bg-white relative overflow-hidden">
+        <section id="epc-finance" class="py-16 sm:py-24 bg-white relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <div class="sector-layout reverse">
                     
-                    <!-- Left Column: Strategic Content Card -->
-                    <div class="lg:col-span-7 order-2 lg:order-1 scroll-reveal-left">
-                        <!-- Sector Header Badge -->
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
-                                04
+                    <!-- Left Column: Content & Data Card -->
+                    <div class="order-2 lg:order-1 scroll-reveal-left flex flex-col justify-center">
+                        <div class="sector-header">
+                            <div class="sector-badge">
+                                <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
+                                    04
+                                </div>
+                                <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
                             </div>
-                            <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
+
+                            <h2 class="font-heading text-3xl sm:text-4xl md:text-[2.8rem] font-black text-brand-navy uppercase tracking-tight leading-tight">
+                                EPC + <span class="text-brand-gold">FINANCE</span>
+                            </h2>
+
+                            <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed">
+                                We combine full Engineering, Procurement, and Construction (EPC) delivery with tailored project financing, financial advisory, and risk management to execute turnkey industrial projects.
+                            </p>
                         </div>
 
-                        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-brand-navy uppercase tracking-tight leading-tight mb-6">
-                            EPC + <span class="text-brand-gold">FINANCE</span>
-                        </h2>
-
-                        <p class="text-slate-600 text-sm sm:text-base font-light leading-relaxed mb-8">
-                            We combine full Engineering, Procurement, and Construction (EPC) delivery with tailored project financing, financial advisory, and risk management to execute turnkey industrial projects.
-                        </p>
-
-                        <!-- High Tech Data Card (From Slide Data) -->
-                        <div class="bg-gradient-to-br from-brand-navy via-[#180733] to-[#250b4d] rounded-3xl p-6 sm:p-8 text-white shadow-2xl border-r-8 border-r-brand-gold relative overflow-hidden">
-                            <div class="space-y-4">
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-helmet-safety text-sm"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Engineering, Procurement & Construction (EPC) project delivery</span>
+                        <!-- Modern Data Card -->
+                        <div class="modern-data-card">
+                            <div class="space-y-3">
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+                                    <span>Engineering, Procurement &amp; Construction (EPC) project delivery</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-building text-sm"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Turnkey infrastructure and industrial projects</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-building"></i></div>
+                                    <span>Turnkey infrastructure and industrial projects</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-sack-dollar text-sm"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Project financing and investment solutions</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-sack-dollar"></i></div>
+                                    <span>Project financing and investment solutions</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-chart-line text-sm"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Financial advisory and structured funding</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-chart-line"></i></div>
+                                    <span>Financial advisory and structured funding</span>
                                 </div>
-
-                                <div class="flex items-start gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <i class="fa-solid fa-[#180733] fa-shield-halved text-sm"></i>
-                                    </div>
-                                    <span class="text-xs sm:text-sm font-medium text-slate-100">Project management, contract administration, and risk management</span>
+                                <div class="data-row">
+                                    <div class="data-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                                    <span>Project management, contract administration, and risk management</span>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
-                    <!-- Right Column: Image Stack / Showcase Cards -->
-                    <div class="lg:col-span-5 order-1 lg:order-2 space-y-4 scroll-reveal-right">
-                        <!-- Image 1: High Rise Construction Cranes -->
-                        <div class="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 group cursor-pointer h-52 sm:h-60">
-                            <img src="./img/what_we_do/epc.png" alt="Turnkey EPC Infrastructure Development" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent"></div>
-                            <div class="absolute bottom-3 left-4 text-white">
-                                <span class="text-[10px] font-heading font-bold text-brand-gold uppercase tracking-wider block">Turnkey Construction</span>
-                                <h4 class="font-heading font-extrabold text-sm">EPC Infrastructure Projects</h4>
+                    <!-- Right Column: Bento Image Grid (Dominant) -->
+                    <div class="order-1 lg:order-2 scroll-reveal-right">
+                        <div class="bento-grid bento-3">
+                            <!-- Hero Image: EPC Infrastructure -->
+                            <div class="bento-card bento-hero">
+                                <img src="./img/what_we_do/epc.png" alt="Turnkey EPC Infrastructure Development">
+                                <div class="bento-overlay"></div>
+                                <div class="bento-badge">
+                                    <span class="text-white text-[10px] font-heading font-bold uppercase tracking-wider">EPC</span>
+                                </div>
+                                <div class="bento-label">
+                                    <span class="bento-tag font-heading">Turnkey Construction</span>
+                                    <h4 class="font-heading">EPC Infrastructure Projects</h4>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Image Grid 2: Industrial Engineers & Financial Analytics -->
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40">
-                                <img src="./img/what_we_do/management.png" alt="Industrial Engineers & Project Management" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
-                                <span class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">Engineers & Management</span>
+                            <!-- Sub Image: Engineers & Management -->
+                            <div class="bento-card bento-sub">
+                                <img src="./img/what_we_do/management.png" alt="Industrial Engineers &amp; Project Management">
+                                <div class="bento-overlay"></div>
+                                <div class="bento-label-sm">
+                                    <span class="font-heading">Engineers &amp; Management</span>
+                                </div>
                             </div>
-                            <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group cursor-pointer h-40">
-                                <img src="./img/what_we_do/funding.png" alt="Structured Project Financing Analytics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
-                                <span class="absolute bottom-2 left-3 text-white text-[11px] font-heading font-bold">Structured Funding</span>
+                            <!-- Sub Image: Structured Funding -->
+                            <div class="bento-card bento-sub">
+                                <img src="./img/what_we_do/funding.png" alt="Structured Project Financing Analytics">
+                                <div class="bento-overlay"></div>
+                                <div class="bento-label-sm">
+                                    <span class="font-heading">Structured Funding</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -819,6 +1067,7 @@
                 </div>
             </div>
         </section>
+
 
         <!-- Executive Partner CTA Section -->
         <section class="py-16 sm:py-24 bg-gradient-to-br from-brand-navy via-[#100424] to-[#1d0b3e] text-white relative overflow-hidden border-t border-brand-gold/20">
@@ -991,26 +1240,70 @@
                                 class="fa-brands fa-facebook-f"></i></a>
                         <a href="viber://chat?number=%2B959777555666"
                             class="w-7 h-7 rounded-full bg-[#735fa3] hover:bg-[#5e4b8b] text-white flex items-center justify-center text-[11px] transition-colors"><i
+
                                 class="fa-brands fa-viber"></i></a>
                         <a href="mailto:info@aungyigroup.com"
                             class="w-7 h-7 rounded-full bg-brand-gold hover:bg-brand-gold/85 text-brand-navy flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-solid fa-envelope"></i></a>
                     </div>
                 </div>
-
             </div>
-            <div
-                class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-300 font-medium">
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-300 font-medium">
                 <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
-                <p class="mt-2 md:mt-0 flex items-center gap-1.5"><span
-                        class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span> Designed with modern web technologies.
-                </p>
+                <p class="mt-2 md:mt-0 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span> Designed with modern web technologies.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 backdrop-blur-md opacity-0 transition-opacity duration-300">
+        <button id="lightbox-close" class="absolute top-6 right-6 text-white/70 hover:text-white text-3xl z-[101] transition-colors"><i class="fa-solid fa-xmark"></i></button>
+        <img id="lightbox-img" src="" alt="Fullscreen view" class="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300">
+    </div>
+
     <!-- Scripts -->
     <script>
+        // Lightbox logic
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        function openLightbox(src) {
+            lightboxImg.src = src;
+            lightboxModal.classList.remove('hidden');
+            lightboxModal.style.display = 'flex';
+            // Small delay to allow display:flex to apply before changing opacity
+            setTimeout(() => {
+                lightboxModal.classList.remove('opacity-0');
+                lightboxImg.classList.remove('scale-95');
+                lightboxImg.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeLightbox() {
+            lightboxModal.classList.add('opacity-0');
+            lightboxImg.classList.remove('scale-100');
+            lightboxImg.classList.add('scale-95');
+            setTimeout(() => {
+                lightboxModal.classList.add('hidden');
+                lightboxModal.style.display = 'none';
+            }, 300);
+        }
+
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Find the main image (not the badge logo)
+                const img = card.querySelector('img:not(.h-5)');
+                if (img) openLightbox(img.src);
+            });
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) closeLightbox();
+        });
+
         // Navbar scroll behavior
         const navbar = document.getElementById('navbar');
         const navContainer = document.getElementById('nav-container');
