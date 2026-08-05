@@ -42,6 +42,24 @@
     </script>
 
     <style>
+        /* Modern Gold Animated Outline for Cards */
+        @keyframes border-gradient-move {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .modern-gold-outline {
+            border: 2px solid transparent !important;
+            background: linear-gradient(#ffffff, #ffffff) padding-box, 
+                        linear-gradient(45deg, #d4af37, #162056, #ffffff, #d4af37) border-box !important;
+            background-size: 100% 100%, 300% 300% !important;
+            animation: border-gradient-move 4s ease infinite;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .modern-gold-outline:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(11,4,48,0.12), 0 0 20px rgba(212,175,55,0.3);
+        }
         body {
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
@@ -875,6 +893,14 @@
 
             </div>
         </div>
+        <!-- Ultra-Smooth Pro Multi-Layer Wave Divider -->
+        <div class="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
+            <svg viewBox="0 0 1440 110" preserveAspectRatio="none" class="relative block w-full h-[45px] sm:h-[70px] md:h-[85px]">
+                <path fill="#ffffff" fill-opacity="0.25" d="M0,36 C240,82 480,12 720,44 C960,76 1200,28 1440,54 L1440,110 L0,110 Z"></path>
+                <path fill="#ffffff" fill-opacity="0.55" d="M0,58 C320,18 640,88 960,48 C1120,28 1280,62 1440,42 L1440,110 L0,110 Z"></path>
+                <path fill="#ffffff" d="M0,68 C280,112 580,25 880,65 C1120,95 1300,45 1440,62 L1440,110 L0,110 Z"></path>
+            </svg>
+        </div>
     </section>
     <!-- 3. Welcome & About Us Section -->
     <section id="about" class="py-16 sm:py-24 bg-gradient-to-br from-[#faf9f6] via-[#f3f2ee] to-[#e6e4dc] relative overflow-hidden border-t border-[#180733]/5">
@@ -1440,7 +1466,7 @@
 
                 <!-- LIUGONG Card -->
                 <a href="product_page/Liugong.html"
-                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(11,4,48,0.08)] hover:-translate-y-2 transition-all duration-500 group overflow-hidden flex flex-col h-full">
+                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] modern-gold-outline transition-all duration-500 group overflow-hidden flex flex-col h-full">
                     <div
                         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     </div>
@@ -1478,7 +1504,7 @@
 
                 <!-- JAC Card -->
                 <a href="product_page/jac_moter.html"
-                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(11,4,48,0.08)] hover:-translate-y-2 transition-all duration-500 group overflow-hidden flex flex-col h-full">
+                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] modern-gold-outline transition-all duration-500 group overflow-hidden flex flex-col h-full">
                     <div
                         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     </div>
@@ -1514,7 +1540,7 @@
 
                 <!-- POWERMAX Card -->
                 <a href="product_page/powermax.html"
-                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(11,4,48,0.08)] hover:-translate-y-2 transition-all duration-500 group overflow-hidden flex flex-col h-full">
+                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] modern-gold-outline transition-all duration-500 group overflow-hidden flex flex-col h-full">
                     <div
                         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     </div>
@@ -1552,7 +1578,7 @@
 
                 <!-- IZUMI Card -->
                 <a href="product_page/izumi.html"
-                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(11,4,48,0.08)] hover:-translate-y-2 transition-all duration-500 group overflow-hidden flex flex-col h-full">
+                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] modern-gold-outline transition-all duration-500 group overflow-hidden flex flex-col h-full">
                     <div
                         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     </div>
@@ -1590,7 +1616,7 @@
 
                 <!-- ZEGA Card -->
                 <a href="product_page/zega.html"
-                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(11,4,48,0.08)] hover:-translate-y-2 transition-all duration-500 group overflow-hidden flex flex-col h-full">
+                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] modern-gold-outline transition-all duration-500 group overflow-hidden flex flex-col h-full">
                     <div
                         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     </div>
@@ -1627,7 +1653,7 @@
 
                 <!-- ROADMAX Card -->
                 <a href="product_page/roadmax.html"
-                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(11,4,48,0.08)] hover:-translate-y-2 transition-all duration-500 group overflow-hidden flex flex-col h-full">
+                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] modern-gold-outline transition-all duration-500 group overflow-hidden flex flex-col h-full">
                     <div
                         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     </div>
@@ -1664,7 +1690,7 @@
 
                 <!-- TOPMAX Card -->
                 <a href="product_page/topmax.html"
-                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(11,4,48,0.08)] hover:-translate-y-2 transition-all duration-500 group overflow-hidden flex flex-col h-full">
+                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] modern-gold-outline transition-all duration-500 group overflow-hidden flex flex-col h-full">
                     <div
                         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     </div>
@@ -1702,7 +1728,7 @@
 
                 <!-- TRUSTON Card -->
                 <a href="product_page/truston.html"
-                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(11,4,48,0.08)] hover:-translate-y-2 transition-all duration-500 group overflow-hidden flex flex-col h-full">
+                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] modern-gold-outline transition-all duration-500 group overflow-hidden flex flex-col h-full">
                     <div
                         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     </div>
@@ -1739,7 +1765,7 @@
 
                 <!-- TURBOIL Card -->
                 <a href="#brand-turboil"
-                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(11,4,48,0.08)] hover:-translate-y-2 transition-all duration-500 group overflow-hidden flex flex-col h-full">
+                    class="block relative bg-white rounded-2xl p-8 border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] modern-gold-outline transition-all duration-500 group overflow-hidden flex flex-col h-full">
                     <div
                         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     </div>
@@ -2471,9 +2497,7 @@
             <div
                 class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-300 font-medium">
                 <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
-                <p class="mt-2 md:mt-0 flex items-center gap-1.5"><span
-                        class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span> Designed with modern web technologies.
-                </p>
+                
             </div>
         </div>
     </footer>
