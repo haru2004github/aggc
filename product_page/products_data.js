@@ -290,5 +290,77 @@ const PRODUCTS_DATABASE = {
                 models: ["Impact Crusher"]
             }
         ]
+    },
+    sigma: {
+        brandTitle: "SIGMA",
+        brandLogo: "../img/Products/sigma_logo.png",
+        products: [
+            {
+                id: "rt-crane",
+                title: "ROUGH TERRAIN CRANE (RT CRANE)",
+                image: "img/Rough Terrain Crane (RT Crane).png",
+                models: ["RT Crane"]
+            },
+            {
+                id: "line-pump-truck",
+                title: "LINE PUMP TRUCK",
+                image: "img/Line Pump Truck.jpg",
+                models: ["Line Pump Truck"]
+            },
+            {
+                id: "forklift-electric",
+                title: "FORKLIFT - ELECTRIC TYPE",
+                image: "img/Forklift - Electric Type.jpg",
+                models: ["Forklift - Electric Type"]
+            },
+            {
+                id: "forklift-engine",
+                title: "FORKLIFT - ENGINE TYPE",
+                image: "img/Forklift - Engine Type.jpg",
+                models: ["Forklift - Engine Type"]
+            },
+            {
+                id: "boom-pump-truck",
+                title: "BOOM PUMP TRUCK",
+                image: "img/Boom Pump Truck.jpg",
+                models: ["Boom Pump Truck"]
+            },
+            {
+                id: "self-loading-mixer",
+                title: "SELF LOADING MIXER",
+                image: "img/Self Loading Mixer.jpg",
+                models: ["Self Loading Mixer"]
+            },
+            {
+                id: "crawler-drill",
+                title: "CRAWLER DRILL",
+                image: "img/Crawler Drill.png",
+                models: ["Crawler Drill"]
+            },
+            {
+                id: "crushing-plant",
+                title: "CRUSHING PLANT",
+                image: "img/Crushing Plant.jpg",
+                models: ["Crushing Plant"]
+            },
+            {
+                id: "mobile-concrete-pump",
+                title: "MOBILE CONCRETE PUMP",
+                image: "img/Mobile Concrete Pump.jpg",
+                models: ["Mobile Concrete Pump"]
+            },
+            {
+                id: "batching-plant",
+                title: "BATCHING PLANT",
+                image: "img/Batching Plant.jpg",
+                models: ["Batching Plant"]
+            },
+            {
+                id: "mixer-truck",
+                title: "MIXER TRUCK",
+                image: "img/Mixer Truck.png",
+                models: ["Mixer Truck"]
+            }
+        ]
     }
 };
