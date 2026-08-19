@@ -1099,22 +1099,17 @@
                     </div>
                 </div>
 
-                <!-- Right Side: Diagonally Masked Sectors Graphic (5 cols) -->
+                <!-- Right Side: Sectors Graphic (5 cols) -->
                 <div
-                    class="lg:col-span-5 relative w-full h-[350px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl border border-white/10 group/skew-img animate-float-medium scroll-reveal">
-                    <!-- Slanted clip path matching screenshot style -->
-                    <div class="absolute inset-0 w-full h-full"
-                        style="clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);">
+                    class="lg:col-span-5 relative w-full h-[350px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl group/skew-img animate-float-medium scroll-reveal flex items-center justify-center">
+                    <!-- Image Container -->
+                    <div class="absolute inset-0 w-full h-full flex items-center justify-center">
                         <img src="./img/what_we_do_sectors.png" alt="AGGC Business Sectors Illustration"
-                            class="w-full h-full object-cover transform scale-105 group-hover/skew-img:scale-110 group-hover/skew-img:translate-x-2 transition-all duration-[1200ms] ease-out">
-                        <!-- Diagonal dark overlays for gradient depth -->
-                        <div
-                            class="absolute inset-0 bg-gradient-to-tr from-[#180733]/30 via-transparent to-brand-gold/15">
-                        </div>
-
+                            class="w-full h-full object-contain group-hover/skew-img:scale-105 transition-all duration-[1200ms] ease-out drop-shadow-2xl">
+                        
                         <!-- Accent light beam overlay -->
                         <div
-                            class="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg] group-hover/skew-img:left-[200%] transition-all duration-[1500ms] ease-out">
+                            class="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-25deg] group-hover/skew-img:left-[200%] transition-all duration-[1500ms] ease-out pointer-events-none">
                         </div>
                     </div>
                 </div>
