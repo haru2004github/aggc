@@ -32,7 +32,7 @@
                     },
                     colors: {
                         brand: {
-                            navy: '#180733',
+                            navy: '#071633',
                             gold: '#e1ae31'
                         }
                     }
@@ -95,7 +95,7 @@
             font-family: 'Poppins', sans-serif;
             font-size: 1.25rem;
             font-weight: 800;
-            color: #180733;
+            color: #071633;
             margin-top: 2.5rem;
             margin-bottom: 1rem;
             border-bottom: 2px solid #e1ae31;
@@ -107,7 +107,7 @@
             font-family: 'Poppins', sans-serif;
             font-size: 1.1rem;
             font-weight: 700;
-            color: #180733;
+            color: #071633;
             margin-top: 1.5rem;
             margin-bottom: 0.75rem;
         }
@@ -182,6 +182,7 @@
             width: 100%;
         }
     </style>
+    <link rel="stylesheet" href="./site-effects.css">
 </head>
 
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
@@ -313,7 +314,7 @@
         </div>
     </nav>
 
-    <section class="relative bg-gradient-to-b from-[#06091e] via-[#0d143a] to-[#131d52] pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
+    <section class="relative bg-gradient-to-b from-[#061226] via-[#0d143a] to-[#131d52] pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
         <!-- Subtle Starry Night & Grid Watermark -->
         <div class="absolute inset-0 opacity-[0.05]"
             style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
@@ -554,7 +555,7 @@
 
     <!-- Footer (Same as Main Page index.html) -->
     <!-- Redesigned Premium Footer (wePro style) -->
-    <footer class="bg-gradient-to-br from-[#0e0520] via-[#180733] to-[#120525] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
+    <footer class="bg-gradient-to-br from-[#061226] via-[#071633] to-[#0b1f46] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 lg:gap-6 mb-12">
 
@@ -582,9 +583,6 @@
                         <li><a href="products.html"
                                 class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Brands</a>
                         </li>
-                        <li><a href="best_selling.html"
-                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Best
-                                Sellers</a></li>
                     </ul>
                 </div>
 
@@ -692,7 +690,7 @@
                             class="w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-facebook-f"></i></a>
                         <a href="viber://chat?number=%2B959777555666"
-                            class="w-7 h-7 rounded-full bg-[#735fa3] hover:bg-[#5e4b8b] text-white flex items-center justify-center text-[11px] transition-colors"><i
+                            class="w-7 h-7 rounded-full bg-[#0b1f46] hover:bg-[#10295b] text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-viber"></i></a>
                         <a href="mailto:info@aungyigroup.com"
                             class="w-7 h-7 rounded-full bg-brand-gold hover:bg-brand-gold/85 text-brand-navy flex items-center justify-center text-[11px] transition-colors"><i
@@ -1096,6 +1094,8 @@
             if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMenu();
         }));
     </script>
+    <script src="./site-effects.js"></script>
 </body>
 
 </html>
+

@@ -68,9 +68,9 @@ function processFile(filePath) {
             let sectionTag = sectionMatch[0];
             let newSectionTag = sectionTag;
             if (sectionTag.includes('bg-brand-navy')) {
-                newSectionTag = sectionTag.replace('bg-brand-navy', 'bg-gradient-to-b from-[#06091e] via-[#0d143a] to-[#131d52]');
+                newSectionTag = sectionTag.replace('bg-brand-navy', 'bg-gradient-to-b from-[#061226] via-[#0d143a] to-[#131d52]');
             } else if (sectionTag.includes('bg-slate-50')) {
-                newSectionTag = sectionTag.replace('bg-slate-50', 'bg-gradient-to-b from-[#06091e] via-[#0d143a] to-[#131d52]');
+                newSectionTag = sectionTag.replace('bg-slate-50', 'bg-gradient-to-b from-[#061226] via-[#0d143a] to-[#131d52]');
             }
             content = content.replace(sectionTag, newSectionTag + '\\n' + pineSvg);
             modified = true;

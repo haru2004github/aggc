@@ -66,7 +66,7 @@ for root, dirs, files in os.walk(target_dir):
                 if match:
                     section_tag = match.group(1)
                     if 'bg-brand-navy' in section_tag:
-                        new_section_tag = section_tag.replace('bg-brand-navy', 'bg-gradient-to-b from-[#06091e] via-[#0d143a] to-[#131d52]')
+                        new_section_tag = section_tag.replace('bg-brand-navy', 'bg-gradient-to-b from-[#061226] via-[#071633] to-[#10295b]')
                         content = content.replace(section_tag, new_section_tag)
                         section_tag = new_section_tag
                     

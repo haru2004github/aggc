@@ -32,7 +32,7 @@
                     },
                     colors: {
                         brand: {
-                            navy: '#180733',
+                            navy: '#071633',
                             gold: '#e1ae31'
                         }
                     }
@@ -60,6 +60,69 @@
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(11,4,48,0.12), 0 0 20px rgba(212,175,55,0.3);
         }
+
+        .product-showcase-card {
+            position: relative;
+            isolation: isolate;
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.035) 42%, rgba(225,174,49,0.10)),
+                radial-gradient(circle at 18% 0%, rgba(56,103,214,0.24), transparent 34%),
+                radial-gradient(circle at 88% 18%, rgba(225,174,49,0.22), transparent 30%),
+                #0b1f46;
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 18px 45px rgba(0,0,0,0.22);
+        }
+
+        .product-showcase-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 1px;
+            border-radius: inherit;
+            background: linear-gradient(120deg, rgba(225,174,49,0.85), rgba(82,139,255,0.55), rgba(255,255,255,0.35), rgba(225,174,49,0.85));
+            background-size: 260% 260%;
+            animation: border-gradient-move 7s ease infinite;
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .product-showcase-card::after {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -70%;
+            width: 55%;
+            height: 180%;
+            transform: rotate(18deg);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
+            transition: left 0.9s ease;
+            pointer-events: none;
+        }
+
+        .product-showcase-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(225,174,49,0.5);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.34), 0 0 34px rgba(225,174,49,0.16);
+        }
+
+        .product-showcase-card:hover::after {
+            left: 120%;
+        }
+
+        .product-logo-panel {
+            background: linear-gradient(180deg, #ffffff, #f7f9fc);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.85), 0 14px 28px rgba(0,0,0,0.16);
+        }
+
+        .product-image-panel {
+            background:
+                radial-gradient(circle at 50% 100%, rgba(225,174,49,0.18), transparent 48%),
+                linear-gradient(145deg, rgba(6,18,38,0.96), rgba(12,34,76,0.94));
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
@@ -81,8 +144,7 @@
 
         .carousel-img.active {
             opacity: 1;
-            transform: scale(1.05);
-            /* Gentle smooth zoom */
+            transform: scale(1);
             z-index: 10;
         }
 
@@ -401,7 +463,7 @@
             bottom: -4px;
             left: 0;
             height: 3px;
-            background: linear-gradient(90deg, #e1ae31, #180733);
+            background: linear-gradient(90deg, #e1ae31, #071633);
             border-radius: 2px;
             width: 0;
             transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -453,7 +515,7 @@
             top: 0;
             left: 0;
             height: 3px;
-            background: linear-gradient(90deg, #e1ae31, #180733);
+            background: linear-gradient(90deg, #e1ae31, #071633);
             width: 0;
             transition: width 0.1s linear;
             z-index: 50;
@@ -502,7 +564,7 @@
             left: 0;
             height: 4px;
             width: 0%;
-            background: linear-gradient(90deg, #e1ae31, #180733);
+            background: linear-gradient(90deg, #e1ae31, #071633);
             z-index: 30;
             transition: width 0.1s ease-out;
         }
@@ -568,6 +630,7 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="./site-effects.css">
 </head>
 
 <body class="bg-[#f8f7f4] text-slate-800 min-h-screen text-[15px] leading-relaxed">
@@ -582,7 +645,7 @@
                     <!-- Logo -->
                     <a href="index.html"
                         class="flex items-center cursor-pointer group hover:opacity-90 transition-opacity">
-                        <img src="./img/logo.png" class="w-40" alt="AGGC Logo">
+                        <img src="./img/logo.png" class="w-40 max-h-14 object-contain" alt="AGGC Logo">
                     </a>
 
                     <!-- Desktop Menu -->
@@ -700,189 +763,115 @@
     </nav>
 
     <!-- Spacer to push hero content exactly below fixed header -->
-    <div class="h-20 w-full"></div>
+    <div class="home-header-spacer h-20 w-full"></div>
 
     <section id="home"
-        class="relative min-h-[600px] lg:min-h-[calc(100vh-80px)] flex items-center overflow-hidden w-full py-8 lg:py-0 border-b border-white/10 bg-gradient-to-br from-[#0a0418] via-[#180733] to-[#120525] animate-gradient-bg">
+        class="relative min-h-[calc(100vh-80px)] overflow-hidden w-full border-b border-brand-gold/20 bg-[#071633]">
 
-        <!-- Shifting Mesh Lighting Blobs -->
-        <div
-            class="absolute -left-20 top-1/4 w-[500px] h-[500px] bg-indigo-500/15 rounded-full blur-[140px] pointer-events-none z-0">
-        </div>
-        <div
-            class="absolute left-1/3 bottom-0 w-[450px] h-[450px] bg-[#e1ae31]/10 rounded-full blur-[130px] pointer-events-none z-0">
-        </div>
-        <div
-            class="absolute right-1/4 top-0 w-[550px] h-[550px] bg-purple-500/10 rounded-full blur-[150px] pointer-events-none z-0">
-        </div>
-        <div class="absolute inset-0 opacity-[0.04] pointer-events-none z-0"
-            style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 28px 28px;">
+        <!-- Full-width landscape carousel -->
+        <div class="absolute inset-0 bg-[#071633]">
+            <img src="./img/slider_1.png" alt="AGGC 15 Years Anniversary"
+                class="carousel-img active absolute inset-0 w-full h-full object-cover object-center" />
+            <img src="./img/slider_2.png" alt="AGGC Heavy Machinery"
+                class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
+            <img src="./img/slider_3.png" alt="AGGC Construction Equipment"
+                class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
+            <img src="./img/slider_4.png" alt="AGGC Power & Energy"
+                class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
+            <img src="./img/slider_5.png" alt="AGGC Team and Projects"
+                class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
         </div>
 
-        <!-- Responsive Hero Grid Container -->
-        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col lg:block py-6 lg:py-16">
+        <!-- Corporate readability overlays -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#071633]/95 via-[#071633]/[0.74] to-[#071633]/[0.14] z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#050a18]/[0.82] via-transparent to-[#050a18]/20 z-10"></div>
+        <div class="absolute inset-0 opacity-[0.08] z-10 pointer-events-none"
+            style="background-image: linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px); background-size: 42px 42px;"></div>
 
-            <!-- TOP ON MOBILE (order-1) / RIGHT COLUMN WITH FRAMES ON DESKTOP -->
+        <div class="relative z-20 min-h-[calc(100vh-80px)] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center py-20">
+            <div class="max-w-3xl">
+                <div
+                    class="inline-flex items-center gap-2.5 px-4 py-2 mb-7 rounded-full bg-white/[0.08] border border-brand-gold/30 backdrop-blur-md shadow-lg">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span>
+                    <span id="slideCategoryLabel"
+                        class="text-brand-gold font-heading font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.22em]">
+                        Est. 2003 • Global
+                    </span>
+                </div>
+
+                <h1
+                    class="font-heading text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight uppercase max-w-3xl">
+                    Powering <span class="text-brand-gold">Global</span><br class="hidden sm:block" />
+                    Infrastructure
+                </h1>
+
+                <p class="mt-7 text-sm sm:text-base lg:text-lg text-slate-200 font-light leading-[1.8] max-w-2xl">
+                    Premier distributor of heavy construction machinery, mining equipment, and industrial energy
+                    solutions for global infrastructure needs.
+                </p>
+
+                <div class="mt-10 flex flex-wrap items-center gap-4">
+                    <a href="products.html"
+                        class="bg-brand-gold text-brand-navy px-7 py-4 font-heading font-black text-[11px] uppercase tracking-[0.18em] hover:bg-[#f0bf42] transition-all rounded shadow-[0_10px_28px_rgba(225,174,49,0.35)] hover:-translate-y-0.5 duration-300">
+                        View Products
+                    </a>
+                    <a href="#about"
+                        class="bg-white/[0.08] hover:bg-white/[0.14] border border-white/20 text-white px-6 py-4 font-heading font-bold text-[11px] uppercase tracking-[0.18em] transition-all rounded flex items-center gap-2 hover:-translate-y-0.5 duration-300">
+                        <span>About AGGC</span> <i class="fa-solid fa-arrow-right text-[10px] text-brand-gold"></i>
+                    </a>
+                </div>
+            </div>
+
             <div
-                class="order-1 w-full h-[250px] sm:h-[360px] md:h-[420px] rounded-3xl shadow-2xl relative mb-8 lg:mb-0 lg:absolute lg:right-0 lg:top-8 lg:bottom-8 lg:w-[57%] xl:w-[59%] lg:h-auto group/slider">
-
-                <!-- Golden Accent Frame Brackets -->
-                <div
-                    class="absolute -top-2.5 -left-2.5 w-8 h-8 border-t-2 border-l-2 border-brand-gold/60 z-30 rounded-tl-xl transition-all duration-500 group-hover/slider:-top-4 group-hover/slider:-left-4">
+                class="mt-16 grid grid-cols-3 gap-0 max-w-2xl border-y border-white/15 bg-[#071633]/[0.45] backdrop-blur-md">
+                <div class="px-5 py-5">
+                    <div class="text-white font-heading font-black text-2xl">20+</div>
+                    <div class="text-slate-300 text-[10px] uppercase tracking-wider font-semibold mt-1">Years Exp.</div>
                 </div>
-                <div
-                    class="absolute -top-2.5 -right-2.5 w-8 h-8 border-t-2 border-r-2 border-brand-gold/60 z-30 rounded-tr-xl transition-all duration-500 group-hover/slider:-top-4 group-hover/slider:-right-4">
+                <div class="px-5 py-5 border-x border-white/15">
+                    <div class="text-brand-gold font-heading font-black text-2xl">9+</div>
+                    <div class="text-slate-300 text-[10px] uppercase tracking-wider font-semibold mt-1">Top Brands</div>
                 </div>
-                <div
-                    class="absolute -bottom-2.5 -left-2.5 w-8 h-8 border-b-2 border-l-2 border-brand-gold/60 z-30 rounded-bl-xl transition-all duration-500 group-hover/slider:-bottom-4 group-hover/slider:-left-4">
+                <div class="px-5 py-5">
+                    <div class="text-white font-heading font-black text-2xl">100%</div>
+                    <div class="text-slate-300 text-[10px] uppercase tracking-wider font-semibold mt-1">Genuine</div>
                 </div>
-                <div
-                    class="absolute -bottom-2.5 -right-2.5 w-8 h-8 border-b-2 border-r-2 border-brand-gold/60 z-30 rounded-br-xl transition-all duration-500 group-hover/slider:-bottom-4 group-hover/slider:-right-4">
-                </div>
-
-                <!-- Main Slider Image Wrapper -->
-                <div
-                    class="w-full h-full rounded-3xl overflow-hidden border border-white/10 relative z-20 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-
-                    <!-- Carousel Images (Bright, vivid, crystal clear) -->
-                    <img src="./img/slider_1.png" alt="AGGC 15 Years Anniversary"
-                        class="carousel-img active absolute inset-0 w-full h-full object-cover object-center transform scale-100 group-hover/slider:scale-105 transition-transform duration-[8000ms] ease-out" />
-                    <img src="./img/slider_2.png" alt="AGGC Heavy Machinery"
-                        class="carousel-img absolute inset-0 w-full h-full object-cover object-center transform scale-100 group-hover/slider:scale-105 transition-transform duration-[8000ms] ease-out" />
-                    <img src="./img/slider_3.png" alt="AGGC Construction Equipment"
-                        class="carousel-img absolute inset-0 w-full h-full object-cover object-center transform scale-100 group-hover/slider:scale-105 transition-transform duration-[8000ms] ease-out" />
-                    <img src="./img/slider_4.png" alt="AGGC Power & Energy"
-                        class="carousel-img absolute inset-0 w-full h-full object-cover object-center transform scale-100 group-hover/slider:scale-105 transition-transform duration-[8000ms] ease-out" />
-                    <img src="./img/slider_5.png" alt="AGGC Team and Projects"
-                        class="carousel-img absolute inset-0 w-full h-full object-cover object-center transform scale-100 group-hover/slider:scale-105 transition-transform duration-[8000ms] ease-out" />
-
-                    <!-- Floating Indicator Caption Pill -->
-                    <div
-                        class="absolute top-4 left-4 z-30 px-4 py-1.5 bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-heading font-bold text-white uppercase tracking-[0.15em] flex items-center gap-2 select-none shadow-lg">
-                        <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span>
-                        <span>AGGC Showcase</span>
-                    </div>
-
-                    <!-- Seamless gentle left gradient seam where slider meets left area on desktop -->
-                    <div
-                        class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#180733]/90 via-[#180733]/40 to-transparent z-10 hidden lg:block pointer-events-none">
-                    </div>
-
-                    <!-- Subtle bottom gradient only for HUD readability -->
-                    <div
-                        class="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#0a0418]/90 via-[#0a0418]/40 to-transparent z-10 pointer-events-none">
-                    </div>
-
-                    <!-- Showcase Bottom Control HUD Bar -->
-                    <div
-                        class="absolute bottom-3 sm:bottom-5 left-4 right-4 sm:left-6 sm:right-8 z-20 flex items-center justify-end gap-3 pt-2 sm:pt-3.5 border-t border-white/20">
-                        <div class="flex items-center gap-2" id="heroCarouselIndicators">
-                            <button type="button" onclick="goToHeroSlide(0)" aria-label="Slide 1"
-                                class="hero-indicator group py-2 focus:outline-none">
-                                <span
-                                    class="indicator-bar block h-1.5 rounded-full transition-all duration-500 w-7 bg-brand-gold shadow-[0_0_10px_rgba(241,173,24,0.8)]"></span>
-                            </button>
-                            <button type="button" onclick="goToHeroSlide(1)" aria-label="Slide 2"
-                                class="hero-indicator group py-2 focus:outline-none">
-                                <span
-                                    class="indicator-bar block h-1.5 rounded-full transition-all duration-500 w-2 bg-white/30 group-hover:bg-white/70 group-hover:w-3"></span>
-                            </button>
-                            <button type="button" onclick="goToHeroSlide(2)" aria-label="Slide 3"
-                                class="hero-indicator group py-2 focus:outline-none">
-                                <span
-                                    class="indicator-bar block h-1.5 rounded-full transition-all duration-500 w-2 bg-white/30 group-hover:bg-white/70 group-hover:w-3"></span>
-                            </button>
-                            <button type="button" onclick="goToHeroSlide(3)" aria-label="Slide 4"
-                                class="hero-indicator group py-2 focus:outline-none">
-                                <span
-                                    class="indicator-bar block h-1.5 rounded-full transition-all duration-500 w-2 bg-white/30 group-hover:bg-white/70 group-hover:w-3"></span>
-                            </button>
-                            <button type="button" onclick="goToHeroSlide(4)" aria-label="Slide 5"
-                                class="hero-indicator group py-2 focus:outline-none">
-                                <span
-                                    class="indicator-bar block h-1.5 rounded-full transition-all duration-500 w-2 bg-white/30 group-hover:bg-white/70 group-hover:w-3"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- BELOW SLIDER ON MOBILE (order-2) / LEFT GLASS PANEL ON DESKTOP -->
-            <div class="order-2 w-full lg:w-[41%] xl:w-[39%] pr-0 lg:pr-4 relative z-20">
-
-                <!-- Floating Glassmorphism Content Card -->
-                <div
-                    class="space-y-6 bg-white/[0.03] backdrop-blur-xl border border-white/10 p-6 sm:p-8 rounded-[2.5rem] shadow-[0_30px_70px_rgba(0,0,0,0.4)] relative overflow-hidden group/card hover:border-white/15 transition-all duration-500">
-                    <!-- Ambient gold card glow dot -->
-                    <div
-                        class="absolute -right-20 -top-20 w-44 h-44 bg-[#e1ae31]/10 rounded-full blur-3xl pointer-events-none group-hover/card:bg-[#e1ae31]/15 transition-colors">
-                    </div>
-
-                    <!-- Compact Subtitle Tag -->
-                    <div
-                        class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/[0.08] border border-white/15 w-fit">
-                        <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span>
-                        <span id="slideCategoryLabel"
-                            class="text-brand-gold font-heading font-bold text-[9px] sm:text-[10px] uppercase tracking-[0.2em]">
-                            Est. 2003 • Myanmar
-                        </span>
-                    </div>
-
-                    <!-- Punchy High-Impact Headline -->
-                    <h1
-                        class="font-heading text-3xl sm:text-4xl lg:text-[34px] xl:text-[38px] font-black text-white leading-[1.25] tracking-tight">
-                        Powering <br />
-                        <span class="text-brand-gold relative inline-block">
-                            Myanmar's
-                            <span
-                                class="absolute -bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-brand-gold to-transparent rounded-full"></span>
-                        </span> <br />
-                        Infrastructure.
-                    </h1>
-
-                    <!-- Concise Editorial Copy -->
-                    <p class="text-xs sm:text-[13px] text-slate-300 font-light leading-[1.7] max-w-sm">
-                        Premier distributor of heavy construction machinery, mining equipment, and industrial energy
-                        solutions across Myanmar for over two decades.
-                    </p>
-
-                    <!-- Refined Action Buttons -->
-                    <div class="flex flex-wrap items-center gap-3 pt-2">
-                        <a href="products.html"
-                            class="bg-brand-gold text-brand-navy px-6 py-3 font-heading font-bold text-[11px] uppercase tracking-[0.15em] hover:bg-[#d09d22] transition-all rounded-xl shadow-[0_4px_16px_rgba(225,174,49,0.35)] hover:-translate-y-0.5 duration-300">
-                            View Products
-                        </a>
-                        <a href="#about"
-                            class="bg-white/10 hover:bg-white/15 border border-white/20 text-white px-5 py-3 font-heading font-semibold text-[11px] uppercase tracking-[0.15em] transition-all rounded-xl flex items-center gap-2 hover:-translate-y-0.5 duration-300">
-                            <span>About AGGC</span> <i class="fa-solid fa-arrow-right text-[10px] text-brand-gold"></i>
-                        </a>
-                    </div>
-
-                    <!-- Compact Industrial Key Metrics Bar -->
-                    <div class="grid grid-cols-3 gap-3 pt-6 border-t border-white/10">
-                        <div>
-                            <div class="text-white font-heading font-black text-base sm:text-lg">20+</div>
-                            <div class="text-slate-300 text-[9.5px] uppercase tracking-wider font-medium">Years Exp.
-                            </div>
-                        </div>
-                        <div class="border-l border-white/10 pl-3">
-                            <div class="text-brand-gold font-heading font-black text-base sm:text-lg">9+</div>
-                            <div class="text-slate-300 text-[9.5px] uppercase tracking-wider font-medium">Top Brands
-                            </div>
-                        </div>
-                        <div class="border-l border-white/10 pl-3">
-                            <div class="text-white font-heading font-black text-base sm:text-lg">100%</div>
-                            <div class="text-slate-300 text-[9.5px] uppercase tracking-wider font-medium">Genuine</div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
 
+        <div
+            class="absolute bottom-6 right-6 sm:right-10 z-30 flex items-center gap-2 px-4 py-2 rounded-full bg-[#071633]/70 border border-white/15 backdrop-blur-md">
+            <div class="flex items-center gap-2" id="heroCarouselIndicators">
+                <button type="button" onclick="goToHeroSlide(0)" aria-label="Slide 1"
+                    class="hero-indicator group py-2 focus:outline-none">
+                    <span
+                        class="indicator-bar block h-1.5 rounded-full transition-all duration-500 w-7 bg-brand-gold shadow-[0_0_10px_rgba(241,173,24,0.8)]"></span>
+                </button>
+                <button type="button" onclick="goToHeroSlide(1)" aria-label="Slide 2"
+                    class="hero-indicator group py-2 focus:outline-none">
+                    <span
+                        class="indicator-bar block h-1.5 rounded-full transition-all duration-500 w-2 bg-white/30 group-hover:bg-white/70 group-hover:w-3"></span>
+                </button>
+                <button type="button" onclick="goToHeroSlide(2)" aria-label="Slide 3"
+                    class="hero-indicator group py-2 focus:outline-none">
+                    <span
+                        class="indicator-bar block h-1.5 rounded-full transition-all duration-500 w-2 bg-white/30 group-hover:bg-white/70 group-hover:w-3"></span>
+                </button>
+                <button type="button" onclick="goToHeroSlide(3)" aria-label="Slide 4"
+                    class="hero-indicator group py-2 focus:outline-none">
+                    <span
+                        class="indicator-bar block h-1.5 rounded-full transition-all duration-500 w-2 bg-white/30 group-hover:bg-white/70 group-hover:w-3"></span>
+                </button>
+                <button type="button" onclick="goToHeroSlide(4)" aria-label="Slide 5"
+                    class="hero-indicator group py-2 focus:outline-none">
+                    <span
+                        class="indicator-bar block h-1.5 rounded-full transition-all duration-500 w-2 bg-white/30 group-hover:bg-white/70 group-hover:w-3"></span>
+                </button>
+            </div>
+        </div>
     </section>
     <!-- 3. Welcome & About Us Section -->
-    <section id="about" class="py-16 sm:py-24 bg-gradient-to-br from-[#faf9f6] via-[#f3f2ee] to-[#e6e4dc] relative overflow-hidden border-t border-[#180733]/5">
+    <section id="about" class="py-16 sm:py-24 bg-gradient-to-br from-[#faf9f6] via-[#f3f2ee] to-[#e6e4dc] relative overflow-hidden border-t border-[#071633]/5">
         <!-- Section scroll progress indicator -->
         <div class="section-scroll-indicator" id="section-scroll-bar"></div>
 
@@ -897,24 +886,20 @@
                 <div class="lg:col-span-5 scroll-reveal-left flex flex-col justify-between min-h-[400px] lg:min-h-auto relative">
                     <!-- Architectural line overlay in background of image for depth -->
                     <div class="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
-                        style="background-image: linear-gradient(to right, #180733 1px, transparent 1px), linear-gradient(to bottom, #180733 1px, transparent 1px); background-size: 24px 24px;">
+                        style="background-image: linear-gradient(to right, #071633 1px, transparent 1px), linear-gradient(to bottom, #071633 1px, transparent 1px); background-size: 24px 24px;">
                     </div>
 
                     <!-- Skyscraper Building Photo -->
-                    <div class="relative z-10 my-auto w-full max-w-md mx-auto aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-slate-200/50 group/img-container">
-                        <img src="./img/latest-aggc-building.jpg" alt="AGGC Headquarters"
-                            class="w-full h-full object-cover transform group-hover/img-container:scale-105 transition-transform duration-1000 ease-out">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#180733]/15 to-transparent"></div>
+                    <div class="relative z-10 my-auto w-full max-w-md mx-auto group/img-container">
+                        <div class="absolute -inset-4 bg-brand-navy/95 shadow-2xl shadow-brand-navy/20 transform rotate-[-2deg]"></div>
+                        <div class="absolute -right-5 -bottom-5 w-2/3 h-2/3 border-[10px] border-brand-gold/85 transform rotate-[3deg]"></div>
+                        <div class="absolute -top-5 -left-5 w-28 h-28 border-l-[10px] border-t-[10px] border-brand-gold/90"></div>
 
-                        <!-- Decorative gold accent bracket -->
-                        <div class="absolute bottom-4 left-4 w-6 h-6 border-l-4 border-b-4 border-brand-gold"></div>
-                        <div class="absolute top-4 right-4 w-6 h-6 border-r-4 border-t-4 border-brand-gold"></div>
-                    </div>
-
-                    <!-- Decorative Subtle Text at bottom -->
-                    <div class="relative z-10 mt-8 text-[11px] font-heading font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2 justify-center lg:justify-start">
-                        <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-ping"></span>
-                        Aung Gyi Group Of Companies
+                        <div class="relative aspect-[4/3] overflow-hidden border-[10px] border-white bg-white shadow-2xl">
+                            <img src="./img/about_us_complex_render.png" alt="AGGC Business Complex"
+                                class="w-full h-full object-cover transform group-hover/img-container:scale-105 transition-transform duration-1000 ease-out">
+                            <div class="absolute inset-4 border border-white/45 pointer-events-none"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -922,12 +907,6 @@
                 <div class="lg:col-span-7 scroll-reveal-right space-y-8">
                     <!-- Text Content Wrapper -->
                     <div class="relative z-10">
-                        <!-- Gold mini label -->
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#180733]/5 border border-[#180733]/10 mb-6">
-                            <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span>
-                            <span class="text-brand-navy font-heading font-extrabold text-[9px] uppercase tracking-[0.25em]">Global Presence</span>
-                        </div>
-
                         <!-- ABOUT US Heading -->
                         <h2 class="font-heading text-4xl sm:text-5xl font-black text-brand-navy tracking-tight uppercase mb-8 relative inline-block group/title">
                             ABOUT US
@@ -941,7 +920,7 @@
                                 Aung Gyi Group of Companies and Alliance Global Group Company.
                             </p>
                             <p class="text-justify hover:text-brand-navy transition-colors duration-300 transform hover:translate-x-1 cursor-default">
-                                With operations across Myanmar, Thailand, Vietnam, Cambodia, Singapore, Hong Kong, and the
+                                With operations across Global markets including Thailand, Vietnam, Cambodia, Singapore, Hong Kong, and the
                                 UAE, the Group maintains an expanding regional presence across Asia and the Middle East. It
                                 connects regional and international partners to deliver coordinated engineering,
                                 manufacturing, and project execution services.
@@ -954,27 +933,27 @@
                         </div>
 
                         <!-- Interactive Quick Stats Row -->
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-10 mt-10 border-t border-slate-300/40">
-                            <div class="group/stat cursor-pointer flex flex-col justify-center">
-                                <div class="text-brand-navy font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-left flex items-center">
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-10 mt-10 border-t border-slate-300/40 text-center">
+                            <div class="group/stat cursor-pointer flex flex-col items-center justify-center">
+                                <div class="text-brand-navy font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-center flex items-center justify-center">
                                     <span class="counter" data-target="7">0</span><span>+</span>
                                 </div>
                                 <div class="text-slate-500 text-[10px] uppercase tracking-wider font-semibold mt-1">Countries</div>
                             </div>
-                            <div class="group/stat cursor-pointer flex flex-col justify-center">
-                                <div class="text-brand-gold font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-left flex items-center">
+                            <div class="group/stat cursor-pointer flex flex-col items-center justify-center">
+                                <div class="text-brand-gold font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-center flex items-center justify-center">
                                     <span class="counter" data-target="4">0</span>
                                 </div>
                                 <div class="text-slate-500 text-[10px] uppercase tracking-wider font-semibold mt-1">Divisions</div>
                             </div>
-                            <div class="group/stat cursor-pointer flex flex-col justify-center">
-                                <div class="text-brand-navy font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-left flex items-center">
+                            <div class="group/stat cursor-pointer flex flex-col items-center justify-center">
+                                <div class="text-brand-navy font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-center flex items-center justify-center">
                                     <span class="counter" data-target="20">0</span><span>+</span>
                                 </div>
                                 <div class="text-slate-500 text-[10px] uppercase tracking-wider font-semibold mt-1">Years Exp.</div>
                             </div>
-                            <div class="group/stat cursor-pointer flex flex-col justify-center">
-                                <div class="text-brand-gold font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-left flex items-center">
+                            <div class="group/stat cursor-pointer flex flex-col items-center justify-center">
+                                <div class="text-brand-gold font-heading font-black text-2xl group-hover/stat:scale-110 transition-transform duration-300 origin-center flex items-center justify-center">
                                     <span class="counter" data-target="100">0</span><span>%</span>
                                 </div>
                                 <div class="text-slate-500 text-[10px] uppercase tracking-wider font-semibold mt-1">Reliability</div>
@@ -989,13 +968,13 @@
 
     <!-- 4. Business Sectors Section (WHAT WE DO) -->
     <section id="sectors"
-        class="py-16 sm:py-24 bg-gradient-to-br from-[#180733] via-[#0d041e] to-[#14062a] relative border-t border-white/5 overflow-hidden">
+        class="py-16 sm:py-24 bg-gradient-to-br from-[#071633] via-[#0b1f46] to-[#061226] relative border-t border-white/5 overflow-hidden">
         <!-- Floating ambient mesh light -->
         <div
             class="absolute -right-20 top-1/4 w-[300px] h-[300px] bg-[#e1ae31]/10 rounded-full blur-[100px] pointer-events-none z-0 animate-float-slow">
         </div>
         <div
-            class="absolute left-1/3 bottom-10 w-[250px] h-[250px] bg-purple-500/10 rounded-full blur-[80px] pointer-events-none z-0 animate-float-wobble">
+            class="absolute left-1/3 bottom-10 w-[250px] h-[250px] bg-blue-600/10 rounded-full blur-[80px] pointer-events-none z-0">
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -1020,10 +999,10 @@
                         <!-- Sector Card 1 -->
                         <div
                             class="flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-br from-white/[0.04] to-transparent border border-white/10 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold hover:shadow-2xl transition-all duration-500 group cursor-pointer reveal-scale-up">
-                            <!-- Gold Hexagon Number Badge -->
-                            <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-lg transition-all duration-500 group-hover:rotate-[360deg] group-hover:bg-[#180733] group-hover:text-brand-gold flex-shrink-0 flex items-center justify-center"
-                                style="clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);">
-                                01
+                            <!-- Gold Gear Number Badge -->
+                            <div class="relative w-16 h-16 flex-shrink-0 flex items-center justify-center">
+                                <i class="fa-solid fa-gear absolute inset-0 text-[64px] leading-none text-brand-gold drop-shadow-[0_0_18px_rgba(225,174,49,0.25)]"></i>
+                                <span class="relative z-10 w-8 h-8 rounded-full bg-[#071633] border border-white/15 text-brand-gold font-heading font-black text-[12px] flex items-center justify-center shadow-lg">01</span>
                             </div>
                             <div>
                                 <h3
@@ -1040,10 +1019,10 @@
                         <!-- Sector Card 2 -->
                         <div
                             class="flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-br from-white/[0.04] to-transparent border border-white/10 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold hover:shadow-2xl transition-all duration-500 group cursor-pointer reveal-scale-up delay-100">
-                            <!-- Gold Hexagon Number Badge -->
-                            <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-lg transition-all duration-500 group-hover:rotate-[360deg] group-hover:bg-[#180733] group-hover:text-brand-gold flex-shrink-0 flex items-center justify-center"
-                                style="clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);">
-                                02
+                            <!-- Gold Gear Number Badge -->
+                            <div class="relative w-16 h-16 flex-shrink-0 flex items-center justify-center">
+                                <i class="fa-solid fa-gear absolute inset-0 text-[64px] leading-none text-brand-gold drop-shadow-[0_0_18px_rgba(225,174,49,0.25)]"></i>
+                                <span class="relative z-10 w-8 h-8 rounded-full bg-[#071633] border border-white/15 text-brand-gold font-heading font-black text-[12px] flex items-center justify-center shadow-lg">02</span>
                             </div>
                             <div>
                                 <h3
@@ -1060,10 +1039,10 @@
                         <!-- Sector Card 3 -->
                         <div
                             class="flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-br from-white/[0.04] to-transparent border border-white/10 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold hover:shadow-2xl transition-all duration-500 group cursor-pointer reveal-scale-up delay-200">
-                            <!-- Gold Hexagon Number Badge -->
-                            <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-lg transition-all duration-500 group-hover:rotate-[360deg] group-hover:bg-[#180733] group-hover:text-brand-gold flex-shrink-0 flex items-center justify-center"
-                                style="clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);">
-                                03
+                            <!-- Gold Gear Number Badge -->
+                            <div class="relative w-16 h-16 flex-shrink-0 flex items-center justify-center">
+                                <i class="fa-solid fa-gear absolute inset-0 text-[64px] leading-none text-brand-gold drop-shadow-[0_0_18px_rgba(225,174,49,0.25)]"></i>
+                                <span class="relative z-10 w-8 h-8 rounded-full bg-[#071633] border border-white/15 text-brand-gold font-heading font-black text-[12px] flex items-center justify-center shadow-lg">03</span>
                             </div>
                             <div>
                                 <h3
@@ -1080,10 +1059,10 @@
                         <!-- Sector Card 4 -->
                         <div
                             class="flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-br from-white/[0.04] to-transparent border border-white/10 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold hover:shadow-2xl transition-all duration-500 group cursor-pointer reveal-scale-up delay-300">
-                            <!-- Gold Hexagon Number Badge -->
-                            <div class="w-14 h-14 bg-brand-gold text-brand-navy font-heading font-black text-lg transition-all duration-500 group-hover:rotate-[360deg] group-hover:bg-[#180733] group-hover:text-brand-gold flex-shrink-0 flex items-center justify-center"
-                                style="clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);">
-                                04
+                            <!-- Gold Gear Number Badge -->
+                            <div class="relative w-16 h-16 flex-shrink-0 flex items-center justify-center">
+                                <i class="fa-solid fa-gear absolute inset-0 text-[64px] leading-none text-brand-gold drop-shadow-[0_0_18px_rgba(225,174,49,0.25)]"></i>
+                                <span class="relative z-10 w-8 h-8 rounded-full bg-[#071633] border border-white/15 text-brand-gold font-heading font-black text-[12px] flex items-center justify-center shadow-lg">04</span>
                             </div>
                             <div>
                                 <h3
@@ -1101,16 +1080,17 @@
 
                 <!-- Right Side: Sectors Graphic (5 cols) -->
                 <div
-                    class="lg:col-span-5 relative w-full h-[350px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl group/skew-img animate-float-medium scroll-reveal flex items-center justify-center">
+                    class="lg:col-span-5 relative w-full h-[350px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl scroll-reveal flex items-center justify-center bg-gradient-to-br from-[#10295b] via-[#071633] to-[#061226] border border-brand-gold/20">
+                    <div class="absolute inset-x-8 top-8 h-px bg-gradient-to-r from-transparent via-brand-gold/60 to-transparent"></div>
+                    <div class="absolute inset-y-8 right-8 w-px bg-gradient-to-b from-transparent via-brand-gold/50 to-transparent"></div>
+                    <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute top-5 left-5 px-3 py-1 rounded-full bg-white/[0.08] border border-white/10 text-[10px] font-heading font-bold uppercase tracking-[0.18em] text-brand-gold">
+                        Sector Map
+                    </div>
                     <!-- Image Container -->
-                    <div class="absolute inset-0 w-full h-full flex items-center justify-center">
-                        <img src="./img/what_we_do_sectors.png" alt="AGGC Business Sectors Illustration"
-                            class="w-full h-full object-contain group-hover/skew-img:scale-105 transition-all duration-[1200ms] ease-out drop-shadow-2xl">
-                        
-                        <!-- Accent light beam overlay -->
-                        <div
-                            class="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-25deg] group-hover/skew-img:left-[200%] transition-all duration-[1500ms] ease-out pointer-events-none">
-                        </div>
+                    <div class="absolute inset-6 sm:inset-8 w-auto h-auto flex items-center justify-center">
+                        <img src="./img/what_we_do_business_divisions.png" alt="AGGC Business Divisions"
+                            class="w-full h-full object-contain drop-shadow-2xl">
                     </div>
                 </div>
 
@@ -1119,9 +1099,8 @@
     </section>
 
     <!-- Local Strength, Global Reach Section -->
-    <section id="global-reach" class="py-16 sm:py-24 bg-gradient-to-br from-[#06091e] via-[#100424] to-[#180733] text-white relative overflow-hidden">
-        <!-- Ambient glowing backgrounds & dot pattern -->
-        <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 24px 24px;"></div>
+    <section id="global-reach" class="py-16 sm:py-24 bg-gradient-to-br from-[#061226] via-[#071633] to-[#0b1f46] text-white relative overflow-hidden">
+        <!-- Ambient glowing backgrounds -->
         <div class="absolute top-1/4 -left-32 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -1140,31 +1119,31 @@
                     </h2>
                     <div class="w-24 h-[4px] bg-brand-gold rounded-full my-6 shadow-[0_0_12px_rgba(241,173,24,0.6)]"></div>
                     <p class="text-slate-300 text-sm sm:text-base font-light leading-relaxed">
-                        Connecting Myanmar's nationwide presence with high-impact international alliances across Southeast Asia & the Middle East.
+                        Connecting global operating strength with high-impact international alliances across Southeast Asia & the Middle East.
                     </p>
                 </div>
 
                 <!-- Right Paragraphs Info Cards -->
                 <div class="lg:col-span-7 space-y-5 scroll-reveal">
                     <!-- Info 1: AGGC Local Strength -->
-                    <div class="bg-white/5 backdrop-blur-md border border-white/10 hover:border-brand-gold/50 rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(241,173,24,0.1)] group">
+                    <div class="bg-gradient-to-r from-brand-gold/20 via-brand-gold/10 to-transparent backdrop-blur-md border border-brand-gold/40 rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(241,173,24,0.2)] group">
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0 group-hover:bg-brand-gold group-hover:text-brand-navy transition-all duration-300">
+                            <div class="w-10 h-10 rounded-xl bg-brand-gold flex items-center justify-center text-brand-navy font-bold flex-shrink-0 shadow-md">
                                 <i class="fa-solid fa-map-location-dot text-lg"></i>
                             </div>
                             <div>
-                                <h4 class="font-heading font-extrabold text-white text-base mb-1 group-hover:text-brand-gold transition-colors">Nationwide Branch Network</h4>
+                                <h4 class="font-heading font-extrabold text-white text-base mb-1 group-hover:text-brand-gold transition-colors">Global Branch Network</h4>
                                 <p class="text-slate-300 text-sm font-light leading-relaxed">
-                                    Aung Gyi Group of Companies maintains an extensive branch network throughout Myanmar, providing nationwide coverage and customer support.
+                                    Aung Gyi Group of Companies maintains an extensive global branch network, providing broad coverage and customer support.
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Info 2: Alliance Global International Market Access -->
-                    <div class="bg-white/5 backdrop-blur-md border border-white/10 hover:border-brand-gold/50 rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(241,173,24,0.1)] group">
+                    <div class="bg-gradient-to-r from-brand-gold/20 via-brand-gold/10 to-transparent backdrop-blur-md border border-brand-gold/40 rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(241,173,24,0.2)] group">
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold flex-shrink-0 group-hover:bg-brand-gold group-hover:text-brand-navy transition-all duration-300">
+                            <div class="w-10 h-10 rounded-xl bg-brand-gold flex items-center justify-center text-brand-navy font-bold flex-shrink-0 shadow-md">
                                 <i class="fa-solid fa-earth-asia text-lg"></i>
                             </div>
                             <div>
@@ -1194,9 +1173,7 @@
             </div>
 
             <!-- Bottom Graphic Banner (Silver / White Curved Partner Hub matching user screenshot) -->
-            <div class="bg-gradient-to-r from-slate-100 via-white to-slate-100 rounded-3xl p-6 sm:p-10 border border-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] text-brand-navy relative overflow-hidden scroll-reveal">
-                <!-- Background subtle pattern -->
-                <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#180733 2px, transparent 2px); background-size: 20px 20px;"></div>
+            <div class="bg-gradient-to-r from-slate-50 via-white to-slate-100 rounded-3xl p-6 sm:p-10 border border-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] text-brand-navy relative overflow-hidden scroll-reveal">
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
                     <!-- Left Entity: AGGC PARTNERS -->
@@ -1207,7 +1184,7 @@
                         <div class="inline-block px-3 py-1 bg-brand-navy text-white rounded-md text-[10px] font-heading font-black uppercase tracking-[0.2em] shadow-sm group-hover:bg-brand-gold group-hover:text-brand-navy transition-colors">
                             PARTNERS
                         </div>
-                        <p class="text-[11px] text-slate-500 font-medium mt-3">Nationwide Coverage & Support</p>
+                        <p class="text-[11px] text-slate-500 font-medium mt-3">Global Coverage & Support</p>
                     </div>
 
                     <!-- Center Connector: Puzzle Synergy Graphic -->
@@ -1216,23 +1193,20 @@
                             <!-- Connecting Line background -->
                             <div class="w-full h-1 bg-gradient-to-r from-brand-navy via-brand-gold to-brand-navy absolute top-1/2 -translate-y-1/2 rounded-full opacity-30"></div>
                             <!-- Puzzle SVG Icon Box -->
-                            <div class="relative z-10 w-14 h-14 bg-gradient-to-br from-brand-navy to-[#100424] rounded-2xl border-2 border-brand-gold flex items-center justify-center shadow-lg group hover:scale-110 transition-transform">
-                                <i class="fa-solid fa-puzzle-piece text-brand-gold text-2xl animate-pulse"></i>
+                            <div class="relative z-10 w-14 h-14 bg-gradient-to-br from-[#071633] to-[#0b1f46] rounded-2xl border-2 border-brand-gold flex items-center justify-center shadow-lg">
+                                <i class="fa-solid fa-puzzle-piece text-brand-gold text-2xl"></i>
                             </div>
                         </div>
                         <span class="font-heading font-extrabold text-xs uppercase tracking-widest text-brand-navy">Unified Synergy</span>
                         <p class="text-[11px] text-slate-500 font-medium">Local Expertise + Global Opportunities</p>
                     </div>
 
-                    <!-- Right Entity: AGGC & Alliance Tractors -->
+                    <!-- Right Entity: Global Partners -->
                     <div class="md:col-span-4 flex flex-col items-center justify-center text-center p-6 bg-white/90 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all group">
                         <div class="flex flex-col items-center gap-2 mb-3">
-                            <img src="./img/logo.png" alt="AGGC Logo" class="h-9 w-auto object-contain">
+                            <img src="./img/logo.png" alt="AGGC Partners Logo" class="h-9 w-auto object-contain">
                             <div class="w-16 h-[2px] bg-brand-gold/60 rounded-full my-0.5"></div>
-                            <div class="flex items-center gap-2">
-                                <img src="./img/alliance_logo.png" alt="Alliance Tractors Logo" class="h-6 w-auto object-contain">
-                                <span class="text-xs font-heading font-bold text-slate-800">ALLIANCE TRACTORS</span>
-                            </div>
+                            <img src="./img/logo.png" alt="AGGC Partners Logo" class="h-6 w-auto object-contain">
                         </div>
                         <div class="inline-block px-3 py-1 bg-brand-gold text-brand-navy rounded-md text-[10px] font-heading font-black uppercase tracking-[0.2em] shadow-sm group-hover:bg-brand-navy group-hover:text-white transition-colors">
                             GLOBAL PARTNERS
@@ -1243,507 +1217,99 @@
             </div>
         </div>
     </section>
-
-    <!-- Corporate Divisions Section -->
-    <section id="divisions" class="py-16 sm:py-24 bg-[#f8f7f4] relative border-t border-[#180733]/5">
-        <!-- Decorative grid background -->
-        <div class="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
-            style="background-image: radial-gradient(#180733 2px, transparent 2px); background-size: 24px 24px;"></div>
-
+    <!-- 5. Trusted Brands & Products Section -->
+    <section id="brands" class="py-16 sm:py-24 bg-gradient-to-br from-[#061226] via-[#071633] to-[#0b1f46] relative overflow-hidden border-t border-brand-gold/20">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-gold/70 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <!-- Center Header -->
-            <div class="text-center mb-16 group scroll-reveal">
-                <h4
-                    class="text-brand-gold font-heading font-bold tracking-[0.2em] uppercase text-[11px] sm:text-[12px] mb-2">
-                    Member Entities</h4>
-                <h2
-                    class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-brand-navy tracking-tight uppercase">
-                    Corporate Divisions
-                </h2>
-                <div class="w-20 sm:w-24 h-[3px] bg-brand-gold mx-auto mt-4 sm:mt-5 rounded-full"></div>
-                <p class="text-slate-500 mt-5 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed font-light">
-                    Unifying heavy industrial capabilities, power networks, and energy solutions to build a sustainable
-                    global future.
-                </p>
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 sm:mb-14">
+                <div>
+                    <h4 class="text-brand-gold font-heading font-bold tracking-[0.2em] uppercase text-[11px] sm:text-[12px] mb-3">Industrial Portfolio</h4>
+                    <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase leading-tight">Trusted Brands & Products</h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-light max-w-2xl mt-4">A global-grade product portfolio for machinery, commercial vehicles, power systems, building solutions, energy products, and specialized engineering equipment.</p>
+                </div>
+                <a href="products.html" class="inline-flex w-fit items-center gap-3 bg-brand-gold text-brand-navy px-6 py-3 font-heading font-black text-[11px] uppercase tracking-[0.18em] rounded hover:bg-[#f0bf42] transition-all shadow-[0_10px_28px_rgba(225,174,49,0.28)]">Explore Products <i class="fa-solid fa-arrow-right text-[11px]"></i></a>
             </div>
 
-            <!-- Divisions Cards Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Card 1: Alliance Tractors -->
-                <div
-                    class="bg-gradient-to-br from-[#180733] via-[#100424] to-[#1d0b3e] rounded-[2rem] p-8 sm:p-10 border border-brand-gold/15 shadow-2xl hover:shadow-[0_20px_45px_rgba(225,174,49,0.15)] hover:border-brand-gold/45 hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between h-full relative overflow-hidden reveal-scale-up">
-                    <div
-                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold via-brand-navy to-brand-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div class="brand-feature-list space-y-8 sm:space-y-10">
+                <a href="product_page/Liugong.html" class="brand-feature-row group">
+                    <div class="brand-feature-copy">
+                        <img src="./img/Products/liugong-logo.png" alt="Liugong Logo" class="brand-feature-logo">
+                        <h3>Liugong</h3>
+                        <p>Earthmoving, road construction, concrete, and heavy equipment platforms.</p>
+                        <span>Explore Brand <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
-                    <!-- Ambient subtle inner glow -->
-                    <div
-                        class="absolute -right-16 -top-16 w-36 h-36 bg-brand-gold/5 rounded-full blur-2xl group-hover:bg-brand-gold/10 transition-colors pointer-events-none">
-                    </div>
-
-                    <div>
-                        <div class="flex justify-between items-center mb-6">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-12 h-12 bg-white/10 border border-white/15 rounded-2xl flex items-center justify-center p-1.5 shadow-sm overflow-hidden flex-shrink-0 group-hover:bg-white/20 transition-all duration-300">
-                                    <img src="img/alliance_logo.png" alt="Alliance Tractors Logo"
-                                        class="max-w-full max-h-full object-contain brightness-0 invert">
-                                </div>
-                                <div>
-                                    <h3
-                                        class="font-heading font-extrabold text-white text-lg leading-tight group-hover:text-brand-gold transition-colors duration-300">
-                                        Alliance Tractors</h3>
-                                    <p class="text-[10px] text-brand-gold font-bold uppercase tracking-wider">Heavy
-                                        Machinery Platform</p>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-6 font-light">
-                            Strategically positioned in key global locations, Alliance Tractors acts as the premier
-                            platform for heavy construction equipment, mining machinery, and comprehensive post-purchase
-                            parts supply.
-                        </p>
-                        <div class="space-y-2 mb-8">
-                            <div
-                                class="flex items-center gap-2.5 text-xs text-slate-400 group-hover:text-slate-300 transition-colors">
-                                <i class="fa-solid fa-earth-americas text-brand-gold w-4"></i>
-                                <span>UAE, Thailand, Myanmar, Vietnam, Cambodia, Laos, HK</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pt-5 border-t border-white/10 flex items-center justify-center mt-auto">
-                        <a href="corporate structure/aliance_tractor/Alliance Tractors.html"
-                            class="text-xs font-bold text-brand-gold hover:text-white flex items-center gap-1 transition-colors">
-                            See More &rarr;
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Card 2: Powermax Industries -->
-                <div
-                    class="bg-gradient-to-br from-[#180733] via-[#100424] to-[#1d0b3e] rounded-[2rem] p-8 sm:p-10 border border-brand-gold/15 shadow-2xl hover:shadow-[0_20px_45px_rgba(225,174,49,0.15)] hover:border-brand-gold/45 hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between h-full relative overflow-hidden reveal-scale-up delay-100">
-                    <div
-                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold via-brand-navy to-brand-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    </div>
-                    <!-- Ambient subtle inner glow -->
-                    <div
-                        class="absolute -right-16 -top-16 w-36 h-36 bg-brand-gold/5 rounded-full blur-2xl group-hover:bg-brand-gold/10 transition-colors pointer-events-none">
-                    </div>
-
-                    <div>
-                        <div class="flex justify-between items-center mb-6">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-12 h-12 bg-white/10 border border-white/15 rounded-2xl flex items-center justify-center p-1.5 shadow-sm overflow-hidden flex-shrink-0 group-hover:bg-white/20 transition-all duration-300">
-                                    <img src="img/Products/powermax-logo.png" alt="Powermax Logo"
-                                        class="max-w-full max-h-full object-contain brightness-0 invert">
-                                </div>
-                                <div>
-                                    <h3
-                                        class="font-heading font-extrabold text-white text-lg leading-tight group-hover:text-brand-gold transition-colors duration-300">
-                                        Powermax Industries</h3>
-                                    <p class="text-[10px] text-brand-gold font-bold uppercase tracking-wider">Energy &
-                                        Power Solutions</p>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-6 font-light">
-                            Powermax Industries provides one-stop power generation solutions, manufacturing diesel
-                            generator sets, automatic transfer switches (ATS), water pumps, and intelligent generator
-                            controllers.
-                        </p>
-                        <div class="space-y-2 mb-8">
-                            <div
-                                class="flex items-center gap-2.5 text-xs text-slate-400 group-hover:text-slate-300 transition-colors">
-                                <i class="fa-solid fa-earth-americas text-brand-gold w-4"></i>
-                                <span>Singapore, Myanmar (Yangon)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pt-5 border-t border-white/10 flex items-center justify-center mt-auto">
-                        <a href="corporate structure/powermax/Powermax.html"
-                            class="text-xs font-bold text-brand-gold hover:text-white flex items-center gap-1 transition-colors">
-                            See More &rarr;
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Card 3: Turbo Oil Corporation -->
-                <div
-                    class="bg-gradient-to-br from-[#180733] via-[#100424] to-[#1d0b3e] rounded-[2rem] p-8 sm:p-10 border border-brand-gold/15 shadow-2xl hover:shadow-[0_20px_45px_rgba(225,174,49,0.15)] hover:border-brand-gold/45 hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between h-full relative overflow-hidden reveal-scale-up delay-200">
-                    <div
-                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold via-brand-navy to-brand-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    </div>
-                    <!-- Ambient subtle inner glow -->
-                    <div
-                        class="absolute -right-16 -top-16 w-36 h-36 bg-brand-gold/5 rounded-full blur-2xl group-hover:bg-brand-gold/10 transition-colors pointer-events-none">
-                    </div>
-
-                    <div>
-                        <div class="flex justify-between items-center mb-6">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-12 h-12 bg-white/10 border border-white/15 rounded-2xl flex items-center justify-center p-1.5 shadow-sm overflow-hidden flex-shrink-0 group-hover:bg-white/20 transition-all duration-300">
-                                    <img src="img/Products/turboil-logo.png" alt="Turbo Oil Logo"
-                                        class="max-w-full max-h-full object-contain brightness-0 invert animate-pulse-slow">
-                                </div>
-                                <div>
-                                    <h3
-                                        class="font-heading font-extrabold text-white text-lg leading-tight group-hover:text-brand-gold transition-colors duration-300">
-                                        Turbo Oil Corp.</h3>
-                                    <p class="text-[10px] text-brand-gold font-bold uppercase tracking-wider">Oil, Gas &
-                                        Energy Resources</p>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-6 font-light">
-                            Turbo Oil Corporation specializes in the exploration, production, and distribution of energy
-                            products worldwide, delivering downstream lubricants, midstream logistics, and upstream rig
-                            supply.
-                        </p>
-                        <div class="space-y-2 mb-8">
-                            <div
-                                class="flex items-center gap-2.5 text-xs text-slate-400 group-hover:text-slate-300 transition-colors">
-                                <i class="fa-solid fa-earth-americas text-brand-gold w-4"></i>
-                                <span>UAE (Dubai), Singapore, Myanmar</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pt-5 border-t border-white/10 flex items-center justify-center mt-auto">
-                        <a href="corporate structure/turbo_oil/Turbo_Oil.html"
-                            class="text-xs font-bold text-brand-gold hover:text-white flex items-center gap-1 transition-colors">
-                            See More &rarr;
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. Brands & Products Section (Solid Hover Cards with Logos) -->
-    <section id="brands" class="py-16 sm:py-24 bg-[#f3f1ec] relative">
-        <div class="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
-            style="background-image: linear-gradient(#180733 1px, transparent 1px), linear-gradient(90deg, #180733 1px, transparent 1px); background-size: 40px 40px;">
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12 sm:mb-16">
-                <h4
-                    class="text-brand-gold font-heading font-bold tracking-[0.2em] uppercase text-[11px] sm:text-[12px] mb-2">
-                    Our Network</h4>
-                <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy tracking-tight">
-                    Trusted Brands & Products</h2>
-                <div class="w-20 sm:w-24 h-[3px] bg-brand-gold mx-auto mt-4 sm:mt-5 rounded-full"></div>
-            </div>
-
-            <!-- Product Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                <!-- Liugong Card -->
-                <a href="product_page/Liugong.html" class="group product-card-hover block w-full bg-gradient-to-b from-[#1c3066] to-[#051126] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[6px] border-b-[#FFC107] fade-up-element">
-                    <!-- Top-Right Yellow Corner Accent -->
-                    <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
-                        <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
-                    </div>
-                    <!-- Padding Container -->
-                    <div class="p-6 sm:p-8 flex flex-col h-full relative z-10">
-                        <!-- Logo Area -->
-                        <div class="mb-6 h-12 w-fit flex items-center bg-white/95 backdrop-blur-sm rounded-xl px-4 py-1.5 shadow-sm border border-white/20">
-                            <img src="./img/Products/liugong-logo.png" alt="Liugong Logo" class="max-h-full object-contain opacity-100 transition-opacity duration-300 group-hover:opacity-100">
-                        </div>
-                        <!-- Main Product Image -->
-                        <div class="mb-8 flex justify-center items-center h-44 relative">
-                            <div class="absolute inset-0 bg-[#FFC107] opacity-0 blur-2xl rounded-full group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
-                            <img src="./img/Products/luigong_product.png" alt="Liugong Product" class="max-h-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-xl relative z-10">
-                        </div>
-                        <!-- Feature List -->
-                        <ul class="space-y-4 mb-8 flex-grow">
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Earthmoving Machinery
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Road Equipment
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Concrete Equipment
-                            </li>
-                        </ul>
-                        <!-- Divider -->
-                        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-5"></div>
-                        <!-- Footer / CTA -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-white font-bold text-xs tracking-[0.2em] uppercase transition-colors duration-300 group-hover:text-[#FFC107]">View Details</span>
-                            <i class="fa-solid fa-arrow-right text-[#FFC107] transition-transform duration-500 group-hover:translate-x-2 text-lg"></i>
-                        </div>
+                    <div class="brand-feature-media">
+                        <img src="./img/Products/luigong_product.png" alt="Liugong Product" class="brand-feature-product">
                     </div>
                 </a>
 
-                <!-- JAC Motors Card -->
-                <a href="product_page/jac_moter.html" class="group product-card-hover block w-full bg-gradient-to-b from-[#1c3066] to-[#051126] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[6px] border-b-[#FFC107] fade-up-element" style="transition-delay: 100ms;">
-                    <!-- Top-Right Yellow Corner Accent -->
-                    <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
-                        <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
+                <a href="product_page/jac_moter.html" class="brand-feature-row brand-feature-row-reverse group">
+                    <div class="brand-feature-copy">
+                        <img src="./img/Products/jac-motor-logo.png" alt="JAC Motors Logo" class="brand-feature-logo">
+                        <h3>JAC Motors</h3>
+                        <p>Commercial vehicles, logistics mobility, and automotive fleet solutions.</p>
+                        <span>Explore Brand <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
-                    <!-- Padding Container -->
-                    <div class="p-6 sm:p-8 flex flex-col h-full relative z-10">
-                        <!-- Logo Area -->
-                        <div class="mb-6 h-12 w-fit flex items-center bg-white/95 backdrop-blur-sm rounded-xl px-4 py-1.5 shadow-sm border border-white/20">
-                            <img src="./img/Products/jac-motor-logo.png" alt="JAC Motors Logo" class="max-h-full object-contain opacity-100 transition-opacity duration-300 group-hover:opacity-100">
-                        </div>
-                        <!-- Main Product Image -->
-                        <div class="mb-8 flex justify-center items-center h-44 relative">
-                            <div class="absolute inset-0 bg-[#FFC107] opacity-0 blur-2xl rounded-full group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
-                            <img src="./img/Products/jac_product.png" alt="JAC Product" class="max-h-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-xl relative z-10">
-                        </div>
-                        <!-- Feature List -->
-                        <ul class="space-y-4 mb-8 flex-grow">
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Heavy and Medium Truck
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Light Truck
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Sunray
-                            </li>
-                        </ul>
-                        <!-- Divider -->
-                        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-5"></div>
-                        <!-- Footer / CTA -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-white font-bold text-xs tracking-[0.2em] uppercase transition-colors duration-300 group-hover:text-[#FFC107]">View Details</span>
-                            <i class="fa-solid fa-arrow-right text-[#FFC107] transition-transform duration-500 group-hover:translate-x-2 text-lg"></i>
-                        </div>
+                    <div class="brand-feature-media">
+                        <img src="./img/Products/jac_product.png" alt="JAC Product" class="brand-feature-product">
                     </div>
                 </a>
 
-                <!-- Powermax Card -->
-                <a href="product_page/powermax.html" class="group product-card-hover block w-full bg-gradient-to-b from-[#1c3066] to-[#051126] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[6px] border-b-[#FFC107] fade-up-element" style="transition-delay: 200ms;">
-                    <!-- Top-Right Yellow Corner Accent -->
-                    <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
-                        <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
+                <a href="product_page/powermax.html" class="brand-feature-row group">
+                    <div class="brand-feature-copy">
+                        <img src="./img/Products/powermax-logo.png" alt="Powermax Logo" class="brand-feature-logo">
+                        <h3>Powermax</h3>
+                        <p>Generator sets, ATS panels, water pumps, lighting towers, and control systems.</p>
+                        <span>Explore Brand <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
-                    <!-- Padding Container -->
-                    <div class="p-6 sm:p-8 flex flex-col h-full relative z-10">
-                        <!-- Logo Area -->
-                        <div class="mb-6 h-12 w-fit flex items-center bg-white/95 backdrop-blur-sm rounded-xl px-4 py-1.5 shadow-sm border border-white/20">
-                            <img src="./img/Products/powermax-logo.png" alt="Powermax Logo" class="max-h-full object-contain opacity-100 transition-opacity duration-300 group-hover:opacity-100">
-                        </div>
-                        <!-- Main Product Image -->
-                        <div class="mb-8 flex justify-center items-center h-44 relative">
-                            <div class="absolute inset-0 bg-[#FFC107] opacity-0 blur-2xl rounded-full group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
-                            <img src="./img/Products/powermax_product.png" alt="Powermax Product" class="max-h-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-xl relative z-10">
-                        </div>
-                        <!-- Feature List -->
-                        <ul class="space-y-4 mb-8 flex-grow">
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Super Silent Set
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Industrial Open Set
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Lighting Tower
-                            </li>
-                        </ul>
-                        <!-- Divider -->
-                        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-5"></div>
-                        <!-- Footer / CTA -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-white font-bold text-xs tracking-[0.2em] uppercase transition-colors duration-300 group-hover:text-[#FFC107]">View Details</span>
-                            <i class="fa-solid fa-arrow-right text-[#FFC107] transition-transform duration-500 group-hover:translate-x-2 text-lg"></i>
-                        </div>
+                    <div class="brand-feature-media">
+                        <img src="./img/Products/powermax_product.png" alt="Powermax Product" class="brand-feature-product">
                     </div>
                 </a>
 
-                <!-- Izumi Card -->
-                <a href="product_page/izumi.html" class="group product-card-hover block w-full bg-gradient-to-b from-[#1c3066] to-[#051126] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[6px] border-b-[#FFC107] fade-up-element">
-                    <!-- Top-Right Yellow Corner Accent -->
-                    <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
-                        <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
+                <a href="product_page/izumi.html" class="brand-feature-row brand-feature-row-reverse group">
+                    <div class="brand-feature-copy">
+                        <img src="./img/Products/izumi-logo.png" alt="Izumi Logo" class="brand-feature-logo">
+                        <h3>Izumi</h3>
+                        <p>Air conditioning, elevators, escalators, sanitary ware, and building products.</p>
+                        <span>Explore Brand <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
-                    <!-- Padding Container -->
-                    <div class="p-6 sm:p-8 flex flex-col h-full relative z-10">
-                        <!-- Logo Area -->
-                        <div class="mb-6 h-12 w-fit flex items-center bg-white/95 backdrop-blur-sm rounded-xl px-4 py-1.5 shadow-sm border border-white/20">
-                            <img src="./img/Products/izumi-logo.png" alt="Izumi Logo" class="max-h-full object-contain opacity-100 transition-opacity duration-300 group-hover:opacity-100">
-                        </div>
-                        <!-- Main Product Image -->
-                        <div class="mb-8 flex justify-center items-center h-44 relative">
-                            <div class="absolute inset-0 bg-[#FFC107] opacity-0 blur-2xl rounded-full group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
-                            <img src="./img/Products/izumi_product.png" alt="Izumi Product" class="max-h-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-xl relative z-10">
-                        </div>
-                        <!-- Feature List -->
-                        <ul class="space-y-4 mb-8 flex-grow">
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Air Conditioner
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Escalator & Elevator
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Sanitary ware
-                            </li>
-                        </ul>
-                        <!-- Divider -->
-                        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-5"></div>
-                        <!-- Footer / CTA -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-white font-bold text-xs tracking-[0.2em] uppercase transition-colors duration-300 group-hover:text-[#FFC107]">View Details</span>
-                            <i class="fa-solid fa-arrow-right text-[#FFC107] transition-transform duration-500 group-hover:translate-x-2 text-lg"></i>
-                        </div>
+                    <div class="brand-feature-media">
+                        <img src="./img/Products/izumi_product.png" alt="Izumi Product" class="brand-feature-product">
                     </div>
                 </a>
 
-                
-
-                
-
-                
-
-                
-
-                <!-- Turboil Card -->
-                <a href="#brand-turboil" class="group product-card-hover block w-full bg-gradient-to-b from-[#1c3066] to-[#051126] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[6px] border-b-[#FFC107] fade-up-element" style="transition-delay: 200ms;">
-                    <!-- Top-Right Yellow Corner Accent -->
-                    <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
-                        <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
+                <a href="products.html#brand-turboil" class="brand-feature-row group">
+                    <div class="brand-feature-copy">
+                        <img src="./img/Products/turboil-logo.png" alt="Turboil Logo" class="brand-feature-logo">
+                        <h3>Turboil</h3>
+                        <p>Engine oil, hydraulic oil, gear oil, and industrial energy products.</p>
+                        <span>Explore Brand <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
-                    <!-- Padding Container -->
-                    <div class="p-6 sm:p-8 flex flex-col h-full relative z-10">
-                        <!-- Logo Area -->
-                        <div class="mb-6 h-12 w-fit flex items-center bg-white/95 backdrop-blur-sm rounded-xl px-4 py-1.5 shadow-sm border border-white/20">
-                            <img src="./img/Products/turboil-logo.png" alt="Turboil Logo" class="max-h-full object-contain opacity-100 transition-opacity duration-300 group-hover:opacity-100">
-                        </div>
-                        <!-- Main Product Image -->
-                        <div class="mb-8 flex justify-center items-center h-44 relative">
-                            <div class="absolute inset-0 bg-[#FFC107] opacity-0 blur-2xl rounded-full group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
-                            <img src="./img/Products/turboil_product.png" alt="Turboil Product" class="max-h-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-xl relative z-10">
-                        </div>
-                        <!-- Feature List -->
-                        <ul class="space-y-4 mb-8 flex-grow">
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Engine Oil
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Hydraulic Oil
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Gear Oil
-                            </li>
-                        </ul>
-                        <!-- Divider -->
-                        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-5"></div>
-                        <!-- Footer / CTA -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-white font-bold text-xs tracking-[0.2em] uppercase transition-colors duration-300 group-hover:text-[#FFC107]">View Details</span>
-                            <i class="fa-solid fa-arrow-right text-[#FFC107] transition-transform duration-500 group-hover:translate-x-2 text-lg"></i>
-                        </div>
+                    <div class="brand-feature-media">
+                        <img src="./img/Products/turboil_product.png" alt="Turboil Product" class="brand-feature-product">
                     </div>
                 </a>
 
-                <!-- Sigma Card -->
-                <a href="product_page/sigma.html" class="group product-card-hover block w-full bg-gradient-to-b from-[#1c3066] to-[#051126] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[6px] border-b-[#FFC107] fade-up-element">
-                    <!-- Top-Right Yellow Corner Accent -->
-                    <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
-                        <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
+                <a href="product_page/sigma.html" class="brand-feature-row brand-feature-row-reverse group">
+                    <div class="brand-feature-copy">
+                        <img src="./img/Products/sigma_logo.png" alt="Sigma Logo" class="brand-feature-logo">
+                        <h3>Sigma</h3>
+                        <p>High-performance equipment, durable engineering, and specialized solutions.</p>
+                        <span>Explore Brand <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
-                    <!-- Padding Container -->
-                    <div class="p-6 sm:p-8 flex flex-col h-full relative z-10">
-                        <!-- Logo Area -->
-                        <div class="mb-6 h-12 w-fit flex items-center bg-white/95 backdrop-blur-sm rounded-xl px-4 py-1.5 shadow-sm border border-white/20">
-                            <h3 class="text-[#071633] text-3xl font-black tracking-widest uppercase italic">SIGMA</h3>
-                        </div>
-                        <!-- Main Product Image -->
-                        <div class="mb-8 flex justify-center items-center h-44 relative">
-                            <div class="absolute inset-0 bg-[#FFC107] opacity-0 blur-2xl rounded-full group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
-                            <img src="./img/Products/sigma_product.png" alt="Turboil Product" class="max-h-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-xl relative z-10">
-                        </div>
-                        <!-- Feature List -->
-                        <ul class="space-y-4 mb-8 flex-grow">
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                High Performance Equipment
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Durable & Reliable
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Specialized Engineering
-                            </li>
-                        </ul>
-                        <!-- Divider -->
-                        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-5"></div>
-                        <!-- Footer / CTA -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-white font-bold text-xs tracking-[0.2em] uppercase transition-colors duration-300 group-hover:text-[#FFC107]">View Details</span>
-                            <i class="fa-solid fa-arrow-right text-[#FFC107] transition-transform duration-500 group-hover:translate-x-2 text-lg"></i>
-                        </div>
+                    <div class="brand-feature-media">
+                        <img src="./img/Products/sigma_product.png" alt="Sigma Product" class="brand-feature-product">
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- 6. Global Network Section (Alliance Tractors Network) -->
+
+    <!-- 6. Global Network Section -->
     <section id="network"
-        class="py-16 sm:py-24 bg-gradient-to-br from-[#0e0520] via-[#180733] to-[#0e0520] border-t border-white/5 overflow-hidden relative">
-        <!-- Floating mesh grid watermark -->
-        <div class="absolute inset-0 opacity-[0.015] pointer-events-none z-0"
-            style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 30px 30px;">
-        </div>
-
+        class="py-16 sm:py-24 bg-gradient-to-br from-[#061226] via-[#071633] to-[#061226] border-t border-white/5 overflow-hidden relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-12">
             <!-- Header -->
             <div class="scroll-reveal">
@@ -1752,158 +1318,83 @@
                     GLOBAL NETWORK</h4>
                 <h2
                     class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase">
-                    Alliance Tractors Network</h2>
+                    Global Partner Network</h2>
                 <div class="w-24 h-[4px] bg-brand-gold mx-auto mt-4 rounded-full"></div>
             </div>
+            <!-- Balanced World Map Container -->
+            <div class="w-full max-w-5xl mx-auto relative border border-white/10 rounded-2xl overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.45)] bg-[#061226] scroll-reveal p-4 sm:p-6 lg:p-8">
+                <div class="relative aspect-square w-full max-w-[760px] mx-auto">
+                    <img src="./img/global_network_map_dark.png" alt="Global Partner Network Map"
+                        class="absolute inset-0 w-full h-full object-contain opacity-95 select-none pointer-events-none">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#061226]/20 pointer-events-none"></div>
 
-            <!-- Stylized Dark Dotted World Map Container -->
-            <div
-                class="w-full max-w-4xl mx-auto aspect-[16/9] relative border border-white/10 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-[#180733]/30 backdrop-blur-md scroll-reveal">
-                <img src="./img/global_network_map_dark.png" alt="AGGC Dark Dotted World Map"
-                    class="w-full h-full object-cover opacity-90 select-none pointer-events-none">
+                    <svg class="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <line x1="54" y1="57" x2="47" y2="69" stroke="rgba(225,174,49,0.45)" stroke-width="0.35" />
+                        <line x1="72" y1="66" x2="62" y2="76" stroke="rgba(225,174,49,0.45)" stroke-width="0.35" />
+                        <line x1="74" y1="69" x2="83" y2="76" stroke="rgba(225,174,49,0.45)" stroke-width="0.35" />
+                        <line x1="77" y1="62" x2="86" y2="61" stroke="rgba(225,174,49,0.45)" stroke-width="0.35" />
+                        <line x1="79" y1="53" x2="87" y2="48" stroke="rgba(225,174,49,0.45)" stroke-width="0.35" />
+                    </svg>
 
-                <!-- Overlay Gradients for Depth -->
-                <div class="absolute inset-0 bg-gradient-to-t from-[#0e0520]/60 via-transparent to-transparent z-0">
-                </div>
-
-                <!-- SVG RESPONSIVE CONNECTOR LINES -->
-                <svg class="absolute inset-0 w-full h-full pointer-events-none z-10">
-                    <!-- Line 1: UAE -->
-                    <line x1="60.8%" y1="44.5%" x2="60.8%" y2="78%" stroke="rgba(225,174,49,0.35)" stroke-width="1.5" />
-                    <!-- Line 2: Myanmar -->
-                    <line x1="69.5%" y1="52%" x2="69.5%" y2="88%" stroke="rgba(225,174,49,0.35)" stroke-width="1.5" />
-                    <!-- Line 3: Thailand -->
-                    <line x1="70.8%" y1="55.5%" x2="70.8%" y2="73%" stroke="rgba(225,174,49,0.35)" stroke-width="1.5" />
-                    <!-- Line 4: Cambodia -->
-                    <line x1="72%" y1="57.5%" x2="79%" y2="64%" stroke="rgba(225,174,49,0.35)" stroke-width="1.5" />
-                    <!-- Line 5: Vietnam -->
-                    <line x1="73.2%" y1="54.5%" x2="81%" y2="51%" stroke="rgba(225,174,49,0.35)" stroke-width="1.5" />
-                    <!-- Line 6: Hong Kong -->
-                    <line x1="74.8%" y1="47%" x2="83%" y2="38%" stroke="rgba(225,174,49,0.35)" stroke-width="1.5" />
-                </svg>
-
-                <!-- DYNAMIC MAP PINS -->
-                <!-- Pin 1: UAE -->
-                <div class="absolute" style="left: 60.8%; top: 44.5%; transform: translate(-50%, -50%);">
-                    <span
-                        class="absolute w-5 h-5 bg-brand-gold/40 rounded-full animate-ping pointer-events-none -left-0.5 -top-0.5"></span>
-                    <div class="w-2.5 h-2.5 bg-brand-gold border border-white rounded-full shadow-lg relative z-20">
+                    <div class="absolute z-20" style="left: 54%; top: 57%; transform: translate(-50%, -50%);">
+                        <span class="block w-3 h-3 rounded-full bg-brand-gold border-2 border-white shadow-[0_0_18px_rgba(225,174,49,0.70)]"></span>
                     </div>
-                </div>
-
-                <!-- Pin 2: Myanmar -->
-                <div class="absolute" style="left: 69.5%; top: 52%; transform: translate(-50%, -50%);">
-                    <span
-                        class="absolute w-5 h-5 bg-brand-gold/40 rounded-full animate-ping pointer-events-none -left-0.5 -top-0.5"></span>
-                    <div class="w-2.5 h-2.5 bg-brand-gold border border-white rounded-full shadow-lg relative z-20">
+                    <div class="absolute z-20" style="left: 72%; top: 66%; transform: translate(-50%, -50%);">
+                        <span class="block w-3 h-3 rounded-full bg-brand-gold border-2 border-white shadow-[0_0_18px_rgba(225,174,49,0.70)]"></span>
                     </div>
-                </div>
-
-                <!-- Pin 3: Thailand -->
-                <div class="absolute" style="left: 70.8%; top: 55.5%; transform: translate(-50%, -50%);">
-                    <span
-                        class="absolute w-5 h-5 bg-brand-gold/40 rounded-full animate-ping pointer-events-none -left-0.5 -top-0.5"></span>
-                    <div class="w-2.5 h-2.5 bg-brand-gold border border-white rounded-full shadow-lg relative z-20">
+                    <div class="absolute z-20" style="left: 74%; top: 69%; transform: translate(-50%, -50%);">
+                        <span class="block w-3 h-3 rounded-full bg-brand-gold border-2 border-white shadow-[0_0_18px_rgba(225,174,49,0.70)]"></span>
                     </div>
-                </div>
-
-                <!-- Pin 4: Cambodia -->
-                <div class="absolute" style="left: 72%; top: 57.5%; transform: translate(-50%, -50%);">
-                    <span
-                        class="absolute w-5 h-5 bg-brand-gold/40 rounded-full animate-ping pointer-events-none -left-0.5 -top-0.5"></span>
-                    <div class="w-2.5 h-2.5 bg-brand-gold border border-white rounded-full shadow-lg relative z-20">
+                    <div class="absolute z-20" style="left: 77%; top: 62%; transform: translate(-50%, -50%);">
+                        <span class="block w-3 h-3 rounded-full bg-brand-gold border-2 border-white shadow-[0_0_18px_rgba(225,174,49,0.70)]"></span>
                     </div>
-                </div>
-
-                <!-- Pin 5: Vietnam -->
-                <div class="absolute" style="left: 73.2%; top: 54.5%; transform: translate(-50%, -50%);">
-                    <span
-                        class="absolute w-5 h-5 bg-brand-gold/40 rounded-full animate-ping pointer-events-none -left-0.5 -top-0.5"></span>
-                    <div class="w-2.5 h-2.5 bg-brand-gold border border-white rounded-full shadow-lg relative z-20">
+                    <div class="absolute z-20" style="left: 79%; top: 53%; transform: translate(-50%, -50%);">
+                        <span class="block w-3 h-3 rounded-full bg-brand-gold border-2 border-white shadow-[0_0_18px_rgba(225,174,49,0.70)]"></span>
                     </div>
-                </div>
 
-                <!-- Pin 6: Hong Kong -->
-                <div class="absolute" style="left: 74.8%; top: 47%; transform: translate(-50%, -50%);">
-                    <span
-                        class="absolute w-5 h-5 bg-brand-gold/40 rounded-full animate-ping pointer-events-none -left-0.5 -top-0.5"></span>
-                    <div class="w-2.5 h-2.5 bg-brand-gold border border-white rounded-full shadow-lg relative z-20">
+                    <div class="absolute z-20 left-[39%] top-[67%]">
+                        <span class="bg-[#071633]/95 border border-brand-gold/50 text-white px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-heading font-black tracking-[0.14em] uppercase shadow-lg">UAE</span>
                     </div>
-                </div>
-
-                <!-- RESPONSIVE TEXT LABELS -->
-                <!-- UAE Label -->
-                <div class="absolute" style="left: 60.8%; top: 78%; transform: translate(-50%, 0%);">
-                    <div
-                        class="bg-white/10 backdrop-blur-md border border-white/20 shadow-lg px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg text-[8px] sm:text-[10px] md:text-[11px] font-heading font-black text-white whitespace-nowrap z-25 hover:bg-brand-gold hover:text-brand-navy hover:scale-105 transition-all duration-300">
-                        UAE
+                    <div class="absolute z-20 left-[54%] top-[74%]">
+                        <span class="bg-[#071633]/95 border border-brand-gold/50 text-white px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-heading font-black tracking-[0.14em] uppercase shadow-lg">Thailand</span>
                     </div>
-                </div>
-
-                <!-- Myanmar Label (Highlighted base) -->
-                <div class="absolute" style="left: 69.5%; top: 88%; transform: translate(-50%, 0%);">
-                    <div
-                        class="bg-[#e1ae31] shadow-lg px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg text-[8px] sm:text-[10px] md:text-[11px] font-heading font-black text-brand-navy whitespace-nowrap z-25 hover:scale-105 transition-all duration-300">
-                        Myanmar
+                    <div class="absolute z-20 left-[78%] top-[74%]">
+                        <span class="bg-[#071633]/95 border border-brand-gold/50 text-white px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-heading font-black tracking-[0.14em] uppercase shadow-lg">Cambodia</span>
                     </div>
-                </div>
-
-                <!-- Thailand Label -->
-                <div class="absolute" style="left: 70.8%; top: 73%; transform: translate(-50%, 0%);">
-                    <div
-                        class="bg-white/10 backdrop-blur-md border border-white/20 shadow-lg px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg text-[8px] sm:text-[10px] md:text-[11px] font-heading font-black text-white whitespace-nowrap z-25 hover:bg-brand-gold hover:text-brand-navy hover:scale-105 transition-all duration-300">
-                        Thailand
+                    <div class="absolute z-20 left-[84%] top-[58%]">
+                        <span class="bg-[#071633]/95 border border-brand-gold/50 text-white px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-heading font-black tracking-[0.14em] uppercase shadow-lg">Vietnam</span>
                     </div>
-                </div>
-
-                <!-- Cambodia Label -->
-                <div class="absolute" style="left: 79%; top: 64%; transform: translate(0%, -50%);">
-                    <div
-                        class="bg-white/10 backdrop-blur-md border border-white/20 shadow-lg px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg text-[8px] sm:text-[10px] md:text-[11px] font-heading font-black text-white whitespace-nowrap z-25 hover:bg-brand-gold hover:text-brand-navy hover:scale-105 transition-all duration-300">
-                        Cambodia
-                    </div>
-                </div>
-
-                <!-- Vietnam Label -->
-                <div class="absolute" style="left: 81%; top: 51%; transform: translate(0%, -50%);">
-                    <div
-                        class="bg-white/10 backdrop-blur-md border border-white/20 shadow-lg px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg text-[8px] sm:text-[10px] md:text-[11px] font-heading font-black text-white whitespace-nowrap z-25 hover:bg-brand-gold hover:text-brand-navy hover:scale-105 transition-all duration-300">
-                        Vietnam
-                    </div>
-                </div>
-
-                <!-- Hong Kong Label -->
-                <div class="absolute" style="left: 83%; top: 38%; transform: translate(0%, -50%);">
-                    <div
-                        class="bg-white/10 backdrop-blur-md border border-white/25 shadow-lg px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg text-[8px] sm:text-[10px] md:text-[11px] font-heading font-black text-white whitespace-nowrap z-25 hover:bg-brand-gold hover:text-brand-navy hover:scale-105 transition-all duration-300">
-                        Hong Kong
+                    <div class="absolute z-20 left-[84%] top-[45%]">
+                        <span class="bg-[#071633]/95 border border-brand-gold/50 text-white px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-heading font-black tracking-[0.14em] uppercase shadow-lg">Hong Kong</span>
                     </div>
                 </div>
             </div>
+
+
 
             <!-- Soft Gradient Network Grid -->
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5 max-w-6xl mx-auto scroll-reveal">
 
-                <!-- Card 1: Myanmar -->
+                <!-- Card 1: Global -->
                 <div
                     class="bg-white/[0.03] border border-white/10 rounded-2xl p-4 hover:shadow-xl hover:-translate-y-1 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold transition-all duration-500 group cursor-default">
                     <div
-                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#180733] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
+                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
                         <i class="fa-solid fa-map-pin text-brand-gold text-[15px] transition-colors"></i>
                     </div>
                     <h3
                         class="font-heading font-extrabold text-white group-hover:text-brand-navy transition-colors text-sm sm:text-base leading-tight">
-                        Myanmar</h3>
+                        Global</h3>
                     <p
                         class="text-[10px] text-slate-300 group-hover:text-brand-navy/80 transition-colors mt-1 font-light">
-                        Main Hub & Sales</p>
+                        Integrated Network</p>
                 </div>
 
                 <!-- Card 2: UAE -->
                 <div
                     class="bg-white/[0.03] border border-white/10 rounded-2xl p-4 hover:shadow-xl hover:-translate-y-1 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold transition-all duration-500 group cursor-default delay-75">
                     <div
-                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#180733] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
+                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
                         <i class="fa-solid fa-earth-europe text-brand-gold text-[15px] transition-colors"></i>
                     </div>
                     <h3
@@ -1918,7 +1409,7 @@
                 <div
                     class="bg-white/[0.03] border border-white/10 rounded-2xl p-4 hover:shadow-xl hover:-translate-y-1 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold transition-all duration-500 group cursor-default delay-100">
                     <div
-                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#180733] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
+                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
                         <i class="fa-solid fa-truck-moving text-brand-gold text-[15px] transition-colors"></i>
                     </div>
                     <h3
@@ -1933,7 +1424,7 @@
                 <div
                     class="bg-white/[0.03] border border-white/10 rounded-2xl p-4 hover:shadow-xl hover:-translate-y-1 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold transition-all duration-500 group cursor-default delay-150">
                     <div
-                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#180733] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
+                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
                         <i class="fa-solid fa-gears text-brand-gold text-[15px] transition-colors"></i>
                     </div>
                     <h3
@@ -1948,7 +1439,7 @@
                 <div
                     class="bg-white/[0.03] border border-white/10 rounded-2xl p-4 hover:shadow-xl hover:-translate-y-1 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold transition-all duration-500 group cursor-default delay-200">
                     <div
-                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#180733] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
+                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
                         <i class="fa-solid fa-coins text-brand-gold text-[15px] transition-colors"></i>
                     </div>
                     <h3
@@ -1963,7 +1454,7 @@
                 <div
                     class="bg-white/[0.03] border border-white/10 rounded-2xl p-4 hover:shadow-xl hover:-translate-y-1 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold transition-all duration-500 group cursor-default delay-300">
                     <div
-                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#180733] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
+                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
                         <i class="fa-solid fa-seedling text-brand-gold text-[15px] transition-colors"></i>
                     </div>
                     <h3
@@ -1978,204 +1469,25 @@
         </div>
     </section>
 
-    <!-- 7. NEW: Best Selling Items (Pro Design) -->
-    <section id="best-selling" class="py-16 sm:py-24 bg-[#f8f7f4] border-t border-[#180733]/5">
+    <!-- 7. Latest News Updates -->
+    <section id="news" class="py-16 sm:py-24 bg-gradient-to-br from-[#061226] via-[#071633] to-[#0b1f46] relative border-t border-white/5 overflow-hidden">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-gold/70 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col items-center justify-center mb-12 sm:mb-16">
-                <a href="best_selling.html" class="group/title flex flex-col items-center">
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 sm:mb-14">
+                <div>
+                    <h4 class="text-brand-gold font-heading font-bold tracking-[0.2em] uppercase text-[11px] sm:text-[12px] mb-3">
+                        Live Updates</h4>
                     <h3
-                        class="text-lg sm:text-xl font-heading font-extrabold text-brand-navy group-hover/title:text-brand-gold transition-colors uppercase tracking-widest mb-3">
-                        BEST SELLING ITEMS</h3>
-                </a>
-                <div class="flex items-center w-full max-w-xs justify-center">
-                    <div class="h-[2px] bg-brand-gold flex-grow"></div>
-                    <div
-                        class="w-10 h-10 bg-brand-navy rounded-full flex items-center justify-center border-2 border-brand-gold mx-2 z-10 p-1.5 shadow-md">
-                        <img src="img/logo_head.png" alt="AGGC Logo Head" class="w-full h-full object-contain">
-                    </div>
-                    <div class="h-[2px] bg-brand-gold flex-grow"></div>
+                        class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-tight">
+                        Latest News Updates</h3>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mt-4 max-w-2xl">
+                        Company announcements, project highlights, activities, and industry updates from the AGGC network.
+                    </p>
                 </div>
-            </div>
-
-            <!-- 3 Column Grid for Advanced Products -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-                <!-- Product 1 -->
-                <a href="./best-selling/wheel_loader_835h_max.html"
-                    class="group relative bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer flex flex-col">
-                    <!-- Image Section with Premium Overlay -->
-                    <div class="relative h-56 sm:h-64 overflow-hidden bg-slate-100 flex items-center justify-center">
-                        <img src="./img/best_selling_items/wheel_loader_max.jpg" alt="Wheel Loader 835H Max"
-                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
-                        <!-- Dark Gradient Overlay on Hover -->
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        </div>
-                        <!-- Hot Badge -->
-                        <div
-                            class="absolute top-4 left-4 bg-brand-gold text-brand-navy text-[10px] font-heading font-extrabold uppercase tracking-widest px-3 py-1.5 rounded shadow-lg z-10 flex items-center">
-                            <i class="fa-solid fa-fire mr-1.5"></i> Hot Seller
-                        </div>
-                        <!-- Floating Quick View Button -->
-                        <div
-                            class="absolute bottom-6 left-1/2 -translate-x-1/2 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-10">
-                            <span
-                                class="bg-white text-brand-navy px-5 py-2 rounded-full text-[11px] font-heading font-bold uppercase tracking-[0.15em] shadow-lg flex items-center">
-                                View Detail <i class="fa-solid fa-arrow-right ml-2 text-brand-gold"></i>
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Content Section -->
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow relative bg-white z-20">
-                        <!-- Animated Top Line -->
-                        <div
-                            class="absolute top-0 left-0 w-0 h-1 bg-brand-gold group-hover:w-full transition-all duration-500">
-                        </div>
-
-                        <h4
-                            class="font-heading text-[18px] sm:text-[20px] font-extrabold text-brand-navy mb-3 group-hover:text-brand-gold transition-colors tracking-tight">
-                            Wheel Loader 835H Max</h4>
-                        <p class="text-[14px] text-slate-500 leading-[1.8] font-sans mb-6 flex-grow">
-                            Engine HP 120-135 ကြားရှိ medium wheel loader series မှ 835H Max သည် အကြမ်းခံပြီး
-                            စွမ်းဆောင်ရည်မြင့်မားသော စက်ယန္တရားဖြစ်ပါသည်။
-                        </p>
-
-                        <!-- Technical Spec Highlight -->
-                        <div class="flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
-                            <div
-                                class="flex items-center text-slate-400 group-hover:text-brand-navy transition-colors duration-300">
-                                <i class="fa-solid fa-gears mr-2 text-brand-gold"></i>
-                                <span class="text-[11px] font-heading font-bold uppercase tracking-[0.15em]">Medium
-                                    Series</span>
-                            </div>
-                            <div
-                                class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-brand-navy border border-slate-200 group-hover:bg-brand-navy group-hover:text-brand-gold group-hover:border-brand-navy transition-all duration-300 shadow-sm">
-                                <i class="fa-solid fa-plus text-[12px]"></i>
-                            </div>
-                        </div>
-                    </div>
+                <a href="news.html"
+                    class="inline-flex w-fit items-center font-heading font-bold text-[11px] uppercase tracking-widest text-brand-navy bg-brand-gold hover:bg-[#f0bf42] px-6 py-3 rounded shadow-[0_10px_28px_rgba(225,174,49,0.28)] transition-all">
+                    View All News <i class="fa-solid fa-arrow-right ml-3"></i>
                 </a>
-
-                <!-- Product 2 -->
-                <a href="./best-selling/liugong_excavator_922e.html"
-                    class="group relative bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer flex flex-col">
-                    <div class="relative h-56 sm:h-64 overflow-hidden bg-slate-100 flex items-center justify-center">
-                        <img src="./img/best_selling_items/liugong_922E.jpg" alt="Liugong 922E Excavator"
-                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        </div>
-                        <div
-                            class="absolute top-4 left-4 bg-brand-gold text-brand-navy text-[10px] font-heading font-extrabold uppercase tracking-widest px-3 py-1.5 rounded shadow-lg z-10 flex items-center">
-                            <i class="fa-solid fa-fire mr-1.5"></i> Hot Seller
-                        </div>
-                        <div
-                            class="absolute bottom-6 left-1/2 -translate-x-1/2 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-10">
-                            <span
-                                class="bg-white text-brand-navy px-5 py-2 rounded-full text-[11px] font-heading font-bold uppercase tracking-[0.15em] shadow-lg flex items-center">
-                                View Detail <i class="fa-solid fa-arrow-right ml-2 text-brand-gold"></i>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow relative bg-white z-20">
-                        <div
-                            class="absolute top-0 left-0 w-0 h-1 bg-brand-gold group-hover:w-full transition-all duration-500">
-                        </div>
-
-                        <h4
-                            class="font-heading text-[18px] sm:text-[20px] font-extrabold text-brand-navy mb-3 group-hover:text-brand-gold transition-colors tracking-tight">
-                            Liugong 922E Excavator</h4>
-                        <p class="text-[14px] text-slate-500 leading-[1.8] font-sans mb-6 flex-grow">
-                            ပွင့်လင်းရာသီလဲ ရောက်လာပြီဆိုတော့ မကြာခင်လုပ်ငန်းခွင်ဝင်မယ့် Customers များအတွက်
-                            အကြမ်းခံပြီး ဆီစားသက်သာသော မော်ဒယ်ဖြစ်ပါသည်။
-                        </p>
-
-                        <div class="flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
-                            <div
-                                class="flex items-center text-slate-400 group-hover:text-brand-navy transition-colors duration-300">
-                                <i class="fa-solid fa-gears mr-2 text-brand-gold"></i>
-                                <span class="text-[11px] font-heading font-bold uppercase tracking-[0.15em]">Excavator
-                                    Series</span>
-                            </div>
-                            <div
-                                class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-brand-navy border border-slate-200 group-hover:bg-brand-navy group-hover:text-brand-gold group-hover:border-brand-navy transition-all duration-300 shadow-sm">
-                                <i class="fa-solid fa-plus text-[12px]"></i>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Product 3 -->
-                <a href="./best-selling/liugong_grader_4140d.html"
-                    class="group relative bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer flex flex-col">
-                    <div class="relative h-56 sm:h-64 overflow-hidden bg-slate-100 flex items-center justify-center">
-                        <img src="./img/best_selling_items/liugong_motor_grader.jpg" alt="Liugong Motor Grader 4140 D"
-                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        </div>
-                        <div
-                            class="absolute top-4 left-4 bg-brand-gold text-brand-navy text-[10px] font-heading font-extrabold uppercase tracking-widest px-3 py-1.5 rounded shadow-lg z-10 flex items-center">
-                            <i class="fa-solid fa-fire mr-1.5"></i> Hot Seller
-                        </div>
-                        <div
-                            class="absolute bottom-6 left-1/2 -translate-x-1/2 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-10">
-                            <span
-                                class="bg-white text-brand-navy px-5 py-2 rounded-full text-[11px] font-heading font-bold uppercase tracking-[0.15em] shadow-lg flex items-center">
-                                View Detail <i class="fa-solid fa-arrow-right ml-2 text-brand-gold"></i>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow relative bg-white z-20">
-                        <div
-                            class="absolute top-0 left-0 w-0 h-1 bg-brand-gold group-hover:w-full transition-all duration-500">
-                        </div>
-
-                        <h4
-                            class="font-heading text-[18px] sm:text-[20px] font-extrabold text-brand-navy mb-3 group-hover:text-brand-gold transition-colors tracking-tight">
-                            Liugong Motor Grader 4140 D</h4>
-                        <p class="text-[14px] text-slate-500 leading-[1.8] font-sans mb-6 flex-grow">
-                            Operation Weight 14 Ton ဖြစ်ပါတယ်။ လမ်းလုပ်ငန်းနှင့် မြေညှိလုပ်ငန်းများအတွက်
-                            အကောင်းဆုံးရွေးချယ်မှုဖြစ်ပါသည်။
-                        </p>
-
-                        <div class="flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
-                            <div
-                                class="flex items-center text-slate-400 group-hover:text-brand-navy transition-colors duration-300">
-                                <i class="fa-solid fa-weight-hanging mr-2 text-brand-gold"></i>
-                                <span class="text-[11px] font-heading font-bold uppercase tracking-[0.15em]">14 Ton
-                                    Weight</span>
-                            </div>
-                            <div
-                                class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-brand-navy border border-slate-200 group-hover:bg-brand-navy group-hover:text-brand-gold group-hover:border-brand-navy transition-all duration-300 shadow-sm">
-                                <i class="fa-solid fa-plus text-[12px]"></i>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 8. Latest News Updates -->
-    <section id="news" class="py-16 sm:py-24 bg-gradient-to-br from-[#180733] via-[#0f0422] to-[#180733] relative border-t border-white/5 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col items-center justify-center mb-12 sm:mb-16">
-                <h3
-                    class="text-lg sm:text-xl font-heading font-extrabold text-white uppercase tracking-widest mb-3">
-                    LATEST NEWS UPDATES</h3>
-                <div class="flex items-center w-full max-w-xs justify-center">
-                    <div class="h-[2px] bg-brand-gold flex-grow"></div>
-                    <div
-                        class="w-10 h-10 bg-brand-navy rounded-full flex items-center justify-center border-2 border-brand-gold mx-2 z-10 p-1.5 shadow-md">
-                        <img src="img/logo_head.png" alt="AGGC Logo Head" class="w-full h-full object-contain">
-                    </div>
-                    <div class="h-[2px] bg-brand-gold flex-grow"></div>
-                </div>
             </div>
 
             <!-- Loading Spinner for Live News -->
@@ -2184,114 +1496,72 @@
                 <p class="text-slate-300 font-medium text-sm animate-pulse">Loading latest activities...</p>
             </div>
 
-            <!-- 3 Column Grid for Latest News -->
-            <div id="latest-news-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
+            <!-- Professional News Grid -->
+            <div id="latest-news-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
                 <!-- Javascript will inject 3 latest cards here -->
             </div>
-
-            <div class="text-center mt-12">
-                <a href="news.html"
-                    class="inline-flex items-center font-heading font-bold text-[11px] uppercase tracking-widest text-white hover:text-brand-gold transition-all bg-white/10 hover:bg-white/15 px-6 py-3 rounded-xl border border-white/20 shadow-md hover:-translate-y-0.5 duration-300">
-                    View All News & Activities <i class="fa-solid fa-arrow-right ml-3"></i>
-                </a>
-            </div>
         </div>
     </section>
+    <!-- 8. Contact Section -->
+    <section id="contact" class="py-16 sm:py-24 bg-gradient-to-br from-[#eef3f8] via-white to-[#f8f2df] border-t border-[#071633]/10 relative overflow-hidden">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-gold/70 to-transparent"></div>
+        <div class="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-[#071633]/10 to-transparent pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+                <div class="lg:col-span-5 bg-[#071633] text-white rounded-2xl p-7 sm:p-9 shadow-[0_24px_60px_rgba(7,22,51,0.18)] border border-white/10">
+                    <h4 class="text-brand-gold font-heading font-bold tracking-[0.2em] uppercase text-[11px] sm:text-[12px] mb-3">Get In Touch</h4>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-black tracking-tight uppercase mb-4">Contact Information</h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">Reach our team for product inquiries, project discussions, after-sales support, and business coordination.</p>
 
-    <!-- 9. Contact Section -->
-    <section id="contact" class="py-16 sm:py-24 bg-[#f8f7f4] border-t border-[#180733]/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row gap-12 sm:gap-16">
-
-                <!-- Contact Info & Social Media -->
-                <div class="w-full lg:w-5/12">
-                    <h4
-                        class="text-brand-gold font-heading font-bold tracking-[0.2em] uppercase text-[11px] sm:text-[12px] mb-2">
-                        Get In Touch</h4>
-                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-navy mb-8 tracking-tight">
-                        Contact Information</h2>
-
-                    <div class="space-y-6 sm:space-y-8 mb-10">
-                        <div class="flex items-start">
-                            <div
-                                class="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center text-brand-gold mr-4 flex-shrink-0 shadow-sm">
-                                <i class="fa-solid fa-location-dot text-xl"></i>
-                            </div>
-                            <div>
-                                <h5 class="font-heading font-bold text-brand-navy text-[16px]">Head Office</h5>
-                                <p class="text-slate-500 mt-1.5 text-[14px] leading-[1.7]">No.901-6, Level 9, Office
-                                    Tower 3, Times City Complex,<br />Kamayut Township, Yangon, Myanmar.</p>
-                            </div>
+                    <div class="space-y-4">
+                        <div class="flex gap-4 rounded-xl bg-white/[0.06] border border-white/10 p-4">
+                            <div class="w-11 h-11 rounded-lg bg-brand-gold text-brand-navy flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-location-dot"></i></div>
+                            <div><h5 class="font-heading font-bold text-white text-sm uppercase tracking-[0.12em]">Head Office</h5><p class="text-slate-300 mt-1 text-sm leading-relaxed">No.901-6, Level 9, Office Tower 3, Times City Complex,<br />Kamayut Township, Yangon, Myanmar.</p></div>
                         </div>
-                        <div class="flex items-start">
-                            <div
-                                class="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center text-brand-gold mr-4 flex-shrink-0 shadow-sm">
-                                <i class="fa-solid fa-phone text-xl"></i>
-                            </div>
-                            <div>
-                                <h5 class="font-heading font-bold text-brand-navy text-[16px]">Phone</h5>
-                                <p class="text-slate-500 mt-1.5 text-[14px] leading-[1.7]">Corp: +959-890 90000
-                                    9<br />Service: +959-78 500000 1~5</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div
-                                class="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center text-brand-gold mr-4 flex-shrink-0 shadow-sm">
-                                <i class="fa-solid fa-envelope text-xl"></i>
-                            </div>
-                            <div>
-                                <h5 class="font-heading font-bold text-brand-navy text-[16px]">Email</h5>
-                                <p class="text-slate-500 mt-1.5 text-[14px] leading-[1.7]">info@aungyigroup.com</p>
-                            </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="rounded-xl bg-white/[0.06] border border-white/10 p-4"><div class="w-10 h-10 rounded-lg bg-white/10 text-brand-gold flex items-center justify-center mb-3"><i class="fa-solid fa-phone"></i></div><h5 class="font-heading font-bold text-white text-sm uppercase tracking-[0.12em]">Phone</h5><p class="text-slate-300 mt-1 text-sm leading-relaxed">+959-890 90000 9<br />+959-78 500000 1~5</p></div>
+                            <div class="rounded-xl bg-white/[0.06] border border-white/10 p-4"><div class="w-10 h-10 rounded-lg bg-white/10 text-brand-gold flex items-center justify-center mb-3"><i class="fa-solid fa-envelope"></i></div><h5 class="font-heading font-bold text-white text-sm uppercase tracking-[0.12em]">Email</h5><p class="text-slate-300 mt-1 text-sm leading-relaxed break-all">info@aungyigroup.com</p></div>
                         </div>
                     </div>
 
-                    <!-- Social Media Button Icons -->
-                    <div>
-                        <h5 class="font-heading font-bold text-brand-navy text-[16px] mb-4">Follow Us</h5>
+                    <div class="mt-8 pt-6 border-t border-white/10">
+                        <h5 class="font-heading font-bold text-white text-sm uppercase tracking-[0.14em] mb-4">Follow Us</h5>
                         <div class="flex space-x-3">
-                            <a href="#"
-                                class="w-10 h-10 bg-brand-navy text-white rounded-full flex items-center justify-center hover:bg-[#1877F2] hover:-translate-y-1 transition-all shadow-md"><i
-                                    class="fa-brands fa-facebook-f"></i></a>
-                            <a href="#"
-                                class="w-10 h-10 bg-brand-navy text-white rounded-full flex items-center justify-center hover:bg-[#0A66C2] hover:-translate-y-1 transition-all shadow-md"><i
-                                    class="fa-brands fa-linkedin-in"></i></a>
-                            <a href="#"
-                                class="w-10 h-10 bg-brand-navy text-white rounded-full flex items-center justify-center hover:bg-[#FF0000] hover:-translate-y-1 transition-all shadow-md"><i
-                                    class="fa-brands fa-youtube"></i></a>
-                            <a href="#"
-                                class="w-10 h-10 bg-brand-navy text-white rounded-full flex items-center justify-center hover:bg-black hover:-translate-y-1 transition-all shadow-md"><i
-                                    class="fa-brands fa-tiktok"></i></a>
+                            <a href="#" class="w-10 h-10 bg-white/10 text-white rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-navy transition-all shadow-md"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="w-10 h-10 bg-white/10 text-white rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-navy transition-all shadow-md"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" class="w-10 h-10 bg-white/10 text-white rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-navy transition-all shadow-md"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="#" class="w-10 h-10 bg-white/10 text-white rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-navy transition-all shadow-md"><i class="fa-brands fa-tiktok"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Google Map Embed -->
-                <div
-                    class="w-full lg:w-7/12 rounded-2xl overflow-hidden shadow-lg border border-slate-200 h-[350px] sm:h-[450px]">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3819.3496033481267!2d96.12871321481498!3d16.80901518596637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb4800000001%3A0x6333cda94084534a!2sTimes%20City!5e0!3m2!1sen!2smm!4v1680000000000!5m2!1sen!2smm"
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="lg:col-span-7 bg-white rounded-2xl p-3 sm:p-4 shadow-[0_24px_60px_rgba(7,22,51,0.12)] border border-slate-200">
+                    <div class="h-[380px] sm:h-[500px] rounded-xl overflow-hidden bg-slate-100">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3819.3496033481267!2d96.12871321481498!3d16.80901518596637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb4800000001%3A0x6333cda94084534a!2sTimes%20City!5e0!3m2!1sen!2smm!4v1680000000000!5m2!1sen!2smm"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <!-- Redesigned Premium Footer (wePro style) -->
-    <footer class="bg-gradient-to-br from-[#0e0520] via-[#180733] to-[#120525] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
+    <footer class="bg-gradient-to-br from-[#061226] via-[#071633] to-[#0b1f46] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 lg:gap-6 mb-12">
 
                 <div class="col-span-2 flex flex-col space-y-4">
                     <!-- Glass badge logo wrapper -->
                     <div class="bg-white/95 p-2 rounded-xl w-fit shadow-lg">
-                        <img src="./img/logo.png" class="w-40" alt="AGGC Logo">
+                        <img src="./img/logo.png" class="w-40 max-h-14 object-contain" alt="AGGC Logo">
                     </div>
                     <p class="text-slate-300 text-[13px] font-light leading-relaxed max-w-xs">
-                        Aung Gyi Group of Companies. A leading diversified business group in Myanmar operating across
-                        key industrial sectors. Let's Build Together!
+                        Aung Gyi Group of Companies. A leading diversified business group operating across
+                        global industrial sectors. Let's Build Together!
                     </p>
                 </div>
 
@@ -2308,9 +1578,6 @@
                         <li><a href="products.html"
                                 class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Brands</a>
                         </li>
-                        <li><a href="best_selling.html"
-                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Best
-                                Sellers</a></li>
                     </ul>
                 </div>
 
@@ -2395,7 +1662,7 @@
                             class="w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-facebook-f"></i></a>
                         <a href="viber://chat?number=%2B959777555666"
-                            class="w-7 h-7 rounded-full bg-[#735fa3] hover:bg-[#5e4b8b] text-white flex items-center justify-center text-[11px] transition-colors"><i
+                            class="w-7 h-7 rounded-full bg-[#0b1f46] hover:bg-[#10295b] text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-viber"></i></a>
                         <a href="mailto:info@aungyigroup.com"
                             class="w-7 h-7 rounded-full bg-brand-gold hover:bg-brand-gold/85 text-brand-navy flex items-center justify-center text-[11px] transition-colors"><i
@@ -2527,50 +1794,142 @@
     <script>
         // Fetch Latest News from Google Sheet (Only Top 3)
         const SHEET_ID = '1xxAFdK_VZU80LDZVNfICGP3t2Gg7CvZjtBRoM0yD-v0';
-        const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+        const SHEET_JSON_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+        const SHEET_CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv`;
 
         async function fetchLatestNews() {
             try {
-                const response = await fetch(SHEET_URL);
-                if (!response.ok) throw new Error('Network response was not ok');
-
-                const text = await response.text();
-                const jsonMatch = text.match(/google\.visualization\.Query\.setResponse\(([\s\S\w]+)\);/);
-
-                if (jsonMatch && jsonMatch[1]) {
-                    const json = JSON.parse(jsonMatch[1]);
-                    const cols = json.table.cols.map(c => c ? c.label : '');
-                    const rows = json.table.rows;
-
-                    const idxTitle = cols.findIndex(c => c && typeof c === 'string' && c.toLowerCase().includes('title'));
-                    const idxHero = cols.findIndex(c => c && typeof c === 'string' && c.toLowerCase().includes('hero_image'));
-                    const idxDesc = cols.findIndex(c => c && typeof c === 'string' && (c.toLowerCase().includes('description') || c.toLowerCase().includes('desription')));
-
-                    const safeIdxTitle = idxTitle >= 0 ? idxTitle : 3;
-                    const safeIdxHero = idxHero >= 0 ? idxHero : 4;
-                    const safeIdxDesc = idxDesc >= 0 ? idxDesc : 5;
-
-                    let newsData = rows.map((row, id) => {
-                        const getVal = (idx) => (row.c && row.c[idx] && row.c[idx].v) ? row.c[idx].v : '';
-                        return {
-                            id: id + 1, // 1-based indexing
-                            title: getVal(safeIdxTitle) || 'Untitled News',
-                            heroImage: getVal(safeIdxHero) || 'https://placehold.co/800x500/0b0430/f1ad18?text=News+Image',
-                            description: getVal(safeIdxDesc) || 'No description available.'
-                        };
-                    }).filter(item => item.title !== 'Untitled News');
-
-                    // Reverse to show the latest first, then take only the top 3
-                    newsData.reverse();
-                    renderLatestNewsCards(newsData.slice(0, 3));
-                }
+                let newsData = await fetchNewsFromJSON();
+                if (!newsData.length) newsData = await fetchNewsFromCSV();
+                newsData.reverse();
+                renderLatestNewsCards(newsData.slice(0, 3));
             } catch (error) {
                 console.error("Error fetching latest news:", error);
                 const loadingEl = document.getElementById('latest-news-loading');
                 if (loadingEl) {
-                    loadingEl.innerHTML = '<p class="text-slate-500 font-medium text-sm text-center">Unable to load latest news at this time.</p>';
+                    loadingEl.innerHTML = '<div class="bg-white/[0.08] border border-white/15 rounded-xl px-6 py-5 text-center"><p class="text-slate-200 font-heading font-bold text-sm uppercase tracking-[0.16em]">News feed is unavailable</p><p class="text-slate-400 text-sm mt-2">Please make sure the Google Sheet is published or shared for public viewing.</p></div>';
                 }
             }
+        }
+
+        async function fetchNewsFromJSON() {
+            const response = await fetch(SHEET_JSON_URL);
+            if (!response.ok) throw new Error('Google JSON feed unavailable');
+
+            const text = await response.text();
+            const jsonMatch = text.match(/google\.visualization\.Query\.setResponse\(([\s\S\w]+)\);/);
+            if (!jsonMatch || !jsonMatch[1]) throw new Error('Invalid Google JSON feed');
+
+            const json = JSON.parse(jsonMatch[1]);
+            const cols = json.table.cols.map(c => c ? c.label : '');
+            const rows = json.table.rows || [];
+            const indexes = getNewsColumnIndexes(cols);
+
+            return rows.map((row, id) => {
+                const getVal = (idx) => (row.c && row.c[idx] && row.c[idx].v) ? String(row.c[idx].v).trim() : '';
+                return normalizeNewsItem({
+                    id: id + 1,
+                    submittedAt: getVal(indexes.submittedAt),
+                    title: getVal(indexes.title),
+                    heroImage: getVal(indexes.heroImage),
+                    description: getVal(indexes.description)
+                });
+            }).filter(Boolean);
+        }
+
+        async function fetchNewsFromCSV() {
+            const response = await fetch(SHEET_CSV_URL);
+            if (!response.ok) throw new Error('Google CSV feed unavailable');
+
+            const csv = await response.text();
+            const rows = parseCSV(csv);
+            const headers = rows.shift() || [];
+            const indexes = getNewsColumnIndexes(headers);
+
+            return rows.map((row, id) => normalizeNewsItem({
+                id: id + 1,
+                submittedAt: row[indexes.submittedAt] || '',
+                title: row[indexes.title] || '',
+                heroImage: row[indexes.heroImage] || '',
+                description: row[indexes.description] || ''
+            })).filter(Boolean);
+        }
+
+        function getNewsColumnIndexes(cols) {
+            const normalized = cols.map(c => String(c || '').trim().toLowerCase().replace(/\s+/g, '_'));
+            const find = (...needles) => normalized.findIndex(col => needles.some(needle => col.includes(needle)));
+            const fallback = (idx, value) => idx >= 0 ? idx : value;
+
+            return {
+                submittedAt: fallback(find('submitted_at', 'date'), 2),
+                title: fallback(find('title'), 3),
+                heroImage: fallback(find('hero_image', 'image'), 4),
+                description: fallback(find('description', 'desription'), 5)
+            };
+        }
+
+        function normalizeNewsItem(item) {
+            const title = String(item.title || '').trim();
+            if (!title || title.toLowerCase() === 'untitled news') return null;
+
+            return {
+                id: item.id,
+                submittedAt: String(item.submittedAt || '').trim(),
+                title,
+                heroImage: String(item.heroImage || '').trim() || 'https://placehold.co/1200x800/061226/e1ae31?text=AGGC+News',
+                description: String(item.description || '').trim() || 'Read the latest update from the AGGC network.'
+            };
+        }
+
+        function parseCSV(csv) {
+            const rows = [];
+            let row = [];
+            let value = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < csv.length; i++) {
+                const char = csv[i];
+                const next = csv[i + 1];
+
+                if (char === '"' && inQuotes && next === '"') {
+                    value += '"';
+                    i++;
+                } else if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    row.push(value);
+                    value = '';
+                } else if ((char === '\n' || char === '\r') && !inQuotes) {
+                    if (char === '\r' && next === '\n') i++;
+                    row.push(value);
+                    if (row.some(cell => cell.trim() !== '')) rows.push(row);
+                    row = [];
+                    value = '';
+                } else {
+                    value += char;
+                }
+            }
+
+            row.push(value);
+            if (row.some(cell => cell.trim() !== '')) rows.push(row);
+            return rows;
+        }
+
+        function escapeHTML(value) {
+            return String(value || '').replace(/[&<>"']/g, char => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            }[char]));
+        }
+
+        function formatNewsDate(value) {
+            if (!value) return 'Latest Update';
+            const date = new Date(value);
+            if (Number.isNaN(date.getTime())) return escapeHTML(value);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
         }
 
         function renderLatestNewsCards(news) {
@@ -2582,24 +1941,33 @@
             if (loadingEl) loadingEl.classList.add('hidden');
             grid.innerHTML = '';
 
-            news.forEach(item => {
+            if (!news.length) {
+                grid.innerHTML = '<div class="lg:col-span-3 bg-white/[0.08] border border-white/15 rounded-xl px-6 py-8 text-center text-slate-300">No latest news records found in the connected Google Sheet.</div>';
+                return;
+            }
+
+            news.forEach((item, index) => {
                 const cardUrl = `news.html?id=${item.id}`;
+                const isFeature = index === 0;
 
                 grid.innerHTML += `
-                <a href="${cardUrl}" class="w-full group/card cursor-pointer block bg-white rounded-2xl border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(11,4,48,0.08)] hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col">
-                    <div class="h-56 sm:h-64 overflow-hidden relative bg-slate-50">
-                        <img src="${item.heroImage}" alt="${item.title}" class="w-full h-full object-cover transform group-hover/card:scale-110 transition-transform duration-700 ease-out" onerror="this.src='https://placehold.co/800x500/0b0430/f1ad18?text=AGGC+News'">
-                        <div class="absolute inset-0 bg-brand-navy/20 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
+                <a href="${cardUrl}" class="group/card ${isFeature ? 'lg:col-span-2 lg:row-span-2' : ''} bg-white/[0.06] hover:bg-white/[0.09] border border-white/10 hover:border-brand-gold/40 overflow-hidden rounded-xl shadow-[0_18px_45px_rgba(0,0,0,0.22)] transition-all duration-500 flex ${isFeature ? 'flex-col' : 'sm:flex-row lg:flex-col'}">
+                    <div class="${isFeature ? 'h-72 sm:h-96' : 'h-56 sm:h-auto sm:w-5/12 lg:w-full lg:h-44'} overflow-hidden relative bg-[#061226]">
+                        <img src="${escapeHTML(item.heroImage)}" alt="${escapeHTML(item.title)}" class="w-full h-full object-cover transform group-hover/card:scale-105 transition-transform duration-700 ease-out" onerror="this.src='https://placehold.co/1200x800/061226/e1ae31?text=AGGC+News'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#061226]/80 via-[#061226]/10 to-transparent"></div>
+                        <div class="absolute left-4 top-4 bg-brand-gold text-brand-navy px-3 py-1 rounded-full text-[10px] font-heading font-black uppercase tracking-[0.16em]">
+                            ${formatNewsDate(item.submittedAt)}
+                        </div>
                     </div>
                     
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow relative">
-                        <div class="absolute top-0 left-0 w-0 h-1 bg-brand-gold group-hover/card:w-full transition-all duration-500"></div>
-                        <h4 class="text-[17px] sm:text-[19px] font-heading font-extrabold text-brand-navy mb-3 group-hover/card:text-brand-gold transition-colors leading-tight line-clamp-2">${item.title}</h4>
-                        <p class="text-[14px] text-slate-500 leading-[1.8] mb-6 flex-grow line-clamp-3">${item.description}</p>
+                    <div class="${isFeature ? 'p-6 sm:p-8' : 'p-5 sm:p-6'} flex flex-col flex-grow relative">
+                        <span class="text-brand-gold font-heading font-black text-[10px] uppercase tracking-[0.22em] mb-3">AGGC News</span>
+                        <h4 class="${isFeature ? 'text-2xl sm:text-3xl' : 'text-lg'} font-heading font-extrabold text-white mb-3 group-hover/card:text-brand-gold transition-colors leading-tight line-clamp-2">${escapeHTML(item.title)}</h4>
+                        <p class="text-[14px] text-slate-300 leading-[1.75] mb-6 flex-grow line-clamp-3">${escapeHTML(item.description)}</p>
                         
-                        <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-[11px] font-heading font-black text-brand-gold uppercase tracking-[0.2em] group-hover/card:text-brand-navy transition-colors">Read Full Article</span>
-                            <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-brand-navy border border-slate-200 group-hover/card:bg-brand-navy group-hover/card:text-brand-gold group-hover/card:border-brand-navy transition-all shadow-sm">
+                        <div class="mt-auto pt-4 border-t border-white/10 flex items-center justify-between">
+                            <span class="text-[11px] font-heading font-black text-brand-gold uppercase tracking-[0.2em]">Read Full Article</span>
+                            <div class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-brand-gold border border-white/15 group-hover/card:bg-brand-gold group-hover/card:text-brand-navy group-hover/card:border-brand-gold transition-all">
                                 <i class="fa-solid fa-arrow-right text-[12px] -rotate-45 group-hover/card:rotate-0 transition-transform duration-300"></i>
                             </div>
                         </div>
@@ -2733,6 +2101,15 @@
         });
     </script>
 
+    <script src="./site-effects.js"></script>
 </body>
 
 </html>
+
+
+
+
+
+
+
+

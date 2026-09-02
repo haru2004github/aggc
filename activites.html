@@ -26,7 +26,7 @@
                     },
                     colors: {
                         brand: {
-                            navy: '#180733',
+                            navy: '#071633',
                             gold: '#e1ae31'
                         }
                     }
@@ -80,6 +80,7 @@
             width: 100%;
         }
     </style>
+    <link rel="stylesheet" href="./site-effects.css">
 </head>
 <body class="text-slate-800 min-h-screen flex flex-col">
 
@@ -186,7 +187,7 @@
         </div>
     </nav>
 
-    <section class="relative bg-gradient-to-b from-[#06091e] via-[#0d143a] to-[#131d52] pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
+    <section class="relative bg-gradient-to-b from-[#061226] via-[#0d143a] to-[#131d52] pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
         <!-- Subtle Starry Night & Grid Watermark -->
         <div class="absolute inset-0 opacity-[0.05]"
             style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
@@ -263,7 +264,7 @@
     <!-- Full-Screen Image Lightbox Modal (Upgraded Animation & 80vh Size) -->
     <div id="imageModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-2 sm:p-6 lg:p-8">
         <!-- Cinematic Backdrop with Heavy Blur -->
-        <div id="modalBackdrop" class="absolute inset-0 bg-[#180733]/95 backdrop-blur-xl opacity-0 transition-opacity duration-500 ease-out" onclick="closeImageModal()"></div>
+        <div id="modalBackdrop" class="absolute inset-0 bg-[#071633]/95 backdrop-blur-xl opacity-0 transition-opacity duration-500 ease-out" onclick="closeImageModal()"></div>
         
         <!-- Close Button (Staggered Animation) -->
         <button id="modalCloseBtn" onclick="closeImageModal()" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white hover:text-brand-gold transition-all w-12 h-12 flex items-center justify-center bg-white/10 rounded-full focus:outline-none z-20 shadow-[0_4px_20px_rgba(0,0,0,0.5)] border border-white/20 hover:bg-white/20 hover:rotate-90 hover:scale-110 opacity-0 translate-y-4 duration-500 ease-out">
@@ -283,7 +284,7 @@
 
     <!-- Footer (Same as Main Page index.html) -->
     <!-- Redesigned Premium Footer (wePro style) -->
-    <footer class="bg-gradient-to-br from-[#0e0520] via-[#180733] to-[#120525] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
+    <footer class="bg-gradient-to-br from-[#061226] via-[#071633] to-[#0b1f46] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 lg:gap-6 mb-12">
 
@@ -311,9 +312,6 @@
                         <li><a href="products.html"
                                 class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Brands</a>
                         </li>
-                        <li><a href="best_selling.html"
-                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Best
-                                Sellers</a></li>
                     </ul>
                 </div>
 
@@ -398,7 +396,7 @@
                             class="w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-facebook-f"></i></a>
                         <a href="viber://chat?number=%2B959777555666"
-                            class="w-7 h-7 rounded-full bg-[#735fa3] hover:bg-[#5e4b8b] text-white flex items-center justify-center text-[11px] transition-colors"><i
+                            class="w-7 h-7 rounded-full bg-[#0b1f46] hover:bg-[#10295b] text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-viber"></i></a>
                         <a href="mailto:info@aungyigroup.com"
                             class="w-7 h-7 rounded-full bg-brand-gold hover:bg-brand-gold/85 text-brand-navy flex items-center justify-center text-[11px] transition-colors"><i
@@ -675,5 +673,7 @@
             if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMenu(); 
         }));
 </script>
+    <script src="./site-effects.js"></script>
 </body>
 </html>
+

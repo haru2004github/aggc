@@ -32,7 +32,7 @@
                     },
                     colors: {
                         brand: {
-                            navy: '#180733',
+                            navy: '#071633',
                             gold: '#e1ae31'
                         }
                     }
@@ -127,6 +127,7 @@
             width: 100%;
         }
     </style>
+    <link rel="stylesheet" href="./site-effects.css">
 </head>
 
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
@@ -258,7 +259,7 @@
         </div>
     </nav>
 
-    <section class="relative bg-gradient-to-b from-[#06091e] via-[#0d143a] to-[#131d52] pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
+    <section class="relative bg-gradient-to-b from-[#061226] via-[#0d143a] to-[#131d52] pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
         <!-- Subtle Starry Night & Grid Watermark -->
         <div class="absolute inset-0 opacity-[0.05]"
             style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
@@ -425,7 +426,7 @@
 
     <!-- Footer (Same as Main Page index.html) -->
     <!-- Redesigned Premium Footer (wePro style) -->
-    <footer class="bg-gradient-to-br from-[#0e0520] via-[#180733] to-[#120525] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
+    <footer class="bg-gradient-to-br from-[#061226] via-[#071633] to-[#0b1f46] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 lg:gap-6 mb-12">
 
@@ -453,9 +454,6 @@
                         <li><a href="products.html"
                                 class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Brands</a>
                         </li>
-                        <li><a href="best_selling.html"
-                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Best
-                                Sellers</a></li>
                     </ul>
                 </div>
 
@@ -540,7 +538,7 @@
                             class="w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-facebook-f"></i></a>
                         <a href="viber://chat?number=%2B959777555666"
-                            class="w-7 h-7 rounded-full bg-[#735fa3] hover:bg-[#5e4b8b] text-white flex items-center justify-center text-[11px] transition-colors"><i
+                            class="w-7 h-7 rounded-full bg-[#0b1f46] hover:bg-[#10295b] text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-viber"></i></a>
                         <a href="mailto:info@aungyigroup.com"
                             class="w-7 h-7 rounded-full bg-brand-gold hover:bg-brand-gold/85 text-brand-navy flex items-center justify-center text-[11px] transition-colors"><i
@@ -574,7 +572,8 @@
 
         const SHEET_ID = '1xxAFdK_VZU80LDZVNfICGP3t2Gg7CvZjtBRoM0yD-v0';
         // Google Visualization API URL to fetch sheet data as JSON
-        const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+        const SHEET_JSON_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+        const SHEET_CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv`;
 
         let newsData = []; // Store fetched news
 
@@ -593,7 +592,7 @@
 
         async function fetchNewsData() {
             try {
-                const response = await fetch(SHEET_URL);
+                const response = await fetch(SHEET_JSON_URL);
                 if (!response.ok) throw new Error('Network response was not ok');
 
                 const text = await response.text();
@@ -607,10 +606,107 @@
                     throw new Error('Invalid JSON format from Google Sheets');
                 }
             } catch (error) {
-                console.error("Error fetching live data, loading fallback data...", error);
-                // Load fallback data if fetch fails (e.g. CORS or Sheet is private)
-                loadFallbackData();
+                console.warn("Google JSON feed failed, trying CSV feed...", error);
+                try {
+                    await fetchNewsCSVData();
+                } catch (csvError) {
+                    console.error("Error fetching live data, loading fallback data...", csvError);
+                    // Load fallback data if fetch fails (e.g. CORS or Sheet is private)
+                    loadFallbackData();
+                }
             }
+        }
+
+        async function fetchNewsCSVData() {
+            const response = await fetch(SHEET_CSV_URL);
+            if (!response.ok) throw new Error('Google CSV feed unavailable');
+
+            const csv = await response.text();
+            const rows = parseCSV(csv);
+            const headers = rows.shift() || [];
+            const indexes = getNewsColumnIndexes(headers);
+
+            newsData = rows.map((row, id) => {
+                const gallery = [indexes.img1, indexes.img2, indexes.img3, indexes.img4]
+                    .map(idx => idx >= 0 ? (row[idx] || '').trim() : '')
+                    .filter(Boolean);
+
+                return {
+                    id: id + 1,
+                    title: (row[indexes.title] || '').trim() || 'Untitled News',
+                    heroImage: (row[indexes.hero] || '').trim() || 'https://placehold.co/800x500/061226/e1ae31?text=News+Image',
+                    description: (row[indexes.desc] || '').trim() || 'No description available.',
+                    gallery
+                };
+            }).filter(item => item.title !== 'Untitled News');
+
+            newsData.reverse();
+            renderNewsCards();
+            const articleId = new URLSearchParams(window.location.search).get('id');
+            if (articleId !== null) {
+                const idInt = parseInt(articleId, 10);
+                if (!isNaN(idInt)) showArticleDetail(idInt);
+            }
+        }
+
+        function parseCSV(csv) {
+            const rows = [];
+            let row = [];
+            let value = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < csv.length; i++) {
+                const char = csv[i];
+                const next = csv[i + 1];
+
+                if (char === '"' && inQuotes && next === '"') {
+                    value += '"';
+                    i++;
+                } else if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    row.push(value);
+                    value = '';
+                } else if ((char === '\n' || char === '\r') && !inQuotes) {
+                    if (char === '\r' && next === '\n') i++;
+                    row.push(value);
+                    if (row.some(cell => cell.trim() !== '')) rows.push(row);
+                    row = [];
+                    value = '';
+                } else {
+                    value += char;
+                }
+            }
+
+            row.push(value);
+            if (row.some(cell => cell.trim() !== '')) rows.push(row);
+            return rows;
+        }
+
+        function getNewsColumnIndexes(cols) {
+            const normalized = cols.map(c => String(c || '').trim().toLowerCase().replace(/\s+/g, '_'));
+            const find = (...needles) => normalized.findIndex(col => needles.some(needle => col.includes(needle)));
+            const fallback = (idx, value) => idx >= 0 ? idx : value;
+
+            return {
+                title: fallback(find('title'), 3),
+                hero: fallback(find('hero_image', 'image'), 4),
+                desc: fallback(find('description', 'desription'), 5),
+                img1: find('first'),
+                img2: find('second'),
+                img3: find('third'),
+                img4: find('forth', 'fourth')
+            };
+        }
+
+        function escapeHTML(value) {
+            return String(value || '').replace(/[&<>"']/g, char => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            }[char]));
         }
 
         function parseGoogleSheetJSON(json) {
@@ -717,7 +813,7 @@
             newsData.forEach(item => {
                 // Card HTML Structure
                 const card = document.createElement('div');
-                card.className = "w-full group/card cursor-pointer block bg-white rounded-2xl border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(11,4,48,0.08)] hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col";
+                card.className = "w-full group/card cursor-pointer block bg-white rounded-xl border border-slate-200 shadow-[0_10px_30px_rgba(7,22,51,0.06)] hover:shadow-[0_24px_50px_rgba(7,22,51,0.16)] hover:-translate-y-1.5 transition-all duration-500 overflow-hidden flex flex-col";
                 card.onclick = () => {
                     history.pushState(null, '', '?id=' + item.id);
                     showArticleDetail(item.id);
@@ -725,25 +821,20 @@
 
                 // Date is completely removed from the card design
                 card.innerHTML = `
-                    <!-- Image Area -->
-                    <div class="h-56 sm:h-64 overflow-hidden relative bg-slate-50">
-                        <img src="${item.heroImage}" alt="${item.title}" class="w-full h-full object-cover transform group-hover/card:scale-110 transition-transform duration-700 ease-out" onerror="this.src='https://placehold.co/800x500/0b0430/f1ad18?text=AGGC+News'">
-                        <!-- Dark Overlay on Hover -->
-                        <div class="absolute inset-0 bg-brand-navy/20 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
+                    <div class="h-56 sm:h-64 overflow-hidden relative bg-[#061226]">
+                        <img src="${escapeHTML(item.heroImage)}" alt="${escapeHTML(item.title)}" class="w-full h-full object-cover transform group-hover/card:scale-105 transition-transform duration-700 ease-out" onerror="this.src='https://placehold.co/800x500/061226/e1ae31?text=AGGC+News'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#061226]/75 via-transparent to-transparent"></div>
+                        <span class="absolute left-4 top-4 bg-brand-gold text-brand-navy px-3 py-1 rounded-full text-[10px] font-heading font-black uppercase tracking-[0.16em]">AGGC News</span>
                     </div>
                     
-                    <!-- Content Area -->
                     <div class="p-6 sm:p-8 flex flex-col flex-grow relative">
-                        <!-- Top Accent Line -->
-                        <div class="absolute top-0 left-0 w-0 h-1 bg-brand-gold group-hover/card:w-full transition-all duration-500"></div>
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold via-[#f0bf42] to-transparent"></div>
+                        <h4 class="text-[18px] sm:text-[21px] font-heading font-extrabold text-brand-navy mb-3 group-hover/card:text-brand-gold transition-colors leading-tight line-clamp-2">${escapeHTML(item.title)}</h4>
+                        <p class="text-[14px] text-slate-500 leading-[1.8] mb-6 flex-grow line-clamp-3">${escapeHTML(item.description)}</p>
                         
-                        <h4 class="text-[17px] sm:text-[19px] font-heading font-extrabold text-brand-navy mb-3 group-hover/card:text-brand-gold transition-colors leading-tight line-clamp-2">${item.title}</h4>
-                        <p class="text-[14px] text-slate-500 leading-[1.8] mb-6 flex-grow line-clamp-3">${item.description}</p>
-                        
-                        <!-- Read More Button -->
                         <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-[11px] font-heading font-black text-brand-gold uppercase tracking-[0.2em] group-hover/card:text-brand-navy transition-colors">Read Full Article</span>
-                            <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-brand-navy border border-slate-200 group-hover/card:bg-brand-navy group-hover/card:text-brand-gold group-hover/card:border-brand-navy transition-all shadow-sm">
+                            <span class="text-[11px] font-heading font-black text-brand-gold uppercase tracking-[0.2em]">Read Full Article</span>
+                            <div class="w-9 h-9 rounded-full bg-[#061226] flex items-center justify-center text-brand-gold border border-[#061226] group-hover/card:bg-brand-gold group-hover/card:text-brand-navy group-hover/card:border-brand-gold transition-all shadow-sm">
                                 <i class="fa-solid fa-arrow-right text-[12px] -rotate-45 group-hover/card:rotate-0 transition-transform duration-300"></i>
                             </div>
                         </div>
@@ -933,6 +1024,8 @@
             fetchNewsData();
         };
     </script>
+    <script src="./site-effects.js"></script>
 </body>
 
 </html>
+

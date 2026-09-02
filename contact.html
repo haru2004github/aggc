@@ -32,7 +32,7 @@
                     },
                     colors: {
                         brand: {
-                            navy: '#180733',
+                            navy: '#071633',
                             gold: '#e1ae31'
                         }
                     }
@@ -119,6 +119,7 @@
             border-color: rgba(241, 173, 24, 0.3);
         }
     </style>
+    <link rel="stylesheet" href="./site-effects.css">
 </head>
 
 <body class="text-slate-800 min-h-screen flex flex-col">
@@ -201,7 +202,7 @@
         </div>
     </nav>
 
-    <section class="relative bg-gradient-to-b from-[#06091e] via-[#0d143a] to-[#131d52] pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
+    <section class="relative bg-gradient-to-b from-[#061226] via-[#0d143a] to-[#131d52] pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
         <!-- Subtle Starry Night & Grid Watermark -->
         <div class="absolute inset-0 opacity-[0.05]"
             style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
@@ -315,11 +316,11 @@
                             class="social-card viber-glow bg-white p-6 rounded-3xl border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex flex-col justify-between h-full relative overflow-hidden group">
                             <div class="flex items-center justify-between mb-4">
                                 <div
-                                    class="w-10 h-10 rounded-xl bg-[#735fa3]/10 text-[#735fa3] flex items-center justify-center text-md group-hover:bg-[#735fa3] group-hover:text-white transition-all duration-300">
+                                    class="w-10 h-10 rounded-xl bg-[#0b1f46]/10 text-[#0b1f46] flex items-center justify-center text-md group-hover:bg-[#0b1f46] group-hover:text-white transition-all duration-300">
                                     <i class="fa-brands fa-viber"></i>
                                 </div>
                                 <i
-                                    class="fa-solid fa-arrow-right text-slate-300 -rotate-45 group-hover:text-[#735fa3] group-hover:rotate-0 transition-all duration-300"></i>
+                                    class="fa-solid fa-arrow-right text-slate-300 -rotate-45 group-hover:text-[#0b1f46] group-hover:rotate-0 transition-all duration-300"></i>
                             </div>
                             <div>
                                 <h4 class="font-heading font-bold text-brand-navy text-[14px] mb-1">Viber Chat</h4>
@@ -458,7 +459,7 @@
 
     <!-- Footer (Same as Main Page index.html) -->
     <!-- Redesigned Premium Footer (wePro style) -->
-    <footer class="bg-gradient-to-br from-[#0e0520] via-[#180733] to-[#120525] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
+    <footer class="bg-gradient-to-br from-[#061226] via-[#071633] to-[#0b1f46] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 lg:gap-6 mb-12">
 
@@ -486,9 +487,6 @@
                         <li><a href="products.html"
                                 class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Brands</a>
                         </li>
-                        <li><a href="best_selling.html"
-                                class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Best
-                                Sellers</a></li>
                     </ul>
                 </div>
 
@@ -573,7 +571,7 @@
                             class="w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-facebook-f"></i></a>
                         <a href="viber://chat?number=%2B959777555666"
-                            class="w-7 h-7 rounded-full bg-[#735fa3] hover:bg-[#5e4b8b] text-white flex items-center justify-center text-[11px] transition-colors"><i
+                            class="w-7 h-7 rounded-full bg-[#0b1f46] hover:bg-[#10295b] text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-viber"></i></a>
                         <a href="mailto:info@aungyigroup.com"
                             class="w-7 h-7 rounded-full bg-brand-gold hover:bg-brand-gold/85 text-brand-navy flex items-center justify-center text-[11px] transition-colors"><i
@@ -633,6 +631,8 @@
             if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMenu();
         }));
     </script>
+    <script src="./site-effects.js"></script>
 </body>
 
 </html>
+
