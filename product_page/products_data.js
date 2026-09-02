@@ -238,19 +238,19 @@ const PRODUCTS_DATABASE = {
             {
                 id: "topkit-tower-crane",
                 title: "TOPKIT TOWER CRANE",
-                image: "img/topmax-topkit-tower-crane.jpg",
+                image: "img/topmax.jpg",
                 models: ["Topkit Tower Crane"]
             },
             {
                 id: "topless-tower-crane",
                 title: "TOPLESS TOWER CRANE",
-                image: "img/topmax-topless-tower-crane.jpg",
+                image: "img/topmax-general.jpg",
                 models: ["Topless Tower Crane"]
             },
             {
                 id: "luffing-tower-crane",
                 title: "LUFFING TOWER CRANE",
-                image: "img/topmax-luffing-tower-crane.jpg",
+                image: "img/topmax.jpg",
                 models: ["Luffing Tower Crane"]
             }
         ]

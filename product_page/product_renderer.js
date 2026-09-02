@@ -44,36 +44,54 @@ document.addEventListener("DOMContentLoaded", () => {
         // Clear previous content
         container.innerHTML = "";
 
+        container.closest("main")?.classList.add("product-detail-surface");
+
+        const totalModels = brand.products.reduce((sum, product) => sum + product.models.length, 0);
+        const featureImage = brand.products[0]?.image || "";
+
         // Brand Title Header
         const header = document.createElement("div");
-        header.className = "flex items-center justify-center gap-4 mb-10 mt-6";
+        header.className = "catalog-hero catalog-reveal";
         header.innerHTML = `
-            <div class="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] border-l-brand-gold"></div>
-            <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-brand-navy tracking-widest uppercase">${brand.brandTitle}</h2>
-            <div class="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[12px] border-r-brand-gold"></div>
+            <div class="catalog-hero-copy">
+                <span class="catalog-kicker">Product Catalog</span>
+                <h2>${brand.brandTitle}</h2>
+                <p>Explore AGGC's selected product lines, model options, and dependable industrial solutions for Myanmar's infrastructure needs.</p>
+                <div class="catalog-stats">
+                    <span>${brand.products.length} product lines</span>
+                    <span>${totalModels} model options</span>
+                </div>
+            </div>
+            <div class="catalog-hero-visual">
+                <div class="catalog-logo-plate">
+                    <img src="${brand.brandLogo}" alt="${brand.brandTitle} Logo" onerror="this.style.display='none'; this.parentElement.textContent='${brand.brandTitle}';">
+                </div>
+                <img src="${featureImage}" alt="${brand.brandTitle} Product" class="catalog-hero-product" onerror="this.style.display='none';">
+            </div>
         `;
         container.appendChild(header);
 
         // Products Grid
         const grid = document.createElement("div");
-        grid.className = "grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto px-4";
+        grid.className = "catalog-grid";
 
         brand.products.forEach((product, index) => {
             const card = document.createElement("div");
-            card.className = "bg-white border border-slate-200/80 rounded-[24px] p-4 shadow-sm hover-gold-glow cursor-pointer group flex flex-col justify-between animate-fade-in-up";
+            card.className = "catalog-card catalog-reveal";
             card.style.animationDelay = `${index * 80}ms`;
 
             card.innerHTML = `
-                <div class="overflow-hidden rounded-[16px] aspect-[4/3] bg-slate-100 mb-4 relative">
-                    <img src="${product.image}" alt="${product.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" onerror="this.onerror=null; this.src='img/placeholder.png';">
-                    <div class="card-overlay absolute inset-0 flex items-center justify-center">
-                        <span class="bg-white/95 border border-brand-gold text-brand-navy px-5 py-2.5 rounded-full font-heading font-extrabold text-[11px] uppercase tracking-widest shadow-md transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out flex items-center gap-2">
-                            View Models <i class="fa-solid fa-arrow-right text-[10px] text-brand-gold"></i>
-                        </span>
+                <div class="catalog-card-image">
+                    <img src="${product.image}" alt="${product.title}" onerror="this.onerror=null; this.src='img/placeholder.png';">
+                    <div class="catalog-card-count">
+                        ${product.models.length.toString().padStart(2, '0')} models
                     </div>
                 </div>
-                <div class="bg-slate-50 border border-slate-100 group-hover:bg-brand-navy group-hover:border-brand-navy group-hover:shadow-[0_8px_20px_rgba(11,4,48,0.2)] text-brand-navy group-hover:text-white py-3.5 px-4 rounded-[14px] font-heading font-extrabold text-[12px] tracking-[0.1em] text-center uppercase transition-all duration-300">
-                    ${product.title}
+                <div class="catalog-card-body">
+                    <span class="catalog-card-index">${String(index + 1).padStart(2, '0')}</span>
+                    <h3>${product.title}</h3>
+                    <p>${product.models.slice(0, 4).join(' / ')}</p>
+                    <button type="button">View Models <i class="fa-solid fa-arrow-right"></i></button>
                 </div>
             `;
 
@@ -86,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         container.appendChild(grid);
+        setupCatalogReveal(container);
     }
 
     // --- MODAL VIEWS ---
@@ -308,5 +327,28 @@ document.addEventListener("DOMContentLoaded", () => {
             .split(' ')
             .map(word => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ');
+    }
+
+    function setupCatalogReveal(container) {
+        const revealItems = Array.from(container.querySelectorAll(".catalog-reveal"));
+        if (!revealItems.length) return;
+
+        if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            revealItems.forEach((item) => item.classList.add("catalog-visible"));
+            return;
+        }
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("catalog-visible");
+                observer.unobserve(entry.target);
+            });
+        }, {
+            threshold: 0.18,
+            rootMargin: "0px 0px -6% 0px"
+        });
+
+        revealItems.forEach((item) => revealObserver.observe(item));
     }
 });

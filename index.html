@@ -896,7 +896,7 @@
                         <div class="absolute -top-5 -left-5 w-28 h-28 border-l-[10px] border-t-[10px] border-brand-gold/90"></div>
 
                         <div class="relative aspect-[4/3] overflow-hidden border-[10px] border-white bg-white shadow-2xl">
-                            <img src="./img/about_us_complex_render.png" alt="AGGC Business Complex"
+                            <img src="./img/index_about_replacement.png" alt="AGGC Business Complex"
                                 class="w-full h-full object-cover transform group-hover/img-container:scale-105 transition-transform duration-1000 ease-out">
                             <div class="absolute inset-4 border border-white/45 pointer-events-none"></div>
                         </div>
@@ -1497,8 +1497,8 @@
             </div>
 
             <!-- Professional News Grid -->
-            <div id="latest-news-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
-                <!-- Javascript will inject 3 latest cards here -->
+            <div id="latest-news-grid" class="latest-news-bento">
+                <!-- Javascript will inject latest news cards here -->
             </div>
         </div>
     </section>
@@ -1535,8 +1535,8 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-7 bg-white rounded-2xl p-3 sm:p-4 shadow-[0_24px_60px_rgba(7,22,51,0.12)] border border-slate-200">
-                    <div class="h-[380px] sm:h-[500px] rounded-xl overflow-hidden bg-slate-100">
+                <div class="lg:col-span-7 bg-white rounded-2xl p-3 sm:p-4 shadow-[0_24px_60px_rgba(7,22,51,0.12)] border border-slate-200 flex">
+                    <div class="min-h-[420px] sm:min-h-[560px] lg:min-h-0 lg:h-full w-full rounded-xl overflow-hidden bg-slate-100">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3819.3496033481267!2d96.12871321481498!3d16.80901518596637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb4800000001%3A0x6333cda94084534a!2sTimes%20City!5e0!3m2!1sen!2smm!4v1680000000000!5m2!1sen!2smm"
                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
@@ -1802,7 +1802,7 @@
                 let newsData = await fetchNewsFromJSON();
                 if (!newsData.length) newsData = await fetchNewsFromCSV();
                 newsData.reverse();
-                renderLatestNewsCards(newsData.slice(0, 3));
+                renderLatestNewsCards(newsData.slice(0, 5));
             } catch (error) {
                 console.error("Error fetching latest news:", error);
                 const loadingEl = document.getElementById('latest-news-loading');
@@ -1951,26 +1951,17 @@
                 const isFeature = index === 0;
 
                 grid.innerHTML += `
-                <a href="${cardUrl}" class="group/card ${isFeature ? 'lg:col-span-2 lg:row-span-2' : ''} bg-white/[0.06] hover:bg-white/[0.09] border border-white/10 hover:border-brand-gold/40 overflow-hidden rounded-xl shadow-[0_18px_45px_rgba(0,0,0,0.22)] transition-all duration-500 flex ${isFeature ? 'flex-col' : 'sm:flex-row lg:flex-col'}">
-                    <div class="${isFeature ? 'h-72 sm:h-96' : 'h-56 sm:h-auto sm:w-5/12 lg:w-full lg:h-44'} overflow-hidden relative bg-[#061226]">
-                        <img src="${escapeHTML(item.heroImage)}" alt="${escapeHTML(item.title)}" class="w-full h-full object-cover transform group-hover/card:scale-105 transition-transform duration-700 ease-out" onerror="this.src='https://placehold.co/1200x800/061226/e1ae31?text=AGGC+News'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#061226]/80 via-[#061226]/10 to-transparent"></div>
-                        <div class="absolute left-4 top-4 bg-brand-gold text-brand-navy px-3 py-1 rounded-full text-[10px] font-heading font-black uppercase tracking-[0.16em]">
-                            ${formatNewsDate(item.submittedAt)}
-                        </div>
+                <a href="${cardUrl}" class="latest-news-card ${isFeature ? 'latest-news-feature' : ''}">
+                    <div class="latest-news-card-bg">
+                        <img src="${escapeHTML(item.heroImage)}" alt="${escapeHTML(item.title)}" onerror="this.src='https://placehold.co/1200x800/061226/e1ae31?text=AGGC+News'">
                     </div>
-                    
-                    <div class="${isFeature ? 'p-6 sm:p-8' : 'p-5 sm:p-6'} flex flex-col flex-grow relative">
-                        <span class="text-brand-gold font-heading font-black text-[10px] uppercase tracking-[0.22em] mb-3">AGGC News</span>
-                        <h4 class="${isFeature ? 'text-2xl sm:text-3xl' : 'text-lg'} font-heading font-extrabold text-white mb-3 group-hover/card:text-brand-gold transition-colors leading-tight line-clamp-2">${escapeHTML(item.title)}</h4>
-                        <p class="text-[14px] text-slate-300 leading-[1.75] mb-6 flex-grow line-clamp-3">${escapeHTML(item.description)}</p>
-                        
-                        <div class="mt-auto pt-4 border-t border-white/10 flex items-center justify-between">
-                            <span class="text-[11px] font-heading font-black text-brand-gold uppercase tracking-[0.2em]">Read Full Article</span>
-                            <div class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-brand-gold border border-white/15 group-hover/card:bg-brand-gold group-hover/card:text-brand-navy group-hover/card:border-brand-gold transition-all">
-                                <i class="fa-solid fa-arrow-right text-[12px] -rotate-45 group-hover/card:rotate-0 transition-transform duration-300"></i>
-                            </div>
-                        </div>
+
+                    <div class="latest-news-content">
+                        <span class="latest-news-date">${formatNewsDate(item.submittedAt)}</span>
+                        <span class="latest-news-kicker">AGGC News</span>
+                        <h4>${escapeHTML(item.title)}</h4>
+                        <p>${escapeHTML(item.description)}</p>
+                        <div class="latest-news-link">Read Full Article <i class="fa-solid fa-arrow-right"></i></div>
                     </div>
                 </a>
             `;
