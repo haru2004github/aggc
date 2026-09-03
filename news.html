@@ -592,7 +592,7 @@
 
         async function fetchNewsData() {
             try {
-                const response = await fetch(SHEET_JSON_URL);
+                const response = await fetch(SHEET_JSON_URL, { cache: 'no-store' });
                 if (!response.ok) throw new Error('Network response was not ok');
 
                 const text = await response.text();
@@ -618,7 +618,7 @@
         }
 
         async function fetchNewsCSVData() {
-            const response = await fetch(SHEET_CSV_URL);
+            const response = await fetch(SHEET_CSV_URL, { cache: 'no-store' });
             if (!response.ok) throw new Error('Google CSV feed unavailable');
 
             const csv = await response.text();

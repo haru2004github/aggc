@@ -421,7 +421,8 @@
         
         // လူကြီးမင်းပေးထားသော Activities Sheet ID
         const SHEET_ID = '1avLkeTHZpTI4gZCIizkncte_-cGflKQ-hkHqFarf8Sk';
-        const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+        const SHEET_JSON_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+        const SHEET_CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv`;
 
         let activitiesData = []; // Data Store
 
@@ -430,52 +431,98 @@
 
         async function fetchActivities() {
             try {
-                const response = await fetch(SHEET_URL);
-                if (!response.ok) throw new Error('Network response was not ok');
-                
-                const text = await response.text();
-                // Google Sheet API ၏ JSON Format အား သန့်စင်ထုတ်ယူခြင်း
-                const jsonMatch = text.match(/google\.visualization\.Query\.setResponse\(([\s\S\w]+)\);/);
-                
-                if (jsonMatch && jsonMatch[1]) {
-                    const json = JSON.parse(jsonMatch[1]);
-                    const rows = json.table.rows;
-
-                    // Tally Form Column အစီအစဉ်များ
-                    // Index 3 (Column D) = Title
-                    // Index 4 (Column E) = Photos (Comma separated URLs with Access Tokens)
-                    
-                    activitiesData = rows.map((row, id) => {
-                        const getVal = (idx) => (row.c && row.c[idx] && row.c[idx].v) ? row.c[idx].v : '';
-                        
-                        let title = getVal(3);
-                        let photosString = getVal(4);
-                        
-                        // ပုံများကို Comma (သို့) Newline ဖြင့် ဖြတ်၍ Array အဖြစ် ပြောင်းလဲခြင်း (Tally URL များ မပျက်စီးစေရန်)
-                        let photosArray = [];
-                        if (photosString) {
-                            // Tally URL အချို့တွင် , နှင့် တွဲလျက်ပါလာပါက ခွဲထုတ်မည်
-                            photosArray = photosString.split(/[,\n]/).map(url => url.trim()).filter(url => url !== "");
-                        }
-
-                        return {
-                            id: id,
-                            title: title || 'Untitled Activity',
-                            photos: photosArray
-                        };
-                    }).filter(item => item.title !== 'Untitled Activity' && item.title !== 'Title' && item.photos.length > 0);
-                    
-                    // နောက်ဆုံးတင်ထားသော Data အား အပေါ်ဆုံးတွင် ပြရန် ပြောင်းပြန်လှန်မည်
-                    activitiesData.reverse();
-                    
-                    renderActivities();
-                } else {
-                    throw new Error('Invalid JSON Data Format');
+                activitiesData = await fetchActivitiesJSON();
+            } catch (jsonError) {
+                console.warn("Google JSON feed failed, trying CSV feed...", jsonError);
+                try {
+                    activitiesData = await fetchActivitiesCSV();
+                } catch (csvError) {
+                    console.error("Error fetching activities:", csvError);
+                    loadingIndicator.innerHTML = '<p class="text-red-500 font-bold">Failed to load activities. Please check Sheet Permissions.</p>';
+                    return;
                 }
-            } catch (error) {
-                console.error("Error fetching activities:", error);
-                loadingIndicator.innerHTML = '<p class="text-red-500 font-bold">Failed to load activities. Please check Sheet Permissions.</p>';
             }
+
+            activitiesData.reverse();
+            renderActivities();
+        }
+
+        async function fetchActivitiesJSON() {
+            const response = await fetch(SHEET_JSON_URL, { cache: 'no-store' });
+            if (!response.ok) throw new Error('Network response was not ok');
+
+            const text = await response.text();
+            const jsonMatch = text.match(/google\.visualization\.Query\.setResponse\(([\s\S\w]+)\);/);
+
+            if (!jsonMatch || !jsonMatch[1]) throw new Error('Invalid JSON Data Format');
+
+            const json = JSON.parse(jsonMatch[1]);
+            const rows = json.table.rows || [];
+
+            return rows.map((row, id) => {
+                const getVal = (idx) => (row.c && row.c[idx] && row.c[idx].v) ? row.c[idx].v : '';
+                return normalizeActivity(id, getVal(3), getVal(4));
+            }).filter(Boolean);
+        }
+
+        async function fetchActivitiesCSV() {
+            const response = await fetch(SHEET_CSV_URL, { cache: 'no-store' });
+            if (!response.ok) throw new Error('Google CSV feed unavailable');
+
+            const csv = await response.text();
+            const rows = parseCSV(csv);
+            rows.shift();
+            return rows.map((row, id) => normalizeActivity(id, row[3], row[4])).filter(Boolean);
+        }
+
+        function normalizeActivity(id, titleValue, photosValue) {
+            const title = String(titleValue || '').trim();
+            const photosString = String(photosValue || '').trim();
+            const photosArray = photosString
+                ? photosString.split(/[,\n]/).map(url => url.trim()).filter(Boolean)
+                : [];
+
+            if (!title || title === 'Title' || photosArray.length === 0) return null;
+
+            return {
+                id,
+                title,
+                photos: photosArray
+            };
+        }
+
+        function parseCSV(csv) {
+            const rows = [];
+            let row = [];
+            let value = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < csv.length; i++) {
+                const char = csv[i];
+                const next = csv[i + 1];
+
+                if (char === '"' && inQuotes && next === '"') {
+                    value += '"';
+                    i++;
+                } else if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    row.push(value);
+                    value = '';
+                } else if ((char === '\n' || char === '\r') && !inQuotes) {
+                    if (char === '\r' && next === '\n') i++;
+                    row.push(value);
+                    if (row.some(cell => cell.trim() !== '')) rows.push(row);
+                    row = [];
+                    value = '';
+                } else {
+                    value += char;
+                }
+            }
+
+            row.push(value);
+            if (row.some(cell => cell.trim() !== '')) rows.push(row);
+            return rows;
         }
 
         // ============================================================================

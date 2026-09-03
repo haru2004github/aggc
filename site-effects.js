@@ -5,6 +5,35 @@
         return Math.min(Math.max(value, min), max);
     }
 
+    function safeText(value) {
+        return String(value ?? '').trim();
+    }
+
+    function safeAssetUrl(value) {
+        const raw = safeText(value);
+        if (!raw) return '';
+
+        try {
+            const url = new URL(raw, window.location.href);
+            const isSafeProtocol = url.protocol === 'http:' || url.protocol === 'https:' || url.protocol === 'data:';
+            const isSafeImageData = url.protocol !== 'data:' || /^data:image\/(?:png|jpe?g|gif|webp|svg\+xml);/i.test(raw);
+            return isSafeProtocol && isSafeImageData ? raw : '';
+        } catch {
+            return '';
+        }
+    }
+
+    function safeHref(value) {
+        const raw = safeText(value) || '#';
+
+        try {
+            const url = new URL(raw, window.location.href);
+            return ['http:', 'https:', 'mailto:', 'tel:', 'viber:'].includes(url.protocol) ? raw : '#';
+        } catch {
+            return '#';
+        }
+    }
+
     function shouldAnimateImage(img) {
         const src = (img.getAttribute('src') || '').toLowerCase();
         const alt = (img.getAttribute('alt') || '').toLowerCase();
@@ -131,7 +160,7 @@
         const headerKicker = brandsSection.querySelector('h4');
         const headerText = brandsSection.querySelector('p');
         if (headerKicker) headerKicker.textContent = 'Industrial Portfolio';
-        if (headerTitle) headerTitle.innerHTML = 'Trusted Brands &amp; Products';
+        if (headerTitle) headerTitle.textContent = 'Trusted Brands & Products';
         if (headerText) headerText.textContent = 'A global-grade product portfolio for machinery, commercial vehicles, power systems, building solutions, energy products, and specialized engineering equipment.';
 
         const list = document.createElement('div');
@@ -145,19 +174,53 @@
             const desc = productDescriptions[index] || featureItems.slice(0, 3).join(', ') || 'Trusted industrial product solutions from AGGC.';
 
             const row = document.createElement('a');
-            row.href = card.getAttribute('href') || '#';
+            row.href = safeHref(card.getAttribute('href'));
             row.className = `brand-feature-row ${index % 2 ? 'brand-feature-row-reverse' : ''} group`;
-            row.innerHTML = `
-                <div class="brand-feature-copy">
-                    ${logo ? `<img src="${logo.getAttribute('src')}" alt="${logo.getAttribute('alt') || title}" class="brand-feature-logo">` : `<div class="brand-feature-logo product-text-logo">${title}</div>`}
-                    <h3>${title}</h3>
-                    <p>${desc}</p>
-                    <span>Explore Brand <i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-                <div class="brand-feature-media">
-                    ${product ? `<img src="${product.getAttribute('src')}" alt="${product.getAttribute('alt') || title}" class="brand-feature-product">` : ''}
-                </div>
-            `;
+
+            const copy = document.createElement('div');
+            copy.className = 'brand-feature-copy';
+
+            const logoSrc = safeAssetUrl(logo?.getAttribute('src'));
+            if (logoSrc) {
+                const logoImg = document.createElement('img');
+                logoImg.src = logoSrc;
+                logoImg.alt = safeText(logo?.getAttribute('alt')) || title;
+                logoImg.className = 'brand-feature-logo';
+                copy.appendChild(logoImg);
+            } else {
+                const textLogo = document.createElement('div');
+                textLogo.className = 'brand-feature-logo product-text-logo';
+                textLogo.textContent = title;
+                copy.appendChild(textLogo);
+            }
+
+            const heading = document.createElement('h3');
+            heading.textContent = title;
+            copy.appendChild(heading);
+
+            const paragraph = document.createElement('p');
+            paragraph.textContent = desc;
+            copy.appendChild(paragraph);
+
+            const cta = document.createElement('span');
+            cta.textContent = 'Explore Brand ';
+            const ctaIcon = document.createElement('i');
+            ctaIcon.className = 'fa-solid fa-arrow-right';
+            cta.appendChild(ctaIcon);
+            copy.appendChild(cta);
+
+            const media = document.createElement('div');
+            media.className = 'brand-feature-media';
+            const productSrc = safeAssetUrl(product?.getAttribute('src'));
+            if (productSrc) {
+                const productImg = document.createElement('img');
+                productImg.src = productSrc;
+                productImg.alt = safeText(product?.getAttribute('alt')) || title;
+                productImg.className = 'brand-feature-product';
+                media.appendChild(productImg);
+            }
+
+            row.append(copy, media);
             list.appendChild(row);
         });
 
@@ -165,7 +228,17 @@
         setupBrandCopyAnimations();
     }
 
+    function hardenExternalLinks() {
+        document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+            const rel = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+            rel.add('noopener');
+            rel.add('noreferrer');
+            link.setAttribute('rel', Array.from(rel).join(' '));
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+        hardenExternalLinks();
         setupHomeHeader();
         setupProductsPageShowcase();
         setupScrollZoomImages();

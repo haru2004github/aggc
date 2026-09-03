@@ -896,7 +896,7 @@
                         <div class="absolute -top-5 -left-5 w-28 h-28 border-l-[10px] border-t-[10px] border-brand-gold/90"></div>
 
                         <div class="relative aspect-[4/3] overflow-hidden border-[10px] border-white bg-white shadow-2xl">
-                            <img src="./img/index_about_replacement.png" alt="AGGC Business Complex"
+                            <img src="./img/about_us_complex_render.png" alt="AGGC Business Complex"
                                 class="w-full h-full object-cover transform group-hover/img-container:scale-105 transition-transform duration-1000 ease-out">
                             <div class="absolute inset-4 border border-white/45 pointer-events-none"></div>
                         </div>
@@ -1538,7 +1538,7 @@
                 <div class="lg:col-span-7 bg-white rounded-2xl p-3 sm:p-4 shadow-[0_24px_60px_rgba(7,22,51,0.12)] border border-slate-200 flex">
                     <div class="min-h-[420px] sm:min-h-[560px] lg:min-h-0 lg:h-full w-full rounded-xl overflow-hidden bg-slate-100">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3819.3496033481267!2d96.12871321481498!3d16.80901518596637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb4800000001%3A0x6333cda94084534a!2sTimes%20City!5e0!3m2!1sen!2smm!4v1680000000000!5m2!1sen!2smm"
+                            src="https://www.google.com/maps?q=16.8168754,96.1293773&z=17&output=embed"
                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
@@ -1813,7 +1813,7 @@
         }
 
         async function fetchNewsFromJSON() {
-            const response = await fetch(SHEET_JSON_URL);
+            const response = await fetch(SHEET_JSON_URL, { cache: 'no-store' });
             if (!response.ok) throw new Error('Google JSON feed unavailable');
 
             const text = await response.text();
@@ -1838,7 +1838,7 @@
         }
 
         async function fetchNewsFromCSV() {
-            const response = await fetch(SHEET_CSV_URL);
+            const response = await fetch(SHEET_CSV_URL, { cache: 'no-store' });
             if (!response.ok) throw new Error('Google CSV feed unavailable');
 
             const csv = await response.text();

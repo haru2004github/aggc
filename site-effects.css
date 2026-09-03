@@ -15,6 +15,180 @@
     }
 }
 
+.page-hero-with-image {
+    isolation: isolate;
+}
+
+.hero-faint-image {
+    --hero-faint-image: url('./img/about_us_complex_render.png');
+    position: absolute;
+    right: clamp(1.25rem, 5vw, 5.5rem);
+    top: clamp(5.5rem, 9vw, 7.5rem);
+    bottom: clamp(1rem, 3vw, 2.25rem);
+    width: min(520px, 40vw);
+    border-radius: 54px 14px 54px 14px;
+    overflow: hidden;
+    border: 1px solid rgba(225, 174, 49, 0.24);
+    background-image: var(--hero-faint-image);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+    opacity: 0.28;
+    transform: rotate(1.35deg);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%, #000 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 30%, #000 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-faint-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(6, 18, 38, 0.72), rgba(6, 18, 38, 0.12) 56%, rgba(6, 18, 38, 0.5)),
+        linear-gradient(0deg, rgba(6, 18, 38, 0.58), transparent 42%);
+}
+
+.hero-faint-products {
+    --hero-faint-image: url('./img/Products/luigong_product.png');
+}
+
+.hero-faint-whatwedo {
+    --hero-faint-image: url('./img/what_we_do/grid_substation_powermax.png');
+}
+
+.hero-faint-activities {
+    --hero-faint-image: url('./img/slider_3.png');
+}
+
+.hero-faint-careers {
+    --hero-faint-image: url('./img/about_us_complex_render.png');
+}
+
+.hero-faint-news {
+    --hero-faint-image: url('./img/20260226-ISO-01.jpg');
+}
+
+.scroll-reveal,
+.scroll-reveal-left,
+.scroll-reveal-right {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 820ms ease, transform 820ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.scroll-reveal-left {
+    transform: translateX(-34px);
+}
+
+.scroll-reveal-right {
+    transform: translateX(34px);
+}
+
+.scroll-reveal-visible {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+.premium-content-page {
+    background: #eef2f7;
+}
+
+.premium-content-main {
+    background:
+        linear-gradient(180deg, #f8fafc 0%, #eef3f8 42%, #f6f8fb 100%) !important;
+    overflow: hidden;
+}
+
+.premium-content-main::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(120deg, rgba(225, 174, 49, 0.12), transparent 30%),
+        linear-gradient(300deg, rgba(7, 22, 51, 0.08), transparent 36%);
+    pointer-events: none;
+}
+
+.premium-content-main > * {
+    position: relative;
+    z-index: 1;
+}
+
+.premium-activity-card,
+.premium-job-card,
+.premium-news-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(7, 22, 51, 0.1) !important;
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(238, 243, 248, 0.94)),
+        linear-gradient(120deg, rgba(225, 174, 49, 0.09), transparent 42%) !important;
+    box-shadow: 0 18px 46px rgba(7, 22, 51, 0.09) !important;
+}
+
+.premium-activity-card::before,
+.premium-job-card::before,
+.premium-news-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: linear-gradient(90deg, #e1ae31, rgba(225, 174, 49, 0.28), transparent);
+    pointer-events: none;
+}
+
+.premium-activity-card:hover,
+.premium-job-card:hover,
+.premium-news-card:hover {
+    border-color: rgba(225, 174, 49, 0.42) !important;
+    box-shadow: 0 24px 58px rgba(7, 22, 51, 0.13) !important;
+}
+
+.premium-media-tile,
+.premium-job-media,
+.premium-news-media {
+    border-radius: 26px 8px 26px 8px !important;
+    border: 1px solid rgba(225, 174, 49, 0.22);
+    background: #071633;
+    box-shadow: 0 16px 34px rgba(7, 22, 51, 0.16);
+}
+
+.premium-job-body,
+.premium-news-body {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 248, 251, 0.96)) !important;
+}
+
+.premium-news-card .absolute.inset-0.bg-gradient-to-t {
+    background: linear-gradient(to top, rgba(6, 18, 38, 0.76), rgba(6, 18, 38, 0.08) 58%, transparent) !important;
+}
+
+@media (max-width: 900px) {
+    .hero-faint-image {
+        left: 50%;
+        right: auto;
+        top: 5.8rem;
+        bottom: 1rem;
+        width: min(76vw, 430px);
+        opacity: 0.16;
+        transform: translateX(-50%) rotate(1deg);
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 20%, #000 80%, transparent 100%);
+        mask-image: linear-gradient(90deg, transparent 0%, #000 20%, #000 80%, transparent 100%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-reveal,
+    .scroll-reveal-left,
+    .scroll-reveal-right {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
 body.home-immersive-header .home-header-spacer {
     display: none;
 }
@@ -159,12 +333,473 @@ body.home-immersive-header #navbar:not(.header-over-hero) {
     letter-spacing: 0.02em;
 }
 
-.product-detail-surface {
+.strategic-pillars-section {
     background:
-        radial-gradient(circle at 14% 8%, rgba(225, 174, 49, 0.1), transparent 32%),
-        radial-gradient(circle at 86% 18%, rgba(42, 122, 255, 0.12), transparent 34%),
-        linear-gradient(180deg, #f8fafc 0%, #eef3f8 32%, #071633 32%, #061226 100%);
+        radial-gradient(circle at 12% 12%, rgba(225, 174, 49, 0.22), transparent 30%),
+        radial-gradient(circle at 86% 18%, rgba(42, 122, 255, 0.18), transparent 34%),
+        radial-gradient(circle at 45% 100%, rgba(225, 174, 49, 0.12), transparent 38%),
+        linear-gradient(135deg, #061226 0%, #071633 48%, #10295b 100%) !important;
+}
+
+.strategic-pillars-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 84%, transparent 100%);
+    pointer-events: none;
+}
+
+.whatwedo-flow::before,
+.whatwedo-flow .strategic-pillars-section::before,
+.whatwedo-flow .sector-gradient-panel::before,
+body > section:first-of-type > .absolute.inset-0[style*="background-image"],
+.whatwedo-flow [style*="background-image: linear-gradient(to right"],
+.whatwedo-flow [style*="background-image: radial-gradient"] {
+    display: none !important;
+}
+
+.strategic-pillars-section::after {
+    content: '';
+    position: absolute;
+    right: -11rem;
+    top: 5rem;
+    width: 34rem;
+    height: 34rem;
+    border: 1px solid rgba(225, 174, 49, 0.22);
+    border-radius: 999px;
+    box-shadow: inset 0 0 90px rgba(225, 174, 49, 0.05);
+    pointer-events: none;
+}
+
+.strategic-pillars-section .text-brand-navy,
+.strategic-pillars-section h2 {
+    color: #ffffff !important;
+}
+
+.strategic-pillars-section p {
+    color: rgba(226, 232, 240, 0.82) !important;
+}
+
+.strategic-pillars-section .grid > a {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 240px !important;
+    padding: 1.65rem !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    background: rgba(7, 22, 51, 0.5);
+    box-shadow: 0 24px 58px rgba(0, 0, 0, 0.28);
+}
+
+.strategic-pillars-section .grid > a > img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    transform: scale(1) !important;
+}
+
+.strategic-pillars-section .grid > a > div.absolute.inset-0 {
+    display: block !important;
+    background: linear-gradient(to top, rgba(6, 18, 38, 0.96) 0%, rgba(7, 22, 51, 0.66) 50%, rgba(7, 22, 51, 0.18) 100%) !important;
+}
+
+.strategic-pillars-section .grid > a > .relative.z-10 {
+    display: block;
+    min-height: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.strategic-pillars-section .grid > a > .relative.z-10 p {
+    margin-bottom: 1rem !important;
+}
+
+.strategic-pillars-section .grid > a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-top: 3px solid rgba(225, 174, 49, 0.74);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+@media (max-width: 640px) {
+    .strategic-pillars-section .grid > a {
+        min-height: 230px !important;
+        padding: 1.35rem !important;
+    }
+}
+
+.whatwedo-flow {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 18% 8%, rgba(225, 174, 49, 0.12), transparent 30%),
+        radial-gradient(ellipse at 82% 32%, rgba(42, 122, 255, 0.14), transparent 34%),
+        radial-gradient(ellipse at 22% 72%, rgba(225, 174, 49, 0.09), transparent 28%),
+        linear-gradient(180deg, #10295b 0%, #071633 14%, #061226 38%, #0a1a38 66%, #071633 100%);
+}
+
+.whatwedo-flow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px);
+    background-size: 54px 54px;
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 5%, #000 95%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.whatwedo-flow > section {
+    background: transparent !important;
+    box-shadow: none !important;
+    min-height: auto !important;
+}
+
+.whatwedo-flow > section + section {
+    border-top-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.whatwedo-flow > section > .max-w-7xl,
+.whatwedo-flow > section > .max-w-5xl {
+    position: relative;
+    z-index: 1;
+}
+
+.whatwedo-flow .strategic-pillars-section {
+    border-top-color: rgba(225, 174, 49, 0.22) !important;
+}
+
+.whatwedo-flow .strategic-pillars-section::before,
+.whatwedo-flow .sector-gradient-panel::before {
+    opacity: 0.55;
+}
+
+.whatwedo-flow > section > .absolute.rounded-full {
+    opacity: 0.38;
+    filter: blur(72px);
+}
+
+.whatwedo-flow > section > .absolute,
+.whatwedo-flow > section > [class*="absolute"] {
+    position: absolute !important;
+}
+
+.whatwedo-flow .strategic-pillars-section,
+.whatwedo-flow .sector-gradient-panel {
+    padding-top: clamp(3rem, 5vw, 4rem) !important;
+    padding-bottom: clamp(3rem, 5vw, 4rem) !important;
+}
+
+.sector-gradient-panel {
+    isolation: isolate;
+    color: #ffffff;
+}
+
+.sector-gradient-panel::before,
+.sector-gradient-panel::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.sector-gradient-panel::before {
+    inset: 0;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 46px 46px;
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%);
+}
+
+.sector-gradient-panel::after {
+    width: 38rem;
+    height: 38rem;
+    border: 1px solid rgba(225, 174, 49, 0.16);
+    border-radius: 999px;
+    box-shadow: inset 0 0 100px rgba(225, 174, 49, 0.045);
+}
+
+.sector-energy-gradient {
+    background:
+        radial-gradient(circle at 10% 18%, rgba(225, 174, 49, 0.22), transparent 28%),
+        radial-gradient(circle at 82% 10%, rgba(18, 95, 180, 0.22), transparent 34%),
+        linear-gradient(135deg, #061226 0%, #071633 46%, #12356c 100%) !important;
+}
+
+.sector-energy-gradient::after {
+    left: -14rem;
+    bottom: -15rem;
+}
+
+.sector-machinery-gradient {
+    background:
+        radial-gradient(circle at 90% 18%, rgba(225, 174, 49, 0.2), transparent 30%),
+        radial-gradient(circle at 14% 70%, rgba(42, 122, 255, 0.18), transparent 34%),
+        linear-gradient(135deg, #0a1732 0%, #071633 45%, #10295b 100%) !important;
+}
+
+.sector-machinery-gradient::after {
+    right: -13rem;
+    top: -12rem;
+}
+
+.sector-industries-gradient {
+    background:
+        radial-gradient(circle at 12% 16%, rgba(225, 174, 49, 0.18), transparent 30%),
+        radial-gradient(circle at 86% 76%, rgba(56, 119, 190, 0.18), transparent 36%),
+        linear-gradient(135deg, #061226 0%, #0a1a38 44%, #14345f 100%) !important;
+}
+
+.sector-industries-gradient::after {
+    left: -12rem;
+    top: 4rem;
+}
+
+.sector-epc-gradient {
+    background:
+        radial-gradient(circle at 86% 18%, rgba(225, 174, 49, 0.2), transparent 30%),
+        radial-gradient(circle at 18% 80%, rgba(72, 136, 196, 0.16), transparent 34%),
+        linear-gradient(135deg, #071633 0%, #0b1f46 48%, #10295b 100%) !important;
+}
+
+.sector-epc-gradient::after {
+    right: -13rem;
+    bottom: -14rem;
+}
+
+.sector-gradient-panel .sector-header h2,
+.sector-gradient-panel .sector-header h2 .text-brand-gold {
+    text-shadow: 0 16px 34px rgba(0, 0, 0, 0.26);
+}
+
+.sector-gradient-panel .sector-header h2 {
+    color: #ffffff !important;
+}
+
+.sector-gradient-panel .sector-header p {
+    color: rgba(226, 232, 240, 0.82) !important;
+}
+
+.sector-gradient-panel .modern-data-card {
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.04)),
+        radial-gradient(circle at 0% 0%, rgba(225, 174, 49, 0.14), transparent 36%) !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    box-shadow: 0 22px 54px rgba(0, 0, 0, 0.26);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.sector-gradient-panel .sector-badge > div {
+    border-radius: 16px 5px 16px 5px;
+    box-shadow: 0 12px 28px rgba(225, 174, 49, 0.2);
+}
+
+.sector-gear-number {
+    position: relative;
+    isolation: isolate;
+    width: 4rem !important;
+    height: 4rem !important;
+    flex-shrink: 0;
+    background: transparent !important;
+    color: #e1ae31 !important;
+    filter: drop-shadow(0 0 18px rgba(225, 174, 49, 0.25));
+}
+
+.sector-gear-number i {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: grid;
+    place-items: center;
+    color: #e1ae31;
+    font-size: 64px;
+    line-height: 1;
+    text-shadow: 0 0 18px rgba(225, 174, 49, 0.24);
+}
+
+.sector-gear-number span {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    background: #071633;
+    color: #e1ae31;
+    font-size: 0.75rem;
+    font-weight: 900;
+    line-height: 1;
+    text-shadow: none;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 10px 20px rgba(0, 0, 0, 0.28);
+}
+
+.sector-gear-number::after {
+    content: '';
+    position: absolute;
+    inset: 0.55rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.sector-gear-number-sm i {
+    font-size: 56px;
+}
+
+.sector-gear-number-sm {
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+}
+
+.sector-gear-number-sm span {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.68rem;
+}
+
+.sector-gradient-panel .data-row {
+    background: rgba(6, 18, 38, 0.48) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.sector-gradient-panel .data-row:hover {
+    background: rgba(225, 174, 49, 0.12) !important;
+    border-color: rgba(225, 174, 49, 0.32) !important;
+}
+
+.sector-gradient-panel .bento-card {
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 30px 10px 30px 10px;
+    box-shadow: 0 24px 58px rgba(0, 0, 0, 0.34);
+}
+
+.sector-gradient-panel .bento-card.bento-sub {
+    border-radius: 10px 24px 10px 24px;
+}
+
+.sector-gradient-panel .bento-card img {
+    filter: saturate(1.05) contrast(1.03);
+}
+
+.sector-gradient-panel .bento-card .bento-badge {
+    display: none !important;
+}
+
+.sector-gradient-panel .bento-card .bento-overlay {
+    background: linear-gradient(to top, rgba(6, 18, 38, 0.86) 0%, rgba(7, 22, 51, 0.28) 42%, transparent 72%) !important;
+}
+
+.sector-gradient-panel .bento-card:hover .bento-overlay {
+    background: linear-gradient(to top, rgba(6, 18, 38, 0.92) 0%, rgba(7, 22, 51, 0.38) 46%, transparent 76%) !important;
+}
+
+.sector-gradient-panel .bento-label,
+.sector-gradient-panel .bento-label-sm {
+    text-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+}
+
+.sector-gradient-panel .bento-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-top: 3px solid rgba(225, 174, 49, 0.72);
+    border-right: 1px solid rgba(225, 174, 49, 0.18);
+    pointer-events: none;
+    z-index: 4;
+}
+
+.products-premium-page {
+    background:
+        linear-gradient(180deg, #071633 0%, #0b1f46 36%, #12285a 58%, #eef3f8 58.2%, #f8fafc 100%);
+}
+
+.products-premium-page .product-premium-hero {
+    background:
+        radial-gradient(circle at 20% 12%, rgba(225, 174, 49, 0.16), transparent 30%),
+        radial-gradient(circle at 80% 22%, rgba(73, 104, 150, 0.22), transparent 34%),
+        linear-gradient(135deg, #061226 0%, #071633 48%, #12285a 100%);
+}
+
+.products-premium-page .product-premium-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.055), transparent 24%, rgba(225, 174, 49, 0.08) 58%, transparent 82%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 52%);
+    pointer-events: none;
+}
+
+.products-premium-page .product-premium-hero::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: min(1120px, calc(100% - 2rem));
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, rgba(225, 174, 49, 0.55), transparent);
+}
+
+.products-premium-page .product-premium-hero svg {
+    display: none !important;
+}
+
+.products-premium-page .product-premium-brands {
+    background:
+        radial-gradient(circle at 18% 8%, rgba(225, 174, 49, 0.13), transparent 28%),
+        radial-gradient(circle at 84% 32%, rgba(92, 124, 169, 0.16), transparent 34%),
+        linear-gradient(180deg, #071633 0%, #061226 52%, #0b1f46 100%) !important;
+}
+
+.products-premium-page .fade-up-element {
+    transform: translateY(34px) scale(0.985);
+    transition: opacity 900ms ease, transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.products-premium-page .fade-up-element.is-visible {
+    transform: translateY(0) scale(1);
+}
+
+.product-detail-surface {
+    position: relative;
+    background:
+        radial-gradient(circle at 14% 7%, rgba(225, 174, 49, 0.12), transparent 30%),
+        radial-gradient(circle at 86% 14%, rgba(96, 130, 176, 0.16), transparent 34%),
+        linear-gradient(180deg, #f8fafc 0%, #eef3f8 28%, #10295b 28.2%, #071633 64%, #061226 100%);
     padding-bottom: 5rem !important;
+}
+
+.product-detail-surface::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.42) 0%, transparent 24%, transparent 100%),
+        linear-gradient(90deg, transparent, rgba(225, 174, 49, 0.05), transparent);
+    pointer-events: none;
+}
+
+.product-detail-surface > * {
+    position: relative;
+    z-index: 1;
 }
 
 .catalog-hero {
@@ -179,8 +814,8 @@ body.home-immersive-header #navbar:not(.header-over-hero) {
     border: 1px solid rgba(7, 22, 51, 0.12);
     border-radius: 36px 12px 36px 12px;
     background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(241, 245, 249, 0.9)),
-        radial-gradient(circle at 15% 20%, rgba(225, 174, 49, 0.18), transparent 32%);
+        radial-gradient(circle at 15% 20%, rgba(225, 174, 49, 0.16), transparent 34%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(238, 243, 248, 0.92));
     box-shadow: 0 24px 70px rgba(7, 22, 51, 0.12);
 }
 
@@ -315,8 +950,9 @@ body.home-immersive-header #navbar:not(.header-over-hero) {
     border: 1px solid rgba(255, 255, 255, 0.13);
     border-radius: 28px 10px 28px 10px;
     background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.035)),
-        linear-gradient(180deg, #11285a 0%, #071633 68%, #061226 100%);
+        radial-gradient(circle at 18% 8%, rgba(225, 174, 49, 0.16), transparent 32%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.035)),
+        linear-gradient(180deg, #173366 0%, #071633 72%, #061226 100%);
     box-shadow: 0 22px 54px rgba(0, 0, 0, 0.28);
     transition: transform 360ms ease, border-color 360ms ease, box-shadow 360ms ease;
 }
@@ -341,10 +977,8 @@ body.home-immersive-header #navbar:not(.header-over-hero) {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at 18% 8%, rgba(225, 174, 49, 0.22), transparent 34%),
-        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-    background-size: auto, 34px 34px, 34px 34px;
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 42%),
+        linear-gradient(180deg, rgba(225, 174, 49, 0.08), transparent 48%);
     pointer-events: none;
 }
 
@@ -454,6 +1088,54 @@ body.home-immersive-header #navbar:not(.header-over-hero) {
 .catalog-reveal.catalog-visible {
     opacity: 1;
     transform: translateY(0) scale(1);
+}
+
+.products-premium-page .brand-feature-row {
+    min-height: 320px;
+    padding: clamp(1.2rem, 3vw, 2.5rem);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 30px 10px 30px 10px;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.03)),
+        radial-gradient(circle at 18% 14%, rgba(225, 174, 49, 0.11), transparent 30%),
+        linear-gradient(180deg, rgba(23, 51, 102, 0.78), rgba(7, 22, 51, 0.82));
+    box-shadow: 0 24px 62px rgba(0, 0, 0, 0.25);
+}
+
+.products-premium-page .brand-feature-row-reverse {
+    border-radius: 10px 30px 10px 30px;
+}
+
+.products-premium-page .brand-feature-row::before {
+    display: none;
+}
+
+.products-premium-page .brand-feature-media {
+    border-radius: 28px 8px 28px 8px;
+    background:
+        radial-gradient(circle at 50% 110%, rgba(225, 174, 49, 0.15), transparent 52%),
+        linear-gradient(145deg, rgba(6, 18, 38, 0.72), rgba(22, 46, 87, 0.7));
+}
+
+.products-premium-page .brand-feature-row-reverse .brand-feature-media {
+    border-radius: 8px 28px 8px 28px;
+}
+
+.products-premium-page .brand-feature-logo {
+    min-width: 172px;
+    max-width: min(270px, 78%);
+    max-height: 86px;
+    padding: 0.78rem 1rem;
+    border-radius: 16px 5px 16px 5px;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(232, 238, 247, 0.58)),
+        radial-gradient(circle at 15% 20%, rgba(225, 174, 49, 0.22), transparent 42%);
+    border-color: rgba(225, 174, 49, 0.28);
+}
+
+.products-premium-page .brand-feature-product {
+    transform: scale(0.94);
+    transition: transform 1200ms cubic-bezier(0.16, 1, 0.3, 1), filter 1200ms ease;
 }
 
 #brands .product-showcase-card {

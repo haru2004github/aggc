@@ -138,7 +138,7 @@
 
         .sector-hub-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(24, 7, 51, 0.15), 0 0 20px rgba(225, 174, 49, 0.2);
+            box-shadow: 0 20px 40px rgba(7, 22, 51, 0.16), 0 0 20px rgba(225, 174, 49, 0.2);
         }
 
         /* ===== BENTO GRID IMAGE LAYOUT SYSTEM ===== */
@@ -152,14 +152,14 @@
         .sector-layout {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 24px;
+            gap: 20px;
             align-items: stretch;
         }
 
         @media (min-width: 1024px) {
             .sector-layout {
                 grid-template-columns: 1.3fr 1fr;
-                gap: 32px;
+                gap: 28px;
             }
             .sector-layout.reverse {
                 grid-template-columns: 1fr 1.3fr;
@@ -169,7 +169,7 @@
         /* Bento grid patterns for 3 images */
         .bento-grid {
             display: grid;
-            gap: 16px;
+            gap: 14px;
             height: 100%;
         }
         
@@ -180,12 +180,12 @@
 
         .bento-3 .bento-hero {
             grid-column: 1 / -1;
-            min-height: 280px;
+            min-height: 240px;
         }
 
         @media (min-width: 640px) {
             .bento-3 .bento-hero {
-                min-height: 320px;
+                min-height: 280px;
             }
         }
 
@@ -211,7 +211,7 @@
             border-radius: 20px;
             overflow: hidden;
             cursor: pointer;
-            min-height: 200px;
+            min-height: 170px;
         }
 
         .bento-card img {
@@ -228,12 +228,12 @@
         .bento-card .bento-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(24, 7, 51, 0.85) 0%, rgba(24, 7, 51, 0.25) 40%, transparent 70%);
+            background: linear-gradient(to top, rgba(6, 18, 38, 0.86) 0%, rgba(7, 22, 51, 0.28) 42%, transparent 72%);
             transition: background 0.5s ease;
         }
 
         .bento-card:hover .bento-overlay {
-            background: linear-gradient(to top, rgba(24, 7, 51, 0.9) 0%, rgba(24, 7, 51, 0.35) 45%, transparent 75%);
+            background: linear-gradient(to top, rgba(6, 18, 38, 0.92) 0%, rgba(7, 22, 51, 0.38) 46%, transparent 76%);
         }
 
         .bento-card .bento-label {
@@ -300,9 +300,9 @@
 
         /* Modern data card for service lists */
         .modern-data-card {
-            background: linear-gradient(135deg, #071633 0%, #1f0a42 50%, #250b4d 100%);
+            background: linear-gradient(135deg, #071633 0%, #0b1f46 52%, #12356c 100%);
             border-radius: 24px;
-            padding: 28px;
+            padding: 24px;
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(225, 174, 49, 0.15);
@@ -333,7 +333,7 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 14px;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -368,7 +368,7 @@
 
         /* Sector section header */
         .sector-header {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .sector-header .sector-badge {
@@ -379,26 +379,26 @@
         }
 
         .sector-header h2 {
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .sector-header p {
-            margin-bottom: 24px;
+            margin-bottom: 18px;
         }
 
         /* Subtle animated border glow for bento hero */
         @keyframes borderGlow {
-            0%, 100% { box-shadow: 0 8px 32px rgba(24, 7, 51, 0.1), inset 0 0 0 1px rgba(225, 174, 49, 0.08); }
-            50% { box-shadow: 0 12px 48px rgba(24, 7, 51, 0.15), inset 0 0 0 1px rgba(225, 174, 49, 0.2); }
+            0%, 100% { box-shadow: 0 8px 32px rgba(7, 22, 51, 0.12), inset 0 0 0 1px rgba(225, 174, 49, 0.08); }
+            50% { box-shadow: 0 12px 48px rgba(7, 22, 51, 0.18), inset 0 0 0 1px rgba(225, 174, 49, 0.2); }
         }
 
         .bento-card {
-            box-shadow: 0 8px 32px rgba(24, 7, 51, 0.1);
+            box-shadow: 0 8px 32px rgba(7, 22, 51, 0.12);
             animation: borderGlow 4s ease-in-out infinite;
         }
 
         .bento-card:hover {
-            box-shadow: 0 16px 48px rgba(24, 7, 51, 0.2), 0 0 24px rgba(225, 174, 49, 0.15);
+            box-shadow: 0 16px 48px rgba(7, 22, 51, 0.24), 0 0 24px rgba(225, 174, 49, 0.15);
         }
     </style>
     <link rel="stylesheet" href="./site-effects.css">
@@ -534,7 +534,7 @@
     </nav>
 
     <!-- 2. Hero Section (Executive Dark Luxury Theme) -->
-    <section class="relative bg-gradient-to-b from-[#061226] via-[#0d143a] to-[#131d52] pt-28 pb-24 sm:pt-36 sm:pb-32 overflow-hidden text-center">
+    <section class="relative bg-gradient-to-b from-[#061226] via-[#071633] to-[#10295b] pt-24 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
         <!-- Subtle Starry Night & Grid Watermark -->
         <div class="absolute inset-0 opacity-[0.05]"
             style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
@@ -546,14 +546,14 @@
             <svg viewBox="0 0 1440 220" preserveAspectRatio="none" class="w-full h-[120px] sm:h-[180px] md:h-[220px]">
                 <defs>
                     <linearGradient id="pineHorizonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#18235c" stop-opacity="0.2" />
-                        <stop offset="50%" stop-color="#0d143a" stop-opacity="0.7" />
-                        <stop offset="100%" stop-color="#070a21" stop-opacity="0.95" />
+                        <stop offset="0%" stop-color="#12356c" stop-opacity="0.2" />
+                        <stop offset="50%" stop-color="#071633" stop-opacity="0.7" />
+                        <stop offset="100%" stop-color="#061226" stop-opacity="0.95" />
                     </linearGradient>
                 </defs>
-                <path fill="#162056" fill-opacity="0.35"
+                <path fill="#10295b" fill-opacity="0.35"
                     d="M0,140 Q180,90 360,130 T720,100 T1080,125 T1440,95 L1440,220 L0,220 Z" />
-                <path fill="#0f1742" fill-opacity="0.55"
+                <path fill="#0b1f46" fill-opacity="0.55"
                     d="M0,165 C240,125 450,175 700,140 C950,105 1200,165 1440,135 L1440,220 L0,220 Z" />
                 <path fill="url(#pineHorizonGrad)"
                     d="M0,220 L0,185 L12,170 L18,178 L28,155 L38,175 L50,145 L62,172 L75,138 L88,168 L102,142 L115,165 L130,130 L145,162 L160,128 L175,160 L190,135 L205,162 L220,125 L235,158 L250,132 L265,160 L280,122 L295,155 L310,130 L325,158 L340,120 L355,152 L370,126 L385,154 L400,118 L415,150 L430,125 L445,155 L460,115 L475,148 L490,122 L505,152 L520,112 L535,145 L550,120 L565,150 L580,110 L595,142 L610,118 L625,148 L640,108 L655,140 L670,115 L685,145 L700,105 L715,138 L730,112 L745,142 L760,102 L775,135 L790,110 L805,140 L820,100 L835,132 L850,108 L865,138 L880,98 L895,130 L910,105 L925,135 L940,95 L955,128 L970,102 L985,132 L1000,92 L1015,125 L1030,100 L1045,130 L1060,90 L1075,122 L1090,98 L1105,128 L1120,88 L1135,120 L1150,95 L1165,125 L1180,85 L1195,118 L1210,92 L1225,122 L1240,82 L1255,115 L1270,90 L1285,120 L1300,80 L1315,112 L1330,88 L1345,118 L1360,78 L1375,110 L1390,85 L1405,115 L1420,80 L1435,110 L1440,105 L1440,220 Z" />
@@ -572,7 +572,7 @@
                 WHAT WE <span class="text-brand-gold">DO</span>
             </h1>
             <p class="text-slate-200 text-sm sm:text-base md:text-lg max-w-3xl mx-auto mt-5 leading-relaxed font-light drop-shadow">
-                Today, Aung Gyi Group of Companies (AGGC) operates across four core strategic sectors, delivering innovative solutions, engineering excellence, and infrastructure development nationwide.
+                Today, AGGC operates across four core strategic sectors, delivering innovative solutions, engineering excellence, and infrastructure development nationwide.
             </p>
         </div>
 
@@ -580,10 +580,10 @@
 </section>
 
     <!-- Main Content -->
-    <main class="flex-grow w-full">
+    <main class="whatwedo-flow flex-grow w-full">
 
         <!-- 3. Four Strategic Sectors Interactive Hub (Overview Grid) -->
-        <section class="py-16 sm:py-24 bg-[#faf9f6] relative overflow-hidden border-t border-brand-gold/20 shadow-xl">
+        <section class="strategic-pillars-section py-12 sm:py-16 bg-[#071633] relative overflow-hidden border-t border-brand-gold/20 shadow-xl">
             <!-- Advanced Engineering Blueprint Grid Pattern -->
             <div class="absolute inset-0 pointer-events-none">
                 <!-- Main thick grid (40x40) -->
@@ -611,10 +611,10 @@
                     </div>
 
                     <!-- 4 Strategic Sectors Hub Grid (Landscape Image Cards) -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 relative z-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-9 relative z-10">
                         
                         <!-- Sector 01 Hub Card -->
-                        <a href="#electric-energy" class="group relative rounded-2xl overflow-hidden min-h-[280px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 hover:border-brand-gold/60 transition-all duration-500 shadow-xl">
+                        <a href="#electric-energy" class="group relative rounded-2xl overflow-hidden min-h-[240px] flex flex-col justify-end p-6 sm:p-7 border border-white/10 hover:border-brand-gold/60 transition-all duration-500 shadow-xl">
                             <!-- Background Image -->
                             <img src="./img/what_we_do/tower.png" alt="Electric & Energy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
                             <!-- Gradient Overlay -->
@@ -623,7 +623,7 @@
                             <!-- Content -->
                             <div class="relative z-10 transform group-hover:-translate-y-2 transition-transform duration-500">
                                 <div class="flex items-center gap-4 mb-3">
-                                    <div class="w-12 h-12 bg-brand-gold text-brand-navy font-heading font-black text-lg flex items-center justify-center clip-hexagon shadow-lg">01</div>
+                                    <div class="sector-gear-number w-12 h-12 text-brand-navy font-heading font-black text-lg flex items-center justify-center shadow-lg"><i class="fa-solid fa-gear"></i><span>01</span></div>
                                     <h3 class="font-heading font-bold text-white text-xl sm:text-2xl tracking-wide group-hover:text-brand-gold transition-colors">Electric & Energy</h3>
                                 </div>
                                 <p class="text-slate-300 text-sm font-light mb-4 max-w-md line-clamp-2">Power grids, renewable energy, and electrical systems.</p>
@@ -634,13 +634,13 @@
                         </a>
 
                         <!-- Sector 02 Hub Card -->
-                        <a href="#machinery-automobile" class="group relative rounded-2xl overflow-hidden min-h-[280px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 hover:border-brand-gold/60 transition-all duration-500 shadow-xl">
+                        <a href="#machinery-automobile" class="group relative rounded-2xl overflow-hidden min-h-[240px] flex flex-col justify-end p-6 sm:p-7 border border-white/10 hover:border-brand-gold/60 transition-all duration-500 shadow-xl">
                             <img src="./img/what_we_do/machinary1.jpg" alt="Machinery & Automobile" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
                             <div class="absolute inset-0 bg-gradient-to-t from-[#071633]/95 via-[#071633]/50 to-transparent group-hover:from-[#071633] transition-colors duration-500"></div>
                             
                             <div class="relative z-10 transform group-hover:-translate-y-2 transition-transform duration-500">
                                 <div class="flex items-center gap-4 mb-3">
-                                    <div class="w-12 h-12 bg-brand-gold text-brand-navy font-heading font-black text-lg flex items-center justify-center clip-hexagon shadow-lg">02</div>
+                                    <div class="sector-gear-number w-12 h-12 text-brand-navy font-heading font-black text-lg flex items-center justify-center shadow-lg"><i class="fa-solid fa-gear"></i><span>02</span></div>
                                     <h3 class="font-heading font-bold text-white text-xl sm:text-2xl tracking-wide group-hover:text-brand-gold transition-colors">Machinery & Automobile</h3>
                                 </div>
                                 <p class="text-slate-300 text-sm font-light mb-4 max-w-md line-clamp-2">Heavy equipment, commercial trucks, and spare parts.</p>
@@ -651,13 +651,13 @@
                         </a>
 
                         <!-- Sector 03 Hub Card -->
-                        <a href="#aggc-industries" class="group relative rounded-2xl overflow-hidden min-h-[280px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 hover:border-brand-gold/60 transition-all duration-500 shadow-xl">
+                        <a href="#aggc-industries" class="group relative rounded-2xl overflow-hidden min-h-[240px] flex flex-col justify-end p-6 sm:p-7 border border-white/10 hover:border-brand-gold/60 transition-all duration-500 shadow-xl">
                             <img src="./img/what_we_do/skd.png" alt="AGGC Industries" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
                             <div class="absolute inset-0 bg-gradient-to-t from-[#071633]/95 via-[#071633]/50 to-transparent group-hover:from-[#071633] transition-colors duration-500"></div>
                             
                             <div class="relative z-10 transform group-hover:-translate-y-2 transition-transform duration-500">
                                 <div class="flex items-center gap-4 mb-3">
-                                    <div class="w-12 h-12 bg-brand-gold text-brand-navy font-heading font-black text-lg flex items-center justify-center clip-hexagon shadow-lg">03</div>
+                                    <div class="sector-gear-number w-12 h-12 text-brand-navy font-heading font-black text-lg flex items-center justify-center shadow-lg"><i class="fa-solid fa-gear"></i><span>03</span></div>
                                     <h3 class="font-heading font-bold text-white text-xl sm:text-2xl tracking-wide group-hover:text-brand-gold transition-colors">AGGC Industries</h3>
                                 </div>
                                 <p class="text-slate-300 text-sm font-light mb-4 max-w-md line-clamp-2">SKD vehicle assembly, manufacturing & vocational education.</p>
@@ -668,13 +668,13 @@
                         </a>
 
                         <!-- Sector 04 Hub Card -->
-                        <a href="#epc-finance" class="group relative rounded-2xl overflow-hidden min-h-[280px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 hover:border-brand-gold/60 transition-all duration-500 shadow-xl">
+                        <a href="#epc-finance" class="group relative rounded-2xl overflow-hidden min-h-[240px] flex flex-col justify-end p-6 sm:p-7 border border-white/10 hover:border-brand-gold/60 transition-all duration-500 shadow-xl">
                             <img src="./img/what_we_do/epc.png" alt="EPC + Finance" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
                             <div class="absolute inset-0 bg-gradient-to-t from-[#071633]/95 via-[#071633]/50 to-transparent group-hover:from-[#071633] transition-colors duration-500"></div>
                             
                             <div class="relative z-10 transform group-hover:-translate-y-2 transition-transform duration-500">
                                 <div class="flex items-center gap-4 mb-3">
-                                    <div class="w-12 h-12 bg-brand-gold text-brand-navy font-heading font-black text-lg flex items-center justify-center clip-hexagon shadow-lg">04</div>
+                                    <div class="sector-gear-number w-12 h-12 text-brand-navy font-heading font-black text-lg flex items-center justify-center shadow-lg"><i class="fa-solid fa-gear"></i><span>04</span></div>
                                     <h3 class="font-heading font-bold text-white text-xl sm:text-2xl tracking-wide group-hover:text-brand-gold transition-colors">EPC + Finance</h3>
                                 </div>
                                 <p class="text-slate-300 text-sm font-light mb-4 max-w-md line-clamp-2">Turnkey project execution & structured investment solutions.</p>
@@ -690,7 +690,7 @@
         </section>
 
         <!-- ==================== SECTOR 01: ELECTRIC & ENERGY ==================== -->
-        <section id="electric-energy" class="py-16 sm:py-24 bg-slate-50 relative overflow-hidden border-t border-slate-200/80">
+        <section id="electric-energy" class="sector-gradient-panel sector-energy-gradient py-12 sm:py-16 bg-[#061226] relative overflow-hidden border-t border-brand-gold/20">
             <!-- Decorative background elements -->
             <div class="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
                 style="background-image: radial-gradient(#071633 2px, transparent 2px); background-size: 28px 28px;"></div>
@@ -704,15 +704,8 @@
                         <div class="bento-grid bento-3">
                             <!-- Hero Image: Power Tower -->
                             <div class="bento-card bento-hero">
-                                <img src="./img/what_we_do/tower.png" alt="High Voltage Substation & Power Grid">
+                                <img src="./img/what_we_do/grid_substation_powermax.png" alt="Grid Substation Power Transmission and Distribution">
                                 <div class="bento-overlay"></div>
-                                <div class="bento-badge">
-                                    <img src="./img/Products/powermax-logo.png" alt="Powermax" class="h-5 w-auto" style="object-fit: contain;">
-                                </div>
-                                <div class="bento-label">
-                                    <span class="bento-tag font-heading">Grid Substation</span>
-                                    <h4 class="font-heading">Power Transmission & Distribution</h4>
-                                </div>
                             </div>
                             <!-- Sub Image: Fuel Terminals -->
                             <div class="bento-card bento-sub">
@@ -737,9 +730,7 @@
                     <div class="scroll-reveal-right flex flex-col justify-center">
                         <div class="sector-header">
                             <div class="sector-badge">
-                                <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
-                                    01
-                                </div>
+                                <div class="sector-gear-number sector-gear-number-sm w-10 h-10 text-brand-navy font-heading font-black text-base flex items-center justify-center shadow-md"><i class="fa-solid fa-gear"></i><span>01</span></div>
                                 <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
                             </div>
 
@@ -784,7 +775,7 @@
         </section>
 
         <!-- ==================== SECTOR 02: MACHINERY & AUTOMOBILE ==================== -->
-        <section id="machinery-automobile" class="py-16 sm:py-24 bg-white relative overflow-hidden">
+        <section id="machinery-automobile" class="sector-gradient-panel sector-machinery-gradient py-12 sm:py-16 bg-[#071633] relative overflow-hidden border-t border-white/10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="sector-layout reverse">
                     
@@ -792,9 +783,7 @@
                     <div class="order-2 lg:order-1 scroll-reveal-left flex flex-col justify-center">
                         <div class="sector-header">
                             <div class="sector-badge">
-                                <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
-                                    02
-                                </div>
+                                <div class="sector-gear-number sector-gear-number-sm w-10 h-10 text-brand-navy font-heading font-black text-base flex items-center justify-center shadow-md"><i class="fa-solid fa-gear"></i><span>02</span></div>
                                 <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
                             </div>
 
@@ -873,7 +862,7 @@
         </section>
 
         <!-- ==================== SECTOR 03: AGGC INDUSTRIES ==================== -->
-        <section id="aggc-industries" class="py-16 sm:py-24 bg-slate-50 relative overflow-hidden border-t border-slate-200/80">
+        <section id="aggc-industries" class="sector-gradient-panel sector-industries-gradient py-12 sm:py-16 bg-[#061226] relative overflow-hidden border-t border-brand-gold/20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="sector-layout">
                     
@@ -915,9 +904,7 @@
                     <div class="scroll-reveal-right flex flex-col justify-center">
                         <div class="sector-header">
                             <div class="sector-badge">
-                                <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
-                                    03
-                                </div>
+                                <div class="sector-gear-number sector-gear-number-sm w-10 h-10 text-brand-navy font-heading font-black text-base flex items-center justify-center shadow-md"><i class="fa-solid fa-gear"></i><span>03</span></div>
                                 <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
                             </div>
 
@@ -970,7 +957,7 @@
         </section>
 
         <!-- ==================== SECTOR 04: EPC + FINANCE ==================== -->
-        <section id="epc-finance" class="py-16 sm:py-24 bg-white relative overflow-hidden">
+        <section id="epc-finance" class="sector-gradient-panel sector-epc-gradient py-12 sm:py-16 bg-[#071633] relative overflow-hidden border-t border-white/10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="sector-layout reverse">
                     
@@ -978,9 +965,7 @@
                     <div class="order-2 lg:order-1 scroll-reveal-left flex flex-col justify-center">
                         <div class="sector-header">
                             <div class="sector-badge">
-                                <div class="w-10 h-10 bg-brand-gold text-brand-navy font-heading font-black text-base flex items-center justify-center clip-hexagon shadow-md">
-                                    04
-                                </div>
+                                <div class="sector-gear-number sector-gear-number-sm w-10 h-10 text-brand-navy font-heading font-black text-base flex items-center justify-center shadow-md"><i class="fa-solid fa-gear"></i><span>04</span></div>
                                 <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Strategic Sector</span>
                             </div>
 
@@ -1060,7 +1045,7 @@
 
 
         <!-- Executive Partner CTA Section -->
-        <section class="py-16 sm:py-24 bg-gradient-to-br from-brand-navy via-[#0b1f46] to-[#10295b] text-white relative overflow-hidden border-t border-brand-gold/20">
+        <section class="py-12 sm:py-16 bg-gradient-to-br from-brand-navy via-[#0b1f46] to-[#10295b] text-white relative overflow-hidden border-t border-brand-gold/20">
             <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
             
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 scroll-reveal">
@@ -1069,7 +1054,7 @@
                 </div>
                 
                 <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white mb-6 leading-tight">
-                    Partner With <span class="text-brand-gold">Aung Gyi Group</span>
+                    Partner With <span class="text-brand-gold">AGGC</span>
                 </h2>
                 
                 <p class="text-slate-300 text-sm sm:text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto mb-10">

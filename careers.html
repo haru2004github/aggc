@@ -745,41 +745,100 @@
         // 1. READ-ONLY DATA (Fetch Jobs from Google Sheet securely)
         // =========================================================================
         const JOBS_SHEET_ID = '1R_T5GlHVhvJyYqHuGA8sDejF_d9tkiuP36GgsHe5LkU';
-        const JOBS_SHEET_URL = `https://docs.google.com/spreadsheets/d/${JOBS_SHEET_ID}/gviz/tq?tqx=out:json`;
+        const JOBS_SHEET_JSON_URL = `https://docs.google.com/spreadsheets/d/${JOBS_SHEET_ID}/gviz/tq?tqx=out:json`;
+        const JOBS_SHEET_CSV_URL = `https://docs.google.com/spreadsheets/d/${JOBS_SHEET_ID}/gviz/tq?tqx=out:csv`;
 
         let jobsData = []; // Data Store
 
         async function fetchJobsFromSheet() {
             try {
-                const response = await fetch(JOBS_SHEET_URL);
-                if (!response.ok) throw new Error('Network response was not ok');
-
-                const text = await response.text();
-                const jsonMatch = text.match(/google\.visualization\.Query\.setResponse\(([\s\S\w]+)\);/);
-
-                if (jsonMatch && jsonMatch[1]) {
-                    const json = JSON.parse(jsonMatch[1]);
-                    const rows = json.table.rows;
-
-                    jobsData = rows.map((row, id) => {
-                        const getVal = (idx) => (row.c && row.c[idx] && row.c[idx].v) ? row.c[idx].v : '';
-                        return {
-                            id: id,
-                            title: getVal(3) || 'Untitled Position',
-                            posterImage: getVal(4) || 'https://placehold.co/800x800/0b0430/f1ad18?text=We+Are+Hiring',
-                            fallbackImage: 'https://placehold.co/800x800/0b0430/f1ad18?text=AGGC+Careers',
-                            detailsHTML: getVal(5) || 'No details provided.'
-                        };
-                    }).filter(item => item.title !== 'Untitled Position' && item.title !== 'Title');
-
-                    renderJobs();
-                } else {
-                    throw new Error('Invalid JSON format');
+                jobsData = await fetchJobsJSON();
+            } catch (jsonError) {
+                console.warn("Google JSON feed failed, trying CSV feed...", jsonError);
+                try {
+                    jobsData = await fetchJobsCSV();
+                } catch (csvError) {
+                    console.error("Error fetching jobs data:", csvError);
+                    document.getElementById('loading-indicator').innerHTML = '<p class="text-red-500 font-bold">Failed to load jobs. Please check Sheet Access Permissions.</p>';
+                    return;
                 }
-            } catch (error) {
-                console.error("Error fetching jobs data:", error);
-                document.getElementById('loading-indicator').innerHTML = '<p class="text-red-500 font-bold">Failed to load jobs. Please check Sheet Access Permissions.</p>';
             }
+
+            renderJobs();
+        }
+
+        async function fetchJobsJSON() {
+            const response = await fetch(JOBS_SHEET_JSON_URL, { cache: 'no-store' });
+            if (!response.ok) throw new Error('Network response was not ok');
+
+            const text = await response.text();
+            const jsonMatch = text.match(/google\.visualization\.Query\.setResponse\(([\s\S\w]+)\);/);
+            if (!jsonMatch || !jsonMatch[1]) throw new Error('Invalid JSON format');
+
+            const json = JSON.parse(jsonMatch[1]);
+            const rows = json.table.rows || [];
+
+            return rows.map((row, id) => {
+                const getVal = (idx) => (row.c && row.c[idx] && row.c[idx].v) ? row.c[idx].v : '';
+                return normalizeJob(id, getVal(3), getVal(4), getVal(5));
+            }).filter(Boolean);
+        }
+
+        async function fetchJobsCSV() {
+            const response = await fetch(JOBS_SHEET_CSV_URL, { cache: 'no-store' });
+            if (!response.ok) throw new Error('Google CSV feed unavailable');
+
+            const csv = await response.text();
+            const rows = parseCSV(csv);
+            rows.shift();
+            return rows.map((row, id) => normalizeJob(id, row[3], row[4], row[5])).filter(Boolean);
+        }
+
+        function normalizeJob(id, titleValue, posterValue, detailsValue) {
+            const title = String(titleValue || '').trim();
+            if (!title || title === 'Title') return null;
+
+            return {
+                id,
+                title,
+                posterImage: String(posterValue || '').trim() || 'https://placehold.co/800x800/0b0430/f1ad18?text=We+Are+Hiring',
+                fallbackImage: 'https://placehold.co/800x800/0b0430/f1ad18?text=AGGC+Careers',
+                detailsHTML: String(detailsValue || '').trim() || 'No details provided.'
+            };
+        }
+
+        function parseCSV(csv) {
+            const rows = [];
+            let row = [];
+            let value = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < csv.length; i++) {
+                const char = csv[i];
+                const next = csv[i + 1];
+
+                if (char === '"' && inQuotes && next === '"') {
+                    value += '"';
+                    i++;
+                } else if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    row.push(value);
+                    value = '';
+                } else if ((char === '\n' || char === '\r') && !inQuotes) {
+                    if (char === '\r' && next === '\n') i++;
+                    row.push(value);
+                    if (row.some(cell => cell.trim() !== '')) rows.push(row);
+                    row = [];
+                    value = '';
+                } else {
+                    value += char;
+                }
+            }
+
+            row.push(value);
+            if (row.some(cell => cell.trim() !== '')) rows.push(row);
+            return rows;
         }
 
         // =========================================================================

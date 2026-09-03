@@ -15,6 +15,29 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+    function escapeHTML(value) {
+        return String(value ?? "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#39;");
+    }
+
+    function safeAssetUrl(value) {
+        const raw = String(value ?? "").trim();
+        if (!raw) return "";
+
+        try {
+            const url = new URL(raw, window.location.href);
+            const isSafeProtocol = url.protocol === "http:" || url.protocol === "https:" || url.protocol === "data:";
+            const isSafeImageData = url.protocol !== "data:" || /^data:image\/(?:png|jpe?g|gif|webp|svg\+xml);/i.test(raw);
+            return isSafeProtocol && isSafeImageData ? raw : "";
+        } catch {
+            return "";
+        }
+    }
+
     // 2. Render Main Layout (Header and Products Grid)
     renderCatalog(brandData, catalogContainer);
 
@@ -47,7 +70,9 @@ document.addEventListener("DOMContentLoaded", () => {
         container.closest("main")?.classList.add("product-detail-surface");
 
         const totalModels = brand.products.reduce((sum, product) => sum + product.models.length, 0);
-        const featureImage = brand.products[0]?.image || "";
+        const featureImage = safeAssetUrl(brand.products[0]?.image);
+        const brandTitle = escapeHTML(brand.brandTitle);
+        const brandLogo = safeAssetUrl(brand.brandLogo);
 
         // Brand Title Header
         const header = document.createElement("div");
@@ -55,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         header.innerHTML = `
             <div class="catalog-hero-copy">
                 <span class="catalog-kicker">Product Catalog</span>
-                <h2>${brand.brandTitle}</h2>
+                <h2>${brandTitle}</h2>
                 <p>Explore AGGC's selected product lines, model options, and dependable industrial solutions for Myanmar's infrastructure needs.</p>
                 <div class="catalog-stats">
                     <span>${brand.products.length} product lines</span>
@@ -64,9 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="catalog-hero-visual">
                 <div class="catalog-logo-plate">
-                    <img src="${brand.brandLogo}" alt="${brand.brandTitle} Logo" onerror="this.style.display='none'; this.parentElement.textContent='${brand.brandTitle}';">
+                    ${brandLogo ? `<img src="${escapeHTML(brandLogo)}" alt="${brandTitle} Logo" onerror="this.style.display='none';">` : `<span>${brandTitle}</span>`}
                 </div>
-                <img src="${featureImage}" alt="${brand.brandTitle} Product" class="catalog-hero-product" onerror="this.style.display='none';">
+                ${featureImage ? `<img src="${escapeHTML(featureImage)}" alt="${brandTitle} Product" class="catalog-hero-product" onerror="this.style.display='none';">` : ""}
             </div>
         `;
         container.appendChild(header);
@@ -79,18 +104,21 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement("div");
             card.className = "catalog-card catalog-reveal";
             card.style.animationDelay = `${index * 80}ms`;
+            const productTitle = escapeHTML(product.title);
+            const productImage = safeAssetUrl(product.image);
+            const modelPreview = product.models.slice(0, 4).map(escapeHTML).join(" / ");
 
             card.innerHTML = `
                 <div class="catalog-card-image">
-                    <img src="${product.image}" alt="${product.title}" onerror="this.onerror=null; this.src='img/placeholder.png';">
+                    ${productImage ? `<img src="${escapeHTML(productImage)}" alt="${productTitle}" onerror="this.onerror=null; this.src='img/placeholder.png';">` : ""}
                     <div class="catalog-card-count">
                         ${product.models.length.toString().padStart(2, '0')} models
                     </div>
                 </div>
                 <div class="catalog-card-body">
                     <span class="catalog-card-index">${String(index + 1).padStart(2, '0')}</span>
-                    <h3>${product.title}</h3>
-                    <p>${product.models.slice(0, 4).join(' / ')}</p>
+                    <h3>${productTitle}</h3>
+                    <p>${modelPreview}</p>
                     <button type="button">View Models <i class="fa-solid fa-arrow-right"></i></button>
                 </div>
             `;
@@ -112,12 +140,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // View 2: Model Listing Modal
     function openModelListModal(product) {
         modalContent.className = "bg-white rounded-[2rem] shadow-2xl border border-slate-100 max-w-lg w-full max-h-[85vh] flex flex-col p-6 sm:p-8 relative overflow-y-auto animate-modal-spring";
+        const productTitle = escapeHTML(product.title);
         
         modalContent.innerHTML = `
             <!-- Modal Title -->
             <div class="flex items-center justify-center gap-3 mb-6">
                 <div class="w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[9px] border-l-brand-gold"></div>
-                <h3 class="font-heading text-xl sm:text-2xl font-bold text-brand-navy tracking-wider uppercase text-center">${product.title}</h3>
+                <h3 class="font-heading text-xl sm:text-2xl font-bold text-brand-navy tracking-wider uppercase text-center">${productTitle}</h3>
                 <div class="w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[9px] border-r-brand-gold"></div>
             </div>
 
@@ -125,8 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="space-y-3.5 mb-8 flex-1 overflow-y-auto max-h-[50vh] pr-1.5 scrollbar-thin">
                 ${product.models.map((model, idx) => `
                     <div class="bg-[#fdf9ee] border border-slate-100 rounded-xl px-5 py-4 flex items-center justify-between shadow-sm hover:shadow-md hover:border-brand-gold/20 border transition-all duration-300 animate-fade-in-up" style="animation-delay: ${idx * 60}ms">
-                        <span class="font-heading font-bold text-brand-navy text-[15px] tracking-wide">${model}</span>
-                        <button class="enquire-btn btn-shine bg-[#22292f] hover:bg-brand-gold text-[#e1ae31] hover:text-white px-5 py-2.5 rounded-lg font-heading font-extrabold text-[11px] tracking-wider uppercase shadow transition-all duration-300" data-model="${model}">
+                        <span class="font-heading font-bold text-brand-navy text-[15px] tracking-wide">${escapeHTML(model)}</span>
+                        <button class="enquire-btn btn-shine bg-[#22292f] hover:bg-brand-gold text-[#e1ae31] hover:text-white px-5 py-2.5 rounded-lg font-heading font-extrabold text-[11px] tracking-wider uppercase shadow transition-all duration-300" data-model="${escapeHTML(model)}">
                             ENQUIRE NOW
                         </button>
                     </div>
@@ -159,6 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // View 3: Enquiry Form Modal
     function openEnquiryFormModal(product, modelName) {
         const productFullName = `${modelName} - ${capitalizeTitle(product.title)}`;
+        const productFullNameSafe = escapeHTML(productFullName);
         modalContent.className = "bg-white rounded-[2rem] shadow-2xl border border-slate-100 max-w-lg w-full max-h-[85vh] flex flex-col p-6 sm:p-8 relative overflow-y-auto animate-modal-spring";
 
         modalContent.innerHTML = `
@@ -175,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:items-center">
                     <label class="text-slate-600 font-heading text-xs sm:text-[13px] font-semibold">Product Name</label>
                     <div class="sm:col-span-2">
-                        <input type="text" name="product_name" value="${productFullName}" readonly
+                        <input type="text" name="product_name" value="${productFullNameSafe}" readonly
                             class="w-full bg-[#fdf9ee]/40 border border-[#e2d8bd] text-brand-navy rounded-lg px-4 py-2.5 text-sm font-semibold focus:outline-none cursor-not-allowed">
                     </div>
                 </div>
@@ -290,6 +320,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function showSuccessMessage(formData) {
+        const userName = escapeHTML(formData.name);
+        const productName = escapeHTML(formData.product);
         // UI Feedback - Show success transition
         modalContent.innerHTML = `
             <div class="flex flex-col items-center justify-center py-8 text-center animate-modal-spring">
@@ -298,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <h3 class="font-heading text-xl sm:text-2xl font-bold text-brand-navy mb-3">Enquiry Submitted!</h3>
                 <p class="text-slate-500 text-sm font-light leading-relaxed max-w-sm mb-6">
-                    Thank you, <strong class="text-slate-800">${formData.name}</strong>. We have received your request for <strong class="text-brand-navy">${formData.product}</strong>. Our team will get back to you shortly.
+                    Thank you, <strong class="text-slate-800">${userName}</strong>. We have received your request for <strong class="text-brand-navy">${productName}</strong>. Our team will get back to you shortly.
                 </p>
                 <button id="success-close-btn" class="bg-brand-navy hover:bg-brand-gold text-white font-heading font-bold uppercase text-[11px] tracking-wider py-3 px-8 rounded-lg transition-colors shadow">
                     CLOSE
