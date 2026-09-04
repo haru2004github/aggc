@@ -65,12 +65,11 @@
             position: relative;
             isolation: isolate;
             background:
-                linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.035) 42%, rgba(225,174,49,0.10)),
-                radial-gradient(circle at 18% 0%, rgba(56,103,214,0.24), transparent 34%),
-                radial-gradient(circle at 88% 18%, rgba(225,174,49,0.22), transparent 30%),
-                #0b1f46;
-            border: 1px solid rgba(255,255,255,0.12);
-            box-shadow: 0 18px 45px rgba(0,0,0,0.22);
+                linear-gradient(145deg, rgba(18,53,108,0.96), rgba(11,36,79,0.94) 56%, rgba(7,22,51,0.96)),
+                radial-gradient(circle at 16% 0%, rgba(225,174,49,0.12), transparent 34%),
+                radial-gradient(circle at 88% 18%, rgba(255,255,255,0.055), transparent 32%);
+            border: 1px solid rgba(255,255,255,0.16);
+            box-shadow: 0 18px 45px rgba(7,22,51,0.22);
         }
 
         .product-showcase-card::before {
@@ -79,7 +78,7 @@
             inset: 0;
             padding: 1px;
             border-radius: inherit;
-            background: linear-gradient(120deg, rgba(225,174,49,0.85), rgba(82,139,255,0.55), rgba(255,255,255,0.35), rgba(225,174,49,0.85));
+            background: linear-gradient(120deg, rgba(225,174,49,0.55), rgba(18,53,108,0.5), rgba(255,255,255,0.28), rgba(225,174,49,0.55));
             background-size: 260% 260%;
             animation: border-gradient-move 7s ease infinite;
             -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
@@ -97,15 +96,15 @@
             width: 55%;
             height: 180%;
             transform: rotate(18deg);
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
             transition: left 0.9s ease;
             pointer-events: none;
         }
 
         .product-showcase-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(225,174,49,0.5);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.34), 0 0 34px rgba(225,174,49,0.16);
+            border-color: rgba(225,174,49,0.52);
+            box-shadow: 0 30px 70px rgba(7,22,51,0.16), 0 0 34px rgba(225,174,49,0.14);
         }
 
         .product-showcase-card:hover::after {
@@ -119,8 +118,9 @@
 
         .product-image-panel {
             background:
-                radial-gradient(circle at 50% 100%, rgba(225,174,49,0.18), transparent 48%),
-                linear-gradient(145deg, rgba(6,18,38,0.96), rgba(12,34,76,0.94));
+                radial-gradient(circle at 50% 100%, rgba(225,174,49,0.2), transparent 48%),
+                radial-gradient(circle at 12% 8%, rgba(255,255,255,0.22), transparent 34%),
+                linear-gradient(145deg, rgba(20,55,118,0.86), rgba(7,22,51,0.8));
         }
 
         body {
@@ -766,10 +766,10 @@
     <div class="home-header-spacer h-20 w-full"></div>
 
     <section id="home"
-        class="relative min-h-[calc(100vh-80px)] overflow-hidden w-full border-b border-brand-gold/20 bg-[#071633]">
+        class="relative min-h-[calc(100vh-80px)] overflow-hidden w-full border-b border-brand-gold/20 bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633]">
 
         <!-- Full-width landscape carousel -->
-        <div class="absolute inset-0 bg-[#071633]">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633]">
             <img src="./img/slider_1.png" alt="AGGC 15 Years Anniversary"
                 class="carousel-img active absolute inset-0 w-full h-full object-cover object-center" />
             <img src="./img/slider_2.png" alt="AGGC Heavy Machinery"
@@ -823,7 +823,7 @@
             </div>
 
             <div
-                class="mt-16 grid grid-cols-3 gap-0 max-w-2xl border-y border-white/15 bg-[#071633]/[0.45] backdrop-blur-md">
+                class="mt-16 grid grid-cols-3 gap-0 max-w-2xl border-y border-white/15 bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633]/[0.45] backdrop-blur-md">
                 <div class="px-5 py-5">
                     <div class="text-white font-heading font-black text-2xl">20+</div>
                     <div class="text-slate-300 text-[10px] uppercase tracking-wider font-semibold mt-1">Years Exp.</div>
@@ -840,7 +840,7 @@
         </div>
 
         <div
-            class="absolute bottom-6 right-6 sm:right-10 z-30 flex items-center gap-2 px-4 py-2 rounded-full bg-[#071633]/70 border border-white/15 backdrop-blur-md">
+            class="absolute bottom-6 right-6 sm:right-10 z-30 flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633]/70 border border-white/15 backdrop-blur-md">
             <div class="flex items-center gap-2" id="heroCarouselIndicators">
                 <button type="button" onclick="goToHeroSlide(0)" aria-label="Slide 1"
                     class="hero-indicator group py-2 focus:outline-none">
@@ -968,7 +968,7 @@
 
     <!-- 4. Business Sectors Section (WHAT WE DO) -->
     <section id="sectors"
-        class="py-16 sm:py-24 bg-gradient-to-br from-[#071633] via-[#0b1f46] to-[#061226] relative border-t border-white/5 overflow-hidden">
+        class="py-16 sm:py-24 bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] relative border-t border-white/5 overflow-hidden">
         <!-- Floating ambient mesh light -->
         <div
             class="absolute -right-20 top-1/4 w-[300px] h-[300px] bg-[#e1ae31]/10 rounded-full blur-[100px] pointer-events-none z-0 animate-float-slow">
@@ -988,7 +988,7 @@
                             class="font-heading text-4xl sm:text-5xl font-black text-white tracking-tight uppercase mb-3">
                             WHAT WE DO
                         </h2>
-                        <div class="w-24 h-[4px] bg-brand-gold rounded-full mb-6"></div>
+                        <div class="w-20 h-[2px] bg-brand-gold rounded-full mb-6"></div>
                         <p class="text-slate-300 text-sm sm:text-[15px] leading-relaxed max-w-xl font-medium">
                             Today, AGGC operates across four strategic sectors:
                         </p>
@@ -1002,7 +1002,7 @@
                             <!-- Gold Gear Number Badge -->
                             <div class="relative w-16 h-16 flex-shrink-0 flex items-center justify-center">
                                 <i class="fa-solid fa-gear absolute inset-0 text-[64px] leading-none text-brand-gold drop-shadow-[0_0_18px_rgba(225,174,49,0.25)]"></i>
-                                <span class="relative z-10 w-8 h-8 rounded-full bg-[#071633] border border-white/15 text-brand-gold font-heading font-black text-[12px] flex items-center justify-center shadow-lg">01</span>
+                                <span class="relative z-10 w-8 h-8 rounded-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] border border-white/15 text-brand-gold font-heading font-black text-[12px] flex items-center justify-center shadow-lg">01</span>
                             </div>
                             <div>
                                 <h3
@@ -1022,7 +1022,7 @@
                             <!-- Gold Gear Number Badge -->
                             <div class="relative w-16 h-16 flex-shrink-0 flex items-center justify-center">
                                 <i class="fa-solid fa-gear absolute inset-0 text-[64px] leading-none text-brand-gold drop-shadow-[0_0_18px_rgba(225,174,49,0.25)]"></i>
-                                <span class="relative z-10 w-8 h-8 rounded-full bg-[#071633] border border-white/15 text-brand-gold font-heading font-black text-[12px] flex items-center justify-center shadow-lg">02</span>
+                                <span class="relative z-10 w-8 h-8 rounded-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] border border-white/15 text-brand-gold font-heading font-black text-[12px] flex items-center justify-center shadow-lg">02</span>
                             </div>
                             <div>
                                 <h3
@@ -1042,7 +1042,7 @@
                             <!-- Gold Gear Number Badge -->
                             <div class="relative w-16 h-16 flex-shrink-0 flex items-center justify-center">
                                 <i class="fa-solid fa-gear absolute inset-0 text-[64px] leading-none text-brand-gold drop-shadow-[0_0_18px_rgba(225,174,49,0.25)]"></i>
-                                <span class="relative z-10 w-8 h-8 rounded-full bg-[#071633] border border-white/15 text-brand-gold font-heading font-black text-[12px] flex items-center justify-center shadow-lg">03</span>
+                                <span class="relative z-10 w-8 h-8 rounded-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] border border-white/15 text-brand-gold font-heading font-black text-[12px] flex items-center justify-center shadow-lg">03</span>
                             </div>
                             <div>
                                 <h3
@@ -1062,7 +1062,7 @@
                             <!-- Gold Gear Number Badge -->
                             <div class="relative w-16 h-16 flex-shrink-0 flex items-center justify-center">
                                 <i class="fa-solid fa-gear absolute inset-0 text-[64px] leading-none text-brand-gold drop-shadow-[0_0_18px_rgba(225,174,49,0.25)]"></i>
-                                <span class="relative z-10 w-8 h-8 rounded-full bg-[#071633] border border-white/15 text-brand-gold font-heading font-black text-[12px] flex items-center justify-center shadow-lg">04</span>
+                                <span class="relative z-10 w-8 h-8 rounded-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] border border-white/15 text-brand-gold font-heading font-black text-[12px] flex items-center justify-center shadow-lg">04</span>
                             </div>
                             <div>
                                 <h3
@@ -1080,7 +1080,7 @@
 
                 <!-- Right Side: Sectors Graphic (5 cols) -->
                 <div
-                    class="lg:col-span-5 relative w-full h-[350px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl scroll-reveal flex items-center justify-center bg-gradient-to-br from-[#10295b] via-[#071633] to-[#061226] border border-brand-gold/20">
+                    class="lg:col-span-5 relative w-full h-[350px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl scroll-reveal flex items-center justify-center bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] border border-brand-gold/20">
                     <div class="absolute inset-x-8 top-8 h-px bg-gradient-to-r from-transparent via-brand-gold/60 to-transparent"></div>
                     <div class="absolute inset-y-8 right-8 w-px bg-gradient-to-b from-transparent via-brand-gold/50 to-transparent"></div>
                     <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -1099,7 +1099,7 @@
     </section>
 
     <!-- Local Strength, Global Reach Section -->
-    <section id="global-reach" class="py-16 sm:py-24 bg-gradient-to-br from-[#061226] via-[#071633] to-[#0b1f46] text-white relative overflow-hidden">
+    <section id="global-reach" class="py-16 sm:py-24 bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] text-white relative overflow-hidden">
         <!-- Ambient glowing backgrounds -->
         <div class="absolute top-1/4 -left-32 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -1117,7 +1117,7 @@
                         Local Strength,<br>
                         <span class="text-brand-gold drop-shadow-[0_4px_16px_rgba(241,173,24,0.3)]">Global Reach</span>
                     </h2>
-                    <div class="w-24 h-[4px] bg-brand-gold rounded-full my-6 shadow-[0_0_12px_rgba(241,173,24,0.6)]"></div>
+                    <div class="w-20 h-[2px] bg-brand-gold rounded-full my-6 shadow-[0_0_8px_rgba(241,173,24,0.38)]"></div>
                     <p class="text-slate-300 text-sm sm:text-base font-light leading-relaxed">
                         Connecting global operating strength with high-impact international alliances across Southeast Asia & the Middle East.
                     </p>
@@ -1218,14 +1218,14 @@
         </div>
     </section>
     <!-- 5. Trusted Brands & Products Section -->
-    <section id="brands" class="py-16 sm:py-24 bg-gradient-to-br from-[#061226] via-[#071633] to-[#0b1f46] relative overflow-hidden border-t border-brand-gold/20">
+    <section id="brands" class="home-product-section py-16 sm:py-24 relative overflow-hidden border-t border-brand-gold/20">
         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-gold/70 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 sm:mb-14">
                 <div>
                     <h4 class="text-brand-gold font-heading font-bold tracking-[0.2em] uppercase text-[11px] sm:text-[12px] mb-3">Industrial Portfolio</h4>
                     <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase leading-tight">Trusted Brands & Products</h2>
-                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-light max-w-2xl mt-4">A global-grade product portfolio for machinery, commercial vehicles, power systems, building solutions, energy products, and specialized engineering equipment.</p>
+                    <p class="text-slate-200 text-sm sm:text-base leading-relaxed font-light max-w-2xl mt-4">A global-grade product portfolio for machinery, commercial vehicles, power systems, building solutions, energy products, and specialized engineering equipment.</p>
                 </div>
                 <a href="products.html" class="inline-flex w-fit items-center gap-3 bg-brand-gold text-brand-navy px-6 py-3 font-heading font-black text-[11px] uppercase tracking-[0.18em] rounded hover:bg-[#f0bf42] transition-all shadow-[0_10px_28px_rgba(225,174,49,0.28)]">Explore Products <i class="fa-solid fa-arrow-right text-[11px]"></i></a>
             </div>
@@ -1309,7 +1309,7 @@
 
     <!-- 6. Global Network Section -->
     <section id="network"
-        class="py-16 sm:py-24 bg-gradient-to-br from-[#061226] via-[#071633] to-[#061226] border-t border-white/5 overflow-hidden relative">
+        class="py-16 sm:py-24 bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] border-t border-white/5 overflow-hidden relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-12">
             <!-- Header -->
             <div class="scroll-reveal">
@@ -1319,10 +1319,10 @@
                 <h2
                     class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase">
                     Global Partner Network</h2>
-                <div class="w-24 h-[4px] bg-brand-gold mx-auto mt-4 rounded-full"></div>
+                <div class="w-20 h-[2px] bg-brand-gold mx-auto mt-4 rounded-full"></div>
             </div>
             <!-- Balanced World Map Container -->
-            <div class="w-full max-w-5xl mx-auto relative border border-white/10 rounded-2xl overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.45)] bg-[#061226] scroll-reveal p-4 sm:p-6 lg:p-8">
+            <div class="w-full max-w-5xl mx-auto relative border border-white/10 rounded-2xl overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.45)] bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] scroll-reveal p-4 sm:p-6 lg:p-8">
                 <div class="relative aspect-square w-full max-w-[760px] mx-auto">
                     <img src="./img/global_network_map_dark.png" alt="Global Partner Network Map"
                         class="absolute inset-0 w-full h-full object-contain opacity-95 select-none pointer-events-none">
@@ -1353,19 +1353,19 @@
                     </div>
 
                     <div class="absolute z-20 left-[39%] top-[67%]">
-                        <span class="bg-[#071633]/95 border border-brand-gold/50 text-white px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-heading font-black tracking-[0.14em] uppercase shadow-lg">UAE</span>
+                        <span class="bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633]/95 border border-brand-gold/50 text-white px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-heading font-black tracking-[0.14em] uppercase shadow-lg">UAE</span>
                     </div>
                     <div class="absolute z-20 left-[54%] top-[74%]">
-                        <span class="bg-[#071633]/95 border border-brand-gold/50 text-white px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-heading font-black tracking-[0.14em] uppercase shadow-lg">Thailand</span>
+                        <span class="bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633]/95 border border-brand-gold/50 text-white px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-heading font-black tracking-[0.14em] uppercase shadow-lg">Thailand</span>
                     </div>
                     <div class="absolute z-20 left-[78%] top-[74%]">
-                        <span class="bg-[#071633]/95 border border-brand-gold/50 text-white px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-heading font-black tracking-[0.14em] uppercase shadow-lg">Cambodia</span>
+                        <span class="bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633]/95 border border-brand-gold/50 text-white px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-heading font-black tracking-[0.14em] uppercase shadow-lg">Cambodia</span>
                     </div>
                     <div class="absolute z-20 left-[84%] top-[58%]">
-                        <span class="bg-[#071633]/95 border border-brand-gold/50 text-white px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-heading font-black tracking-[0.14em] uppercase shadow-lg">Vietnam</span>
+                        <span class="bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633]/95 border border-brand-gold/50 text-white px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-heading font-black tracking-[0.14em] uppercase shadow-lg">Vietnam</span>
                     </div>
                     <div class="absolute z-20 left-[84%] top-[45%]">
-                        <span class="bg-[#071633]/95 border border-brand-gold/50 text-white px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-heading font-black tracking-[0.14em] uppercase shadow-lg">Hong Kong</span>
+                        <span class="bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633]/95 border border-brand-gold/50 text-white px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-heading font-black tracking-[0.14em] uppercase shadow-lg">Hong Kong</span>
                     </div>
                 </div>
             </div>
@@ -1379,7 +1379,7 @@
                 <div
                     class="bg-white/[0.03] border border-white/10 rounded-2xl p-4 hover:shadow-xl hover:-translate-y-1 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold transition-all duration-500 group cursor-default">
                     <div
-                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
+                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
                         <i class="fa-solid fa-map-pin text-brand-gold text-[15px] transition-colors"></i>
                     </div>
                     <h3
@@ -1394,7 +1394,7 @@
                 <div
                     class="bg-white/[0.03] border border-white/10 rounded-2xl p-4 hover:shadow-xl hover:-translate-y-1 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold transition-all duration-500 group cursor-default delay-75">
                     <div
-                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
+                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
                         <i class="fa-solid fa-earth-europe text-brand-gold text-[15px] transition-colors"></i>
                     </div>
                     <h3
@@ -1409,7 +1409,7 @@
                 <div
                     class="bg-white/[0.03] border border-white/10 rounded-2xl p-4 hover:shadow-xl hover:-translate-y-1 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold transition-all duration-500 group cursor-default delay-100">
                     <div
-                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
+                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
                         <i class="fa-solid fa-truck-moving text-brand-gold text-[15px] transition-colors"></i>
                     </div>
                     <h3
@@ -1424,7 +1424,7 @@
                 <div
                     class="bg-white/[0.03] border border-white/10 rounded-2xl p-4 hover:shadow-xl hover:-translate-y-1 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold transition-all duration-500 group cursor-default delay-150">
                     <div
-                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
+                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
                         <i class="fa-solid fa-gears text-brand-gold text-[15px] transition-colors"></i>
                     </div>
                     <h3
@@ -1439,7 +1439,7 @@
                 <div
                     class="bg-white/[0.03] border border-white/10 rounded-2xl p-4 hover:shadow-xl hover:-translate-y-1 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold transition-all duration-500 group cursor-default delay-200">
                     <div
-                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
+                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
                         <i class="fa-solid fa-coins text-brand-gold text-[15px] transition-colors"></i>
                     </div>
                     <h3
@@ -1454,7 +1454,7 @@
                 <div
                     class="bg-white/[0.03] border border-white/10 rounded-2xl p-4 hover:shadow-xl hover:-translate-y-1 hover:bg-brand-gold hover:text-brand-navy hover:border-brand-gold transition-all duration-500 group cursor-default delay-300">
                     <div
-                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
+                        class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors duration-300">
                         <i class="fa-solid fa-seedling text-brand-gold text-[15px] transition-colors"></i>
                     </div>
                     <h3
@@ -1470,7 +1470,7 @@
     </section>
 
     <!-- 7. Latest News Updates -->
-    <section id="news" class="py-16 sm:py-24 bg-gradient-to-br from-[#061226] via-[#071633] to-[#0b1f46] relative border-t border-white/5 overflow-hidden">
+    <section id="news" class="py-16 sm:py-24 bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] relative border-t border-white/5 overflow-hidden">
         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-gold/70 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 sm:mb-14">
@@ -1508,7 +1508,7 @@
         <div class="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-[#071633]/10 to-transparent pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
-                <div class="lg:col-span-5 bg-[#071633] text-white rounded-2xl p-7 sm:p-9 shadow-[0_24px_60px_rgba(7,22,51,0.18)] border border-white/10">
+                <div class="lg:col-span-5 bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] text-white rounded-2xl p-7 sm:p-9 shadow-[0_24px_60px_rgba(7,22,51,0.18)] border border-white/10">
                     <h4 class="text-brand-gold font-heading font-bold tracking-[0.2em] uppercase text-[11px] sm:text-[12px] mb-3">Get In Touch</h4>
                     <h2 class="font-heading text-3xl sm:text-4xl font-black tracking-tight uppercase mb-4">Contact Information</h2>
                     <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">Reach our team for product inquiries, project discussions, after-sales support, and business coordination.</p>
@@ -1550,7 +1550,7 @@
 
     <!-- Footer -->
     <!-- Redesigned Premium Footer (wePro style) -->
-    <footer class="bg-gradient-to-br from-[#061226] via-[#071633] to-[#0b1f46] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
+    <footer class="bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 lg:gap-6 mb-12">
 
@@ -1662,7 +1662,7 @@
                             class="w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-facebook-f"></i></a>
                         <a href="viber://chat?number=%2B959777555666"
-                            class="w-7 h-7 rounded-full bg-[#0b1f46] hover:bg-[#10295b] text-white flex items-center justify-center text-[11px] transition-colors"><i
+                            class="w-7 h-7 rounded-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] hover:bg-brand-gold hover:text-brand-navy text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-viber"></i></a>
                         <a href="mailto:info@aungyigroup.com"
                             class="w-7 h-7 rounded-full bg-brand-gold hover:bg-brand-gold/85 text-brand-navy flex items-center justify-center text-[11px] transition-colors"><i
@@ -1796,6 +1796,7 @@
         const SHEET_ID = '1xxAFdK_VZU80LDZVNfICGP3t2Gg7CvZjtBRoM0yD-v0';
         const SHEET_JSON_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
         const SHEET_CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv`;
+        const buildSheetUrl = (url) => `${url}&cacheBust=${Date.now()}`;
 
         async function fetchLatestNews() {
             try {
@@ -1813,7 +1814,7 @@
         }
 
         async function fetchNewsFromJSON() {
-            const response = await fetch(SHEET_JSON_URL, { cache: 'no-store' });
+            const response = await fetch(buildSheetUrl(SHEET_JSON_URL), { cache: 'no-store' });
             if (!response.ok) throw new Error('Google JSON feed unavailable');
 
             const text = await response.text();
@@ -1838,7 +1839,7 @@
         }
 
         async function fetchNewsFromCSV() {
-            const response = await fetch(SHEET_CSV_URL, { cache: 'no-store' });
+            const response = await fetch(buildSheetUrl(SHEET_CSV_URL), { cache: 'no-store' });
             if (!response.ok) throw new Error('Google CSV feed unavailable');
 
             const csv = await response.text();
@@ -1876,7 +1877,7 @@
                 id: item.id,
                 submittedAt: String(item.submittedAt || '').trim(),
                 title,
-                heroImage: String(item.heroImage || '').trim() || 'https://placehold.co/1200x800/061226/e1ae31?text=AGGC+News',
+                heroImage: String(item.heroImage || '').trim() || 'https://placehold.co/1200x800/12356c/e1ae31?text=AGGC+News',
                 description: String(item.description || '').trim() || 'Read the latest update from the AGGC network.'
             };
         }
@@ -1953,7 +1954,7 @@
                 grid.innerHTML += `
                 <a href="${cardUrl}" class="latest-news-card ${isFeature ? 'latest-news-feature' : ''}">
                     <div class="latest-news-card-bg">
-                        <img src="${escapeHTML(item.heroImage)}" alt="${escapeHTML(item.title)}" onerror="this.src='https://placehold.co/1200x800/061226/e1ae31?text=AGGC+News'">
+                        <img src="${escapeHTML(item.heroImage)}" alt="${escapeHTML(item.title)}" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/12356c/e1ae31?text=AGGC+News'">
                     </div>
 
                     <div class="latest-news-content">

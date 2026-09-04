@@ -282,22 +282,39 @@
         </div>
     </nav>
 
-    <section class="product-premium-hero relative pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
+    <section class="product-premium-hero unified-page-hero relative pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
+        <div class="product-hero-pine absolute bottom-[18px] sm:bottom-[26px] left-0 right-0 w-full overflow-hidden pointer-events-none z-0 opacity-45">
+            <svg viewBox="0 0 1440 220" preserveAspectRatio="none" class="w-full h-[120px] sm:h-[180px] md:h-[220px]">
+                <defs>
+                    <linearGradient id="productPineHorizonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#12356c" stop-opacity="0.2" />
+                        <stop offset="50%" stop-color="#071633" stop-opacity="0.7" />
+                        <stop offset="100%" stop-color="#061226" stop-opacity="0.95" />
+                    </linearGradient>
+                </defs>
+                <path fill="#10295b" fill-opacity="0.35"
+                    d="M0,140 Q180,90 360,130 T720,100 T1080,125 T1440,95 L1440,220 L0,220 Z" />
+                <path fill="#0b1f46" fill-opacity="0.55"
+                    d="M0,165 C240,125 450,175 700,140 C950,105 1200,165 1440,135 L1440,220 L0,220 Z" />
+                <path fill="url(#productPineHorizonGrad)"
+                    d="M0,220 L0,185 L12,170 L18,178 L28,155 L38,175 L50,145 L62,172 L75,138 L88,168 L102,142 L115,165 L130,130 L145,162 L160,128 L175,160 L190,135 L205,162 L220,125 L235,158 L250,132 L265,160 L280,122 L295,155 L310,130 L325,158 L340,120 L355,152 L370,126 L385,154 L400,118 L415,150 L430,125 L445,155 L460,115 L475,148 L490,122 L505,152 L520,112 L535,145 L550,120 L565,150 L580,110 L595,142 L610,118 L625,148 L640,108 L655,140 L670,115 L685,145 L700,105 L715,138 L730,112 L745,142 L760,102 L775,135 L790,110 L805,140 L820,100 L835,132 L850,108 L865,138 L880,98 L895,130 L910,105 L925,135 L940,95 L955,128 L970,102 L985,132 L1000,92 L1015,125 L1030,100 L1045,130 L1060,90 L1075,122 L1090,98 L1105,128 L1120,88 L1135,120 L1150,95 L1165,125 L1180,85 L1195,118 L1210,92 L1225,122 L1240,82 L1255,115 L1270,90 L1285,120 L1300,80 L1315,112 L1330,88 L1345,118 L1360,78 L1375,110 L1390,85 L1405,115 L1420,80 L1435,110 L1440,105 L1440,220 Z" />
+            </svg>
+        </div>
 
         <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Slanted gold block slashes tag -->
-            <div class="flex items-center justify-center gap-2 mb-5">
-                <div class="w-2.5 h-5 bg-brand-gold transform -skew-x-12"></div>
-                <span class="text-white font-heading font-black text-[11px] sm:text-xs uppercase tracking-[0.25em]">Our
+            <div class="inline-flex items-center justify-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.08] border border-white/15 mb-6 backdrop-blur-sm">
+                <div class="w-2 h-4 bg-brand-gold transform -skew-x-12"></div>
+                <span class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Our
                     Portfolio</span>
-                <div class="w-2.5 h-5 bg-brand-gold transform skew-x-12"></div>
+                <div class="w-2 h-4 bg-brand-gold transform -skew-x-12"></div>
             </div>
 
             <h1
-                class="font-heading text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight uppercase tracking-tight">
+                class="font-heading text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight uppercase tracking-tight drop-shadow-md">
                 Our <span class="text-brand-gold">Products</span>
             </h1>
-            <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mt-5 leading-relaxed font-light">
+            <p class="text-slate-200 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mt-5 leading-relaxed font-light drop-shadow">
                 Guaranteed genuine heavy machinery, high-performance engines, and specialized parts for major
                 industries.
             </p>
@@ -326,7 +343,7 @@
             <!-- Product Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 <!-- Liugong Card -->
-                <a href="product_page/Liugong.html" class="group product-card-hover block w-full bg-gradient-to-b from-[#1c3066] to-[#051126] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[6px] border-b-[#FFC107] fade-up-element">
+                <a href="product_page/Liugong.html" class="group product-card-hover block w-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[2px] border-b-[#FFC107] fade-up-element">
                     <!-- Top-Right Yellow Corner Accent -->
                     <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
                         <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
@@ -374,7 +391,7 @@
                 </a>
 
                 <!-- JAC Motors Card -->
-                <a href="product_page/jac_moter.html" class="group product-card-hover block w-full bg-gradient-to-b from-[#1c3066] to-[#051126] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[6px] border-b-[#FFC107] fade-up-element" style="transition-delay: 100ms;">
+                <a href="product_page/jac_moter.html" class="group product-card-hover block w-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[2px] border-b-[#FFC107] fade-up-element" style="transition-delay: 100ms;">
                     <!-- Top-Right Yellow Corner Accent -->
                     <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
                         <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
@@ -422,7 +439,7 @@
                 </a>
 
                 <!-- Powermax Card -->
-                <a href="product_page/powermax.html" class="group product-card-hover block w-full bg-gradient-to-b from-[#1c3066] to-[#051126] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[6px] border-b-[#FFC107] fade-up-element" style="transition-delay: 200ms;">
+                <a href="product_page/powermax.html" class="group product-card-hover block w-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[2px] border-b-[#FFC107] fade-up-element" style="transition-delay: 200ms;">
                     <!-- Top-Right Yellow Corner Accent -->
                     <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
                         <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
@@ -470,7 +487,7 @@
                 </a>
 
                 <!-- Izumi Card -->
-                <a href="product_page/izumi.html" class="group product-card-hover block w-full bg-gradient-to-b from-[#1c3066] to-[#051126] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[6px] border-b-[#FFC107] fade-up-element">
+                <a href="product_page/izumi.html" class="group product-card-hover block w-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[2px] border-b-[#FFC107] fade-up-element">
                     <!-- Top-Right Yellow Corner Accent -->
                     <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
                         <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
@@ -526,7 +543,7 @@
                 
 
                 <!-- Turboil Card -->
-                <a id="brand-turboil" href="#brand-turboil" class="group product-card-hover block w-full bg-gradient-to-b from-[#1c3066] to-[#051126] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[6px] border-b-[#FFC107] fade-up-element" style="transition-delay: 200ms;">
+                <a id="brand-turboil" href="#brand-turboil" class="group product-card-hover block w-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[2px] border-b-[#FFC107] fade-up-element" style="transition-delay: 200ms;">
                     <!-- Top-Right Yellow Corner Accent -->
                     <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
                         <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
@@ -574,7 +591,7 @@
                 </a>
 
                 <!-- Sigma Card -->
-                <a href="product_page/sigma.html" class="group product-card-hover block w-full bg-gradient-to-b from-[#1c3066] to-[#051126] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[6px] border-b-[#FFC107] fade-up-element">
+                <a href="product_page/sigma.html" class="group product-card-hover block w-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[2px] border-b-[#FFC107] fade-up-element">
                     <!-- Top-Right Yellow Corner Accent -->
                     <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
                         <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
@@ -583,12 +600,12 @@
                     <div class="p-6 sm:p-8 flex flex-col h-full relative z-10">
                         <!-- Logo Area -->
                         <div class="mb-6 h-12 w-fit flex items-center bg-white/95 backdrop-blur-sm rounded-xl px-4 py-1.5 shadow-sm border border-white/20">
-                            <h3 class="text-[#071633] text-3xl font-black tracking-widest uppercase italic">SIGMA</h3>
+                            <img src="./img/Products/sigma_logo.png" alt="Sigma Logo" class="max-h-full object-contain opacity-100 transition-opacity duration-300 group-hover:opacity-100">
                         </div>
                         <!-- Main Product Image -->
                         <div class="mb-8 flex justify-center items-center h-44 relative">
                             <div class="absolute inset-0 bg-[#FFC107] opacity-0 blur-2xl rounded-full group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
-                            <img src="./img/Products/sigma_product.png" alt="Turboil Product" class="max-h-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-xl relative z-10">
+                            <img src="./img/Products/sigma_product.png" alt="Sigma Product" class="max-h-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-xl relative z-10">
                         </div>
                         <!-- Feature List -->
                         <ul class="space-y-4 mb-8 flex-grow">
@@ -626,7 +643,7 @@
 
     <!-- Footer (Same as Main Page index.html) -->
     <!-- Redesigned Premium Footer (wePro style) -->
-    <footer class="bg-gradient-to-br from-[#061226] via-[#071633] to-[#0b1f46] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
+    <footer class="bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 lg:gap-6 mb-12">
 
@@ -738,7 +755,7 @@
                             class="w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-facebook-f"></i></a>
                         <a href="viber://chat?number=%2B959777555666"
-                            class="w-7 h-7 rounded-full bg-[#0b1f46] hover:bg-[#10295b] text-white flex items-center justify-center text-[11px] transition-colors"><i
+                            class="w-7 h-7 rounded-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] hover:bg-brand-gold hover:text-brand-navy text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-viber"></i></a>
                         <a href="mailto:info@aungyigroup.com"
                             class="w-7 h-7 rounded-full bg-brand-gold hover:bg-brand-gold/85 text-brand-navy flex items-center justify-center text-[11px] transition-colors"><i

@@ -130,7 +130,7 @@
     <link rel="stylesheet" href="./site-effects.css">
 </head>
 
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+<body class="premium-content-page bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
     <!-- 1. Navigation Bar (Premium Glassmorphism Design) -->
     <nav id="navbar"
@@ -259,12 +259,12 @@
         </div>
     </nav>
 
-    <section class="relative bg-gradient-to-b from-[#061226] via-[#0d143a] to-[#131d52] pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
+    <section class="unified-page-hero relative bg-gradient-to-b from-[#12356c] via-[#0d2858] to-[#071633] pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
         <!-- Subtle Starry Night & Grid Watermark -->
         <div class="absolute inset-0 opacity-[0.05]"
             style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
         <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-gold/15 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute top-1/3 -left-40 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/3 -left-40 w-96 h-96 bg-[#12356c]/30 rounded-full blur-3xl pointer-events-none"></div>
 
         <!-- Pine Forest & Mountain Horizon Silhouette Background Decoration -->
         <div class="absolute bottom-[35px] sm:bottom-[45px] left-0 right-0 w-full overflow-hidden pointer-events-none z-0 opacity-45">
@@ -272,7 +272,7 @@
                 <defs>
                     <linearGradient id="pineHorizonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" stop-color="#18235c" stop-opacity="0.2" />
-                        <stop offset="50%" stop-color="#0d143a" stop-opacity="0.7" />
+                        <stop offset="50%" stop-color="#071633" stop-opacity="0.7" />
                         <stop offset="100%" stop-color="#070a21" stop-opacity="0.95" />
                     </linearGradient>
                 </defs>
@@ -289,23 +289,23 @@
         <div class="absolute inset-0 opacity-[0.03]"
             style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 16px 16px;"></div>
         <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl"></div>
-        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-[#12356c]/22 rounded-full blur-3xl"></div>
 
         <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Slanted gold block slashes tag -->
-            <div class="flex items-center justify-center gap-2 mb-5">
-                <div class="w-2.5 h-5 bg-brand-gold transform -skew-x-12"></div>
+            <div class="inline-flex items-center justify-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.08] border border-white/15 mb-6 backdrop-blur-sm">
+                <div class="w-2 h-4 bg-brand-gold transform -skew-x-12"></div>
                 <span
-                    class="text-white font-heading font-black text-[11px] sm:text-xs uppercase tracking-[0.25em]">Media
+                    class="text-brand-gold font-heading font-black text-xs uppercase tracking-[0.25em]">Media
                     Center</span>
-                <div class="w-2.5 h-5 bg-brand-gold transform skew-x-12"></div>
+                <div class="w-2 h-4 bg-brand-gold transform -skew-x-12"></div>
             </div>
 
             <h1
-                class="font-heading text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight uppercase tracking-tight">
+                class="font-heading text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight uppercase tracking-tight drop-shadow-md">
                 News & <span class="text-brand-gold">Updates</span>
             </h1>
-            <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mt-5 leading-relaxed font-light">
+            <p class="text-slate-200 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mt-5 leading-relaxed font-light drop-shadow">
                 Stay informed with the latest announcements, media releases, and company updates from AGGC.
             </p>
         </div>
@@ -322,7 +322,7 @@
 </section>
 
     <!-- 3. Main Content Area -->
-    <main class="flex-grow w-full bg-slate-50 relative py-16 sm:py-24 min-h-[75vh] overflow-hidden">
+    <main class="premium-content-main flex-grow w-full bg-slate-50 relative py-16 sm:py-24 min-h-[75vh] overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
 
             <!-- SECTION A: NEWS LIST (Grid View) -->
@@ -426,7 +426,7 @@
 
     <!-- Footer (Same as Main Page index.html) -->
     <!-- Redesigned Premium Footer (wePro style) -->
-    <footer class="bg-gradient-to-br from-[#061226] via-[#071633] to-[#0b1f46] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
+    <footer class="bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 lg:gap-6 mb-12">
 
@@ -538,7 +538,7 @@
                             class="w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-facebook-f"></i></a>
                         <a href="viber://chat?number=%2B959777555666"
-                            class="w-7 h-7 rounded-full bg-[#0b1f46] hover:bg-[#10295b] text-white flex items-center justify-center text-[11px] transition-colors"><i
+                            class="w-7 h-7 rounded-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] hover:bg-brand-gold hover:text-brand-navy text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-viber"></i></a>
                         <a href="mailto:info@aungyigroup.com"
                             class="w-7 h-7 rounded-full bg-brand-gold hover:bg-brand-gold/85 text-brand-navy flex items-center justify-center text-[11px] transition-colors"><i
@@ -574,6 +574,7 @@
         // Google Visualization API URL to fetch sheet data as JSON
         const SHEET_JSON_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
         const SHEET_CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv`;
+        const buildSheetUrl = (url) => `${url}&cacheBust=${Date.now()}`;
 
         let newsData = []; // Store fetched news
 
@@ -592,7 +593,7 @@
 
         async function fetchNewsData() {
             try {
-                const response = await fetch(SHEET_JSON_URL, { cache: 'no-store' });
+                const response = await fetch(buildSheetUrl(SHEET_JSON_URL), { cache: 'no-store' });
                 if (!response.ok) throw new Error('Network response was not ok');
 
                 const text = await response.text();
@@ -618,7 +619,7 @@
         }
 
         async function fetchNewsCSVData() {
-            const response = await fetch(SHEET_CSV_URL, { cache: 'no-store' });
+            const response = await fetch(buildSheetUrl(SHEET_CSV_URL), { cache: 'no-store' });
             if (!response.ok) throw new Error('Google CSV feed unavailable');
 
             const csv = await response.text();
@@ -634,7 +635,7 @@
                 return {
                     id: id + 1,
                     title: (row[indexes.title] || '').trim() || 'Untitled News',
-                    heroImage: (row[indexes.hero] || '').trim() || 'https://placehold.co/800x500/061226/e1ae31?text=News+Image',
+                    heroImage: (row[indexes.hero] || '').trim() || 'https://placehold.co/800x500/12356c/e1ae31?text=News+Image',
                     description: (row[indexes.desc] || '').trim() || 'No description available.',
                     gallery
                 };
@@ -743,7 +744,7 @@
                 return {
                     id: id + 1, // 1-based indexing to match fallback data IDs
                     title: getVal(safeIdxTitle) || 'Untitled News',
-                    heroImage: getVal(safeIdxHero) || 'https://placehold.co/800x500/0b0430/f1ad18?text=News+Image',
+                    heroImage: getVal(safeIdxHero) || 'https://placehold.co/800x500/12356c/e1ae31?text=News+Image',
                     description: getVal(safeIdxDesc) || 'No description available.',
                     gallery: gallery
                 };
@@ -810,10 +811,20 @@
             newsGrid.classList.remove('hidden');
             newsGrid.innerHTML = '';
 
+            if (!newsData.length) {
+                newsGrid.innerHTML = `
+                    <div class="premium-news-card rounded-2xl p-8 sm:p-10 text-center col-span-full">
+                        <h4 class="text-xl sm:text-2xl font-heading font-extrabold text-brand-navy">No news available</h4>
+                        <p class="text-slate-500 text-sm sm:text-base mt-2">The Google Sheet is reachable, but no published news rows were found.</p>
+                    </div>
+                `;
+                return;
+            }
+
             newsData.forEach(item => {
                 // Card HTML Structure
                 const card = document.createElement('div');
-                card.className = "w-full group/card cursor-pointer block bg-white rounded-xl border border-slate-200 shadow-[0_10px_30px_rgba(7,22,51,0.06)] hover:shadow-[0_24px_50px_rgba(7,22,51,0.16)] hover:-translate-y-1.5 transition-all duration-500 overflow-hidden flex flex-col";
+                card.className = "premium-news-card scroll-reveal w-full group/card cursor-pointer block rounded-2xl transition-all duration-500 overflow-hidden flex flex-col";
                 card.onclick = () => {
                     history.pushState(null, '', '?id=' + item.id);
                     showArticleDetail(item.id);
@@ -821,20 +832,20 @@
 
                 // Date is completely removed from the card design
                 card.innerHTML = `
-                    <div class="h-56 sm:h-64 overflow-hidden relative bg-[#061226]">
-                        <img src="${escapeHTML(item.heroImage)}" alt="${escapeHTML(item.title)}" class="w-full h-full object-cover transform group-hover/card:scale-105 transition-transform duration-700 ease-out" onerror="this.src='https://placehold.co/800x500/061226/e1ae31?text=AGGC+News'">
+                    <div class="premium-news-media h-56 sm:h-64 overflow-hidden relative bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633]">
+                        <img src="${escapeHTML(item.heroImage)}" alt="${escapeHTML(item.title)}" class="w-full h-full object-cover transform group-hover/card:scale-105 transition-transform duration-700 ease-out" onerror="this.onerror=null;this.src='https://placehold.co/800x500/12356c/e1ae31?text=AGGC+News'">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#061226]/75 via-transparent to-transparent"></div>
                         <span class="absolute left-4 top-4 bg-brand-gold text-brand-navy px-3 py-1 rounded-full text-[10px] font-heading font-black uppercase tracking-[0.16em]">AGGC News</span>
                     </div>
                     
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow relative">
+                    <div class="premium-news-body p-6 sm:p-8 flex flex-col flex-grow relative">
                         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-gold via-[#f0bf42] to-transparent"></div>
                         <h4 class="text-[18px] sm:text-[21px] font-heading font-extrabold text-brand-navy mb-3 group-hover/card:text-brand-gold transition-colors leading-tight line-clamp-2">${escapeHTML(item.title)}</h4>
                         <p class="text-[14px] text-slate-500 leading-[1.8] mb-6 flex-grow line-clamp-3">${escapeHTML(item.description)}</p>
                         
                         <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
                             <span class="text-[11px] font-heading font-black text-brand-gold uppercase tracking-[0.2em]">Read Full Article</span>
-                            <div class="w-9 h-9 rounded-full bg-[#061226] flex items-center justify-center text-brand-gold border border-[#061226] group-hover/card:bg-brand-gold group-hover/card:text-brand-navy group-hover/card:border-brand-gold transition-all shadow-sm">
+                            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] flex items-center justify-center text-brand-gold border border-[#061226] group-hover/card:bg-brand-gold group-hover/card:text-brand-navy group-hover/card:border-brand-gold transition-all shadow-sm">
                                 <i class="fa-solid fa-arrow-right text-[12px] -rotate-45 group-hover/card:rotate-0 transition-transform duration-300"></i>
                             </div>
                         </div>

@@ -15,61 +15,6 @@
     }
 }
 
-.page-hero-with-image {
-    isolation: isolate;
-}
-
-.hero-faint-image {
-    --hero-faint-image: url('./img/about_us_complex_render.png');
-    position: absolute;
-    right: clamp(1.25rem, 5vw, 5.5rem);
-    top: clamp(5.5rem, 9vw, 7.5rem);
-    bottom: clamp(1rem, 3vw, 2.25rem);
-    width: min(520px, 40vw);
-    border-radius: 54px 14px 54px 14px;
-    overflow: hidden;
-    border: 1px solid rgba(225, 174, 49, 0.24);
-    background-image: var(--hero-faint-image);
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
-    opacity: 0.28;
-    transform: rotate(1.35deg);
-    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%, #000 100%);
-    mask-image: linear-gradient(90deg, transparent 0%, #000 30%, #000 100%);
-    pointer-events: none;
-    z-index: 1;
-}
-
-.hero-faint-image::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(90deg, rgba(6, 18, 38, 0.72), rgba(6, 18, 38, 0.12) 56%, rgba(6, 18, 38, 0.5)),
-        linear-gradient(0deg, rgba(6, 18, 38, 0.58), transparent 42%);
-}
-
-.hero-faint-products {
-    --hero-faint-image: url('./img/Products/luigong_product.png');
-}
-
-.hero-faint-whatwedo {
-    --hero-faint-image: url('./img/what_we_do/grid_substation_powermax.png');
-}
-
-.hero-faint-activities {
-    --hero-faint-image: url('./img/slider_3.png');
-}
-
-.hero-faint-careers {
-    --hero-faint-image: url('./img/about_us_complex_render.png');
-}
-
-.hero-faint-news {
-    --hero-faint-image: url('./img/20260226-ISO-01.jpg');
-}
-
 .scroll-reveal,
 .scroll-reveal-left,
 .scroll-reveal-right {
@@ -165,18 +110,51 @@
     background: linear-gradient(to top, rgba(6, 18, 38, 0.76), rgba(6, 18, 38, 0.08) 58%, transparent) !important;
 }
 
-@media (max-width: 900px) {
-    .hero-faint-image {
-        left: 50%;
-        right: auto;
-        top: 5.8rem;
-        bottom: 1rem;
-        width: min(76vw, 430px);
-        opacity: 0.16;
-        transform: translateX(-50%) rotate(1deg);
-        -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 20%, #000 80%, transparent 100%);
-        mask-image: linear-gradient(90deg, transparent 0%, #000 20%, #000 80%, transparent 100%);
-    }
+.gallery-page {
+    background: #071633 !important;
+    color: #ffffff;
+}
+
+.gallery-page .premium-content-main {
+    background: var(--aggc-section-surface) !important;
+    padding-top: clamp(2.5rem, 7vw, 4rem) !important;
+}
+
+.gallery-page .premium-content-main::before {
+    background:
+        radial-gradient(circle at 16% 4%, rgba(225, 174, 49, 0.08), transparent 28%),
+        radial-gradient(circle at 84% 18%, rgba(255, 255, 255, 0.045), transparent 32%) !important;
+}
+
+.gallery-page #loading-indicator p {
+    color: #ffffff !important;
+}
+
+.gallery-page .loader {
+    border-color: rgba(255, 255, 255, 0.18) !important;
+    border-top-color: #e1ae31 !important;
+}
+
+.gallery-page .premium-activity-card {
+    opacity: 1 !important;
+    transform: none !important;
+    background: var(--aggc-card-surface) !important;
+    border-color: rgba(225, 174, 49, 0.18) !important;
+    box-shadow: 0 22px 52px rgba(3, 10, 24, 0.3) !important;
+}
+
+.gallery-page .premium-activity-card h2 {
+    color: #ffffff !important;
+}
+
+.gallery-page .premium-activity-card p {
+    color: rgba(226, 232, 240, 0.78) !important;
+}
+
+.gallery-page .premium-media-tile {
+    background: rgba(8, 27, 61, 0.82) !important;
+    border-color: rgba(225, 174, 49, 0.22) !important;
+    box-shadow: 0 16px 34px rgba(3, 10, 24, 0.24) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -243,6 +221,46 @@ body.home-immersive-header #navbar:not(.header-over-hero) {
     -webkit-backdrop-filter: blur(12px);
 }
 
+.unified-page-hero {
+    background:
+        radial-gradient(circle at 18% 14%, rgba(225, 174, 49, 0.1), transparent 26%),
+        radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.055), transparent 34%),
+        linear-gradient(135deg, #12356c 0%, #0d2858 46%, #071633 100%) !important;
+    padding-top: 6rem !important;
+    padding-bottom: 3rem !important;
+    border-bottom: 1px solid rgba(225, 174, 49, 0.18);
+}
+
+.unified-page-hero::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: min(1120px, calc(100% - 2rem));
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, rgba(225, 174, 49, 0.38), transparent);
+    pointer-events: none;
+    z-index: 18;
+}
+
+.unified-page-hero > .absolute.bottom-0,
+.unified-page-hero .about-hero-image-panel {
+    display: none !important;
+}
+
+.unified-page-hero .relative.z-20 {
+    position: relative;
+    z-index: 20;
+}
+
+@media (min-width: 640px) {
+    .unified-page-hero {
+        padding-top: 8rem !important;
+        padding-bottom: 4rem !important;
+    }
+}
+
 .about-hero-image-panel {
     border-radius: 54px 14px 54px 14px;
     overflow: hidden;
@@ -265,9 +283,9 @@ body.home-immersive-header #navbar:not(.header-over-hero) {
 
 .branches-fresh {
     background:
-        radial-gradient(circle at 12% 18%, rgba(225, 174, 49, 0.18), transparent 30%),
-        radial-gradient(circle at 88% 78%, rgba(42, 122, 255, 0.18), transparent 34%),
-        linear-gradient(135deg, #061226 0%, #071633 46%, #10295b 100%) !important;
+        radial-gradient(circle at 12% 18%, rgba(225, 174, 49, 0.1), transparent 28%),
+        radial-gradient(circle at 88% 78%, rgba(255, 255, 255, 0.055), transparent 34%),
+        linear-gradient(135deg, #12356c 0%, #0d2858 50%, #071633 100%) !important;
 }
 
 .branches-fresh::before {
@@ -335,10 +353,10 @@ body.home-immersive-header #navbar:not(.header-over-hero) {
 
 .strategic-pillars-section {
     background:
-        radial-gradient(circle at 12% 12%, rgba(225, 174, 49, 0.22), transparent 30%),
-        radial-gradient(circle at 86% 18%, rgba(42, 122, 255, 0.18), transparent 34%),
-        radial-gradient(circle at 45% 100%, rgba(225, 174, 49, 0.12), transparent 38%),
-        linear-gradient(135deg, #061226 0%, #071633 48%, #10295b 100%) !important;
+        radial-gradient(circle at 12% 12%, rgba(225, 174, 49, 0.1), transparent 28%),
+        radial-gradient(circle at 86% 18%, rgba(255, 255, 255, 0.055), transparent 34%),
+        radial-gradient(circle at 45% 100%, rgba(225, 174, 49, 0.06), transparent 38%),
+        linear-gradient(135deg, #12356c 0%, #0d2858 48%, #071633 100%) !important;
 }
 
 .strategic-pillars-section::before {
@@ -440,10 +458,10 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
     position: relative;
     overflow: hidden;
     background:
-        radial-gradient(ellipse at 18% 8%, rgba(225, 174, 49, 0.12), transparent 30%),
-        radial-gradient(ellipse at 82% 32%, rgba(42, 122, 255, 0.14), transparent 34%),
-        radial-gradient(ellipse at 22% 72%, rgba(225, 174, 49, 0.09), transparent 28%),
-        linear-gradient(180deg, #10295b 0%, #071633 14%, #061226 38%, #0a1a38 66%, #071633 100%);
+        radial-gradient(ellipse at 18% 8%, rgba(225, 174, 49, 0.08), transparent 30%),
+        radial-gradient(ellipse at 82% 32%, rgba(255, 255, 255, 0.05), transparent 34%),
+        radial-gradient(ellipse at 22% 72%, rgba(225, 174, 49, 0.05), transparent 28%),
+        linear-gradient(180deg, #12356c 0%, #0d2858 30%, #0a214a 62%, #071633 100%);
 }
 
 .whatwedo-flow::before {
@@ -532,9 +550,9 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
 
 .sector-energy-gradient {
     background:
-        radial-gradient(circle at 10% 18%, rgba(225, 174, 49, 0.22), transparent 28%),
-        radial-gradient(circle at 82% 10%, rgba(18, 95, 180, 0.22), transparent 34%),
-        linear-gradient(135deg, #061226 0%, #071633 46%, #12356c 100%) !important;
+        radial-gradient(circle at 10% 18%, rgba(225, 174, 49, 0.1), transparent 28%),
+        radial-gradient(circle at 82% 10%, rgba(255, 255, 255, 0.055), transparent 34%),
+        linear-gradient(135deg, #12356c 0%, #0d2858 48%, #071633 100%) !important;
 }
 
 .sector-energy-gradient::after {
@@ -544,9 +562,9 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
 
 .sector-machinery-gradient {
     background:
-        radial-gradient(circle at 90% 18%, rgba(225, 174, 49, 0.2), transparent 30%),
-        radial-gradient(circle at 14% 70%, rgba(42, 122, 255, 0.18), transparent 34%),
-        linear-gradient(135deg, #0a1732 0%, #071633 45%, #10295b 100%) !important;
+        radial-gradient(circle at 90% 18%, rgba(225, 174, 49, 0.09), transparent 30%),
+        radial-gradient(circle at 14% 70%, rgba(255, 255, 255, 0.05), transparent 34%),
+        linear-gradient(135deg, #102f65 0%, #0d2858 48%, #071633 100%) !important;
 }
 
 .sector-machinery-gradient::after {
@@ -556,9 +574,9 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
 
 .sector-industries-gradient {
     background:
-        radial-gradient(circle at 12% 16%, rgba(225, 174, 49, 0.18), transparent 30%),
-        radial-gradient(circle at 86% 76%, rgba(56, 119, 190, 0.18), transparent 36%),
-        linear-gradient(135deg, #061226 0%, #0a1a38 44%, #14345f 100%) !important;
+        radial-gradient(circle at 12% 16%, rgba(225, 174, 49, 0.09), transparent 30%),
+        radial-gradient(circle at 86% 76%, rgba(255, 255, 255, 0.05), transparent 36%),
+        linear-gradient(135deg, #12356c 0%, #0d2858 48%, #071633 100%) !important;
 }
 
 .sector-industries-gradient::after {
@@ -568,9 +586,9 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
 
 .sector-epc-gradient {
     background:
-        radial-gradient(circle at 86% 18%, rgba(225, 174, 49, 0.2), transparent 30%),
-        radial-gradient(circle at 18% 80%, rgba(72, 136, 196, 0.16), transparent 34%),
-        linear-gradient(135deg, #071633 0%, #0b1f46 48%, #10295b 100%) !important;
+        radial-gradient(circle at 86% 18%, rgba(225, 174, 49, 0.09), transparent 30%),
+        radial-gradient(circle at 18% 80%, rgba(255, 255, 255, 0.05), transparent 34%),
+        linear-gradient(135deg, #12356c 0%, #0d2858 50%, #071633 100%) !important;
 }
 
 .sector-epc-gradient::after {
@@ -727,14 +745,14 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
 
 .products-premium-page {
     background:
-        linear-gradient(180deg, #071633 0%, #0b1f46 36%, #12285a 58%, #eef3f8 58.2%, #f8fafc 100%);
+        linear-gradient(180deg, #12356c 0%, #0d2858 38%, #071633 100%);
 }
 
 .products-premium-page .product-premium-hero {
     background:
-        radial-gradient(circle at 20% 12%, rgba(225, 174, 49, 0.16), transparent 30%),
-        radial-gradient(circle at 80% 22%, rgba(73, 104, 150, 0.22), transparent 34%),
-        linear-gradient(135deg, #061226 0%, #071633 48%, #12285a 100%);
+        radial-gradient(circle at 20% 12%, rgba(225, 174, 49, 0.1), transparent 28%),
+        radial-gradient(circle at 80% 22%, rgba(255, 255, 255, 0.055), transparent 34%),
+        linear-gradient(135deg, #12356c 0%, #0d2858 48%, #071633 100%);
 }
 
 .products-premium-page .product-premium-hero::before {
@@ -755,18 +773,82 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
     width: min(1120px, calc(100% - 2rem));
     height: 1px;
     transform: translateX(-50%);
-    background: linear-gradient(90deg, transparent, rgba(225, 174, 49, 0.55), transparent);
+    background: linear-gradient(90deg, transparent, rgba(225, 174, 49, 0.38), transparent);
 }
 
 .products-premium-page .product-premium-hero svg {
     display: none !important;
 }
 
+.products-premium-page .product-premium-hero .product-hero-pine svg {
+    display: block !important;
+}
+
 .products-premium-page .product-premium-brands {
     background:
-        radial-gradient(circle at 18% 8%, rgba(225, 174, 49, 0.13), transparent 28%),
-        radial-gradient(circle at 84% 32%, rgba(92, 124, 169, 0.16), transparent 34%),
-        linear-gradient(180deg, #071633 0%, #061226 52%, #0b1f46 100%) !important;
+        radial-gradient(circle at 14% 8%, rgba(225, 174, 49, 0.1), transparent 28%),
+        radial-gradient(circle at 86% 22%, rgba(255, 255, 255, 0.055), transparent 34%),
+        linear-gradient(145deg, #12356c 0%, #0d2858 42%, #0a214a 76%, #071633 100%) !important;
+    border-top: 1px solid rgba(225, 174, 49, 0.16);
+}
+
+.products-premium-page .product-premium-brands::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(115deg, rgba(255, 255, 255, 0.07), transparent 34%, rgba(225, 174, 49, 0.055) 58%, transparent 78%),
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 34%);
+    pointer-events: none;
+}
+
+.products-premium-page .product-premium-brands::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: min(1120px, calc(100% - 2rem));
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, rgba(225, 174, 49, 0.36), transparent);
+    pointer-events: none;
+}
+
+.products-premium-page .product-premium-brands h2 {
+    color: #ffffff !important;
+}
+
+.products-premium-page .product-premium-brands p {
+    color: rgba(226, 232, 240, 0.86) !important;
+}
+
+.products-premium-page .product-premium-brands .product-card-hover {
+    background:
+        radial-gradient(circle at 18% 10%, rgba(225, 174, 49, 0.1), transparent 30%),
+        linear-gradient(145deg, rgba(18, 53, 108, 0.96) 0%, rgba(11, 36, 79, 0.94) 56%, rgba(7, 22, 51, 0.96) 100%) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    border-bottom-color: #e1ae31 !important;
+    box-shadow: 0 18px 42px rgba(7, 22, 51, 0.22) !important;
+}
+
+.products-premium-page .product-premium-brands .product-card-hover:hover {
+    box-shadow: 0 26px 58px rgba(7, 22, 51, 0.16), 0 0 28px rgba(225, 174, 49, 0.14) !important;
+}
+
+.products-premium-page .product-premium-brands .product-card-hover li {
+    color: rgba(226, 232, 240, 0.84) !important;
+}
+
+.products-premium-page .product-premium-brands .product-card-hover:hover li {
+    color: #ffffff !important;
+}
+
+.products-premium-page .product-premium-brands .product-card-hover .h-px {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent) !important;
+}
+
+.products-premium-page .product-premium-brands .product-card-hover span {
+    color: #ffffff !important;
 }
 
 .products-premium-page .fade-up-element {
@@ -781,9 +863,9 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
 .product-detail-surface {
     position: relative;
     background:
-        radial-gradient(circle at 14% 7%, rgba(225, 174, 49, 0.12), transparent 30%),
-        radial-gradient(circle at 86% 14%, rgba(96, 130, 176, 0.16), transparent 34%),
-        linear-gradient(180deg, #f8fafc 0%, #eef3f8 28%, #10295b 28.2%, #071633 64%, #061226 100%);
+        radial-gradient(circle at 14% 7%, rgba(225, 174, 49, 0.08), transparent 30%),
+        radial-gradient(circle at 86% 14%, rgba(255, 255, 255, 0.05), transparent 34%),
+        linear-gradient(180deg, #12356c 0%, #0d2858 42%, #0a214a 76%, #071633 100%);
     padding-bottom: 5rem !important;
 }
 
@@ -950,9 +1032,9 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
     border: 1px solid rgba(255, 255, 255, 0.13);
     border-radius: 28px 10px 28px 10px;
     background:
-        radial-gradient(circle at 18% 8%, rgba(225, 174, 49, 0.16), transparent 32%),
+        radial-gradient(circle at 18% 8%, rgba(225, 174, 49, 0.09), transparent 32%),
         linear-gradient(145deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.035)),
-        linear-gradient(180deg, #173366 0%, #071633 72%, #061226 100%);
+        linear-gradient(180deg, #12356c 0%, #0d2858 54%, #071633 100%);
     box-shadow: 0 22px 54px rgba(0, 0, 0, 0.28);
     transition: transform 360ms ease, border-color 360ms ease, box-shadow 360ms ease;
 }
@@ -1093,13 +1175,15 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
 .products-premium-page .brand-feature-row {
     min-height: 320px;
     padding: clamp(1.2rem, 3vw, 2.5rem);
-    border: 1px solid rgba(255, 255, 255, 0.11);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 30px 10px 30px 10px;
     background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.03)),
-        radial-gradient(circle at 18% 14%, rgba(225, 174, 49, 0.11), transparent 30%),
-        linear-gradient(180deg, rgba(23, 51, 102, 0.78), rgba(7, 22, 51, 0.82));
-    box-shadow: 0 24px 62px rgba(0, 0, 0, 0.25);
+        linear-gradient(135deg, rgba(18, 48, 105, 0.92), rgba(7, 22, 51, 0.86)),
+        radial-gradient(circle at 16% 10%, rgba(225, 174, 49, 0.17), transparent 30%),
+        radial-gradient(circle at 88% 86%, rgba(225, 174, 49, 0.1), transparent 34%);
+    box-shadow: 0 22px 52px rgba(7, 22, 51, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .products-premium-page .brand-feature-row-reverse {
@@ -1113,8 +1197,9 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
 .products-premium-page .brand-feature-media {
     border-radius: 28px 8px 28px 8px;
     background:
-        radial-gradient(circle at 50% 110%, rgba(225, 174, 49, 0.15), transparent 52%),
-        linear-gradient(145deg, rgba(6, 18, 38, 0.72), rgba(22, 46, 87, 0.7));
+        radial-gradient(circle at 50% 110%, rgba(225, 174, 49, 0.2), transparent 52%),
+        radial-gradient(circle at 18% 8%, rgba(255, 255, 255, 0.2), transparent 34%),
+        linear-gradient(145deg, rgba(20, 55, 118, 0.86), rgba(7, 22, 51, 0.78));
 }
 
 .products-premium-page .brand-feature-row-reverse .brand-feature-media {
@@ -1333,6 +1418,47 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
 
 #brands .product-showcase-card > div {
     padding-top: 1.75rem;
+}
+
+.home-product-section {
+    background:
+        radial-gradient(circle at 12% 8%, rgba(225, 174, 49, 0.1), transparent 28%),
+        radial-gradient(circle at 88% 18%, rgba(255, 255, 255, 0.055), transparent 34%),
+        linear-gradient(145deg, #12356c 0%, #0d2858 44%, #0a214a 76%, #071633 100%) !important;
+}
+
+.home-product-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(115deg, rgba(255, 255, 255, 0.07), transparent 34%, rgba(225, 174, 49, 0.055) 58%, transparent 78%),
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 36%);
+    pointer-events: none;
+}
+
+.home-product-section .brand-feature-row::before {
+    border-bottom-color: rgba(225, 174, 49, 0.12);
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.07), transparent 45%, rgba(225, 174, 49, 0.055)),
+        radial-gradient(circle at 80% 50%, rgba(225, 174, 49, 0.05), transparent 30%);
+}
+
+.home-product-section .brand-feature-media {
+    background:
+        radial-gradient(circle at 50% 110%, rgba(225, 174, 49, 0.12), transparent 52%),
+        radial-gradient(circle at 16% 8%, rgba(255, 255, 255, 0.16), transparent 34%),
+        linear-gradient(145deg, rgba(21, 65, 132, 0.88), rgba(8, 27, 61, 0.82));
+    border-color: rgba(225, 174, 49, 0.24);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 20px 48px rgba(7, 22, 51, 0.2);
+}
+
+.home-product-section .brand-feature-copy h3 {
+    color: #ffffff;
+}
+
+.home-product-section .brand-feature-copy p {
+    color: rgba(226, 232, 240, 0.84);
 }
 
 .brand-feature-list {
@@ -1577,5 +1703,169 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
 
     .catalog-card {
         min-height: 0;
+    }
+}
+
+/* Premium navy and subtle gold system for AGGC shared dark surfaces. */
+:root {
+    --aggc-navy-700: #12356c;
+    --aggc-navy-800: #0d2858;
+    --aggc-navy-900: #071633;
+    --aggc-gold: #e1ae31;
+    --aggc-hero-surface:
+        radial-gradient(circle at 16% 8%, rgba(225, 174, 49, 0.12), transparent 28%),
+        radial-gradient(circle at 84% 18%, rgba(255, 255, 255, 0.055), transparent 30%),
+        linear-gradient(135deg, #12356c 0%, #0d2858 42%, #071633 100%);
+    --aggc-section-surface:
+        radial-gradient(circle at 14% 8%, rgba(225, 174, 49, 0.11), transparent 27%),
+        radial-gradient(circle at 88% 10%, rgba(255, 255, 255, 0.05), transparent 30%),
+        linear-gradient(145deg, #102f65 0%, #0b244f 48%, #071633 100%);
+    --aggc-card-surface:
+        radial-gradient(circle at 18% 9%, rgba(225, 174, 49, 0.12), transparent 32%),
+        linear-gradient(145deg, rgba(18, 53, 108, 0.96) 0%, rgba(11, 36, 79, 0.94) 52%, rgba(7, 22, 51, 0.96) 100%);
+    --aggc-panel-surface:
+        radial-gradient(circle at 50% 108%, rgba(225, 174, 49, 0.14), transparent 48%),
+        linear-gradient(145deg, rgba(21, 65, 132, 0.9) 0%, rgba(10, 32, 70, 0.9) 100%);
+}
+
+footer,
+.unified-page-hero,
+.products-premium-page .product-premium-hero,
+body > section:first-of-type[class*="bg-gradient-to-b"] {
+    background: var(--aggc-hero-surface) !important;
+}
+
+.unified-page-hero,
+.products-premium-page .product-premium-hero {
+    padding-bottom: clamp(3rem, 6vw, 4rem) !important;
+    border-bottom: 1px solid rgba(225, 174, 49, 0.18) !important;
+}
+
+.unified-page-hero::after,
+.products-premium-page .product-premium-hero::after {
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, rgba(225, 174, 49, 0.42), transparent) !important;
+}
+
+.product-hero-pine {
+    bottom: 0 !important;
+    opacity: 0.12 !important;
+    transform: translateY(28px);
+}
+
+.product-hero-pine svg {
+    height: clamp(56px, 7vw, 92px) !important;
+}
+
+.home-product-section,
+.products-premium-page .product-premium-brands {
+    background: var(--aggc-section-surface) !important;
+}
+
+.product-showcase-card,
+.portfolio-dark-card,
+.products-premium-page .brand-feature-row,
+.products-premium-page .product-premium-brands .product-card-hover,
+.catalog-card {
+    background: var(--aggc-card-surface) !important;
+    border-color: rgba(225, 174, 49, 0.18) !important;
+    box-shadow: 0 22px 52px rgba(3, 10, 24, 0.28) !important;
+}
+
+.product-image-panel,
+.brand-feature-media,
+.products-premium-page .brand-feature-media,
+.catalog-card-image {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(0.9rem, 2vw, 1.8rem) !important;
+    background: var(--aggc-panel-surface) !important;
+    border-color: rgba(225, 174, 49, 0.24) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 18px 42px rgba(3, 10, 24, 0.22) !important;
+}
+
+.brand-feature-product,
+.products-premium-page .brand-feature-product {
+    width: min(145%, 900px) !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: clamp(220px, 26vw, 330px) !important;
+    transform: scale(1.1) !important;
+    mix-blend-mode: screen;
+    opacity: 1;
+    filter: brightness(1.82) saturate(1.55) contrast(1.28) drop-shadow(0 0 8px rgba(255, 215, 96, 0.58)) drop-shadow(0 0 22px rgba(225, 174, 49, 0.34)) drop-shadow(0 22px 26px rgba(0, 0, 0, 0.3)) !important;
+}
+
+.products-premium-page .product-premium-brands .product-card-hover .h-44 {
+    height: clamp(13.5rem, 22vw, 16.5rem) !important;
+}
+
+.products-premium-page .product-premium-brands .product-card-hover img[alt*="Product"] {
+    width: 112% !important;
+    max-width: none !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    mix-blend-mode: screen;
+    opacity: 1;
+    transform: scale(1.1) !important;
+    filter: brightness(1.78) saturate(1.5) contrast(1.25) drop-shadow(0 0 8px rgba(255, 215, 96, 0.56)) drop-shadow(0 0 20px rgba(225, 174, 49, 0.32)) drop-shadow(0 24px 26px rgba(0, 0, 0, 0.32)) !important;
+}
+
+.products-premium-page .product-premium-brands .product-card-hover:hover img[alt*="Product"] {
+    transform: scale(1.15) translateY(-0.35rem) !important;
+}
+
+.products-premium-page .product-premium-brands .product-card-hover {
+    border-bottom-width: 2px !important;
+}
+
+.products-premium-page .product-premium-brands .product-card-hover .absolute.top-0.right-0 {
+    background: linear-gradient(135deg, rgba(225, 174, 49, 0.95), rgba(255, 223, 137, 0.92)) !important;
+}
+
+.brand-feature-row::before,
+.home-product-section .brand-feature-row::before {
+    border-bottom-width: 1px !important;
+    border-bottom-color: rgba(225, 174, 49, 0.12) !important;
+}
+
+#brands .fade-up-element,
+#brands .brand-feature-copy,
+#brands .brand-feature-media {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.whatwedo-flow .scroll-reveal,
+.whatwedo-flow .scroll-reveal-left,
+.whatwedo-flow .scroll-reveal-right,
+.whatwedo-flow .reveal-scale-up {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+@media (max-width: 640px) {
+    .brand-feature-row,
+    .brand-feature-row-reverse {
+        gap: 1.1rem !important;
+    }
+
+    .brand-feature-media,
+    .brand-feature-row-reverse .brand-feature-media {
+        order: -1 !important;
+        min-height: 235px !important;
+        border-radius: 24px 8px 24px 8px !important;
+    }
+
+    .brand-feature-copy,
+    .brand-feature-row-reverse .brand-feature-copy {
+        order: 0 !important;
+    }
+
+    .brand-feature-product,
+    .products-premium-page .brand-feature-product {
+        width: min(190%, 900px) !important;
+        max-height: 245px !important;
+        transform: scale(1.08) !important;
     }
 }

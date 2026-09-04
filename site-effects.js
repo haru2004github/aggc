@@ -141,6 +141,40 @@
         mediaBlocks.forEach((block) => observer.observe(block));
     }
 
+    function setupScrollReveal() {
+        const selector = '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right';
+        const revealItems = () => Array.from(document.querySelectorAll(selector));
+
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+            revealItems().forEach((item) => item.classList.add('scroll-reveal-visible'));
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('scroll-reveal-visible');
+                observer.unobserve(entry.target);
+            });
+        }, {
+            threshold: 0.18,
+            rootMargin: '0px 0px -8% 0px'
+        });
+
+        const observeNewItems = () => {
+            revealItems().forEach((item) => {
+                if (item.dataset.scrollRevealBound === 'true') return;
+                item.dataset.scrollRevealBound = 'true';
+                observer.observe(item);
+            });
+        };
+
+        observeNewItems();
+
+        const mutationObserver = new MutationObserver(observeNewItems);
+        mutationObserver.observe(document.body, { childList: true, subtree: true });
+    }
+
     function setupProductsPageShowcase() {
         const brandsSection = document.querySelector('body:not(.home-immersive-header) #brands');
         const oldGrid = brandsSection?.querySelector('.grid .product-card-hover')?.parentElement;
@@ -243,5 +277,6 @@
         setupProductsPageShowcase();
         setupScrollZoomImages();
         setupBrandCopyAnimations();
+        setupScrollReveal();
     });
 })();
