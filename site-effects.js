@@ -1,5 +1,106 @@
 (function () {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const effectsScriptUrl = document.currentScript?.src || window.location.href;
+    const siteRootUrl = new URL('.', effectsScriptUrl);
+
+    function siteUrl(path) {
+        return new URL(path, siteRootUrl).href;
+    }
+
+    function setupUnifiedFooter() {
+        const currentFooter = document.querySelector('footer');
+        const footer = document.createElement('footer');
+        footer.id = 'site-footer';
+        footer.className = 'bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] border-t border-white/10 pt-16 pb-8 mt-auto relative overflow-hidden';
+        footer.setAttribute('data-unified-footer', 'true');
+        footer.innerHTML = `
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 lg:gap-6 mb-12">
+                    <div class="col-span-2 flex flex-col space-y-4">
+                        <div class="bg-white/95 p-2 rounded-xl w-fit shadow-lg">
+                            <img src="${siteUrl('img/logo.png')}" class="w-40 max-h-14 object-contain" alt="AGGC Logo">
+                        </div>
+                        <p class="text-slate-300 text-[13px] font-light leading-relaxed max-w-xs">
+                            Aung Gyi Group of Companies. A leading diversified business group operating across global industrial sectors. Let's Build Together!
+                        </p>
+                    </div>
+
+                    <div>
+                        <h4 class="font-heading font-extrabold text-[13px] text-white uppercase tracking-wider mb-4">Home</h4>
+                        <ul class="space-y-2.5 text-[12px]">
+                            <li><a href="${siteUrl('index.html#about')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Welcome</a></li>
+                            <li><a href="${siteUrl('index.html#sectors')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Sectors</a></li>
+                            <li><a href="${siteUrl('products.html')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Brands</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-heading font-extrabold text-[13px] text-white uppercase tracking-wider mb-4">About</h4>
+                        <ul class="space-y-2.5 text-[12px]">
+                            <li><a href="${siteUrl('about.html#profile')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Profile</a></li>
+                            <li><a href="${siteUrl('about.html#vision')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Vision</a></li>
+                            <li><a href="${siteUrl('about.html#missions')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Missions</a></li>
+                            <li><a href="${siteUrl('about.html#motto')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Motto</a></li>
+                            <li><a href="${siteUrl('about.html#certificates')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Certificates</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-heading font-extrabold text-[13px] text-white uppercase tracking-wider mb-4">What We Do</h4>
+                        <ul class="space-y-2.5 text-[12px]">
+                            <li><a href="${siteUrl('whatwedo.html#electric-energy')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Electric &amp; Energy</a></li>
+                            <li><a href="${siteUrl('whatwedo.html#machinery-automobile')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Machinery &amp; Automobile</a></li>
+                            <li><a href="${siteUrl('whatwedo.html#aggc-industries')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">AGGC Industries</a></li>
+                            <li><a href="${siteUrl('whatwedo.html#epc-finance')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">EPC + Finance</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-heading font-extrabold text-[13px] text-white uppercase tracking-wider mb-4">Media</h4>
+                        <ul class="space-y-2.5 text-[12px]">
+                            <li><a href="${siteUrl('activites.html')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Gallery</a></li>
+                            <li><a href="${siteUrl('news.html')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Announcements</a></li>
+                            <li><a href="${siteUrl('news.html')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Latest News</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-heading font-extrabold text-[13px] text-white uppercase tracking-wider mb-4">Careers</h4>
+                        <ul class="space-y-2.5 text-[12px]">
+                            <li><a href="${siteUrl('careers.html')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Open Roles</a></li>
+                            <li><a href="${siteUrl('careers.html')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Join Us</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col items-center sm:items-start space-y-4">
+                        <a href="https://maps.google.com/?q=Aung+Gyi+Group+of+Companies+Yangon" target="_blank" aria-label="Open AGGC location in Google Maps" class="w-[100px] h-[100px] bg-white/10 border border-white/15 rounded-xl p-2 flex items-center justify-center shadow-sm hover:border-brand-gold/70 transition-colors">
+                            <img src="${siteUrl('img/location-qr.png')}" alt="AGGC location QR code" class="w-full h-full object-cover rounded-lg">
+                        </a>
+                        <span class="text-[11px] font-heading font-black text-white uppercase tracking-wider">Location</span>
+                        <div class="flex items-center space-x-2.5">
+                            <a href="https://facebook.com/AungGyiGroup" target="_blank" aria-label="AGGC on Facebook" class="w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-[11px] transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="viber://chat?number=%2B959777555666" aria-label="Chat with AGGC on Viber" class="w-7 h-7 rounded-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] hover:bg-brand-gold hover:text-brand-navy text-white flex items-center justify-center text-[11px] transition-colors"><i class="fa-brands fa-viber"></i></a>
+                            <a href="mailto:info@aungyigroup.com" aria-label="Email AGGC" class="w-7 h-7 rounded-full bg-[#e1ae31] hover:bg-[#c99620] text-[#071633] flex items-center justify-center text-[11px] transition-colors"><i class="fa-solid fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-300 font-medium">
+                    <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
+                </div>
+            </div>
+        `;
+
+        if (currentFooter) {
+            currentFooter.replaceWith(footer);
+        } else {
+            document.body.appendChild(footer);
+        }
+
+        if (window.location.hash === '#site-footer') {
+            window.setTimeout(() => footer.scrollIntoView({ block: 'start' }), 150);
+        }
+    }
 
     function clamp(value, min, max) {
         return Math.min(Math.max(value, min), max);
@@ -272,6 +373,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        setupUnifiedFooter();
         hardenExternalLinks();
         setupHomeHeader();
         setupProductsPageShowcase();

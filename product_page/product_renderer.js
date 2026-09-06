@@ -74,29 +74,44 @@ document.addEventListener("DOMContentLoaded", () => {
         const brandTitle = escapeHTML(brand.brandTitle);
         const brandLogo = safeAssetUrl(brand.brandLogo);
 
-        // Brand Title Header
+        // Editorial brand hero
         const header = document.createElement("div");
         header.className = "catalog-hero catalog-reveal";
         header.innerHTML = `
             <div class="catalog-hero-copy">
-                <span class="catalog-kicker">Product Catalog</span>
-                <h2>${brandTitle}</h2>
-                <p>Explore AGGC's selected product lines, model options, and dependable industrial solutions for Myanmar's infrastructure needs.</p>
+                <span class="catalog-kicker"><span>AGGC Authorized Portfolio</span></span>
+                <h2><span>${brandTitle}</span><em>Machinery &amp; Equipment</em></h2>
+                <p>Purpose-built equipment for demanding jobs. Explore the complete ${brandTitle} range represented by AGGC in Myanmar.</p>
                 <div class="catalog-stats">
-                    <span>${brand.products.length} product lines</span>
-                    <span>${totalModels} model options</span>
+                    <span><strong>${String(brand.products.length).padStart(2, '0')}</strong> Product lines</span>
+                    <span><strong>${String(totalModels).padStart(2, '0')}</strong> Model options</span>
                 </div>
+                <a class="catalog-hero-cta" href="#catalog-products">Explore equipment <i class="fa-solid fa-arrow-down"></i></a>
             </div>
             <div class="catalog-hero-visual">
+                <span class="catalog-visual-label">Engineered performance</span>
                 <div class="catalog-logo-plate">
                     ${brandLogo ? `<img src="${escapeHTML(brandLogo)}" alt="${brandTitle} Logo" onerror="this.style.display='none';">` : `<span>${brandTitle}</span>`}
                 </div>
                 ${featureImage ? `<img src="${escapeHTML(featureImage)}" alt="${brandTitle} Product" class="catalog-hero-product" onerror="this.style.display='none';">` : ""}
+                <span class="catalog-visual-index">01 / ${String(brand.products.length).padStart(2, '0')}</span>
             </div>
         `;
         container.appendChild(header);
 
-        // Products Grid
+        const sectionHead = document.createElement("div");
+        sectionHead.id = "catalog-products";
+        sectionHead.className = "catalog-section-head catalog-reveal";
+        sectionHead.innerHTML = `
+            <div>
+                <span class="catalog-kicker"><span>Equipment range</span></span>
+                <h3>Choose your machine</h3>
+            </div>
+            <p>Select a product line to review available models and send a direct enquiry to our team.</p>
+        `;
+        container.appendChild(sectionHead);
+
+        // Alternating editorial product rows
         const grid = document.createElement("div");
         grid.className = "catalog-grid";
 
@@ -104,6 +119,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement("div");
             card.className = "catalog-card catalog-reveal";
             card.style.animationDelay = `${index * 80}ms`;
+            card.tabIndex = 0;
+            card.setAttribute("role", "button");
+            card.setAttribute("aria-label", `View ${product.title} models`);
             const productTitle = escapeHTML(product.title);
             const productImage = safeAssetUrl(product.image);
             const modelPreview = product.models.slice(0, 4).map(escapeHTML).join(" / ");
@@ -112,20 +130,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="catalog-card-image">
                     ${productImage ? `<img src="${escapeHTML(productImage)}" alt="${productTitle}" onerror="this.onerror=null; this.src='img/placeholder.png';">` : ""}
                     <div class="catalog-card-count">
-                        ${product.models.length.toString().padStart(2, '0')} models
+                        ${product.models.length.toString().padStart(2, '0')} <span>models</span>
                     </div>
                 </div>
                 <div class="catalog-card-body">
-                    <span class="catalog-card-index">${String(index + 1).padStart(2, '0')}</span>
+                    <div class="catalog-card-topline">
+                        <span class="catalog-card-index">${String(index + 1).padStart(2, '0')}</span>
+                        <span class="catalog-card-rule"></span>
+                        <span>Product line</span>
+                    </div>
                     <h3>${productTitle}</h3>
-                    <p>${modelPreview}</p>
-                    <button type="button">View Models <i class="fa-solid fa-arrow-right"></i></button>
+                    <p class="catalog-model-preview">${modelPreview}</p>
+                    <button type="button"><span>View available models</span><i class="fa-solid fa-arrow-right"></i></button>
                 </div>
             `;
 
             // Click Event
             card.addEventListener("click", () => {
                 openModelListModal(product);
+            });
+            card.addEventListener("keydown", (event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    openModelListModal(product);
+                }
             });
 
             grid.appendChild(card);
