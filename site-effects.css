@@ -8,6 +8,217 @@
     transition: transform 260ms ease-out, border-radius 260ms ease-out;
 }
 
+/* About page — premium AGGC navy/gold surface system. */
+body.about-page {
+    background: #06142e !important;
+}
+
+body.about-page main {
+    position: relative;
+    isolation: isolate;
+    color: #e2e8f0;
+    background:
+        radial-gradient(circle at 8% 7%, rgba(225, 174, 49, 0.15), transparent 24%),
+        radial-gradient(circle at 92% 24%, rgba(55, 105, 184, 0.16), transparent 28%),
+        linear-gradient(145deg, #12356c 0%, #0d2858 43%, #071633 100%) !important;
+}
+
+body.about-page .about-stats {
+    background:
+        radial-gradient(circle at 50% 120%, rgba(225, 174, 49, 0.12), transparent 48%),
+        linear-gradient(110deg, #0f3065 0%, #0a234d 52%, #071633 100%) !important;
+    border-color: rgba(225, 174, 49, 0.28) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 18px 45px rgba(2, 9, 24, 0.24);
+}
+
+body.about-page .about-stats > div > div {
+    border-color: rgba(225, 174, 49, 0.16) !important;
+}
+
+body.about-page .about-stats .text-brand-navy {
+    color: #ffffff !important;
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+body.about-page .about-stats .text-slate-400 {
+    color: rgba(225, 174, 49, 0.9) !important;
+}
+
+body.about-page main > section {
+    position: relative;
+    isolation: isolate;
+    border-color: rgba(225, 174, 49, 0.16) !important;
+}
+
+body.about-page #chairman-message,
+body.about-page #vision-mission,
+body.about-page #values,
+body.about-page #infrastructure,
+body.about-page #certificates {
+    background:
+        radial-gradient(circle at 12% 12%, rgba(225, 174, 49, 0.13), transparent 27%),
+        radial-gradient(circle at 88% 18%, rgba(255, 255, 255, 0.045), transparent 30%),
+        linear-gradient(145deg, #12356c 0%, #0c2756 46%, #071633 100%) !important;
+}
+
+body.about-page #profile,
+body.about-page #motto {
+    background:
+        radial-gradient(circle at 84% 16%, rgba(225, 174, 49, 0.12), transparent 25%),
+        linear-gradient(135deg, #071633 0%, #0b244f 48%, #12356c 100%) !important;
+}
+
+body.about-page #global-reach,
+body.about-page .branches-fresh {
+    background:
+        radial-gradient(circle at 15% 8%, rgba(225, 174, 49, 0.14), transparent 28%),
+        radial-gradient(circle at 88% 88%, rgba(44, 92, 171, 0.18), transparent 30%),
+        linear-gradient(145deg, #102f65 0%, #0a2149 52%, #06142e 100%) !important;
+}
+
+body.about-page main section > .max-w-7xl,
+body.about-page main section > .max-w-6xl,
+body.about-page main section > .max-w-5xl {
+    position: relative;
+    z-index: 2;
+}
+
+body.about-page main h1,
+body.about-page main h2,
+body.about-page main h3,
+body.about-page main h4,
+body.about-page main h5 {
+    color: #ffffff !important;
+}
+
+body.about-page main p,
+body.about-page main li {
+    color: rgba(226, 232, 240, 0.78) !important;
+}
+
+body.about-page #chairman-message p:first-letter {
+    color: #e1ae31 !important;
+}
+
+body.about-page #values .core-value-card {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 92% 12%, rgba(225, 174, 49, 0.15), transparent 34%),
+        linear-gradient(112deg, rgba(18, 53, 108, 0.98) 0%, rgba(10, 34, 74, 0.98) 58%, rgba(7, 22, 51, 0.99) 100%) !important;
+    border: 1px solid rgba(225, 174, 49, 0.3) !important;
+    border-left: 4px solid #e1ae31 !important;
+    box-shadow: 0 14px 34px rgba(2, 9, 24, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.07) !important;
+}
+
+body.about-page #values .core-value-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 0%, transparent 58%, rgba(225, 174, 49, 0.08) 100%);
+    pointer-events: none;
+}
+
+body.about-page #values .core-value-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(244, 202, 88, 0.72) !important;
+    box-shadow: 0 20px 46px rgba(2, 9, 24, 0.4), 0 0 24px rgba(225, 174, 49, 0.1) !important;
+}
+
+body.about-page #values .core-value-card .icon-box {
+    position: relative;
+    z-index: 2;
+    color: #e1ae31;
+    background: linear-gradient(145deg, rgba(225, 174, 49, 0.2), rgba(225, 174, 49, 0.06)) !important;
+    border: 1px solid rgba(244, 202, 88, 0.58) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 8px 20px rgba(2, 9, 24, 0.2);
+}
+
+body.about-page #values .core-value-card:hover .icon-box {
+    background: linear-gradient(145deg, #f4ca58, #c68d10) !important;
+}
+
+body.about-page #values .core-value-card .icon-box i {
+    color: #f4ca58 !important;
+}
+
+body.about-page #values .core-value-card:hover .icon-box i {
+    color: #071633 !important;
+}
+
+body.about-page #values .core-value-card .card-title {
+    position: relative;
+    z-index: 2;
+    color: #ffffff !important;
+}
+
+body.about-page #values .core-value-card .card-desc {
+    position: relative;
+    z-index: 2;
+    color: rgba(226, 232, 240, 0.76) !important;
+}
+
+body.about-page #values .about-iso-card {
+    background:
+        radial-gradient(circle at 8% 50%, rgba(225, 174, 49, 0.22), transparent 24%),
+        linear-gradient(118deg, rgba(18, 53, 108, 0.98) 0%, rgba(10, 34, 74, 0.99) 48%, rgba(7, 22, 51, 1) 100%) !important;
+    border: 1px solid rgba(225, 174, 49, 0.38) !important;
+    box-shadow: 0 24px 58px rgba(2, 9, 24, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+body.about-page #values .about-iso-card > div:first-child {
+    background: linear-gradient(145deg, #fffaf0, #e8d6a3) !important;
+    border-color: rgba(225, 174, 49, 0.58) !important;
+    box-shadow: 0 14px 32px rgba(2, 9, 24, 0.28), inset 0 1px 0 #ffffff !important;
+}
+
+body.about-page #values .about-iso-card h4 {
+    color: #f4ca58 !important;
+}
+
+body.about-page #values .about-iso-card p {
+    color: rgba(226, 232, 240, 0.82) !important;
+}
+
+body.about-page #values .about-iso-card strong {
+    color: #ffffff !important;
+}
+
+body.about-page main .text-brand-gold,
+body.about-page main [class*="text-brand-gold"] {
+    color: #e1ae31 !important;
+}
+
+body.about-page main [class~="bg-white"]:not(.about-stats),
+body.about-page main [class~="bg-slate-50"],
+body.about-page main [class~="bg-slate-100"],
+body.about-page main [class~="bg-white/90"] {
+    background:
+        radial-gradient(circle at 18% 8%, rgba(225, 174, 49, 0.12), transparent 32%),
+        linear-gradient(145deg, rgba(18, 53, 108, 0.94), rgba(7, 22, 51, 0.96)) !important;
+    border-color: rgba(225, 174, 49, 0.22) !important;
+    box-shadow: 0 22px 55px rgba(2, 9, 24, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.07) !important;
+}
+
+body.about-page #vision > div:first-child,
+body.about-page #missions > div:first-child,
+body.about-page #infrastructure [class*="aspect-"],
+body.about-page #certificates [class*="aspect-"] {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(225, 174, 49, 0.08)) !important;
+    border-color: rgba(225, 174, 49, 0.2) !important;
+}
+
+body.about-page main a:not(.bg-brand-gold),
+body.about-page main button:not(.bg-brand-gold) {
+    border-color: rgba(225, 174, 49, 0.22);
+}
+
+@media (max-width: 640px) {
+    body.about-page .about-stats > div > div {
+        padding-block: 1.35rem !important;
+    }
+}
+
 /* Product detail catalog — editorial industrial layout */
 .product-detail-surface {
     --catalog-ink: #071633;
@@ -2110,14 +2321,14 @@ body.careers-page #loading-indicator p {
 /* News hero — a fine center-lit divider without the former wave/gap. */
 body.news-page .unified-page-hero {
     border-bottom: 0 !important;
-    padding-bottom: 1.25rem !important;
 }
 
 body.news-page .unified-page-hero::after {
     display: none;
 }
 
-.news-hero-divider {
+/* One shared, center-lit gold seam for every inner-page hero. */
+.shared-hero-divider {
     position: absolute;
     z-index: 30;
     left: 50%;
@@ -2130,7 +2341,7 @@ body.news-page .unified-page-hero::after {
     pointer-events: none;
 }
 
-.news-hero-divider::before {
+.shared-hero-divider::before {
     content: '';
     position: absolute;
     left: 50%;
@@ -2141,6 +2352,58 @@ body.news-page .unified-page-hero::after {
     border-radius: 999px;
     background: radial-gradient(ellipse at center, #ffe59a 0%, #e1ae31 42%, rgba(225, 174, 49, 0) 78%);
     box-shadow: 0 0 9px 1px rgba(225, 174, 49, 0.34);
+}
+
+.unified-page-hero.shared-divider-hero::after {
+    display: none !important;
+}
+
+/* Shared inner-page hero rhythm and one identical pine horizon on every page. */
+.unified-page-hero.shared-divider-hero {
+    min-height: 286px;
+    padding-top: clamp(6rem, 8vw, 8rem) !important;
+    padding-bottom: clamp(2rem, 3.5vw, 2.75rem) !important;
+}
+
+.unified-page-hero.shared-divider-hero > .relative.z-20 {
+    width: 100%;
+}
+
+.unified-page-hero.shared-divider-hero > .absolute:not(.shared-pine-horizon),
+.product-premium-hero.shared-divider-hero::before {
+    display: none !important;
+}
+
+.shared-pine-horizon {
+    position: absolute !important;
+    inset: auto 0 0 !important;
+    width: 100% !important;
+    height: clamp(92px, 10vw, 138px) !important;
+    z-index: 4 !important;
+    opacity: 0.34 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    background: url("img/shared-pine-horizon.svg") center bottom / 100% 100% no-repeat !important;
+    pointer-events: none;
+}
+
+.shared-pine-horizon > * {
+    display: none !important;
+}
+
+@media (max-width: 640px) {
+    .unified-page-hero.shared-divider-hero {
+        min-height: 0;
+        padding-top: 6rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    .shared-pine-horizon {
+        height: 88px !important;
+        opacity: 0.3 !important;
+        background-size: auto 100% !important;
+    }
 }
 
 /* News hero pine depth scene — separate silhouettes prevent a dark horizon strip. */
@@ -2234,10 +2497,10 @@ body.news-page .unified-page-hero::after {
 }
 
 @media (max-width: 640px) {
-    .news-pine-layer-mid .news-pine:nth-child(2),
-    .news-pine-layer-mid .news-pine:nth-child(3),
-    .news-pine-layer-far .news-pine:nth-child(2),
-    .news-pine-layer-far .news-pine:nth-child(5) {
+    .news-pine-layer-far .news-pine:nth-child(even),
+    .news-pine-layer-mid .news-pine:nth-child(3n),
+    .news-pine-layer-near .news-pine:nth-child(2),
+    .news-pine-layer-near .news-pine:nth-child(5) {
         display: none;
     }
 
@@ -2261,11 +2524,6 @@ body.news-page .premium-content-main::before {
         linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.024) 1px, transparent 1px) !important;
     background-size: auto, 52px 52px, 52px 52px !important;
-}
-
-body.news-page .news-list-heading h3 {
-    color: #ffffff !important;
-    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
 
 body.news-page #loading-indicator p {

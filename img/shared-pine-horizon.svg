@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 180" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="mountain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#274b87" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#071633" stop-opacity=".1"/>
+    </linearGradient>
+    <linearGradient id="pine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#173d78" stop-opacity=".72"/>
+      <stop offset="1" stop-color="#06142e" stop-opacity=".96"/>
+    </linearGradient>
+    <g id="tree">
+      <path d="M0 76 18 48h-8L25 25h-7L32 0l14 25h-7l15 23h-8l18 28H38v24H26V76Z" fill="url(#pine)"/>
+    </g>
+  </defs>
+  <path d="M0 116 105 78l92 24 126-55 96 51 115-34 108 45 128-61 111 53 118-31 105 44 126-54 100 48 106-30v102H0Z" fill="url(#mountain)"/>
+  <g opacity=".54" transform="translate(0 24) scale(.72)">
+    <use href="#tree" x="-18"/><use href="#tree" x="76"/><use href="#tree" x="166"/><use href="#tree" x="258"/>
+    <use href="#tree" x="354"/><use href="#tree" x="448"/><use href="#tree" x="542"/><use href="#tree" x="638"/>
+    <use href="#tree" x="734"/><use href="#tree" x="830"/><use href="#tree" x="926"/><use href="#tree" x="1022"/>
+    <use href="#tree" x="1118"/><use href="#tree" x="1214"/><use href="#tree" x="1310"/><use href="#tree" x="1406"/>
+    <use href="#tree" x="1502"/><use href="#tree" x="1598"/><use href="#tree" x="1694"/><use href="#tree" x="1890"/>
+  </g>
+  <g opacity=".78" transform="translate(8 50) scale(.9)">
+    <use href="#tree" x="-38"/><use href="#tree" x="92"/><use href="#tree" x="218"/><use href="#tree" x="344"/>
+    <use href="#tree" x="470"/><use href="#tree" x="596"/><use href="#tree" x="722"/><use href="#tree" x="848"/>
+    <use href="#tree" x="974"/><use href="#tree" x="1100"/><use href="#tree" x="1226"/><use href="#tree" x="1352"/>
+    <use href="#tree" x="1478"/>
+  </g>
+</svg>
