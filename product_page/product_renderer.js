@@ -76,7 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Editorial brand hero
         const header = document.createElement("div");
-        header.className = "catalog-hero catalog-reveal";
+        header.className = "catalog-hero";
+        header.setAttribute("data-card-reveal", "");
         header.innerHTML = `
             <div class="catalog-hero-copy">
                 <span class="catalog-kicker"><span>AGGC Authorized Portfolio</span></span>
@@ -101,7 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const sectionHead = document.createElement("div");
         sectionHead.id = "catalog-products";
-        sectionHead.className = "catalog-section-head catalog-reveal";
+        sectionHead.className = "catalog-section-head";
+        sectionHead.setAttribute("data-card-reveal", "");
         sectionHead.innerHTML = `
             <div>
                 <span class="catalog-kicker"><span>Equipment range</span></span>
@@ -117,8 +119,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         brand.products.forEach((product, index) => {
             const card = document.createElement("div");
-            card.className = "catalog-card catalog-reveal";
-            card.style.animationDelay = `${index * 80}ms`;
+            card.className = "catalog-card";
+            card.setAttribute("data-card-reveal", "");
             card.tabIndex = 0;
             card.setAttribute("role", "button");
             card.setAttribute("aria-label", `View ${product.title} models`);
@@ -160,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         container.appendChild(grid);
-        setupCatalogReveal(container);
     }
 
     // --- MODAL VIEWS ---
@@ -389,26 +390,4 @@ document.addEventListener("DOMContentLoaded", () => {
             .join(' ');
     }
 
-    function setupCatalogReveal(container) {
-        const revealItems = Array.from(container.querySelectorAll(".catalog-reveal"));
-        if (!revealItems.length) return;
-
-        if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            revealItems.forEach((item) => item.classList.add("catalog-visible"));
-            return;
-        }
-
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add("catalog-visible");
-                observer.unobserve(entry.target);
-            });
-        }, {
-            threshold: 0.18,
-            rootMargin: "0px 0px -6% 0px"
-        });
-
-        revealItems.forEach((item) => revealObserver.observe(item));
-    }
 });

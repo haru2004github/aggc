@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGGC - Aung Gyi Group Company</title>
+    <title>Products - AGGC (Aung Gyi Group of Companies)</title>
 
     <!-- Modern Premium Fonts: Poppins for Primary, Playfair Display for Accent, Inter for fallback body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -120,34 +120,6 @@
             width: 100%;
         }
     
-        /* Premium Product Showcase CSS */
-        .fade-up-element {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            will-change: opacity, transform;
-        }
-        .fade-up-element.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .product-card-hover {
-            position: relative;
-        }
-        .product-card-hover::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 193, 7, 0.08), transparent 40%);
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .product-card-hover:hover::before {
-            opacity: 1;
-        }
     </style>
     <link rel="stylesheet" href="./site-effects.css">
 </head>
@@ -283,25 +255,7 @@
     </nav>
 
     <section class="product-premium-hero unified-page-hero shared-divider-hero relative pt-28 pb-16 sm:pt-32 sm:pb-20 overflow-hidden text-center">
-        <div class="product-hero-pine shared-pine-horizon absolute bottom-[18px] sm:bottom-[26px] left-0 right-0 w-full overflow-hidden pointer-events-none z-0 opacity-45" aria-hidden="true">
-            <svg viewBox="0 0 1440 220" preserveAspectRatio="none" class="w-full h-[120px] sm:h-[180px] md:h-[220px]">
-                <defs>
-                    <linearGradient id="productPineHorizonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#12356c" stop-opacity="0.2" />
-                        <stop offset="50%" stop-color="#071633" stop-opacity="0.7" />
-                        <stop offset="100%" stop-color="#061226" stop-opacity="0.95" />
-                    </linearGradient>
-                </defs>
-                <path fill="#10295b" fill-opacity="0.35"
-                    d="M0,140 Q180,90 360,130 T720,100 T1080,125 T1440,95 L1440,220 L0,220 Z" />
-                <path fill="#0b1f46" fill-opacity="0.55"
-                    d="M0,165 C240,125 450,175 700,140 C950,105 1200,165 1440,135 L1440,220 L0,220 Z" />
-                <path fill="url(#productPineHorizonGrad)"
-                    d="M0,220 L0,185 L12,170 L18,178 L28,155 L38,175 L50,145 L62,172 L75,138 L88,168 L102,142 L115,165 L130,130 L145,162 L160,128 L175,160 L190,135 L205,162 L220,125 L235,158 L250,132 L265,160 L280,122 L295,155 L310,130 L325,158 L340,120 L355,152 L370,126 L385,154 L400,118 L415,150 L430,125 L445,155 L460,115 L475,148 L490,122 L505,152 L520,112 L535,145 L550,120 L565,150 L580,110 L595,142 L610,118 L625,148 L640,108 L655,140 L670,115 L685,145 L700,105 L715,138 L730,112 L745,142 L760,102 L775,135 L790,110 L805,140 L820,100 L835,132 L850,108 L865,138 L880,98 L895,130 L910,105 L925,135 L940,95 L955,128 L970,102 L985,132 L1000,92 L1015,125 L1030,100 L1045,130 L1060,90 L1075,122 L1090,98 L1105,128 L1120,88 L1135,120 L1150,95 L1165,125 L1180,85 L1195,118 L1210,92 L1225,122 L1240,82 L1255,115 L1270,90 L1285,120 L1300,80 L1315,112 L1330,88 L1345,118 L1360,78 L1375,110 L1390,85 L1405,115 L1420,80 L1435,110 L1440,105 L1440,220 Z" />
-            </svg>
-        </div>
-
-        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Slanted gold block slashes tag -->
             <div class="inline-flex items-center justify-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.08] border border-white/15 mb-6 backdrop-blur-sm">
                 <div class="w-2 h-4 bg-brand-gold transform -skew-x-12"></div>
@@ -322,320 +276,112 @@
         <div class="shared-hero-divider" aria-hidden="true"></div>
 </section>
 
-    <!-- 5. Brands & Products Section (Solid Hover Cards with Logos) -->
-        <!-- Premium Product Showcase Section -->
-    <section id="brands" class="product-premium-brands py-20 sm:py-28 relative overflow-hidden">
+    <!-- Trusted Brands & Products: native markup keeps layout and deep links stable. -->
+    <section id="brands" class="product-premium-brands brand-showcase-section py-16 sm:py-24 relative overflow-hidden border-t border-brand-gold/20">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-gold/70 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <!-- Section Header -->
-            <div class="text-center mb-16 sm:mb-20 fade-up-element">
-                <div class="flex items-center justify-center gap-2 mb-4">
-                    <div class="w-2 h-2 bg-[#FFC107] rotate-45"></div>
-                    <h4 class="text-[#FFC107] font-heading font-bold tracking-[0.2em] uppercase text-[11px] sm:text-[12px]">
-                        Our Network</h4>
-                    <div class="w-2 h-2 bg-[#FFC107] rotate-45"></div>
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 sm:mb-14">
+                <div>
+                    <h4 class="text-brand-gold font-heading font-bold tracking-[0.2em] uppercase text-[11px] sm:text-[12px] mb-3">Industrial Portfolio</h4>
+                    <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase leading-tight">Trusted Brands & Products</h2>
+                    <p class="text-slate-200 text-sm sm:text-base leading-relaxed font-light max-w-2xl mt-4">A global-grade product portfolio for machinery, commercial vehicles, power systems, building solutions, energy products, and specialized engineering equipment.</p>
                 </div>
-                <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
-                    Premium <span class="text-[#FFC107]">Showcase</span></h2>
-                <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto font-light">
-                    Guaranteed genuine heavy machinery, high-performance engines, and specialized parts designed for excellence.
-                </p>
             </div>
 
-            <!-- Product Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                <!-- Liugong Card -->
-                <a href="product_page/Liugong.html" class="group product-card-hover block w-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[2px] border-b-[#FFC107] fade-up-element">
-                    <!-- Top-Right Yellow Corner Accent -->
-                    <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
-                        <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
-                    </div>
-                    <!-- Padding Container -->
-                    <div class="p-6 sm:p-8 flex flex-col h-full relative z-10">
-                        <!-- Logo Area -->
-                        <div class="mb-6 h-12 w-fit flex items-center bg-white/95 backdrop-blur-sm rounded-xl px-4 py-1.5 shadow-sm border border-white/20">
-                            <img src="./img/Products/liugong-logo.png" alt="Liugong Logo" class="max-h-full object-contain opacity-100 transition-opacity duration-300 group-hover:opacity-100">
-                        </div>
-                        <!-- Main Product Image -->
-                        <div class="mb-8 flex justify-center items-center h-44 relative">
-                            <div class="absolute inset-0 bg-[#FFC107] opacity-0 blur-2xl rounded-full group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
-                            <img src="./img/Products/luigong_product.png" alt="Liugong Product" class="max-h-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-xl relative z-10">
-                        </div>
-                        <!-- Feature List -->
-                        <ul class="space-y-4 mb-8 flex-grow">
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Earthmoving Machinery
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Road Equipment
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Concrete Equipment
-                            </li>
+            <div class="brand-feature-list space-y-8 sm:space-y-10">
+                <a href="product_page/Liugong.html" class="brand-feature-row group">
+                    <div class="brand-feature-copy">
+                        <h3 class="brand-feature-heading"><img src="./img/Products/liugong-logo.png" alt="Liugong" width="200" height="100" class="brand-feature-logo" decoding="async"></h3>
+                        <p>Earthmoving, road construction, concrete, and heavy equipment platforms.</p>
+                        <ul class="brand-feature-tags">
+                            <li>Earthmoving Machinery</li>
+                            <li>Road Equipment</li>
+                            <li>Concrete Equipment</li>
                         </ul>
-                        <!-- Divider -->
-                        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-5"></div>
-                        <!-- Footer / CTA -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-white font-bold text-xs tracking-[0.2em] uppercase transition-colors duration-300 group-hover:text-[#FFC107]">View Details</span>
-                            <i class="fa-solid fa-arrow-right text-[#FFC107] transition-transform duration-500 group-hover:translate-x-2 text-lg"></i>
-                        </div>
+                        <span>Explore Brand <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                    <div class="brand-feature-media">
+                        <img src="./img/Products/luigong_product.png" alt="Liugong construction and earthmoving equipment" width="1414" height="593" class="brand-feature-product" loading="lazy" decoding="async">
                     </div>
                 </a>
 
-                <!-- JAC Motors Card -->
-                <a href="product_page/jac_moter.html" class="group product-card-hover block w-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[2px] border-b-[#FFC107] fade-up-element" style="transition-delay: 100ms;">
-                    <!-- Top-Right Yellow Corner Accent -->
-                    <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
-                        <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
-                    </div>
-                    <!-- Padding Container -->
-                    <div class="p-6 sm:p-8 flex flex-col h-full relative z-10">
-                        <!-- Logo Area -->
-                        <div class="mb-6 h-12 w-fit flex items-center bg-white/95 backdrop-blur-sm rounded-xl px-4 py-1.5 shadow-sm border border-white/20">
-                            <img src="./img/Products/jac-motor-logo.png" alt="JAC Motors Logo" class="max-h-full object-contain opacity-100 transition-opacity duration-300 group-hover:opacity-100">
-                        </div>
-                        <!-- Main Product Image -->
-                        <div class="mb-8 flex justify-center items-center h-44 relative">
-                            <div class="absolute inset-0 bg-[#FFC107] opacity-0 blur-2xl rounded-full group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
-                            <img src="./img/Products/jac_product.png" alt="JAC Product" class="max-h-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-xl relative z-10">
-                        </div>
-                        <!-- Feature List -->
-                        <ul class="space-y-4 mb-8 flex-grow">
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Heavy and Medium Truck
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Light Truck
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Sunray
-                            </li>
+                <a href="product_page/jac_moter.html" class="brand-feature-row brand-feature-row-reverse group">
+                    <div class="brand-feature-copy">
+                        <h3 class="brand-feature-heading"><img src="./img/Products/jac-motor-logo.png" alt="JAC Motors" width="200" height="100" class="brand-feature-logo" decoding="async"></h3>
+                        <p>Commercial vehicles, logistics mobility, and automotive fleet solutions.</p>
+                        <ul class="brand-feature-tags">
+                            <li>Heavy and Medium Truck</li>
+                            <li>Light Truck</li>
+                            <li>Sunray</li>
                         </ul>
-                        <!-- Divider -->
-                        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-5"></div>
-                        <!-- Footer / CTA -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-white font-bold text-xs tracking-[0.2em] uppercase transition-colors duration-300 group-hover:text-[#FFC107]">View Details</span>
-                            <i class="fa-solid fa-arrow-right text-[#FFC107] transition-transform duration-500 group-hover:translate-x-2 text-lg"></i>
-                        </div>
+                        <span>Explore Brand <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                    <div class="brand-feature-media">
+                        <img src="./img/Products/jac_product.png" alt="JAC commercial vehicles and trucks" width="1331" height="934" class="brand-feature-product" loading="lazy" decoding="async">
                     </div>
                 </a>
 
-                <!-- Powermax Card -->
-                <a href="product_page/powermax.html" class="group product-card-hover block w-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[2px] border-b-[#FFC107] fade-up-element" style="transition-delay: 200ms;">
-                    <!-- Top-Right Yellow Corner Accent -->
-                    <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
-                        <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
-                    </div>
-                    <!-- Padding Container -->
-                    <div class="p-6 sm:p-8 flex flex-col h-full relative z-10">
-                        <!-- Logo Area -->
-                        <div class="mb-6 h-12 w-fit flex items-center bg-white/95 backdrop-blur-sm rounded-xl px-4 py-1.5 shadow-sm border border-white/20">
-                            <img src="./img/Products/powermax-logo.png" alt="Powermax Logo" class="max-h-full object-contain opacity-100 transition-opacity duration-300 group-hover:opacity-100">
-                        </div>
-                        <!-- Main Product Image -->
-                        <div class="mb-8 flex justify-center items-center h-44 relative">
-                            <div class="absolute inset-0 bg-[#FFC107] opacity-0 blur-2xl rounded-full group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
-                            <img src="./img/Products/powermax_product.png" alt="Powermax Product" class="max-h-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-xl relative z-10">
-                        </div>
-                        <!-- Feature List -->
-                        <ul class="space-y-4 mb-8 flex-grow">
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Super Silent Set
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Industrial Open Set
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Lighting Tower
-                            </li>
+                <a href="product_page/powermax.html" class="brand-feature-row group">
+                    <div class="brand-feature-copy">
+                        <h3 class="brand-feature-heading"><img src="./img/Products/powermax-logo.png" alt="Powermax" width="200" height="100" class="brand-feature-logo" decoding="async"></h3>
+                        <p>Generator sets, ATS panels, water pumps, lighting towers, and control systems.</p>
+                        <ul class="brand-feature-tags">
+                            <li>Super Silent Set</li>
+                            <li>Industrial Open Set</li>
+                            <li>Lighting Tower</li>
                         </ul>
-                        <!-- Divider -->
-                        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-5"></div>
-                        <!-- Footer / CTA -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-white font-bold text-xs tracking-[0.2em] uppercase transition-colors duration-300 group-hover:text-[#FFC107]">View Details</span>
-                            <i class="fa-solid fa-arrow-right text-[#FFC107] transition-transform duration-500 group-hover:translate-x-2 text-lg"></i>
-                        </div>
+                        <span>Explore Brand <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                    <div class="brand-feature-media">
+                        <img src="./img/Products/powermax_product.png" alt="Powermax generators and power systems" width="1286" height="721" class="brand-feature-product" loading="lazy" decoding="async">
                     </div>
                 </a>
 
-                <!-- Izumi Card -->
-                <a href="product_page/izumi.html" class="group product-card-hover block w-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[2px] border-b-[#FFC107] fade-up-element">
-                    <!-- Top-Right Yellow Corner Accent -->
-                    <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
-                        <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
-                    </div>
-                    <!-- Padding Container -->
-                    <div class="p-6 sm:p-8 flex flex-col h-full relative z-10">
-                        <!-- Logo Area -->
-                        <div class="mb-6 h-12 w-fit flex items-center bg-white/95 backdrop-blur-sm rounded-xl px-4 py-1.5 shadow-sm border border-white/20">
-                            <img src="./img/Products/izumi-logo.png" alt="Izumi Logo" class="max-h-full object-contain opacity-100 transition-opacity duration-300 group-hover:opacity-100">
-                        </div>
-                        <!-- Main Product Image -->
-                        <div class="mb-8 flex justify-center items-center h-44 relative">
-                            <div class="absolute inset-0 bg-[#FFC107] opacity-0 blur-2xl rounded-full group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
-                            <img src="./img/Products/izumi_product.png" alt="Izumi Product" class="max-h-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-xl relative z-10">
-                        </div>
-                        <!-- Feature List -->
-                        <ul class="space-y-4 mb-8 flex-grow">
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Air Conditioner
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Escalator & Elevator
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Sanitary ware
-                            </li>
+                <a href="product_page/izumi.html" class="brand-feature-row brand-feature-row-reverse group">
+                    <div class="brand-feature-copy">
+                        <h3 class="brand-feature-heading"><img src="./img/Products/izumi-logo.png" alt="Izumi" width="200" height="100" class="brand-feature-logo" decoding="async"></h3>
+                        <p>Air conditioning, elevators, escalators, sanitary ware, and building products.</p>
+                        <ul class="brand-feature-tags">
+                            <li>Air Conditioner</li>
+                            <li>Escalator &amp; Elevator</li>
+                            <li>Sanitary ware</li>
                         </ul>
-                        <!-- Divider -->
-                        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-5"></div>
-                        <!-- Footer / CTA -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-white font-bold text-xs tracking-[0.2em] uppercase transition-colors duration-300 group-hover:text-[#FFC107]">View Details</span>
-                            <i class="fa-solid fa-arrow-right text-[#FFC107] transition-transform duration-500 group-hover:translate-x-2 text-lg"></i>
-                        </div>
+                        <span>Explore Brand <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                    <div class="brand-feature-media">
+                        <img src="./img/Products/izumi_product.png" alt="Izumi air conditioning and building products" width="1329" height="721" class="brand-feature-product" loading="lazy" decoding="async">
                     </div>
                 </a>
 
-                
-
-                
-
-                
-
-                
-
-                <!-- Turboil Card -->
-                <a id="brand-turboil" href="#brand-turboil" class="group product-card-hover block w-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[2px] border-b-[#FFC107] fade-up-element" style="transition-delay: 200ms;">
-                    <!-- Top-Right Yellow Corner Accent -->
-                    <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
-                        <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
-                    </div>
-                    <!-- Padding Container -->
-                    <div class="p-6 sm:p-8 flex flex-col h-full relative z-10">
-                        <!-- Logo Area -->
-                        <div class="mb-6 h-12 w-fit flex items-center bg-white/95 backdrop-blur-sm rounded-xl px-4 py-1.5 shadow-sm border border-white/20">
-                            <img src="./img/Products/turboil-logo.png" alt="Turboil Logo" class="max-h-full object-contain opacity-100 transition-opacity duration-300 group-hover:opacity-100">
-                        </div>
-                        <!-- Main Product Image -->
-                        <div class="mb-8 flex justify-center items-center h-44 relative">
-                            <div class="absolute inset-0 bg-[#FFC107] opacity-0 blur-2xl rounded-full group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
-                            <img src="./img/Products/turboil_product.png" alt="Turboil Product" class="max-h-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-xl relative z-10">
-                        </div>
-                        <!-- Feature List -->
-                        <ul class="space-y-4 mb-8 flex-grow">
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Engine Oil
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Hydraulic Oil
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Gear Oil
-                            </li>
+                <a id="brand-turboil" href="corporate structure/turbo_oil/Turbo_Oil.html" class="brand-feature-row group">
+                    <div class="brand-feature-copy">
+                        <h3 class="brand-feature-heading"><img src="./img/Products/turboil-logo.png" alt="Turboil" width="200" height="100" class="brand-feature-logo" decoding="async"></h3>
+                        <p>Engine oil, hydraulic oil, gear oil, and industrial energy products.</p>
+                        <ul class="brand-feature-tags">
+                            <li>Engine Oil</li>
+                            <li>Hydraulic Oil</li>
+                            <li>Gear Oil</li>
                         </ul>
-                        <!-- Divider -->
-                        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-5"></div>
-                        <!-- Footer / CTA -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-white font-bold text-xs tracking-[0.2em] uppercase transition-colors duration-300 group-hover:text-[#FFC107]">View Details</span>
-                            <i class="fa-solid fa-arrow-right text-[#FFC107] transition-transform duration-500 group-hover:translate-x-2 text-lg"></i>
-                        </div>
+                        <span>Explore Brand <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                    <div class="brand-feature-media">
+                        <img src="./img/Products/turboil_product.png" alt="Turboil engine oils and industrial lubricants" width="1414" height="527" class="brand-feature-product" loading="lazy" decoding="async">
                     </div>
                 </a>
 
-                <!-- Sigma Card -->
-                <a href="product_page/sigma.html" class="group product-card-hover block w-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] rounded-[24px] overflow-hidden transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-[#FFC107]/10 border border-white/5 hover:border-[#FFC107]/40 relative border-b-[2px] border-b-[#FFC107] fade-up-element">
-                    <!-- Top-Right Yellow Corner Accent -->
-                    <div class="absolute top-0 right-0 w-12 h-12 bg-[#FFC107] rounded-bl-[24px] flex items-center justify-center z-20 transition-transform duration-500 group-hover:scale-110">
-                        <i class="fa-solid fa-arrow-right -rotate-45 text-[#071633] text-lg font-bold"></i>
-                    </div>
-                    <!-- Padding Container -->
-                    <div class="p-6 sm:p-8 flex flex-col h-full relative z-10">
-                        <!-- Logo Area -->
-                        <div class="mb-6 h-12 w-fit flex items-center bg-white/95 backdrop-blur-sm rounded-xl px-4 py-1.5 shadow-sm border border-white/20">
-                            <img src="./img/Products/sigma_logo.png" alt="Sigma Logo" class="max-h-full object-contain opacity-100 transition-opacity duration-300 group-hover:opacity-100">
-                        </div>
-                        <!-- Main Product Image -->
-                        <div class="mb-8 flex justify-center items-center h-44 relative">
-                            <div class="absolute inset-0 bg-[#FFC107] opacity-0 blur-2xl rounded-full group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
-                            <img src="./img/Products/sigma_product.png" alt="Sigma Product" class="max-h-full object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-xl relative z-10">
-                        </div>
-                        <!-- Feature List -->
-                        <ul class="space-y-4 mb-8 flex-grow">
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                High Performance Equipment
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Durable & Reliable
-                            </li>
-                            <li class="flex items-start text-slate-300 text-[13px] sm:text-[14px] font-medium group-hover:text-white transition-colors duration-300">
-                                <div class="w-5 h-5 rounded-full bg-[#FFC107] flex items-center justify-center mr-3.5 flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(255,193,7,0.3)]">
-                                    <i class="fa-solid fa-check text-[#071633] text-[10px] font-black"></i>
-                                </div>
-                                Specialized Engineering
-                            </li>
+                <a href="product_page/sigma.html" class="brand-feature-row brand-feature-row-reverse group">
+                    <div class="brand-feature-copy">
+                        <h3 class="brand-feature-heading"><img src="./img/Products/sigma_logo.png" alt="Sigma" width="1127" height="473" class="brand-feature-logo" decoding="async"></h3>
+                        <p>High-performance equipment, durable engineering, and specialized solutions.</p>
+                        <ul class="brand-feature-tags">
+                            <li>High Performance Equipment</li>
+                            <li>Durable &amp; Reliable</li>
+                            <li>Specialized Engineering</li>
                         </ul>
-                        <!-- Divider -->
-                        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-5"></div>
-                        <!-- Footer / CTA -->
-                        <div class="flex items-center justify-between">
-                            <span class="text-white font-bold text-xs tracking-[0.2em] uppercase transition-colors duration-300 group-hover:text-[#FFC107]">View Details</span>
-                            <i class="fa-solid fa-arrow-right text-[#FFC107] transition-transform duration-500 group-hover:translate-x-2 text-lg"></i>
-                        </div>
+                        <span>Explore Brand <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                    <div class="brand-feature-media">
+                        <img src="./img/Products/sigma_product.png" alt="Sigma specialized engineering equipment" width="1414" height="671" class="brand-feature-product" loading="lazy" decoding="async">
                     </div>
                 </a>
             </div>
@@ -825,41 +571,7 @@
             if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMenu();
         }));
     </script>
-    <script>
-        // Premium Product Showcase JS
-        document.addEventListener("DOMContentLoaded", () => {
-            // Mouse-follow radial highlight effect
-            document.querySelectorAll('.product-card-hover').forEach(card => {
-                card.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    card.style.setProperty('--mouse-x', `${x}px`);
-                    card.style.setProperty('--mouse-y', `${y}px`);
-                });
-            });
-
-            // Intersection Observer for fade-up animation
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.fade-up-element').forEach(el => {
-                observer.observe(el);
-            });
-        });
-    </script>
-    <script src="./site-effects.js"></script>
+<script src="./site-effects.js"></script>
 </body>
 
 </html>

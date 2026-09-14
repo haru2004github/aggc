@@ -81,56 +81,6 @@
             clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
         }
 
-        /* ===== SCROLL REVEAL ANIMATION SYSTEM ===== */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .scroll-reveal-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .scroll-reveal-left.revealed {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .scroll-reveal-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .scroll-reveal-right.revealed {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .reveal-scale-up {
-            opacity: 0;
-            transform: scale(0.92) translateY(20px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal-scale-up.revealed {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
-
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
-
         /* Custom Sector Card Hover Effect */
         .sector-hub-card {
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -386,15 +336,8 @@
             margin-bottom: 18px;
         }
 
-        /* Subtle animated border glow for bento hero */
-        @keyframes borderGlow {
-            0%, 100% { box-shadow: 0 8px 32px rgba(7, 22, 51, 0.12), inset 0 0 0 1px rgba(225, 174, 49, 0.08); }
-            50% { box-shadow: 0 12px 48px rgba(7, 22, 51, 0.18), inset 0 0 0 1px rgba(225, 174, 49, 0.2); }
-        }
-
         .bento-card {
             box-shadow: 0 8px 32px rgba(7, 22, 51, 0.12);
-            animation: borderGlow 4s ease-in-out infinite;
         }
 
         .bento-card:hover {
@@ -704,7 +647,7 @@
                             <!-- Hero Image: Power Tower -->
                             <div class="bento-card bento-hero">
                                 <img src="./img/what_we_do/grid_substation_powermax.png" alt="Grid Substation Power Transmission and Distribution">
-                                <div class="bento-overlay"></div>
+                                <div class="bento-overlay bento-overlay-artwork"></div>
                             </div>
                             <!-- Sub Image: Fuel Terminals -->
                             <div class="bento-card bento-sub">
@@ -1297,18 +1240,6 @@
             icon.classList.toggle('rotate-180');
         }
 
-        // IntersectionObserver for staggered reveals
-        document.addEventListener('DOMContentLoaded', () => {
-            const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .reveal-scale-up');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                    }
-                });
-            }, { threshold: 0.1 });
-            revealElements.forEach((el) => observer.observe(el));
-        });
     </script>
 
     <script src="./site-effects.js"></script>
