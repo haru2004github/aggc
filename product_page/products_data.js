@@ -292,75 +292,81 @@ const PRODUCTS_DATABASE = {
         ]
     },
     sigma: {
-        brandTitle: "SIGMA",
-        brandLogo: "../img/Products/sigma_logo.png",
-        products: [
-            {
-                id: "rt-crane",
-                title: "ROUGH TERRAIN CRANE (RT CRANE)",
-                image: "img/Rough Terrain Crane (RT Crane).png",
-                models: ["RT Crane"]
-            },
-            {
-                id: "line-pump-truck",
-                title: "LINE PUMP TRUCK",
-                image: "img/Line Pump Truck.jpg",
-                models: ["Line Pump Truck"]
-            },
-            {
-                id: "forklift-electric",
-                title: "FORKLIFT - ELECTRIC TYPE",
-                image: "img/Forklift - Electric Type.jpg",
-                models: ["Forklift - Electric Type"]
-            },
-            {
-                id: "forklift-engine",
-                title: "FORKLIFT - ENGINE TYPE",
-                image: "img/Forklift - Engine Type.jpg",
-                models: ["Forklift - Engine Type"]
-            },
-            {
-                id: "boom-pump-truck",
-                title: "BOOM PUMP TRUCK",
-                image: "img/Boom Pump Truck.jpg",
-                models: ["Boom Pump Truck"]
-            },
-            {
-                id: "self-loading-mixer",
-                title: "SELF LOADING MIXER",
-                image: "img/Self Loading Mixer.jpg",
-                models: ["Self Loading Mixer"]
-            },
-            {
-                id: "crawler-drill",
-                title: "CRAWLER DRILL",
-                image: "img/Crawler Drill.png",
-                models: ["Crawler Drill"]
-            },
-            {
-                id: "crushing-plant",
-                title: "CRUSHING PLANT",
-                image: "img/Crushing Plant.jpg",
-                models: ["Crushing Plant"]
-            },
-            {
-                id: "mobile-concrete-pump",
-                title: "MOBILE CONCRETE PUMP",
-                image: "img/Mobile Concrete Pump.jpg",
-                models: ["Mobile Concrete Pump"]
-            },
-            {
-                id: "batching-plant",
-                title: "BATCHING PLANT",
-                image: "img/Batching Plant.jpg",
-                models: ["Batching Plant"]
-            },
-            {
-                id: "mixer-truck",
-                title: "MIXER TRUCK",
-                image: "img/Mixer Truck.png",
-                models: ["Mixer Truck"]
-            }
-        ]
-    }
+    "brandTitle": "SIGMA",
+    "brandLogo": "../img/Products/sigma_logo.png",
+    "products": [
+        {
+            "id": "sm800cmt-concrete-mixer-truck",
+            "title": "CONCRETE MIXER TRUCK",
+            "image": "img/sigma/sigma-sm800cmt-concrete-mixer-truck.jpg",
+            "models": [
+                "SM800CMT"
+            ]
+        },
+        {
+            "id": "sm30-fd-1-forklift-truck",
+            "title": "FORKLIFT TRUCK",
+            "image": "img/sigma/sigma-sm30-fd-1-forklift-truck.jpg",
+            "models": [
+                "SM30 FD-1"
+            ]
+        },
+        {
+            "id": "100-kva-diesel-generator",
+            "title": "DIESEL GENERATOR",
+            "image": "img/sigma/sigma-100-kva-diesel-generator.jpg",
+            "models": [
+                "100 kVA Diesel Generator"
+            ]
+        },
+        {
+            "id": "sm100-cmp-concrete-pump",
+            "title": "CONCRETE PUMP",
+            "image": "img/sigma/sigma-sm100-cmp-concrete-pump.jpg",
+            "models": [
+                "SM100 CMP"
+            ]
+        },
+        {
+            "id": "sm100-clp-closed-loop-concrete-pump",
+            "title": "CONCRETE PUMP (CLOSED LOOP)",
+            "image": "img/sigma/sigma-sm100-clp-closed-loop-concrete-pump.jpg",
+            "models": [
+                "SM100 CLP"
+            ]
+        },
+        {
+            "id": "sm655-c-concrete-pump",
+            "title": "CONCRETE PUMP",
+            "image": "img/sigma/sigma-sm655-c-concrete-pump.jpg",
+            "models": [
+                "SM655 C"
+            ]
+        },
+        {
+            "id": "sm4500cd-1-crawler-rock-drill",
+            "title": "CRAWLER ROCK DRILL",
+            "image": "img/sigma/sigma-sm4500cd-1-crawler-rock-drill.jpg",
+            "models": [
+                "SM4500CD-1"
+            ]
+        },
+        {
+            "id": "sm60-cbp-m-concrete-batching-plant",
+            "title": "CONCRETE BATCHING PLANT",
+            "image": "img/sigma/sigma-sm60-cbp-m-concrete-batching-plant.jpg",
+            "models": [
+                "SM60-CBP-M"
+            ]
+        },
+        {
+            "id": "sm3500-rt-1-rough-terrain-crane",
+            "title": "ROUGH TERRAIN CRANE",
+            "image": "img/sigma/sigma-sm3500-rt-1-rough-terrain-crane.jpg",
+            "models": [
+                "SM3500 RT-1"
+            ]
+        }
+    ]
+}
 };

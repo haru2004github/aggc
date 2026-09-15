@@ -81,6 +81,7 @@
         }
     </style>
     <link rel="stylesheet" href="./site-effects.css">
+    <link rel="stylesheet" href="./activities.css">
 </head>
 <body class="premium-content-page gallery-page text-slate-800 min-h-screen flex flex-col">
 
@@ -255,12 +256,12 @@
     </main>
 
     <!-- Full-Screen Image Lightbox Modal (Upgraded Animation & 80vh Size) -->
-    <div id="imageModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-2 sm:p-6 lg:p-8">
+    <div id="imageModal" role="dialog" aria-modal="true" aria-label="Activity photo viewer" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-2 sm:p-6 lg:p-8">
         <!-- Cinematic Backdrop with Heavy Blur -->
         <div id="modalBackdrop" class="absolute inset-0 bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633]/95 backdrop-blur-xl opacity-0 transition-opacity duration-500 ease-out" onclick="closeImageModal()"></div>
         
         <!-- Close Button (Staggered Animation) -->
-        <button id="modalCloseBtn" onclick="closeImageModal()" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white hover:text-brand-gold transition-all w-12 h-12 flex items-center justify-center bg-white/10 rounded-full focus:outline-none z-20 shadow-[0_4px_20px_rgba(0,0,0,0.5)] border border-white/20 hover:bg-white/20 hover:rotate-90 hover:scale-110 opacity-0 translate-y-4 duration-500 ease-out">
+        <button id="modalCloseBtn" aria-label="Close photo" onclick="closeImageModal()" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white hover:text-brand-gold transition-all w-12 h-12 flex items-center justify-center bg-white/10 rounded-full focus:outline-none z-20 shadow-[0_4px_20px_rgba(0,0,0,0.5)] border border-white/20 hover:bg-white/20 hover:rotate-90 hover:scale-110 opacity-0 translate-y-4 duration-500 ease-out">
             <i class="fa-solid fa-xmark text-xl"></i>
         </button>
         
@@ -425,15 +426,19 @@
         const activitiesContainer = document.getElementById('activities-container');
 
         async function fetchActivities() {
+            loadingIndicator.classList.remove('hidden');
+            loadingIndicator.innerHTML = '<div class="loader mb-4"></div><p>Loading Activities...</p>';
             try {
+                // The Visualization script transport also works when opened as a local file.
                 activitiesData = await fetchActivitiesJSON();
             } catch (jsonError) {
-                console.warn("Google JSON feed failed, trying CSV feed...", jsonError);
+                console.warn('Google Visualization feed failed; trying CSV.', jsonError);
                 try {
                     activitiesData = await fetchActivitiesCSV();
                 } catch (csvError) {
-                    console.error("Error fetching activities:", csvError);
-                    loadingIndicator.innerHTML = '<p class="text-red-500 font-bold">Failed to load activities. Please check Sheet Permissions.</p>';
+                    console.error('Activity feeds unavailable:', csvError);
+                    loadingIndicator.innerHTML = '<p role="alert" class="text-center">Activities could not be loaded. Check your internet connection and try again.</p><button type="button" class="mt-4 rounded-lg bg-brand-gold text-brand-navy px-6 py-3 font-semibold">Try again</button>';
+                    loadingIndicator.querySelector('button').addEventListener('click', fetchActivities);
                     return;
                 }
             }
@@ -442,26 +447,44 @@
             renderActivities();
         }
 
-        async function fetchActivitiesJSON() {
-            const response = await fetch(buildSheetUrl(SHEET_JSON_URL), { cache: 'no-store' });
-            if (!response.ok) throw new Error('Network response was not ok');
-
-            const text = await response.text();
-            const jsonMatch = text.match(/google\.visualization\.Query\.setResponse\(([\s\S\w]+)\);/);
-
-            if (!jsonMatch || !jsonMatch[1]) throw new Error('Invalid JSON Data Format');
-
-            const json = JSON.parse(jsonMatch[1]);
-            const rows = json.table.rows || [];
-
-            return rows.map((row, id) => {
-                const getVal = (idx) => (row.c && row.c[idx] && row.c[idx].v) ? row.c[idx].v : '';
-                return normalizeActivity(id, getVal(3), getVal(4));
-            }).filter(Boolean);
+        function fetchActivitiesJSON() {
+            return new Promise((resolve, reject) => {
+                const callback = `aggcActivities_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+                const script = document.createElement('script');
+                const cleanup = () => {
+                    clearTimeout(timer);
+                    script.remove();
+                    delete window[callback];
+                };
+                const timer = setTimeout(() => {
+                    cleanup();
+                    reject(new Error('Activity feed timed out'));
+                }, 20000);
+                window[callback] = (json) => {
+                    cleanup();
+                    if (json.status === 'error' || !Array.isArray(json.table?.rows)) {
+                        reject(new Error('Activity feed returned invalid data'));
+                        return;
+                    }
+                    resolve(json.table.rows.map((row, id) => {
+                        const getVal = (idx) => row.c?.[idx]?.v ?? '';
+                        return normalizeActivity(id, getVal(3), getVal(4));
+                    }).filter(Boolean));
+                };
+                script.onerror = () => {
+                    cleanup();
+                    reject(new Error('Activity feed could not be reached'));
+                };
+                const url = new URL(SHEET_JSON_URL);
+                url.searchParams.set('tqx', `out:json;responseHandler:${callback}`);
+                script.src = url.href;
+                script.async = true;
+                document.head.appendChild(script);
+            });
         }
 
         async function fetchActivitiesCSV() {
-            const response = await fetch(buildSheetUrl(SHEET_CSV_URL), { cache: 'no-store' });
+            const response = await fetch(buildSheetUrl(SHEET_CSV_URL), { cache: 'no-store', signal: AbortSignal.timeout(15000) });
             if (!response.ok) throw new Error('Google CSV feed unavailable');
 
             const csv = await response.text();
@@ -551,30 +574,34 @@
             activitiesData.forEach(activity => {
                 // Section Wrapper (Reduced padding for compact premium look)
                 const section = document.createElement('div');
-                section.className = "premium-activity-card scroll-reveal p-5 sm:p-8 rounded-[1.5rem] transition-all duration-500";
+                section.className = "premium-activity-card activity-album";
 
                 // Title Area (Premium Line Style)
                 const safeTitle = escapeHTML(activity.title);
                 const headerHtml = `
-                    <div class="relative pl-5 mb-6 border-l-4 border-brand-gold">
-                        <h2 class="text-xl sm:text-2xl font-heading font-extrabold text-brand-navy leading-tight tracking-tight">${safeTitle}</h2>
+                    <div class="activity-album-header">
+                        <h2>${safeTitle}</h2>
+                        <span class="activity-photo-count">${activity.photos.length} ${activity.photos.length === 1 ? 'photo' : 'photos'}</span>
                     </div>
                 `;
 
                 // Images Grid Area (Reduced gaps: gap-2 on mobile, gap-4 on desktop)
                 const gridDiv = document.createElement('div');
-                gridDiv.className = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-4 md:gap-5";
+                gridDiv.className = "activity-photo-grid";
+                gridDiv.dataset.count = activity.photos.length;
 
-                activity.photos.forEach(photoUrl => {
-                    const imgContainer = document.createElement('div');
+                activity.photos.forEach((photoUrl, photoIndex) => {
+                    const imgContainer = document.createElement('button');
+                    imgContainer.type = 'button';
+                    imgContainer.setAttribute('aria-label', `View photo ${photoIndex + 1} of ${activity.photos.length}: ${activity.title}`);
                     // Changed rounded-2xl to rounded-xl for tighter grid look
-                    imgContainer.className = "premium-media-tile relative aspect-[4/3] overflow-hidden cursor-pointer group transition-all duration-300 bg-slate-100";
+                    imgContainer.className = "premium-media-tile activity-photo relative overflow-hidden cursor-pointer group";
                     
                     // JavaScript function ဖြင့် တိုက်ရိုက်ချိတ်ဆက်ခြင်း (Tally URL ရှည်လျားမှုကြောင့် Error မတက်စေရန်)
                     imgContainer.onclick = () => openImageModal(photoUrl, activity.title);
 
                     imgContainer.innerHTML = `
-                        <img src="${escapeHTML(photoUrl)}" alt="${safeTitle || 'Activity Image'}" loading="lazy" onerror="this.onerror=null;this.src='${ACTIVITY_FALLBACK_IMAGE}'" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
+                        <img src="${escapeHTML(photoUrl)}" alt="${safeTitle || 'Activity Image'}" loading="lazy" decoding="async" onload="this.parentElement.classList.toggle('is-portrait', this.naturalHeight > this.naturalWidth)" onerror="this.onerror=null;this.src='${ACTIVITY_FALLBACK_IMAGE}'" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]">
                         
                         <!-- Hover Overlay -->
                         <div class="absolute inset-0 bg-brand-navy/0 group-hover:bg-brand-navy/40 transition-colors duration-300 flex items-center justify-center">
@@ -606,12 +633,18 @@
         const modalImageContent = document.getElementById('modalImageContent');
         const modalCaption = document.getElementById('modalCaption');
 
+        let modalTrigger = null;
+        let modalCloseTimer;
+
         function openImageModal(imgSrc, title) {
+            clearTimeout(modalCloseTimer);
+            modalTrigger = document.activeElement;
             fullScreenImage.onerror = () => {
                 fullScreenImage.onerror = null;
                 fullScreenImage.src = ACTIVITY_FALLBACK_IMAGE;
             };
             fullScreenImage.src = imgSrc;
+            fullScreenImage.alt = title || 'Activity photo';
             
             // Set Caption
             if (title) {
@@ -647,6 +680,7 @@
             }
 
             document.body.style.overflow = 'hidden'; // Stop background scrolling
+            modalCloseBtn.focus();
         }
 
         function closeImageModal() {
@@ -661,9 +695,10 @@
             modalCaption.classList.add('opacity-0', 'translate-y-6');
             
             // Wait for longest animation duration (600ms) before hiding
-            setTimeout(() => {
+            modalCloseTimer = setTimeout(() => {
                 imageModal.classList.add('hidden');
-                fullScreenImage.src = '';
+                fullScreenImage.removeAttribute('src');
+                modalTrigger?.focus();
                 document.body.style.overflow = 'auto'; // Restore background scrolling
             }, 600); 
         }
@@ -677,6 +712,10 @@
         
         // Escape key to close
         document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab' && !imageModal.classList.contains('hidden')) {
+                e.preventDefault();
+                modalCloseBtn.focus();
+            }
             if (e.key === 'Escape' && !imageModal.classList.contains('hidden')) {
                 closeImageModal();
             }

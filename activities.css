@@ -1,0 +1,31 @@
+/* Gallery-specific layout; keep the shared navy and gold palette. */
+.gallery-page #activities-container { display: grid; gap: clamp(24px, 4vw, 48px); }
+.gallery-page #activities-container.hidden { display: none; }
+.gallery-page #activities-container > * { margin: 0; min-width: 0; }
+.gallery-page .activity-album { padding: clamp(16px, 3vw, 32px); border-radius: 20px; }
+.activity-album-header { display: flex; align-items: flex-start; gap: 20px; justify-content: space-between; margin-bottom: 24px; padding-left: 16px; border-left: 3px solid #e1ae31; }
+.activity-album-header h2 { margin: 0; font-size: clamp(18px, 2.2vw, 25px); font-weight: 700; line-height: 1.6; overflow-wrap: anywhere; }
+.activity-photo-count { flex-shrink: 0; margin-top: 6px; color: #e1ae31; font-size: 12px; white-space: nowrap; }
+.activity-photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.activity-photo-grid[data-count="1"] { grid-template-columns: minmax(0, 1fr); max-width: 800px; margin-inline: auto; }
+.activity-photo-grid[data-count="2"], .activity-photo-grid[data-count="4"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.gallery-page .activity-photo { display: block; width: 100%; padding: 0; aspect-ratio: 4 / 3; border-radius: 12px !important; border: 1px solid rgba(255,255,255,.12) !important; box-shadow: none !important; background: #061329 !important; }
+.activity-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.activity-photo.is-portrait img { object-fit: contain; }
+.activity-photo:focus-visible { outline: 3px solid #e1ae31; outline-offset: 4px; }
+.activity-photo:focus-visible .absolute.inset-0 { background: rgba(7,22,51,.25); }
+.activity-photo:focus-visible .absolute.inset-0 > div { opacity: 1; transform: scale(1); }
+.gallery-page #modalImageContent { height: auto; max-height: calc(100dvh - 112px); }
+.gallery-page #fullScreenImage { min-height: 0; max-height: calc(100dvh - 220px); max-width: 100%; flex-shrink: 1; }
+.gallery-page #modalCaption { max-width: min(840px, 92vw); max-height: 100px; overflow-y: auto; flex-shrink: 0; padding: 12px 20px; border-radius: 12px; text-align: center; line-height: 1.7; letter-spacing: normal; text-transform: none; overflow-wrap: anywhere; }
+@media (max-width: 767px) {
+    .activity-photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .activity-album-header { margin-bottom: 18px; gap: 8px; flex-direction: column; }
+    .activity-photo-count { margin-top: 0; }
+}
+@media (max-width: 479px) {
+    .activity-photo-grid, .activity-photo-grid[data-count="2"], .activity-photo-grid[data-count="4"] { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .activity-photo img, #imageModal * { transition: none !important; transform: none !important; }
+}

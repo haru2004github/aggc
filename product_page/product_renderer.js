@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             const url = new URL(raw, window.location.href);
-            const isSafeProtocol = url.protocol === "http:" || url.protocol === "https:" || url.protocol === "data:";
+            const isSafeProtocol = url.protocol === "http:" || url.protocol === "https:" || (window.location.protocol === "file:" && url.protocol === "file:") || url.protocol === "data:";
             const isSafeImageData = url.protocol !== "data:" || /^data:image\/(?:png|jpe?g|gif|webp|svg\+xml);/i.test(raw);
             return isSafeProtocol && isSafeImageData ? raw : "";
         } catch {

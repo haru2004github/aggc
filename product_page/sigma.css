@@ -1,0 +1,30 @@
+/* Keep the supplied product sheets, model labels and views fully visible. */
+body[data-catalog="sigma"] .catalog-card-image {
+    height: auto !important;
+    min-height: 0;
+    aspect-ratio: 1280 / 853;
+    align-self: center;
+}
+body[data-catalog="sigma"] .catalog-card-image img,
+body[data-catalog="sigma"] .catalog-card:hover .catalog-card-image img {
+    object-fit: contain !important;
+    transform: none !important;
+    filter: none;
+}
+body[data-catalog="sigma"] .catalog-card-image::after,
+body[data-catalog="sigma"] .catalog-card-count,
+body[data-catalog="sigma"] .catalog-visual-label,
+body[data-catalog="sigma"] .catalog-logo-plate,
+body[data-catalog="sigma"] .catalog-visual-index { display: none; }
+body[data-catalog="sigma"] .catalog-hero-visual {
+    min-height: 0 !important;
+    height: auto !important;
+    aspect-ratio: 1280 / 853;
+    align-self: center;
+}
+body[data-catalog="sigma"] .catalog-hero-product {
+    min-height: 0 !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    transform: none !important;
+}
