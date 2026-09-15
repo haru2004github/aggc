@@ -183,6 +183,7 @@
         }
     </style>
     <link rel="stylesheet" href="./site-effects.css">
+    <link rel="stylesheet" href="./careers-cards.css">
 </head>
 
 <body class="premium-content-page careers-page bg-slate-50 text-slate-800 min-h-screen flex flex-col">
@@ -893,10 +894,10 @@
 
             jobsData.forEach(job => {
                 const card = document.createElement('div');
-                card.className = "premium-job-card scroll-reveal rounded-3xl overflow-hidden group flex flex-col transition-all duration-500 ai-card";
+                card.className = "premium-job-card career-opening group flex flex-col";
 
                 card.innerHTML = `
-                    <div class="premium-job-media relative w-full aspect-[4/3] bg-slate-100 overflow-hidden cursor-pointer" onclick="openImageModal('${escapeJSString(job.posterImage)}')">
+                    <button type="button" aria-label="View recruitment poster" class="premium-job-media relative w-full aspect-[4/3] bg-slate-100 overflow-hidden cursor-pointer" onclick="openImageModal('${escapeJSString(job.posterImage)}')">
                         <img src="${escapeHTML(job.posterImage)}" onerror="this.onerror=null;this.src='${job.fallbackImage}'" alt="${escapeHTML(job.title)}" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
                         <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-brand-navy/20 to-transparent opacity-40 group-hover:opacity-80 transition-opacity duration-500"></div>
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -907,12 +908,12 @@
                         <div class="absolute top-4 right-4 bg-brand-gold text-brand-navy text-[9px] font-heading font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg flex items-center">
                             <i class="fa-solid fa-fire mr-1.5"></i> Hiring
                         </div>
-                    </div>
+                    </button>
                     
                     <div class="premium-job-body p-6 flex flex-col flex-grow relative bg-white">
                         <div class="absolute top-0 left-0 w-0 h-1.5 bg-brand-gold group-hover:w-full transition-all duration-700 ease-out"></div>
                         <h3 class="text-lg font-heading font-black text-brand-navy mb-2 group-hover:text-brand-gold transition-colors leading-tight tracking-tight">${escapeHTML(job.title)}</h3>
-                        <p class="text-slate-500 text-[13px] leading-relaxed mb-4 font-medium">We are looking for talented individuals to join our team. Click below to view the full job description.</p>
+                        <p class="text-slate-500 text-[13px] leading-relaxed mb-4 font-medium">Explore the role, responsibilities and requirements, and apply to join AGGC.</p>
                         <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
                             <button onclick="showJobDetail(${job.id})" class="text-xs font-heading font-black text-brand-gold uppercase tracking-[0.15em] hover:text-brand-navy transition-colors flex items-center group/btn">
                                 See Details & Apply

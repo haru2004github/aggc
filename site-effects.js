@@ -111,7 +111,7 @@
         const alt = (img.getAttribute('alt') || '').toLowerCase();
 
         if (img.closest('nav, footer, #mobileMenu, #imageModal, #lightbox, [id*="modal"], [class*="modal"]')) return false;
-        if (img.closest('.activity-photo-grid, .brand-feature-media, .bento-card, .catalog-card-image, .catalog-hero-visual, .strategic-pillars-section .grid > a')) return false;
+        if (img.closest('.career-opening, .unified-synergy-banner, .activity-photo-grid, .brand-feature-media, .bento-card, .catalog-card-image, .catalog-hero-visual, .strategic-pillars-section .grid > a')) return false;
         if (src.includes('logo') || src.includes('location-qr') || alt.includes('logo') || alt.includes('qr')) return false;
         if (img.width < 96 && img.height < 96) return false;
 

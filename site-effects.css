@@ -3543,3 +3543,38 @@ body.contact-page .contact-map-frame {
         margin-top: 2.5rem;
     }
 }
+
+/* Home strategic sectors: consistent pointer and keyboard feedback. */
+#sectors .home-sector-card {
+    position: relative;
+    isolation: isolate;
+    background: linear-gradient(135deg, #18355b, #0c2242) !important;
+    border: 1px solid rgba(180, 202, 229, .2);
+    box-shadow: 0 6px 18px rgba(2, 11, 30, .14);
+    transition: transform 280ms ease, border-color 280ms ease, box-shadow 280ms ease;
+    transition-delay: 0ms !important;
+    cursor: default;
+}
+#sectors .home-sector-card h3 { color: #f5f8fc !important; transition: color 220ms ease; }
+#sectors .home-sector-card p { color: #b8c9df !important; line-height: 1.65; }
+#sectors .home-sector-card .fa-gear { transition: transform 500ms ease, filter 280ms ease; }
+#sectors .home-sector-card:focus-visible {
+    outline: 2px solid #f1c85c;
+    outline-offset: 4px;
+    border-color: #e1ae31;
+    box-shadow: 0 12px 28px rgba(2, 11, 30, .3), inset 0 0 24px rgba(225,174,49,.08);
+}
+#sectors .home-sector-card:focus-visible h3 { color: #f3cd68 !important; }
+@media (hover: hover) and (pointer: fine) {
+    #sectors .home-sector-card:hover {
+        transform: translateY(-5px);
+        border-color: #e1ae31;
+        box-shadow: 0 16px 32px rgba(2,11,30,.32), inset 0 0 28px rgba(225,174,49,.09);
+    }
+    #sectors .home-sector-card:hover h3 { color: #f3cd68 !important; }
+    #sectors .home-sector-card:hover .fa-gear { transform: rotate(35deg); filter: drop-shadow(0 0 12px rgba(225,174,49,.38)); }
+}
+@media (prefers-reduced-motion: reduce) {
+    #sectors .home-sector-card, #sectors .home-sector-card .fa-gear { transition: none !important; }
+    #sectors .home-sector-card:hover, #sectors .home-sector-card:hover .fa-gear { transform: none !important; }
+}

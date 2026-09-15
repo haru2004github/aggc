@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Editorial brand hero
         const header = document.createElement("div");
         header.className = "catalog-hero";
-        header.setAttribute("data-card-reveal", "");
+
         header.innerHTML = `
             <div class="catalog-hero-copy">
                 <span class="catalog-kicker"><span>AGGC Authorized Portfolio</span></span>
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const sectionHead = document.createElement("div");
         sectionHead.id = "catalog-products";
         sectionHead.className = "catalog-section-head";
-        sectionHead.setAttribute("data-card-reveal", "");
+
         sectionHead.innerHTML = `
             <div>
                 <span class="catalog-kicker"><span>Equipment range</span></span>
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
         brand.products.forEach((product, index) => {
             const card = document.createElement("div");
             card.className = "catalog-card";
-            card.setAttribute("data-card-reveal", "");
+
             card.tabIndex = 0;
             card.setAttribute("role", "button");
             card.setAttribute("aria-label", `View ${product.title} models`);
