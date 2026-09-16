@@ -26,6 +26,6 @@
 @media (max-width: 479px) {
     .activity-photo-grid, .activity-photo-grid[data-count="2"], .activity-photo-grid[data-count="4"] { grid-template-columns: minmax(0, 1fr); }
 }
-@media (prefers-reduced-motion: reduce) {
+:root[data-motion="reduced"] {
     .activity-photo img, #imageModal * { transition: none !important; transform: none !important; }
 }

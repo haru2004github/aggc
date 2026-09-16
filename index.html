@@ -2,6 +2,7 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
+    <script src="./motion-settings.js?v=20260917-motion6"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AGGC - Aung Gyi Group Company</title>
@@ -13,7 +14,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="icon" href="./img/logo_head.png">
-
+ 
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -630,7 +631,8 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="./site-effects.css">
+    <link rel="stylesheet" href="./site-effects.css?v=20260917-motion5">
+    <link rel="stylesheet" href="./site-polish.css?v=20260917-motion5">
 </head>
 
 <body class="bg-[#f8f7f4] text-slate-800 min-h-screen text-[15px] leading-relaxed">
@@ -775,21 +777,26 @@
 
         <!-- Full-width landscape carousel -->
         <div class="absolute inset-0 bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633]">
-            <img src="./img/slider_1.png" alt="AGGC 15 Years Anniversary"
+            <img src="./img/hero/hero-1-1672.webp" srcset="./img/hero/hero-1-960.webp 960w, ./img/hero/hero-1-1672.webp 1672w" sizes="100vw"
+                width="1672" height="941" alt="Heavy construction machinery" decoding="async" fetchpriority="high"
                 class="carousel-img active absolute inset-0 w-full h-full object-cover object-center" />
-            <img src="./img/slider_2.png" alt="AGGC Heavy Machinery"
+            <img src="./img/hero/hero-2-1672.webp" srcset="./img/hero/hero-2-960.webp 960w, ./img/hero/hero-2-1672.webp 1672w" sizes="100vw"
+                width="1672" height="941" alt="Commercial vehicles and logistics" decoding="async" fetchpriority="low"
                 class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
-            <img src="./img/slider_3.png" alt="AGGC Construction Equipment"
+            <img src="./img/hero/hero-3-1672.webp" srcset="./img/hero/hero-3-960.webp 960w, ./img/hero/hero-3-1672.webp 1672w" sizes="100vw"
+                width="1672" height="941" alt="Road construction equipment" decoding="async" fetchpriority="low"
                 class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
-            <img src="./img/slider_4.png" alt="AGGC Power & Energy"
+            <img src="./img/hero/hero-4-1672.webp" srcset="./img/hero/hero-4-960.webp 960w, ./img/hero/hero-4-1672.webp 1672w" sizes="100vw"
+                width="1672" height="941" alt="Industrial power and energy" decoding="async" fetchpriority="low"
                 class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
-            <img src="./img/slider_5.png" alt="AGGC Team and Projects"
+            <img src="./img/hero/hero-5-1672.webp" srcset="./img/hero/hero-5-960.webp 960w, ./img/hero/hero-5-1672.webp 1672w" sizes="100vw"
+                width="1672" height="941" alt="Warehousing and material handling" decoding="async" fetchpriority="low"
                 class="carousel-img absolute inset-0 w-full h-full object-cover object-center" />
         </div>
 
         <!-- Corporate readability overlays -->
-        <div class="absolute inset-0 bg-gradient-to-r from-[#071633]/95 via-[#071633]/[0.74] to-[#071633]/[0.14] z-10"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#050a18]/[0.82] via-transparent to-[#050a18]/20 z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#071633]/[0.88] via-[#071633]/[0.60] to-[#071633]/[0.06] z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#050a18]/[0.65] via-transparent to-[#050a18]/10 z-10"></div>
         <div class="absolute inset-0 opacity-[0.08] z-10 pointer-events-none"
             style="background-image: linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px); background-size: 42px 42px;"></div>
 
@@ -1582,7 +1589,7 @@
 
             </div>
             <div
-                class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-300 font-medium">
+                class="pt-8 border-t border-white/10 flex flex-col justify-center text-center items-center text-[11px] text-slate-300 font-medium">
                 <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
                 
             </div>
@@ -1651,6 +1658,31 @@
         const slideCategoryLabel = document.getElementById('slideCategoryLabel');
         let currentImageIndex = 0;
         let heroCarouselInterval = null;
+        const heroMotionPreference = window.aggcMotion;
+        let heroPaused = heroMotionPreference.matches;
+        const heroPauseButton = document.getElementById('heroCarouselPause');
+        function updateHeroPauseButton() {
+            if (!heroPauseButton) return;
+            heroPauseButton.setAttribute('aria-pressed', String(heroPaused));
+            heroPauseButton.setAttribute('aria-label', heroPaused ? 'Play slideshow' : 'Pause slideshow');
+            heroPauseButton.innerHTML = `<i class="fa-solid fa-${heroPaused ? 'play' : 'pause'}" aria-hidden="true"></i>`;
+        }
+        heroPauseButton?.addEventListener('click', () => {
+            heroPaused = !heroPaused;
+            updateHeroPauseButton();
+            startHeroCarousel();
+        });
+        heroMotionPreference.addEventListener('change', (event) => {
+            heroPaused = event.matches;
+            updateHeroPauseButton();
+            startHeroCarousel();
+        });
+        document.addEventListener('visibilitychange', startHeroCarousel);
+        window.addEventListener('pagehide', () => clearInterval(heroCarouselInterval));
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) { updateHeroSlide(0); startHeroCarousel(); }
+        });
+        updateHeroPauseButton();
 
         function updateHeroSlide(index) {
             if (carouselImages.length === 0) return;
@@ -1663,11 +1695,10 @@
             // Update interactive indicators
             const indicators = document.querySelectorAll('.hero-indicator .indicator-bar');
             indicators.forEach((bar, idx) => {
-                if (idx === currentImageIndex) {
-                    bar.className = 'indicator-bar block h-1.5 rounded-full transition-all duration-500 w-7 bg-brand-gold shadow-[0_0_10px_rgba(241,173,24,0.8)]';
-                } else {
-                    bar.className = 'indicator-bar block h-1.5 rounded-full transition-all duration-500 w-2 bg-white/30 group-hover:bg-white/70 group-hover:w-3';
-                }
+                bar.className = idx === currentImageIndex
+                    ? 'indicator-bar block h-1.5 rounded-full transition-all duration-500 w-7 bg-brand-gold'
+                    : 'indicator-bar block h-1.5 rounded-full transition-all duration-500 w-2 bg-white/30';
+                bar.parentElement.setAttribute('aria-pressed', String(idx === currentImageIndex));
             });
 
             // Update dynamic slide title / counter
@@ -1681,10 +1712,11 @@
 
         function startHeroCarousel() {
             if (heroCarouselInterval) clearInterval(heroCarouselInterval);
+            if (heroPaused || document.hidden || heroMotionPreference.matches) return;
             heroCarouselInterval = setInterval(() => {
                 const nextIndex = (currentImageIndex + 1) % carouselImages.length;
                 updateHeroSlide(nextIndex);
-            }, 5500);
+            }, 6500);
         }
 
         function goToHeroSlide(index) {
@@ -1887,39 +1919,16 @@
     <!-- 4. ADVANCED MOTION DESIGN & SCROLL EFFECTS -->
     <!-- ========================================== -->
     <script>
-        // A. Scroll Reveal Animation Trigger
-        const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .reveal-scale-up');
-
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-
-                    // Trigger counter count-up when stat cards enter the screen
-                    const counters = entry.target.querySelectorAll('.counter');
-                    if (counters.length > 0) {
-                        counters.forEach(counter => triggerCounter(counter));
-                    }
-
-                    // Trigger counter if the entry itself is a stat card
-                    if (entry.target.classList.contains('stat-card')) {
-                        const counter = entry.target.querySelector('.counter');
-                        if (counter) triggerCounter(counter);
-                    }
-
-                    // Stop observing once animated
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        revealElements.forEach(el => revealObserver.observe(el));
+        // Scroll reveals are managed by site-effects.js on every visit.
 
         // B. Numeric Stat Counter Animation Function
         function triggerCounter(counter) {
+            if (window.aggcMotion.matches) {
+                cancelAnimationFrame(counter.counterFrame);
+                counter.textContent = counter.getAttribute('data-target');
+                counter.classList.add('animated-done');
+                return;
+            }
             if (counter.classList.contains('animated-done')) return;
             counter.classList.add('animated-done');
 
@@ -1938,12 +1947,12 @@
                 counter.textContent = currentValue;
 
                 if (progress < 1) {
-                    requestAnimationFrame(updateCount);
+                    counter.counterFrame = requestAnimationFrame(updateCount);
                 } else {
                     counter.textContent = target;
                 }
             }
-            requestAnimationFrame(updateCount);
+            counter.counterFrame = requestAnimationFrame(updateCount);
         }
 
         // C. 3D Mouse Hover Card Tilt Effect
@@ -1951,6 +1960,7 @@
 
         tiltCards.forEach(card => {
             card.addEventListener('mousemove', e => {
+                if ((window.aggcMotion.matches || window.matchMedia('(hover: none)').matches)) return;
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left; // x position inside element
                 const y = e.clientY - rect.top;  // y position inside element
@@ -1971,6 +1981,12 @@
                 card.style.boxShadow = '';
             });
         });
+
+        function resetTiltCards() {
+            tiltCards.forEach(card => { card.style.transform = ''; card.style.boxShadow = ''; });
+        }
+        window.addEventListener('pageshow', resetTiltCards);
+        window.aggcMotion.addEventListener('change', resetTiltCards);
 
         // D. Section Scroll Progress Bar & Particle Parallax Scroll Effect
         const aboutSection = document.getElementById('about');
@@ -1997,13 +2013,17 @@
             // Parallax scroll on particle dots
             const scrollY = window.pageYOffset;
             particles.forEach((p, index) => {
+                if (window.aggcMotion.matches) {
+                    p.style.transform = '';
+                    return;
+                }
                 const speed = (index + 1) * 0.12;
                 p.style.transform = `translateY(${scrollY * speed * 0.15}px)`;
             });
         });
     </script>
 
-    <script src="./site-effects.js"></script>
+    <script src="./site-effects.js?v=20260917-motion6"></script>
 </body>
 
 </html>

@@ -80,7 +80,7 @@ body.aggc-catalog { background: #071633; }
     .aggc-catalog .catalog-section-head h3 { font-size: 28px; }
     .aggc-catalog .catalog-grid { gap: 20px !important; }
 }
-@media (prefers-reduced-motion: reduce) {
+:root[data-motion="reduced"] {
     .aggc-catalog .product-detail-surface .catalog-card:hover { transform: none !important; }
 }
 
@@ -161,10 +161,12 @@ body.aggc-catalog .catalog-hero-product {
     transition: none !important;
 }
 /* Zoom the whole card gently, keeping every edge of its photo visible. */
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+@media (hover: hover) {
+:root:not([data-motion="reduced"]) {
     body.aggc-catalog .product-detail-surface .catalog-card:hover {
         transform: scale(1.012) !important;
     }
+}
 }
 @media (max-width: 1000px) {
     body.aggc-catalog .product-detail-surface .catalog-card { display: flex; flex-direction: column; }

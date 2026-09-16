@@ -53,6 +53,20 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(modalOverlay);
 
     const modalContent = document.getElementById("catalog-modal-content");
+    modalContent.setAttribute('role', 'dialog');
+    modalContent.setAttribute('aria-modal', 'true');
+    modalContent.setAttribute('aria-label', 'Product enquiry');
+    modalOverlay.inert = true;
+    let modalTrigger = null;
+    let previousOverflow = '';
+    modalOverlay.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') { event.preventDefault(); closeModal(); return; }
+        if (event.key !== 'Tab') return;
+        const controls = Array.from(modalContent.querySelectorAll('button:not([disabled]), input:not([disabled]), textarea, select, a[href]'));
+        const first = controls[0], last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    });
 
     // Close Modal when clicking background
     modalOverlay.addEventListener("click", (e) => {
@@ -87,18 +101,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     <span><strong>${String(brand.products.length).padStart(2, '0')}</strong> Product lines</span>
                     <span><strong>${String(totalModels).padStart(2, '0')}</strong> Model options</span>
                 </div>
-                <a class="catalog-hero-cta" href="#catalog-products">Explore equipment <i class="fa-solid fa-arrow-down"></i></a>
+                <div class="catalog-actions">
+                    <button type="button" class="aggc-button aggc-button-primary" id="brand-quote-button">Request a Quote <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                    <a class="aggc-button aggc-button-secondary" href="#catalog-products">Browse equipment</a>
+                </div>
+                <p class="catalog-enquiry-note">Choose a model and tell us what your project needs.</p>
             </div>
             <div class="catalog-hero-visual">
                 <span class="catalog-visual-label">Engineered performance</span>
                 <div class="catalog-logo-plate">
                     ${brandLogo ? `<img src="${escapeHTML(brandLogo)}" alt="${brandTitle} Logo" onerror="this.style.display='none';">` : `<span>${brandTitle}</span>`}
                 </div>
-                ${featureImage ? `<img src="${escapeHTML(featureImage)}" alt="${brandTitle} Product" class="catalog-hero-product" onerror="this.style.display='none';">` : ""}
+                ${featureImage ? `<img src="${escapeHTML(featureImage)}" alt="${brandTitle} Product" class="catalog-hero-product" decoding="async" fetchpriority="high" onerror="this.style.display='none';">` : ""}
                 <span class="catalog-visual-index">01 / ${String(brand.products.length).padStart(2, '0')}</span>
             </div>
         `;
         container.appendChild(header);
+        header.querySelector('#brand-quote-button').addEventListener('click', openQuotePicker);
 
         const sectionHead = document.createElement("div");
         sectionHead.id = "catalog-products";
@@ -121,16 +140,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement("div");
             card.className = "catalog-card";
 
-            card.tabIndex = 0;
-            card.setAttribute("role", "button");
-            card.setAttribute("aria-label", `View ${product.title} models`);
             const productTitle = escapeHTML(product.title);
             const productImage = safeAssetUrl(product.image);
             const modelPreview = product.models.slice(0, 4).map(escapeHTML).join(" / ");
 
             card.innerHTML = `
                 <div class="catalog-card-image">
-                    ${productImage ? `<img src="${escapeHTML(productImage)}" alt="${productTitle}" onerror="this.onerror=null; this.src='img/placeholder.png';">` : ""}
+                    ${productImage ? `<img src="${escapeHTML(productImage)}" alt="${productTitle}" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='img/placeholder.png';">` : ""}
                     <div class="catalog-card-count">
                         ${product.models.length.toString().padStart(2, '0')} <span>models</span>
                     </div>
@@ -143,19 +159,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <h3>${productTitle}</h3>
                     <p class="catalog-model-preview">${modelPreview}</p>
-                    <button type="button"><span>View available models</span><i class="fa-solid fa-arrow-right"></i></button>
+                    <div class="catalog-card-actions">
+                        <button type="button" class="catalog-models-button" aria-label="View ${productTitle} models"><span>View models</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                        <button type="button" class="catalog-quote-button" aria-label="Request a quote for ${productTitle}">Request a Quote</button>
+                    </div>
                 </div>
             `;
 
-            // Click Event
-            card.addEventListener("click", () => {
-                openModelListModal(product);
-            });
-            card.addEventListener("keydown", (event) => {
-                if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    openModelListModal(product);
-                }
+            card.querySelector('.catalog-models-button').addEventListener('click', () => openModelListModal(product));
+            card.querySelector('.catalog-quote-button').addEventListener('click', () => {
+                if (product.models.length === 1) openEnquiryFormModal(product, product.models[0]);
+                else openModelListModal(product);
             });
 
             grid.appendChild(card);
@@ -165,6 +179,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- MODAL VIEWS ---
+
+    function openQuotePicker() {
+        modalContent.innerHTML = `
+            <h3 class="text-2xl font-bold text-brand-navy mb-3">Request a Quote</h3>
+            <p class="text-sm text-slate-500 mb-6">Choose the equipment you are interested in.</p>
+            <label for="quote-product" class="text-sm font-semibold text-brand-navy">Product line</label>
+            <select id="quote-product" class="w-full border rounded-lg p-3 mt-2 mb-6">
+                ${brandData.products.map((product, index) => `<option value="${index}">${escapeHTML(product.title)}</option>`).join('')}
+            </select>
+            <div class="flex flex-wrap gap-3">
+                <button type="button" id="quote-continue" class="aggc-button aggc-button-primary">Choose model <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                <button type="button" id="modal-close-btn" class="aggc-button">Cancel</button>
+            </div>`;
+        modalContent.querySelector('#quote-continue').addEventListener('click', () => {
+            const product = brandData.products[Number(modalContent.querySelector('#quote-product').value)];
+            if (product.models.length === 1) openEnquiryFormModal(product, product.models[0]);
+            else openModelListModal(product);
+        });
+        modalContent.querySelector('#modal-close-btn').addEventListener('click', closeModal);
+        showModalAnim();
+    }
 
     // View 2: Model Listing Modal
     function openModelListModal(product) {
@@ -182,10 +217,10 @@ document.addEventListener("DOMContentLoaded", () => {
             <!-- Models List -->
             <div class="space-y-3.5 mb-8 flex-1 overflow-y-auto max-h-[50vh] pr-1.5 scrollbar-thin">
                 ${product.models.map((model, idx) => `
-                    <div class="bg-[#fdf9ee] border border-slate-100 rounded-xl px-5 py-4 flex items-center justify-between shadow-sm hover:shadow-md hover:border-brand-gold/20 border transition-all duration-300 animate-fade-in-up" style="animation-delay: ${idx * 60}ms">
+                    <div class="bg-[#fdf9ee] border border-slate-100 rounded-xl px-5 py-4 flex items-center justify-between shadow-sm hover:shadow-md hover:border-brand-gold/20 border transition-all duration-300 animate-fade-in-up" style="animation-delay: ${Math.min(idx, 4) * 60}ms">
                         <span class="font-heading font-bold text-brand-navy text-[15px] tracking-wide">${escapeHTML(model)}</span>
                         <button class="enquire-btn btn-shine bg-[#22292f] hover:bg-brand-gold text-[#e1ae31] hover:text-white px-5 py-2.5 rounded-lg font-heading font-extrabold text-[11px] tracking-wider uppercase shadow transition-all duration-300" data-model="${escapeHTML(model)}">
-                            ENQUIRE NOW
+                            Request a Quote
                         </button>
                     </div>
                 `).join('')}
@@ -234,7 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:items-center">
                     <label class="text-slate-600 font-heading text-xs sm:text-[13px] font-semibold">Product Name</label>
                     <div class="sm:col-span-2">
-                        <input type="text" name="product_name" value="${productFullNameSafe}" readonly
+                        <input type="text" name="product_name" aria-label="Product Name" value="${productFullNameSafe}" readonly
                             class="w-full bg-[#fdf9ee]/40 border border-[#e2d8bd] text-brand-navy rounded-lg px-4 py-2.5 text-sm font-semibold focus:outline-none cursor-not-allowed">
                     </div>
                 </div>
@@ -243,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:items-center">
                     <label class="text-slate-600 font-heading text-xs sm:text-[13px] font-semibold">Name (*)</label>
                     <div class="sm:col-span-2">
-                        <input type="text" name="user_name" required
+                        <input type="text" name="user_name" aria-label="Name" autocomplete="name" required
                             class="w-full bg-white border border-slate-300 hover:border-slate-400 focus-gold-ring rounded-lg px-4 py-2.5 text-sm font-medium focus:outline-none transition-all duration-300">
                     </div>
                 </div>
@@ -252,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:items-center">
                     <label class="text-slate-600 font-heading text-xs sm:text-[13px] font-semibold">Email (*)</label>
                     <div class="sm:col-span-2">
-                        <input type="email" name="user_email" required
+                        <input type="email" name="user_email" aria-label="Email" autocomplete="email" required
                             class="w-full bg-white border border-slate-300 hover:border-slate-400 focus-gold-ring rounded-lg px-4 py-2.5 text-sm font-medium focus:outline-none transition-all duration-300">
                     </div>
                 </div>
@@ -261,7 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:items-center">
                     <label class="text-slate-600 font-heading text-xs sm:text-[13px] font-semibold">Phone No</label>
                     <div class="sm:col-span-2">
-                        <input type="tel" name="user_phone"
+                        <input type="tel" name="user_phone" aria-label="Phone" autocomplete="tel"
                             class="w-full bg-white border border-slate-300 hover:border-slate-400 focus-gold-ring rounded-lg px-4 py-2.5 text-sm font-medium focus:outline-none transition-all duration-300">
                     </div>
                 </div>
@@ -270,7 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     <label class="text-slate-600 font-heading text-xs sm:text-[13px] font-semibold pt-2">Message (*)</label>
                     <div class="sm:col-span-2">
-                        <textarea name="user_message" required rows="3"
+                        <textarea name="user_message" aria-label="Message" required rows="3"
                             class="w-full bg-white border border-slate-300 hover:border-slate-400 focus-gold-ring rounded-lg px-4 py-2.5 text-sm font-medium focus:outline-none transition-all duration-300 resize-none"></textarea>
                     </div>
                 </div>
@@ -281,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         BACK
                     </button>
                     <button type="submit" class="btn-shine w-full sm:w-auto bg-brand-gold hover:bg-brand-navy text-white font-heading font-extrabold uppercase text-[11px] tracking-widest py-3.5 px-8 rounded-lg transition-all duration-300 shadow-md">
-                        ENQUIRE NOW
+                        Request a Quote
                     </button>
                 </div>
             </form>
@@ -298,6 +333,7 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             handleFormSubmit(form, productFullName);
         });
+        showModalAnim();
     }
 
     // Google Apps Script Web App URL to save enquiry details to Google Sheet.
@@ -337,15 +373,24 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch(err => {
                 console.error("Submission error:", err);
-                // Fallback to local success feedback so client experience is smooth
-                showSuccessMessage(formData);
+                showSubmissionError(form);
             });
         } else {
-            // Local fallback simulation if script URL is not set yet
-            setTimeout(() => {
-                showSuccessMessage(formData);
-            }, 800);
+            showSubmissionError(form);
         }
+    }
+
+    function showSubmissionError(form) {
+        form.querySelector('.catalog-form-error')?.remove();
+        const notice = document.createElement('p');
+        notice.className = 'catalog-form-error';
+        notice.setAttribute('role', 'alert');
+        notice.textContent = 'Your request could not be sent. Please try again, or contact info@aungyigroup.com.';
+        form.prepend(notice);
+        const submit = form.querySelector('button[type="submit"]');
+        submit.disabled = false;
+        submit.textContent = 'Try again';
+        form.querySelector('#form-back-btn').disabled = false;
     }
 
     function showSuccessMessage(formData) {
@@ -357,9 +402,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="w-16 h-16 rounded-full bg-emerald-100 border border-emerald-200 flex items-center justify-center mb-5 animate-bounce">
                     <i class="fa-solid fa-check text-2xl text-emerald-600"></i>
                 </div>
-                <h3 class="font-heading text-xl sm:text-2xl font-bold text-brand-navy mb-3">Enquiry Submitted!</h3>
+                <h3 class="font-heading text-xl sm:text-2xl font-bold text-brand-navy mb-3">Request sent for processing</h3>
                 <p class="text-slate-500 text-sm font-light leading-relaxed max-w-sm mb-6">
-                    Thank you, <strong class="text-slate-800">${userName}</strong>. We have received your request for <strong class="text-brand-navy">${productName}</strong>. Our team will get back to you shortly.
+                    Thank you, <strong class="text-slate-800">${userName}</strong>. Your enquiry for <strong class="text-brand-navy">${productName}</strong> has been sent for processing. Delivery is not yet confirmed. For urgent assistance, please contact info@aungyigroup.com.
                 </p>
                 <button id="success-close-btn" class="bg-brand-navy hover:bg-brand-gold text-white font-heading font-bold uppercase text-[11px] tracking-wider py-3 px-8 rounded-lg transition-colors shadow">
                     CLOSE
@@ -373,13 +418,27 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- ANIMATION HELPER FUNCTIONS ---
 
     function showModalAnim() {
+        if (!modalOverlay.classList.contains('modal-active')) {
+            modalTrigger = document.activeElement;
+            previousOverflow = document.body.style.overflow;
+        }
+        modalOverlay.inert = false;
         modalOverlay.classList.add("modal-active");
-        document.body.style.overflow = "hidden"; // Prevent background scroll
+        // Reusing the dialog node must still replay its entrance for each view.
+        if (!window.aggcMotion.matches) {
+            modalContent.getAnimations().forEach((animation) => {
+                if (animation instanceof CSSAnimation) { animation.currentTime = 0; animation.play(); }
+            });
+        }
+        document.body.style.overflow = "hidden";
+        modalContent.querySelector('input:not([readonly]), select, button')?.focus();
     }
 
     function closeModal() {
         modalOverlay.classList.remove("modal-active");
-        document.body.style.overflow = ""; // Restore scroll
+        document.body.style.overflow = previousOverflow;
+        modalOverlay.inert = true;
+        modalTrigger?.focus();
     }
 
     function capitalizeTitle(str) {

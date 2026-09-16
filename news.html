@@ -2,6 +2,7 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
+    <script src="./motion-settings.js?v=20260917-motion6"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News & Activities - AGGC</title>
@@ -127,7 +128,9 @@
             width: 100%;
         }
     </style>
-    <link rel="stylesheet" href="./site-effects.css">
+    <link rel="stylesheet" href="./site-effects.css?v=20260917-motion5">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="./site-polish.css?v=20260917-motion5">
 </head>
 
 <body class="premium-content-page news-page bg-slate-50 text-slate-800 min-h-screen flex flex-col">
@@ -360,56 +363,26 @@
             </div>
 
             <!-- SECTION B: NEWS DETAIL (Article View) -->
-            <div id="view-detail"
-                class="view-section view-hidden w-full max-w-4xl mx-auto bg-white rounded-3xl shadow-xl border border-slate-100 p-6 sm:p-10 lg:p-14">
-
-                <!-- Back Button -->
-                <button onclick="showListView()"
-                    class="group flex items-center text-slate-500 hover:text-brand-gold font-heading font-bold text-xs uppercase tracking-widest transition-colors mb-8">
-                    <div
-                        class="w-8 h-8 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center mr-3 group-hover:border-brand-gold transition-colors">
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </div>
-                    Back to News
-                </button>
-
-                <!-- Article Header -->
-                <div class="mb-8 text-center sm:text-left">
-                    <div class="flex flex-wrap items-center justify-center sm:justify-start gap-4 mb-4">
-                        <span
-                            class="text-[11px] sm:text-xs font-bold text-brand-navy uppercase tracking-widest bg-slate-100 px-4 py-1.5 rounded-md border border-slate-200">AGGC
-                            News Room</span>
-                    </div>
-                    <h1 id="detail-title"
-                        class="text-2xl sm:text-3xl lg:text-4xl font-heading font-black text-brand-navy leading-tight tracking-tight">
-                        Article Title
-                    </h1>
+            <article id="view-detail" class="view-section view-hidden aggc-article" aria-labelledby="detail-title">
+                <header class="aggc-article-header">
+                    <button type="button" onclick="showListView()" class="article-back"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to News</button>
+                    <div class="article-kicker"><span></span> AGGC NEWSROOM</div>
+                    <h1 id="detail-title">Article Title</h1>
+                    <div class="article-byline"><span class="article-brand-mark">AGGC.</span><span>Aung Gyi Group of Companies<br><small>Company news &amp; updates</small></span></div>
+                </header>
+                <div class="aggc-article-paper">
+                    <figure class="article-hero-frame">
+                        <img id="detail-hero-img" src="" alt="News Image" decoding="async">
+                    </figure>
+                    <div id="detail-desc" class="article-reading-copy"></div>
+                    <section id="detail-gallery-container" class="article-gallery hidden" aria-labelledby="article-gallery-title">
+                        <span class="article-kicker">IN PICTURES</span>
+                        <h2 id="article-gallery-title">From the event</h2>
+                        <div id="detail-gallery" class="grid gap-4"></div>
+                    </section>
+                    <div class="article-endnote"><span>AGGC · Let's Build Together</span><button type="button" onclick="showListView()">Explore more news <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div>
                 </div>
-
-                <!-- Hero Image (Original Size & Centered) -->
-                <div
-                    class="w-full rounded-2xl overflow-hidden mb-10 shadow-sm border border-slate-100 bg-slate-50/50 flex items-center justify-center p-2 sm:p-6 min-h-[200px]">
-                    <img id="detail-hero-img" src="" alt="News Image"
-                        class="max-w-full max-h-[70vh] object-contain rounded-xl mx-auto">
-                </div>
-
-                <!-- Article Content -->
-                <div class="prose prose-slate max-w-none">
-                    <p id="detail-desc"
-                        class="text-base sm:text-lg text-slate-600 leading-loose font-normal whitespace-pre-line"></p>
-                </div>
-
-                <!-- Additional Gallery Images -->
-                <div id="detail-gallery-container" class="mt-12 hidden">
-                    <h4 class="font-heading font-extrabold text-brand-navy text-lg mb-6 border-b border-slate-100 pb-4">
-                        Gallery</h4>
-                    <!-- Dynamic Grid will be injected here -->
-                    <div id="detail-gallery" class="grid gap-4">
-                        <!-- Extra images injected here -->
-                    </div>
-                </div>
-
-            </div>
+            </article>
 
         </div>
     </main>
@@ -552,7 +525,7 @@
 
             </div>
             <div
-                class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-300 font-medium">
+                class="pt-8 border-t border-white/10 flex flex-col justify-center text-center items-center text-[11px] text-slate-300 font-medium">
                 <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
                 
             </div>
@@ -878,7 +851,9 @@
             });
         }
 
+        let viewTransitionTimer;
         function showArticleDetail(id, skipPushState = false) {
+            clearTimeout(viewTransitionTimer);
             const article = newsData.find(item => item.id === id);
             if (!article) {
                 showListView(true);
@@ -893,10 +868,19 @@
                 }
             }
 
+            document.body.classList.add('news-article-open');
             // Populate detail view (No Date)
             detailTitle.textContent = article.title;
+            detailTitle.lang = /[\u1000-\u109f]/.test(article.title) ? 'my' : 'en';
             detailHeroImg.src = article.heroImage;
-            detailDesc.textContent = article.description;
+            detailHeroImg.alt = article.title;
+            detailDesc.replaceChildren();
+            String(article.description || '').split(/\n\s*\n|\r?\n/).filter(line => line.trim()).forEach((text) => {
+                const paragraph = document.createElement('p');
+                paragraph.textContent = text;
+                if (/[\u1000-\u109f]/.test(text)) paragraph.lang = 'my';
+                detailDesc.appendChild(paragraph);
+            });
 
             // Populate gallery dynamically based on image count
             if (article.gallery && article.gallery.length > 0) {
@@ -946,7 +930,7 @@
             viewList.classList.remove('view-active');
             viewList.classList.add('view-hidden');
 
-            setTimeout(() => {
+            viewTransitionTimer = setTimeout(() => {
                 viewDetail.classList.remove('view-hidden');
                 viewDetail.classList.add('view-active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -954,10 +938,12 @@
                 if (mainContainer) {
                     mainContainer.style.minHeight = '';
                 }
-            }, 300); // Wait for list to fade out
+            }, window.aggcMotion.matches ? 0 : 300); // Wait for list to fade out
         }
 
         function showListView(skipPushState = false) {
+            document.body.classList.remove('news-article-open');
+            clearTimeout(viewTransitionTimer);
             // Update URL back to news.html if not popstate
             if (!skipPushState) {
                 const currentUrlParams = new URLSearchParams(window.location.search);
@@ -974,14 +960,14 @@
             viewDetail.classList.remove('view-active');
             viewDetail.classList.add('view-hidden');
 
-            setTimeout(() => {
+            viewTransitionTimer = setTimeout(() => {
                 viewList.classList.remove('view-hidden');
                 viewList.classList.add('view-active');
 
                 if (mainContainer) {
                     mainContainer.style.minHeight = '';
                 }
-            }, 300);
+            }, window.aggcMotion.matches ? 0 : 300);
         }
 
         // Modal Logic
@@ -989,7 +975,9 @@
         const modalImage = document.getElementById('modalImage');
         const modalContent = document.getElementById('modalContent');
 
+        let imageCloseTimer;
         function openModal(imageSrc) {
+            clearTimeout(imageCloseTimer);
             modalImage.src = imageSrc;
             modal.classList.remove('hidden');
             void modal.offsetWidth; // trigger reflow
@@ -1003,11 +991,12 @@
             modal.classList.add('opacity-0');
             modalContent.classList.remove('scale-100');
             modalContent.classList.add('scale-95');
-            setTimeout(() => {
+            clearTimeout(imageCloseTimer);
+            imageCloseTimer = setTimeout(() => {
                 modal.classList.add('hidden');
-                modalImage.src = '';
+                modalImage.removeAttribute('src');
                 document.body.style.overflow = 'auto';
-            }, 300);
+            }, window.aggcMotion.matches ? 0 : 300);
         }
 
         modal.addEventListener('click', (e) => {
@@ -1058,7 +1047,7 @@
             fetchNewsData();
         };
     </script>
-    <script src="./site-effects.js"></script>
+    <script src="./site-effects.js?v=20260917-motion6"></script>
 </body>
 
 </html>

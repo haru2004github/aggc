@@ -29,4 +29,4 @@
 .careers-page .career-opening .premium-job-media:focus-visible > .opacity-0 { opacity: 1; }
 @media (max-width: 1050px) { .careers-page #jobs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .careers-page #jobs-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; } .careers-page .career-opening .premium-job-body { padding: 22px; } }
-@media (prefers-reduced-motion: reduce) { .careers-page .career-opening { transition: none; } .careers-page .career-opening:hover { transform: none; } }
+:root[data-motion="reduced"] { .careers-page .career-opening { transition: none; } .careers-page .career-opening:hover { transform: none; } }

@@ -2,6 +2,7 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
+    <script src="./motion-settings.js?v=20260917-motion6"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - AGGC</title>
@@ -194,7 +195,8 @@
             color: #cbd5e1;
         }
     </style>
-    <link rel="stylesheet" href="./site-effects.css">
+    <link rel="stylesheet" href="./site-effects.css?v=20260917-motion5">
+    <link rel="stylesheet" href="./site-polish.css?v=20260917-motion5">
 </head>
 
 <body class="about-page bg-slate-50 text-slate-800 min-h-screen flex flex-col">
@@ -326,7 +328,8 @@
         </div>
     </nav>
 
-    <section class="unified-page-hero shared-divider-hero relative bg-gradient-to-b from-[#12356c] via-[#0d2858] to-[#071633] pt-28 pb-24 sm:pt-36 sm:pb-32 overflow-hidden text-center">
+    <section id="about-intro" class="unified-page-hero shared-divider-hero relative bg-gradient-to-b from-[#12356c] via-[#0d2858] to-[#071633] pt-28 pb-24 sm:pt-36 sm:pb-32 overflow-hidden text-center">
+        <div class="about-intro-glow" aria-hidden="true"></div>
         <!-- Subtle Starry Night & Grid Watermark -->
         <div class="absolute inset-0 opacity-[0.05]"
             style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
@@ -468,7 +471,7 @@
                         <div class="absolute -top-4 -right-4 w-24 h-24 bg-brand-gold/15 rounded-3xl -z-10"></div>
                         <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-brand-navy/5 rounded-3xl -z-10"></div>
                         
-                        <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-100/80 group">
+                        <div class="about-chairman-portrait relative rounded-3xl overflow-hidden shadow-2xl border border-slate-100/80 group">
                             <img src="./img/chairman-about.jpg" alt="Aung Thu, Chairman of AGGC"
                                 class="w-full object-cover aspect-[4/3] sm:aspect-square lg:aspect-[4/5] group-hover:scale-105 transition-transform duration-700">
                             <!-- Overlay decoration -->
@@ -1368,7 +1371,7 @@
 
             </div>
             <div
-                class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-300 font-medium">
+                class="pt-8 border-t border-white/10 flex flex-col justify-center text-center items-center text-[11px] text-slate-300 font-medium">
                 <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
                 
             </div>
@@ -1432,7 +1435,9 @@
         const modalContent = document.getElementById('modalContent');
         const modalImage = document.getElementById('modalImage');
 
+        let imageCloseTimer;
         function openModal(imgSrc) {
+            clearTimeout(imageCloseTimer);
             modalImage.src = imgSrc;
             imageModal.classList.remove('hidden');
             // Trigger reflow to initialize animations
@@ -1447,11 +1452,12 @@
             imageModal.classList.add('opacity-0');
             modalContent.classList.remove('scale-100');
             modalContent.classList.add('scale-95');
-            setTimeout(() => {
+            clearTimeout(imageCloseTimer);
+            imageCloseTimer = setTimeout(() => {
                 imageModal.classList.add('hidden');
-                modalImage.src = '';
+                modalImage.removeAttribute('src');
                 document.body.style.overflow = '';
-            }, 300);
+            }, window.aggcMotion.matches ? 0 : 300);
         }
 
         // Close on clicking outside
@@ -1471,7 +1477,7 @@
         // IntersectionObserver for staggered reveals
         document.addEventListener('DOMContentLoaded', () => {
             // Auto-add scroll-reveal classes to major elements for seamless animation
-            const autoRevealElements = document.querySelectorAll('section h2, section h3, section p.max-w-2xl, section p.max-w-lg, section p.max-w-3xl, .grid > div, .group, .core-value-card');
+            const autoRevealElements = document.querySelectorAll('section h2, section h3, section p.max-w-2xl, section p.max-w-lg, section p.max-w-3xl, section .grid > div, section .group, .core-value-card');
             autoRevealElements.forEach((el, index) => {
                 if (!el.classList.contains('scroll-reveal') && !el.classList.contains('scroll-reveal-left') && !el.classList.contains('scroll-reveal-right') && !el.classList.contains('reveal-scale-up')) {
                     el.classList.add('scroll-reveal');
@@ -1483,21 +1489,10 @@
                 }
             });
 
-            const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .reveal-scale-up');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                        // Optional: Unobserve after revealing to animate only once
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
-            
-            revealElements.forEach((el) => observer.observe(el));
+            // Shared site-effects.js observes these elements on every visit.
         });
     </script>
-    <script src="./site-effects.js"></script>
+    <script src="./site-effects.js?v=20260917-motion6"></script>
 </body>
 
 </html>

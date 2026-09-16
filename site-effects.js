@@ -1,5 +1,6 @@
 (function () {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const motionPreference = window.aggcMotion;
+    const motionControllers = new Set();
     const effectsScriptUrl = document.currentScript?.src || window.location.href;
     const siteRootUrl = new URL('.', effectsScriptUrl);
 
@@ -85,7 +86,7 @@
                     </div>
                 </div>
 
-                <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-300 font-medium">
+                <div class="pt-8 border-t border-white/10 flex flex-col justify-center text-center items-center text-[11px] text-slate-300 font-medium">
                     <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
                 </div>
             </div>
@@ -102,6 +103,11 @@
         }
     }
 
+    function hasElementChanges(records) {
+        return records.some((record) => [...record.addedNodes, ...record.removedNodes]
+            .some((node) => node.nodeType === Node.ELEMENT_NODE));
+    }
+
     function clamp(value, min, max) {
         return Math.min(Math.max(value, min), max);
     }
@@ -110,6 +116,7 @@
         const src = (img.getAttribute('src') || '').toLowerCase();
         const alt = (img.getAttribute('alt') || '').toLowerCase();
 
+        if (img.classList.contains('carousel-img') || img.id === 'detail-hero-img') return false;
         if (img.closest('nav, footer, #mobileMenu, #imageModal, #lightbox, [id*="modal"], [class*="modal"]')) return false;
         if (img.closest('.career-opening, .unified-synergy-banner, .activity-photo-grid, .brand-feature-media, .bento-card, .catalog-card-image, .catalog-hero-visual, .strategic-pillars-section .grid > a')) return false;
         if (src.includes('logo') || src.includes('location-qr') || alt.includes('logo') || alt.includes('qr')) return false;
@@ -119,7 +126,7 @@
     }
 
     function collectImages() {
-        if (reduceMotion) return [];
+        if (motionPreference.matches) return [];
 
         return Array.from(document.images).filter((img) => {
             if (!shouldAnimateImage(img)) return false;
@@ -130,6 +137,7 @@
 
     let zoomImages = [];
     let ticking = false;
+    let zoomFrame = null;
 
     function updateImageZoom() {
         ticking = false;
@@ -148,9 +156,9 @@
     }
 
     function requestZoomUpdate() {
-        if (ticking || reduceMotion) return;
+        if (ticking || motionPreference.matches) return;
         ticking = true;
-        window.requestAnimationFrame(updateImageZoom);
+        zoomFrame = window.requestAnimationFrame(updateImageZoom);
     }
 
     function setupScrollZoomImages() {
@@ -159,8 +167,25 @@
 
         window.addEventListener('scroll', requestZoomUpdate, { passive: true });
         window.addEventListener('resize', requestZoomUpdate);
+        document.addEventListener('load', (event) => {
+            if (event.target instanceof HTMLImageElement) {
+                zoomImages = collectImages();
+                requestZoomUpdate();
+            }
+        }, true);
+        motionPreference.addEventListener('change', () => {
+            cancelAnimationFrame(zoomFrame);
+            ticking = false;
+            document.querySelectorAll('.scroll-zoom-image').forEach((img) => {
+                img.classList.remove('scroll-zoom-image');
+                img.style.removeProperty('--scroll-zoom');
+            });
+            zoomImages = collectImages();
+            requestZoomUpdate();
+        });
 
-        const observer = new MutationObserver(() => {
+        const observer = new MutationObserver((records) => {
+            if (!hasElementChanges(records)) return;
             zoomImages = collectImages();
             requestZoomUpdate();
         });
@@ -182,134 +207,154 @@
         window.addEventListener('scroll', updateHeader, { passive: true });
     }
 
-    function setupBrandShowcaseAnimations() {
-        const section = document.querySelector('#brands.brand-showcase-section');
-        if (!section) return;
-
-        const rows = Array.from(section.querySelectorAll('.brand-feature-row'));
-        const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
-        if (!rows.length || motionPreference.matches || !('IntersectionObserver' in window)) return;
-
-        const reveal = (row) => {
-            row.classList.add('is-revealed');
-            observer.unobserve(row);
+    // Replay text, brand and card entrances on every scroll re-entry and page visit.
+    function createVisitReveal(selector, classes, options, prepare, onReveal) {
+        const targets = new Set();
+        const show = (target) => {
+            target.classList.add(...classes);
+            if (onReveal) onReveal(target);
         };
-
-        // Observe stable row bounds, not the children moving in from either side.
-        // A low threshold also reveals tall, stacked cards on short phone screens.
-        const observer = new IntersectionObserver((entries) => {
+        const hide = (target) => {
+            target.classList.remove(...classes);
+            target.querySelectorAll('.counter').forEach((counter) => {
+                cancelAnimationFrame(counter.counterFrame);
+                counter.classList.remove('animated-done');
+                counter.textContent = '0';
+            });
+        };
+        const observer = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting) reveal(entry.target);
+                if (entry.isIntersecting || motionPreference.matches) show(entry.target);
+                else if (!entry.target.contains(document.activeElement)) hide(entry.target);
             });
-        }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
-
-        rows.forEach((row) => {
-            row.classList.add('brand-reveal-ready');
-            observer.observe(row);
-        });
-
-        // Keyboard navigation must never land on an invisible link.
-        section.addEventListener('focusin', (event) => {
-            const row = event.target.closest('.brand-feature-row');
-            if (row) {
-                row.classList.remove('brand-reveal-ready');
-                reveal(row);
-            }
-        });
-
-        // Respect a preference change while the page is already open.
-        motionPreference.addEventListener('change', (event) => {
-            if (!event.matches) return;
-            observer.disconnect();
-            rows.forEach((row) => {
-                row.classList.remove('brand-reveal-ready');
-                row.classList.add('is-revealed');
+        }, options) : null;
+        const discover = () => {
+            targets.forEach((target) => {
+                if (!target.isConnected) { observer?.unobserve(target); targets.delete(target); }
             });
+            document.querySelectorAll(selector).forEach((target) => {
+                if (targets.has(target)) return;
+                targets.add(target);
+                if (prepare) prepare(target, targets.size - 1);
+                if (motionPreference.matches || !observer) show(target);
+                else {
+                    void target.offsetWidth;
+                    observer.observe(target);
+                }
+            });
+        };
+        const controller = {
+            reset() {
+                discover();
+                targets.forEach((target) => {
+                    observer?.unobserve(target);
+                    hide(target);
+                });
+            },
+            resume() {
+                targets.forEach((target) => {
+                    if (motionPreference.matches || !observer || target.contains(document.activeElement)) show(target);
+                    else observer.observe(target);
+                });
+            },
+            finish() { targets.forEach(show); }
+        };
+        motionControllers.add(controller);
+        discover();
+        const mutations = new MutationObserver((records) => { if (hasElementChanges(records)) discover(); });
+        mutations.observe(document.body, { childList: true, subtree: true });
+        document.addEventListener('focusin', (event) => {
+            // Reveal all enclosing layers before a keyboard-focused control is used.
+            targets.forEach((target) => { if (target.contains(event.target)) show(target); });
         });
     }
 
-    function setupScrollReveal() {
-        const selector = '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right';
-        const revealItems = () => Array.from(document.querySelectorAll(selector)).filter((item) => !item.closest('.whatwedo-flow'));
-
-        if (reduceMotion || !('IntersectionObserver' in window)) {
-            revealItems().forEach((item) => item.classList.add('scroll-reveal-visible'));
-            return;
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('scroll-reveal-visible');
-                observer.unobserve(entry.target);
+    function setupAboutIntroHover() {
+        const intro = document.getElementById('about-intro');
+        if (!intro) return;
+        let frame = null;
+        intro.addEventListener('pointermove', (event) => {
+            if (motionPreference.matches || event.pointerType === 'touch') return;
+            cancelAnimationFrame(frame);
+            const rect = intro.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width) * 100;
+            const y = ((event.clientY - rect.top) / rect.height) * 100;
+            frame = requestAnimationFrame(() => {
+                intro.style.setProperty('--intro-pointer-x', `${x}%`);
+                intro.style.setProperty('--intro-pointer-y', `${y}%`);
             });
-        }, {
-            threshold: 0.18,
-            rootMargin: '0px 0px -8% 0px'
         });
+        const reset = () => {
+            cancelAnimationFrame(frame);
+            intro.style.removeProperty('--intro-pointer-x');
+            intro.style.removeProperty('--intro-pointer-y');
+        };
+        intro.addEventListener('pointerleave', reset);
+        motionPreference.addEventListener('change', reset);
+        window.addEventListener('pagehide', reset);
+    }
 
-        const observeNewItems = () => {
-            revealItems().forEach((item) => {
-                if (item.dataset.scrollRevealBound === 'true') return;
-                item.dataset.scrollRevealBound = 'true';
-                observer.observe(item);
+    function setupPageMotion() {
+        const entrances = 'section h1, main h1, main h2, main h3, section h2, section h3, main article, .catalog-card, .news-editorial-card, .career-opening, .home-sector-card, .core-value-card, .activity-album, main .grid > .group';
+        const existing = '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .reveal-scale-up, .brand-feature-row, .card-reveal-ready, [data-scroll-motion]';
+        const decorate = () => {
+            document.querySelectorAll(entrances).forEach((item) => {
+                if (item.closest('nav, footer, #home, [role="dialog"], #imageModal, .whatwedo-flow')) return;
+                if (item.closest(existing)) return;
+                item.setAttribute('data-scroll-motion', '');
+            });
+            document.querySelectorAll('a[href], button, [role="button"], .catalog-card, .news-editorial-card, .career-opening, .core-value-card').forEach((item) => {
+                if (item.closest('#heroCarouselIndicators') || item.matches('[disabled]')) return;
+                item.setAttribute('data-motion-hover', '');
             });
         };
+        decorate();
+        new MutationObserver((records) => { if (hasElementChanges(records)) decorate(); })
+            .observe(document.body, { childList: true, subtree: true });
+        createVisitReveal('[data-scroll-motion]', ['motion-visible'],
+            { threshold: 0, rootMargin: '0px 0px -32px 0px' },
+            (item) => item.classList.add('motion-ready'));
+    }
 
-        observeNewItems();
+    function setupBrandShowcaseAnimations() {
+        createVisitReveal('#brands.brand-showcase-section .brand-feature-row', ['is-revealed'],
+            { threshold: 0, rootMargin: '0px 0px -5% 0px' },
+            (row) => row.classList.add('brand-reveal-ready'));
+    }
 
-        const mutationObserver = new MutationObserver(observeNewItems);
-        mutationObserver.observe(document.body, { childList: true, subtree: true });
+    function setupScrollReveal() {
+        createVisitReveal(':is(.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .reveal-scale-up):not(.whatwedo-flow *)',
+            ['scroll-reveal-visible', 'revealed'], { threshold: 0, rootMargin: '0px 0px -8% 0px' }, null,
+            (item) => {
+                if (typeof window.triggerCounter === 'function') {
+                    item.querySelectorAll('.counter').forEach(window.triggerCounter);
+                }
+            });
     }
 
     function setupCardReveals() {
         const selector = [
             '.whatwedo-flow .strategic-pillars-section .text-center',
             '.whatwedo-flow .strategic-pillars-section .grid > a',
-            '.whatwedo-flow .bento-card',
-            '.whatwedo-flow .sector-header',
+            '.whatwedo-flow .bento-card', '.whatwedo-flow .sector-header',
             '.whatwedo-flow .modern-data-card',
-            '.whatwedo-flow > section:last-child .scroll-reveal',
-            '[data-card-reveal]'
+            '.whatwedo-flow > section:last-child .scroll-reveal', '[data-card-reveal]'
         ].join(', ');
-        const cards = Array.from(document.querySelectorAll(selector));
-        const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
-        if (!cards.length || preference.matches || !('IntersectionObserver' in window)) return;
-
-        const show = (card) => {
-            card.classList.add('card-reveal-visible');
-            observer.unobserve(card);
-        };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) show(entry.target);
+        createVisitReveal(selector, ['card-reveal-visible'], { threshold: 0, rootMargin: '0px 0px -24px 0px' },
+            (card, index) => {
+                const side = card.closest('.scroll-reveal-right') ? 1 : card.closest('.scroll-reveal-left') ? -1 : index % 2 ? 1 : -1;
+                card.style.setProperty('--card-enter-side', side);
+                card.style.setProperty('--card-enter-delay', `${(index % 3) * 65}ms`);
+                card.classList.add('card-reveal-ready');
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
-
-        cards.forEach((card, index) => {
-            const side = card.closest('.scroll-reveal-right') ? 1 : card.closest('.scroll-reveal-left') ? -1 : index % 2 ? 1 : -1;
-            card.style.setProperty('--card-enter-side', side);
-            card.style.setProperty('--card-enter-delay', `${(index % 3) * 65}ms`);
-            card.classList.add('card-reveal-ready');
-            observer.observe(card);
-        });
-
-        document.addEventListener('focusin', (event) => {
-            const card = event.target.closest('.card-reveal-ready');
-            if (!card) return;
-            card.classList.remove('card-reveal-ready');
-            show(card);
-        });
-
-        preference.addEventListener('change', (event) => {
-            if (!event.matches) return;
-            observer.disconnect();
-            cards.forEach((card) => {
-                card.classList.remove('card-reveal-ready');
-                card.classList.add('card-reveal-visible');
-            });
-        });
     }
+
+    motionPreference.addEventListener('change', () => {
+        motionControllers.forEach((controller) => {
+            if (motionPreference.matches) controller.finish();
+            else controller.resume();
+        });
+    });
 
     function hardenExternalLinks() {
         document.querySelectorAll('a[target="_blank"]').forEach((link) => {
@@ -320,6 +365,32 @@
         });
     }
 
+    window.addEventListener('pageshow', (event) => {
+        ticking = false;
+        requestZoomUpdate();
+        if (!event.persisted) return;
+        // Suppress parent AND child transitions while restoring initial styles.
+        document.documentElement.classList.add('motion-resetting');
+        motionControllers.forEach((controller) => controller.reset());
+        if (!motionPreference.matches && typeof document.getAnimations === 'function') {
+            document.getAnimations().forEach((animation) => {
+                if (typeof CSSAnimation !== 'undefined' && animation instanceof CSSAnimation) {
+                    const wasPaused = animation.playState === 'paused';
+                    animation.currentTime = 0;
+                    if (!wasPaused) animation.play();
+                }
+            });
+        }
+        void document.body.offsetHeight;
+        document.documentElement.classList.remove('motion-resetting');
+        motionControllers.forEach((controller) => controller.resume());
+        window.dispatchEvent(new Event('scroll'));
+    });
+    window.addEventListener('pagehide', () => {
+        cancelAnimationFrame(zoomFrame);
+        ticking = false;
+    });
+
     document.addEventListener('DOMContentLoaded', () => {
         setupUnifiedFooter();
         hardenExternalLinks();
@@ -328,5 +399,7 @@
         setupBrandShowcaseAnimations();
         setupScrollReveal();
         setupCardReveals();
+        setupPageMotion();
+        setupAboutIntroHover();
     });
 })();

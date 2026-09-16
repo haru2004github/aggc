@@ -2,6 +2,7 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
+    <script src="./motion-settings.js?v=20260917-motion6"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers - AGGC</title>
@@ -182,8 +183,9 @@
             width: 100%;
         }
     </style>
-    <link rel="stylesheet" href="./site-effects.css">
-    <link rel="stylesheet" href="./careers-cards.css">
+    <link rel="stylesheet" href="./site-effects.css?v=20260917-motion5">
+    <link rel="stylesheet" href="./careers-cards.css?v=20260917-motion5">
+    <link rel="stylesheet" href="./site-polish.css?v=20260917-motion5">
 </head>
 
 <body class="premium-content-page careers-page bg-slate-50 text-slate-800 min-h-screen flex flex-col">
@@ -688,7 +690,7 @@
 
             </div>
             <div
-                class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-300 font-medium">
+                class="pt-8 border-t border-white/10 flex flex-col justify-center text-center items-center text-[11px] text-slate-300 font-medium">
                 <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
                 
             </div>
@@ -926,7 +928,9 @@
             });
         }
 
+        let imageCloseTimer;
         function openImageModal(imgSrc) {
+            clearTimeout(imageCloseTimer);
             fullScreenImage.onerror = () => {
                 fullScreenImage.onerror = null;
                 fullScreenImage.src = JOBS_FALLBACK_IMAGE;
@@ -944,18 +948,21 @@
             imageModal.classList.add('opacity-0');
             modalImageContent.classList.remove('scale-100');
             modalImageContent.classList.add('scale-95');
-            setTimeout(() => {
+            clearTimeout(imageCloseTimer);
+            imageCloseTimer = setTimeout(() => {
                 imageModal.classList.add('hidden');
-                fullScreenImage.src = '';
+                fullScreenImage.removeAttribute('src');
                 document.body.style.overflow = 'auto';
-            }, 300);
+            }, window.aggcMotion.matches ? 0 : 300);
         }
 
         imageModal.addEventListener('click', (e) => {
             if (e.target === imageModal || e.target === modalImageContent) closeImageModal();
         });
 
+        let viewTransitionTimer;
         function showJobDetail(id) {
+            clearTimeout(viewTransitionTimer);
             const job = jobsData.find(j => j.id === id);
             if (!job) return;
 
@@ -984,25 +991,26 @@
             viewList.classList.remove('view-active');
             viewList.classList.add('view-hidden');
 
-            setTimeout(() => {
+            viewTransitionTimer = setTimeout(() => {
                 viewDetail.classList.remove('view-hidden');
                 viewDetail.classList.add('view-active');
                 applicationFormSection.classList.add('view-hidden');
                 applicationFormSection.classList.remove('view-active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 300);
+            }, window.aggcMotion.matches ? 0 : 300);
         }
 
         function showListView() {
+            clearTimeout(viewTransitionTimer);
             viewDetail.classList.remove('view-active');
             viewDetail.classList.add('view-hidden');
             applicationFormSection.classList.remove('view-active');
             applicationFormSection.classList.add('view-hidden');
 
-            setTimeout(() => {
+            viewTransitionTimer = setTimeout(() => {
                 viewList.classList.remove('view-hidden');
                 viewList.classList.add('view-active');
-            }, 300);
+            }, window.aggcMotion.matches ? 0 : 300);
         }
 
         function scrollToForm() {
@@ -1176,7 +1184,7 @@
             if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMenu();
         }));
     </script>
-    <script src="./site-effects.js"></script>
+    <script src="./site-effects.js?v=20260917-motion6"></script>
 </body>
 
 </html>
