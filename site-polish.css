@@ -185,3 +185,36 @@ body.about-page .about-stats .grid > div { transition: scale 350ms ease, backgro
         .about-chairman-portrait:hover img { scale: 1.035; }
     }
 }
+
+/* Reference-inspired pearl white, flowing silver layers and AGGC accents. */
+#brands.home-product-section {
+    background: linear-gradient(145deg, #f9f9fa 0%, #f0f1f3 52%, #ffffff 100%) !important;
+}
+#brands.home-product-section::before {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: url('./img/brand-section-waves.svg') center top / 100% 100% no-repeat !important;
+    mask-image: none;
+    -webkit-mask-image: none;
+    opacity: 1;
+    pointer-events: none;
+}
+#brands.home-product-section h2 {
+    color: #0d082d;
+}
+#brands.home-product-section h4 {
+    color: #765215;
+}
+#brands.home-product-section p,
+#brands.home-product-section .brand-feature-copy p {
+    color: #485265;
+}
+#brands.home-product-section .brand-feature-copy span {
+    color: #765215;
+}
+#brands.home-product-section .brand-feature-row::before {
+    background: linear-gradient(90deg, transparent, rgba(163, 123, 40, 0.06), transparent);
+    border-bottom-color: rgba(118, 82, 21, 0.2) !important;
+}
