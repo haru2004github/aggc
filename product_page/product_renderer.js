@@ -1,5 +1,5 @@
 // Dynamic Product Catalog UI Renderer for AGGC Company Portfolio
-// Handles rendering products, models modals, and enquiry forms with transitions.
+// Renders brand product cards and direct enquiry forms with transitions.
 
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Validate Brand Context
@@ -83,56 +83,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         container.closest("main")?.classList.add("product-detail-surface");
 
-        const totalModels = brand.products.reduce((sum, product) => sum + product.models.length, 0);
-        const featureImage = safeAssetUrl(brand.products[0]?.image);
-        const brandTitle = escapeHTML(brand.brandTitle);
-        const brandLogo = safeAssetUrl(brand.brandLogo);
-
-        // Editorial brand hero
-        const header = document.createElement("div");
-        header.className = "catalog-hero";
-
-        header.innerHTML = `
-            <div class="catalog-hero-copy">
-                <span class="catalog-kicker"><span>AGGC Authorized Portfolio</span></span>
-                <h2><span>${brandTitle}</span><em>Machinery &amp; Equipment</em></h2>
-                <p>Purpose-built equipment for demanding jobs. Explore the complete ${brandTitle} range represented by AGGC in Myanmar.</p>
-                <div class="catalog-stats">
-                    <span><strong>${String(brand.products.length).padStart(2, '0')}</strong> Product lines</span>
-                    <span><strong>${String(totalModels).padStart(2, '0')}</strong> Model options</span>
-                </div>
-                <div class="catalog-actions">
-                    <button type="button" class="aggc-button aggc-button-primary" id="brand-quote-button">Request a Quote <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
-                    <a class="aggc-button aggc-button-secondary" href="#catalog-products">Browse equipment</a>
-                </div>
-                <p class="catalog-enquiry-note">Choose a model and tell us what your project needs.</p>
-            </div>
-            <div class="catalog-hero-visual">
-                <span class="catalog-visual-label">Engineered performance</span>
-                <div class="catalog-logo-plate">
-                    ${brandLogo ? `<img src="${escapeHTML(brandLogo)}" alt="${brandTitle} Logo" onerror="this.style.display='none';">` : `<span>${brandTitle}</span>`}
-                </div>
-                ${featureImage ? `<img src="${escapeHTML(featureImage)}" alt="${brandTitle} Product" class="catalog-hero-product" decoding="async" fetchpriority="high" onerror="this.style.display='none';">` : ""}
-                <span class="catalog-visual-index">01 / ${String(brand.products.length).padStart(2, '0')}</span>
-            </div>
-        `;
+        const header = document.createElement("header");
+        header.className = "catalog-brand-heading";
+        header.innerHTML = `<h1>${escapeHTML(brand.brandTitle)}</h1>`;
         container.appendChild(header);
-        header.querySelector('#brand-quote-button').addEventListener('click', openQuotePicker);
 
-        const sectionHead = document.createElement("div");
-        sectionHead.id = "catalog-products";
-        sectionHead.className = "catalog-section-head";
-
-        sectionHead.innerHTML = `
-            <div>
-                <span class="catalog-kicker"><span>Equipment range</span></span>
-                <h3>Choose your machine</h3>
-            </div>
-            <p>Select a product line to review available models and send a direct enquiry to our team.</p>
-        `;
-        container.appendChild(sectionHead);
-
-        // Alternating editorial product rows
+        // Original product rows, without model-count badges
         const grid = document.createElement("div");
         grid.className = "catalog-grid";
 
@@ -142,14 +98,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const productTitle = escapeHTML(product.title);
             const productImage = safeAssetUrl(product.image);
-            const modelPreview = product.models.slice(0, 4).map(escapeHTML).join(" / ");
 
             card.innerHTML = `
                 <div class="catalog-card-image">
                     ${productImage ? `<img src="${escapeHTML(productImage)}" alt="${productTitle}" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='img/placeholder.png';">` : ""}
-                    <div class="catalog-card-count">
-                        ${product.models.length.toString().padStart(2, '0')} <span>models</span>
-                    </div>
                 </div>
                 <div class="catalog-card-body">
                     <div class="catalog-card-topline">
@@ -158,9 +110,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         <span>Product line</span>
                     </div>
                     <h3>${productTitle}</h3>
-                    <p class="catalog-model-preview">${modelPreview}</p>
+                    <p class="catalog-model-preview">${product.models.slice(0, 4).map(escapeHTML).join(' / ')}</p>
                     <div class="catalog-card-actions">
-                        <button type="button" class="catalog-models-button" aria-label="View ${productTitle} models"><span>View models</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                        <button type="button" class="catalog-models-button" aria-label="View ${productTitle} models">View Models <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
                         <button type="button" class="catalog-quote-button" aria-label="Request a quote for ${productTitle}">Request a Quote</button>
                     </div>
                 </div>
@@ -180,76 +132,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- MODAL VIEWS ---
 
-    function openQuotePicker() {
+    function openModelListModal(product) {
         modalContent.innerHTML = `
-            <h3 class="text-2xl font-bold text-brand-navy mb-3">Request a Quote</h3>
-            <p class="text-sm text-slate-500 mb-6">Choose the equipment you are interested in.</p>
-            <label for="quote-product" class="text-sm font-semibold text-brand-navy">Product line</label>
-            <select id="quote-product" class="w-full border rounded-lg p-3 mt-2 mb-6">
-                ${brandData.products.map((product, index) => `<option value="${index}">${escapeHTML(product.title)}</option>`).join('')}
-            </select>
-            <div class="flex flex-wrap gap-3">
-                <button type="button" id="quote-continue" class="aggc-button aggc-button-primary">Choose model <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
-                <button type="button" id="modal-close-btn" class="aggc-button">Cancel</button>
-            </div>`;
-        modalContent.querySelector('#quote-continue').addEventListener('click', () => {
-            const product = brandData.products[Number(modalContent.querySelector('#quote-product').value)];
-            if (product.models.length === 1) openEnquiryFormModal(product, product.models[0]);
-            else openModelListModal(product);
+            <h3 class="font-heading text-xl sm:text-2xl font-bold text-brand-navy mb-6">${escapeHTML(product.title)}</h3>
+            <div class="space-y-3 mb-6">
+                ${product.models.map(model => `
+                    <div class="flex flex-wrap items-center justify-between gap-3 bg-[#fdf9ee] rounded-xl border border-slate-200 p-4">
+                        <span class="font-heading font-bold text-brand-navy">${escapeHTML(model)}</span>
+                        <button type="button" class="enquire-btn rounded-lg px-4 py-3 text-xs font-bold" data-model="${escapeHTML(model)}">Request a Quote</button>
+                    </div>`).join('')}
+            </div>
+            <button type="button" id="modal-close-btn" class="rounded-lg bg-slate-100 p-3 font-bold text-brand-navy">Close</button>`;
+        modalContent.querySelectorAll('.enquire-btn').forEach(button => {
+            button.addEventListener('click', () => openEnquiryFormModal(product, button.dataset.model));
         });
         modalContent.querySelector('#modal-close-btn').addEventListener('click', closeModal);
         showModalAnim();
     }
 
-    // View 2: Model Listing Modal
-    function openModelListModal(product) {
-        modalContent.className = "bg-white rounded-[2rem] shadow-2xl border border-slate-100 max-w-lg w-full max-h-[85vh] flex flex-col p-6 sm:p-8 relative overflow-y-auto animate-modal-spring";
-        const productTitle = escapeHTML(product.title);
-        
-        modalContent.innerHTML = `
-            <!-- Modal Title -->
-            <div class="flex items-center justify-center gap-3 mb-6">
-                <div class="w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[9px] border-l-brand-gold"></div>
-                <h3 class="font-heading text-xl sm:text-2xl font-bold text-brand-navy tracking-wider uppercase text-center">${productTitle}</h3>
-                <div class="w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[9px] border-r-brand-gold"></div>
-            </div>
-
-            <!-- Models List -->
-            <div class="space-y-3.5 mb-8 flex-1 overflow-y-auto max-h-[50vh] pr-1.5 scrollbar-thin">
-                ${product.models.map((model, idx) => `
-                    <div class="bg-[#fdf9ee] border border-slate-100 rounded-xl px-5 py-4 flex items-center justify-between shadow-sm hover:shadow-md hover:border-brand-gold/20 border transition-all duration-300 animate-fade-in-up" style="animation-delay: ${Math.min(idx, 4) * 60}ms">
-                        <span class="font-heading font-bold text-brand-navy text-[15px] tracking-wide">${escapeHTML(model)}</span>
-                        <button class="enquire-btn btn-shine bg-[#22292f] hover:bg-brand-gold text-[#e1ae31] hover:text-white px-5 py-2.5 rounded-lg font-heading font-extrabold text-[11px] tracking-wider uppercase shadow transition-all duration-300" data-model="${escapeHTML(model)}">
-                            Request a Quote
-                        </button>
-                    </div>
-                `).join('')}
-            </div>
-
-            <!-- Close Button -->
-            <div class="flex justify-center mt-2">
-                <button id="modal-close-btn" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800 hover:rotate-90 transition-all duration-300 shadow-sm" title="Close">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-        `;
-
-        // Add Listeners to Enquire Buttons
-        modalContent.querySelectorAll(".enquire-btn").forEach(btn => {
-            btn.addEventListener("click", (e) => {
-                const model = e.currentTarget.getAttribute("data-model");
-                openEnquiryFormModal(product, model);
-            });
-        });
-
-        // Close button listener
-        modalContent.querySelector("#modal-close-btn").addEventListener("click", closeModal);
-
-        // Show Modal
-        showModalAnim();
-    }
-
-    // View 3: Enquiry Form Modal
     function openEnquiryFormModal(product, modelName) {
         const productFullName = `${modelName} - ${capitalizeTitle(product.title)}`;
         const productFullNameSafe = escapeHTML(productFullName);
@@ -259,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <!-- Modal Title -->
             <div class="flex items-center justify-center gap-3 mb-8">
                 <div class="w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[9px] border-l-brand-gold"></div>
-                <h3 class="font-heading text-xl sm:text-2xl font-bold text-brand-navy tracking-wider uppercase text-center">ENQUIRE FORM</h3>
+                <h3 class="font-heading text-xl sm:text-2xl font-bold text-brand-navy tracking-wider uppercase text-center">ENQUIRY FORM</h3>
                 <div class="w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[9px] border-r-brand-gold"></div>
             </div>
 
@@ -316,16 +216,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         BACK
                     </button>
                     <button type="submit" class="btn-shine w-full sm:w-auto bg-brand-gold hover:bg-brand-navy text-white font-heading font-extrabold uppercase text-[11px] tracking-widest py-3.5 px-8 rounded-lg transition-all duration-300 shadow-md">
-                        Request a Quote
+                        Send Enquiry
                     </button>
                 </div>
             </form>
         `;
 
         // Back button listener
-        modalContent.querySelector("#form-back-btn").addEventListener("click", () => {
-            openModelListModal(product);
-        });
+        modalContent.querySelector("#form-back-btn").addEventListener("click", () => openModelListModal(product));
 
         // Form Submit Handler
         const form = modalContent.querySelector("#enquiry-form");

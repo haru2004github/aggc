@@ -173,3 +173,48 @@ body.aggc-catalog .catalog-hero-product {
     body.aggc-catalog .catalog-card:nth-child(even) .catalog-card-image { order: 0; }
     body.aggc-catalog .catalog-card-image { width: 100%; }
 }
+
+/* Simple brand heading above the original alternating product cards. */
+body.aggc-catalog .catalog-brand-heading { margin-bottom: 32px; padding: 12px 0 24px; border-bottom: 1px solid rgba(225,174,49,.3); }
+body.aggc-catalog .catalog-brand-heading h1 { margin: 0; color: #fff; font-family: Poppins, sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.15; }
+
+/* Match the original two-action product rows, without image count badges. */
+body.aggc-catalog .catalog-card .catalog-card-actions { flex-direction: column; align-items: flex-start; gap: 28px; margin-top: 28px; }
+body.aggc-catalog .catalog-card .catalog-card-actions button { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 266px; min-height: 44px; }
+body.aggc-catalog .catalog-card .catalog-card-actions .catalog-quote-button { justify-content: center; }
+
+/* Navy and gold editorial cards, retaining the reference layout and model actions. */
+body.aggc-catalog .catalog-grid { gap: 30px !important; }
+body.aggc-catalog .product-detail-surface .catalog-card {
+    isolation: isolate;
+    border-radius: 22px !important;
+    border: 1px solid rgba(225, 174, 49, .25) !important;
+    background: radial-gradient(ellipse at 100% 0%, #e1ae3112, transparent 58%), linear-gradient(125deg, #193960 0%, #0b2243 48%, #050f27 100%) !important;
+    box-shadow: 0 20px 50px #01081955, inset 0 1px 0 #ffffff0c !important;
+    transition: transform 450ms ease, border-color 450ms ease, box-shadow 450ms ease;
+}
+body.aggc-catalog .product-detail-surface .catalog-card:nth-child(even) {
+    background: radial-gradient(ellipse at 0% 0%, #e1ae3112, transparent 58%), linear-gradient(235deg, #193960 0%, #0b2243 48%, #050f27 100%) !important;
+}
+body.aggc-catalog .catalog-card .catalog-card-body { padding: clamp(28px, 3.4vw, 48px) !important; justify-content: center; }
+body.aggc-catalog .catalog-card-topline { letter-spacing: .17em; font-size: 10px; color: #bacbe0; }
+body.aggc-catalog .catalog-card-index { color: #f2c956; }
+body.aggc-catalog .catalog-card-rule { background: linear-gradient(90deg, #e1ae3199, #e1ae3122); }
+body.aggc-catalog .catalog-card h3 { font-size: clamp(27px, 2.8vw, 42px) !important; font-weight: 900; line-height: 1.12 !important; letter-spacing: -.035em !important; margin: 16px 0 0 !important; text-wrap: balance; }
+body.aggc-catalog .catalog-model-preview { color: #c3cfe0 !important; margin-top: 20px; letter-spacing: .025em; }
+body.aggc-catalog .catalog-card .catalog-card-actions { margin-top: 32px; gap: 14px; }
+body.aggc-catalog .catalog-card .catalog-card-actions button { max-width: 280px; min-height: 48px; padding: 14px 20px !important; border-radius: 8px; letter-spacing: .12em; transition: background 250ms ease, box-shadow 250ms ease; }
+body.aggc-catalog .catalog-card .catalog-models-button { background: linear-gradient(110deg, #f6d67f, #e1ae31 65%, #d3a02a) !important; color: #071633 !important; box-shadow: inset 0 1px #fff6, 0 8px 24px #e1ae311a; }
+body.aggc-catalog .catalog-card .catalog-card-actions .catalog-quote-button { background: #ffffff04 !important; color: #f3ce71 !important; border: 1px solid #dcb45388 !important; justify-content: flex-start; }
+body.aggc-catalog .catalog-models-button i { transition: translate 300ms ease; }
+body.aggc-catalog .product-detail-surface .catalog-card:focus-within { border-color: #e1ae31aa !important; box-shadow: 0 20px 50px #01081966, 0 0 0 1px #e1ae3122 !important; }
+@media (hover: hover) {
+    :root:not([data-motion="reduced"]) body.aggc-catalog .product-detail-surface .catalog-card:hover { transform: translateY(-4px) !important; border-color: #e1ae3199 !important; box-shadow: 0 28px 60px #01081977, inset 0 1px #f3ce7122 !important; }
+    body.aggc-catalog .catalog-card .catalog-card-actions .catalog-quote-button:hover { background: #e1ae311a !important; }
+    body.aggc-catalog .catalog-card .catalog-models-button:hover { box-shadow: inset 0 1px #fff6, 0 8px 26px #e1ae3138; }
+    :root:not([data-motion="reduced"]) body.aggc-catalog .catalog-models-button:hover i { translate: 4px 0; }
+}
+@media (max-width: 640px) {
+    body.aggc-catalog .catalog-card .catalog-card-body { padding: 28px 24px !important; }
+    body.aggc-catalog .catalog-card .catalog-card-actions button { max-width: none; }
+}
