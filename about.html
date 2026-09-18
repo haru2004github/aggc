@@ -196,7 +196,7 @@
         }
     </style>
     <link rel="stylesheet" href="./site-effects.css?v=20260917-motion5">
-    <link rel="stylesheet" href="./site-polish.css?v=20260917-motion5">
+    <link rel="stylesheet" href="./site-polish.css?v=20260918-iso-intro">
 </head>
 
 <body class="about-page bg-slate-50 text-slate-800 min-h-screen flex flex-col">
@@ -390,38 +390,30 @@
         <div class="about-stats bg-white border-b border-slate-100">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div
-                    class="grid grid-cols-2 md:grid-cols-4 divide-y divide-slate-100 md:divide-y-0 md:divide-x divide-slate-100">
+                    class="grid grid-cols-3 divide-x divide-slate-100">
                     <div
-                        class="flex flex-col items-center justify-center py-8 px-6 group hover:bg-slate-50 transition-colors duration-300">
+                        class="flex flex-col items-center justify-center py-8 px-2 sm:px-6 group hover:bg-slate-50 transition-colors duration-300">
                         <span
                             class="font-heading text-3xl sm:text-4xl font-black text-brand-navy group-hover:text-brand-gold transition-colors duration-300">20+</span>
                         <span
-                            class="text-[10px] sm:text-[11px] font-heading font-bold text-slate-400 uppercase tracking-widest mt-1">Years
+                            class="text-[10px] sm:text-[11px] font-heading font-bold text-slate-400 uppercase tracking-wide sm:tracking-widest mt-1 text-center">Years
                             Since Founded</span>
                     </div>
                     <div
-                        class="flex flex-col items-center justify-center py-8 px-6 group hover:bg-slate-50 transition-colors duration-300">
+                        class="flex flex-col items-center justify-center py-8 px-2 sm:px-6 group hover:bg-slate-50 transition-colors duration-300">
                         <span
                             class="font-heading text-3xl sm:text-4xl font-black text-brand-navy group-hover:text-brand-gold transition-colors duration-300">9+</span>
                         <span
-                            class="text-[10px] sm:text-[11px] font-heading font-bold text-slate-400 uppercase tracking-widest mt-1">Premium
+                            class="text-[10px] sm:text-[11px] font-heading font-bold text-slate-400 uppercase tracking-wide sm:tracking-widest mt-1 text-center">Premium
                             Brands</span>
                     </div>
                     <div
-                        class="flex flex-col items-center justify-center py-8 px-6 group hover:bg-slate-50 transition-colors duration-300">
+                        class="flex flex-col items-center justify-center py-8 px-2 sm:px-6 group hover:bg-slate-50 transition-colors duration-300">
                         <span
                             class="font-heading text-3xl sm:text-4xl font-black text-brand-navy group-hover:text-brand-gold transition-colors duration-300">3</span>
                         <span
-                            class="text-[10px] sm:text-[11px] font-heading font-bold text-slate-400 uppercase tracking-widest mt-1">ISO
+                            class="text-[10px] sm:text-[11px] font-heading font-bold text-slate-400 uppercase tracking-wide sm:tracking-widest mt-1 text-center">ISO
                             Certifications</span>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center py-8 px-6 group hover:bg-slate-50 transition-colors duration-300">
-                        <span
-                            class="font-heading text-3xl sm:text-4xl font-black text-brand-navy group-hover:text-brand-gold transition-colors duration-300">#1</span>
-                        <span
-                            class="text-[10px] sm:text-[11px] font-heading font-bold text-slate-400 uppercase tracking-widest mt-1">
-                            Fleet Leader</span>
                     </div>
                 </div>
             </div>
@@ -520,8 +512,7 @@
                             <p class="flex items-start gap-3.5">
                                 <span
                                     class="mt-2 w-2.5 h-2.5 rounded-full bg-brand-gold flex-shrink-0 shadow-[0_0_8px_rgba(241,173,24,0.5)]"></span>
-                                <span>Established in 2004, AGGC stands as one of the leading machinery companies in
-                                    Myanmar.</span>
+                                <span>Established in 2004, AGGC stands as one of the leading machinery companies.</span>
                             </p>
                             <p class="flex items-start gap-3.5">
                                 <span
@@ -584,7 +575,7 @@
                                 <div>
                                     <h4 class="font-heading font-extrabold text-white text-base mb-1 group-hover:text-brand-gold transition-colors">Global Branch Network</h4>
                                     <p class="text-slate-300 text-sm font-light leading-relaxed">
-                                        Aung Gyi Group of Companies maintains an extensive global branch network, providing broad coverage and customer support.
+                                        AGGC maintains an extensive global branch network, providing broad coverage and customer support.
                                     </p>
                                 </div>
                             </div>
@@ -862,22 +853,107 @@
 
                 </div>
 
-                <!-- Bottom Banner: ISO Certified Group -->
-                <div class="about-iso-card mt-16 bg-[#fcfbfa] border border-slate-200/50 rounded-[2rem] p-6 sm:p-10 shadow-sm flex flex-col md:flex-row items-center gap-8 hover:shadow-2xl hover:border-brand-gold/30 transition-all duration-500 reveal-scale-up delay-100">
-                    <!-- Left: Gold Medal Badge -->
-                    <div class="w-32 h-32 flex-shrink-0 animate-float-slow flex items-center justify-center bg-white rounded-full border border-slate-100 p-2 shadow-inner group cursor-pointer hover:rotate-12 transition-transform duration-500">
-                        <img src="./img/iso_seal_gold.png" alt="AGGC ISO Seal Medal Badge" class="max-w-full max-h-full object-contain">
+                <!-- ISO Certified Group and certificates -->
+                <section id="certificates" aria-labelledby="iso-certified-heading" class="about-iso-card mt-16 bg-[#fcfbfa] border border-slate-200/50 rounded-[2rem] p-6 sm:p-10 shadow-sm">
+                    <div class="iso-intro">
+                        <div class="iso-seal-frame">
+                            <img src="./img/iso_seal_gold.png" alt="AGGC ISO certification seal" width="128" height="128" loading="lazy">
+                        </div>
+                        <div class="iso-intro-copy">
+                            <h2 id="iso-certified-heading">ISO Certified Group</h2>
+                            <p>Committed to quality, environmental responsibility and workplace safety through internationally recognized ISO standards.</p>
+                            <ul class="iso-standard-labels" aria-label="Certified ISO standards">
+                                <li>ISO 9001 <span>Quality</span></li>
+                                <li>ISO 14001 <span>Environment</span></li>
+                                <li>ISO 45001 <span>Safety</span></li>
+                            </ul>
+                        </div>
                     </div>
-                    <!-- Right: Info Content -->
-                    <div class="text-center md:text-left space-y-2">
-                        <h4 class="text-[#e1ae31] font-heading font-black text-lg sm:text-xl tracking-wider uppercase">
-                            ISO CERTIFIED GROUP
-                        </h4>
-                        <p class="text-slate-600 text-sm sm:text-[15px] leading-relaxed font-light">
-                            AGGC operates under internationally recognized ISO standards (<strong class="text-brand-navy font-semibold">ISO 9001, ISO 14001, ISO 45001</strong>), ensuring quality management, environmental responsibility, and workplace safety across all operations.
-                        </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mx-auto pt-8 mt-8 border-t border-slate-200/70">
+
+                    <!-- Cert 1 -->
+                    <div onclick="openModal('./img/20260226-ISO-03.jpg')"
+                        class="group relative bg-white p-5 rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.015)] hover:shadow-[0_20px_60px_rgba(11,4,48,0.08)] hover:-translate-y-2.5 transition-all duration-500 cursor-pointer overflow-hidden">
+                        <div
+                            class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <div
+                            class="aspect-[3/4] w-full bg-white rounded-2xl overflow-hidden mb-6 border border-slate-100 relative shadow-sm">
+                            <img src="./img/20260226-ISO-03.jpg" alt="ISO 14001:2015"
+                                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                                <div
+                                    class="bg-brand-gold text-brand-navy w-12 h-12 rounded-full flex items-center justify-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
+                                    <i class="fa-solid fa-expand text-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center px-2">
+                            <h4
+                                class="font-extrabold text-brand-navy text-xl mb-1 group-hover:text-brand-gold transition-colors">
+                                ISO 14001:2015</h4>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Environmental
+                                Management</p>
+                        </div>
                     </div>
+
+                    <!-- Cert 2 -->
+                    <div onclick="openModal('./img/20260226-ISO-01.jpg')"
+                        class="group relative bg-white p-5 rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.015)] hover:shadow-[0_20px_60px_rgba(11,4,48,0.08)] hover:-translate-y-2.5 transition-all duration-500 cursor-pointer overflow-hidden">
+                        <div
+                            class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <div
+                            class="aspect-[3/4] w-full bg-white rounded-2xl overflow-hidden mb-6 border border-slate-100 relative shadow-sm">
+                            <img src="./img/20260226-ISO-01.jpg" alt="ISO 45001:2018"
+                                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                                <div
+                                    class="bg-brand-gold text-brand-navy w-12 h-12 rounded-full flex items-center justify-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
+                                    <i class="fa-solid fa-expand text-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center px-2">
+                            <h4
+                                class="font-extrabold text-brand-navy text-xl mb-1 group-hover:text-brand-gold transition-colors">
+                                ISO 45001:2018</h4>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Occupational Health
+                                &amp; Safety</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 3 -->
+                    <div onclick="openModal('./img/20260226-ISO-02.jpg')"
+                        class="group relative bg-white p-5 rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.015)] hover:shadow-[0_20px_60px_rgba(11,4,48,0.08)] hover:-translate-y-2.5 transition-all duration-500 cursor-pointer overflow-hidden">
+                        <div
+                            class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <div
+                            class="aspect-[3/4] w-full bg-white rounded-2xl overflow-hidden mb-6 border border-slate-100 relative shadow-sm">
+                            <img src="./img/20260226-ISO-02.jpg" alt="ISO 9001:2015"
+                                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                                <div
+                                    class="bg-brand-gold text-brand-navy w-12 h-12 rounded-full flex items-center justify-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
+                                    <i class="fa-solid fa-expand text-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center px-2">
+                            <h4
+                                class="font-extrabold text-brand-navy text-xl mb-1 group-hover:text-brand-gold transition-colors">
+                                ISO 9001:2015</h4>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Quality Management
+                                System</p>
+                        </div>
+                    </div>
+
                 </div>
+                </section>
 
             </div>
         </section>
@@ -930,79 +1006,6 @@
             </div>
         </section>
 
-        <!-- Network & Infrastructure Section -->
-        <section id="infrastructure" class="py-16 sm:py-24 bg-white border-t border-slate-200/50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <div class="flex items-center justify-center gap-3 mb-4">
-                        <div class="w-8 h-[2px] bg-brand-gold rounded-full"></div>
-                        <span
-                            class="text-brand-gold font-heading font-bold text-[11px] sm:text-xs uppercase tracking-[0.2em]">Our
-                            Presence</span>
-                        <div class="w-8 h-[2px] bg-brand-gold rounded-full"></div>
-                    </div>
-                    <h2 class="font-heading text-3xl sm:text-4xl font-black text-brand-navy tracking-tight">Headquarters
-                        &amp; Network Map</h2>
-                    <p class="text-slate-500 mt-4 font-light text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-                        Explore our nationwide distribution network and main corporate headquarters. Click on any image
-                        to view it in full screen detail.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
-
-                    <!-- Card 1: HQ Building -->
-                    <div onclick="openModal('./img/about_us_complex_render.png')"
-                        class="group bg-slate-50 p-5 rounded-3xl border border-slate-100/80 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_60px_rgba(11,4,48,0.08)] hover:-translate-y-2.5 transition-all duration-500 cursor-pointer overflow-hidden">
-                        <div
-                            class="aspect-[4/3] w-full bg-slate-50 rounded-2xl overflow-hidden mb-6 border border-slate-100 relative shadow-sm">
-                            <img src="./img/about_us_complex_render.png" alt="AGGC Headquarters"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
-                                <div
-                                    class="bg-brand-gold text-brand-navy w-12 h-12 rounded-full flex items-center justify-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
-                                    <i class="fa-solid fa-expand text-xl"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center px-2">
-                            <h4
-                                class="font-extrabold text-brand-navy text-xl mb-1 group-hover:text-brand-gold transition-colors">
-                                AGGC Headquarters</h4>
-                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Corporate Office in
-                                Yangon</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Network Map -->
-                    <div onclick="openModal('./img/our-network-aggc.png')"
-                        class="group bg-slate-50 p-5 rounded-3xl border border-slate-100/80 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_60px_rgba(11,4,48,0.08)] hover:-translate-y-2.5 transition-all duration-500 cursor-pointer overflow-hidden">
-                        <div
-                            class="aspect-[4/3] w-full bg-slate-50 rounded-2xl overflow-hidden mb-6 border border-slate-100 relative shadow-sm">
-                            <img src="./img/our-network-aggc.png" alt="AGGC Nationwide Network Map"
-                                class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-700 ease-out">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
-                                <div
-                                    class="bg-brand-gold text-brand-navy w-12 h-12 rounded-full flex items-center justify-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
-                                    <i class="fa-solid fa-expand text-xl"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center px-2">
-                            <h4
-                                class="font-extrabold text-brand-navy text-xl mb-1 group-hover:text-brand-gold transition-colors">
-                                Nationwide Network Map</h4>
-                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Branches &amp; Service
-                                Network Map</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Branches & Service Centers Section (Dark Mode) -->
     <section class="branches-fresh py-16 sm:py-24 bg-brand-navy relative overflow-hidden">
         <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
@@ -1024,16 +1027,18 @@
                                 <h4 class="font-heading font-extrabold text-white text-[15px] group-hover:text-brand-gold transition-colors duration-300">Corporate Headquarters</h4>
                             </div>
                             <p class="text-slate-300 text-[13px] leading-relaxed font-light mb-5 group-hover:text-white transition-colors duration-300">
-                                No. 901-6, Level 9, Office Tower 3, Times City Complex, Kamayut Township, Yangon, Myanmar.
+                                No. 901-6, Level 9, Office Tower 3, Times City Complex, Kamayut Township, Yangon.
                             </p>
-                            <div class="flex items-center gap-2 text-xs text-slate-400 hover:text-brand-gold transition-colors duration-300">
-                                <i class="fa-solid fa-phone text-[10px]"></i>
-                                <span>09-785000001-5</span>
+                            <div class="flex flex-col items-start gap-2 text-xs text-slate-400">
+                                <a href="tel:09890900009" class="flex items-center gap-2 leading-relaxed hover:text-brand-gold transition-colors duration-300">
+                                    <i class="fa-solid fa-phone w-3 text-center text-[10px]" aria-hidden="true"></i>
+                                    <span>09 890 900 009</span>
+                                </a>
+                                <div class="flex items-center gap-2 leading-relaxed hover:text-brand-gold transition-colors duration-300">
+                                    <i class="fa-solid fa-phone w-3 text-center text-[10px]" aria-hidden="true"></i>
+                                    <span>09-785000001-5</span>
+                                </div>
                             </div>
-                            <a href="tel:09890900009" class="flex items-center gap-2 mt-2 text-xs text-slate-400 hover:text-brand-gold transition-colors duration-300">
-                                <i class="fa-solid fa-phone text-[10px]" aria-hidden="true"></i>
-                                <span>09 890 900 009</span>
-                            </a>
                         </div>
 
                         <!-- Shwe Lin Pan Office -->
@@ -1045,16 +1050,18 @@
                                 <h4 class="font-heading font-extrabold text-white text-[15px] group-hover:text-brand-gold transition-colors duration-300">Shwe Lin Ban Office</h4>
                             </div>
                             <p class="text-slate-300 text-[13px] leading-relaxed font-light mb-5 group-hover:text-white transition-colors duration-300">
-                                No. 153, Maung Than St, Shwe Lin Ban Industrial Zone, Hlaing Thar Yar Township, Yangon, Myanmar.
+                                No. 153, Maung Than St, Shwe Lin Ban Industrial Zone, Hlaing Thar Yar Township, Yangon.
                             </p>
-                            <div class="flex items-center gap-2 text-xs text-slate-400 hover:text-brand-gold transition-colors duration-300">
-                                <i class="fa-solid fa-phone text-[10px]"></i>
-                                <span>09-785000001-5</span>
+                            <div class="flex flex-col items-start gap-2 text-xs text-slate-400">
+                                <a href="tel:09890900009" class="flex items-center gap-2 leading-relaxed hover:text-brand-gold transition-colors duration-300">
+                                    <i class="fa-solid fa-phone w-3 text-center text-[10px]" aria-hidden="true"></i>
+                                    <span>09 890 900 009</span>
+                                </a>
+                                <div class="flex items-center gap-2 leading-relaxed hover:text-brand-gold transition-colors duration-300">
+                                    <i class="fa-solid fa-phone w-3 text-center text-[10px]" aria-hidden="true"></i>
+                                    <span>09-785000001-5</span>
+                                </div>
                             </div>
-                            <a href="tel:09890900009" class="flex items-center gap-2 mt-2 text-xs text-slate-400 hover:text-brand-gold transition-colors duration-300">
-                                <i class="fa-solid fa-phone text-[10px]" aria-hidden="true"></i>
-                                <span>09 890 900 009</span>
-                            </a>
                         </div>
 
                         <!-- Mandalay -->
@@ -1066,16 +1073,18 @@
                                 <h4 class="font-heading font-extrabold text-white text-[15px] group-hover:text-brand-gold transition-colors duration-300">Mandalay Branch</h4>
                             </div>
                             <p class="text-slate-300 text-[13px] leading-relaxed font-light mb-5 group-hover:text-white transition-colors duration-300">
-                                No. Ma 43, 81 + 92, 41st Street, Between 52nd & Pyin Oo Lwin Road, Mahar Aung Myae Township, Mandalay, Myanmar.
+                                No. Ma 43, 81 + 92, 41st Street, Between 52nd & Pyin Oo Lwin Road, Mahar Aung Myae Township, Mandalay.
                             </p>
-                            <div class="flex items-center gap-2 text-xs text-slate-400 hover:text-brand-gold transition-colors duration-300">
-                                <i class="fa-solid fa-phone text-[10px]"></i>
-                                <span>09-785000001-5</span>
+                            <div class="flex flex-col items-start gap-2 text-xs text-slate-400">
+                                <a href="tel:09890900009" class="flex items-center gap-2 leading-relaxed hover:text-brand-gold transition-colors duration-300">
+                                    <i class="fa-solid fa-phone w-3 text-center text-[10px]" aria-hidden="true"></i>
+                                    <span>09 890 900 009</span>
+                                </a>
+                                <div class="flex items-center gap-2 leading-relaxed hover:text-brand-gold transition-colors duration-300">
+                                    <i class="fa-solid fa-phone w-3 text-center text-[10px]" aria-hidden="true"></i>
+                                    <span>09-785000001-5</span>
+                                </div>
                             </div>
-                            <a href="tel:09890900009" class="flex items-center gap-2 mt-2 text-xs text-slate-400 hover:text-brand-gold transition-colors duration-300">
-                                <i class="fa-solid fa-phone text-[10px]" aria-hidden="true"></i>
-                                <span>09 890 900 009</span>
-                            </a>
                         </div>
 
                         <!-- Naypyitaw -->
@@ -1087,16 +1096,18 @@
                                 <h4 class="font-heading font-extrabold text-white text-[15px] group-hover:text-brand-gold transition-colors duration-300">Naypyitaw Branch</h4>
                             </div>
                             <p class="text-slate-300 text-[13px] leading-relaxed font-light mb-5 group-hover:text-white transition-colors duration-300">
-                                No. 50 45, Corner of Sagaing and Thazin St, Oattarathiri Township, Naypyitaw, Myanmar.
+                                No. 50 45, Corner of Sagaing and Thazin St, Oattarathiri Township, Naypyitaw.
                             </p>
-                            <div class="flex items-center gap-2 text-xs text-slate-400 hover:text-brand-gold transition-colors duration-300">
-                                <i class="fa-solid fa-phone text-[10px]"></i>
-                                <span>09-785000001-5</span>
+                            <div class="flex flex-col items-start gap-2 text-xs text-slate-400">
+                                <a href="tel:09890900009" class="flex items-center gap-2 leading-relaxed hover:text-brand-gold transition-colors duration-300">
+                                    <i class="fa-solid fa-phone w-3 text-center text-[10px]" aria-hidden="true"></i>
+                                    <span>09 890 900 009</span>
+                                </a>
+                                <div class="flex items-center gap-2 leading-relaxed hover:text-brand-gold transition-colors duration-300">
+                                    <i class="fa-solid fa-phone w-3 text-center text-[10px]" aria-hidden="true"></i>
+                                    <span>09-785000001-5</span>
+                                </div>
                             </div>
-                            <a href="tel:09890900009" class="flex items-center gap-2 mt-2 text-xs text-slate-400 hover:text-brand-gold transition-colors duration-300">
-                                <i class="fa-solid fa-phone text-[10px]" aria-hidden="true"></i>
-                                <span>09 890 900 009</span>
-                            </a>
                         </div>
 
                         <!-- Muse -->
@@ -1108,16 +1119,18 @@
                                 <h4 class="font-heading font-extrabold text-white text-[15px] group-hover:text-brand-gold transition-colors duration-300">Muse Branch</h4>
                             </div>
                             <p class="text-slate-300 text-[13px] leading-relaxed font-light mb-5 group-hover:text-white transition-colors duration-300">
-                                Mao-Hai Road, Ruili City, Jiegao, Muse Border, Myanmar.
+                                Mao-Hai Road, Ruili City, Jiegao, Muse Border.
                             </p>
-                            <div class="flex items-center gap-2 text-xs text-slate-400 hover:text-brand-gold transition-colors duration-300">
-                                <i class="fa-solid fa-phone text-[10px]"></i>
-                                <span>09-785000001-5</span>
+                            <div class="flex flex-col items-start gap-2 text-xs text-slate-400">
+                                <a href="tel:09890900009" class="flex items-center gap-2 leading-relaxed hover:text-brand-gold transition-colors duration-300">
+                                    <i class="fa-solid fa-phone w-3 text-center text-[10px]" aria-hidden="true"></i>
+                                    <span>09 890 900 009</span>
+                                </a>
+                                <div class="flex items-center gap-2 leading-relaxed hover:text-brand-gold transition-colors duration-300">
+                                    <i class="fa-solid fa-phone w-3 text-center text-[10px]" aria-hidden="true"></i>
+                                    <span>09-785000001-5</span>
+                                </div>
                             </div>
-                            <a href="tel:09890900009" class="flex items-center gap-2 mt-2 text-xs text-slate-400 hover:text-brand-gold transition-colors duration-300">
-                                <i class="fa-solid fa-phone text-[10px]" aria-hidden="true"></i>
-                                <span>09 890 900 009</span>
-                            </a>
                         </div>
 
                         <!-- Myitkyina & Mawlamyine -->
@@ -1129,127 +1142,25 @@
                                 <h4 class="font-heading font-extrabold text-white text-[15px] group-hover:text-brand-gold transition-colors duration-300">Myitkyina & Mawlamyine</h4>
                             </div>
                             <p class="text-slate-300 text-[13px] leading-relaxed font-light mb-5 group-hover:text-white transition-colors duration-300">
-                                Myitkyina (Munkhrain Quarter) & Mawlamyine (Bogyoke Aung San Road, Myine Thar Yar Quarter), Myanmar.
+                                Myitkyina (Munkhrain Quarter) & Mawlamyine (Bogyoke Aung San Road, Myine Thar Yar Quarter).
                             </p>
-                            <div class="flex items-center gap-2 text-xs text-slate-400 hover:text-brand-gold transition-colors duration-300">
-                                <i class="fa-solid fa-phone text-[10px]"></i>
-                                <span>09-785000001-5</span>
+                            <div class="flex flex-col items-start gap-2 text-xs text-slate-400">
+                                <a href="tel:09890900009" class="flex items-center gap-2 leading-relaxed hover:text-brand-gold transition-colors duration-300">
+                                    <i class="fa-solid fa-phone w-3 text-center text-[10px]" aria-hidden="true"></i>
+                                    <span>09 890 900 009</span>
+                                </a>
+                                <div class="flex items-center gap-2 leading-relaxed hover:text-brand-gold transition-colors duration-300">
+                                    <i class="fa-solid fa-phone w-3 text-center text-[10px]" aria-hidden="true"></i>
+                                    <span>09-785000001-5</span>
+                                </div>
                             </div>
-                            <a href="tel:09890900009" class="flex items-center gap-2 mt-2 text-xs text-slate-400 hover:text-brand-gold transition-colors duration-300">
-                                <i class="fa-solid fa-phone text-[10px]" aria-hidden="true"></i>
-                                <span>09 890 900 009</span>
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Certifications Section -->
-        <section id="certificates" class="py-16 sm:py-24 bg-slate-50 border-t border-slate-200/50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <div class="flex items-center justify-center gap-3 mb-4">
-                        <div class="w-8 h-[2px] bg-brand-gold rounded-full"></div>
-                        <span
-                            class="text-brand-gold font-heading font-bold text-[11px] sm:text-xs uppercase tracking-[0.2em]">Recognized
-                            Standards</span>
-                        <div class="w-8 h-[2px] bg-brand-gold rounded-full"></div>
-                    </div>
-                    <h2 class="font-heading text-3xl sm:text-4xl font-black text-brand-navy tracking-tight">Our
-                        Certifications</h2>
-                    <p class="text-slate-500 mt-4 font-light text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-                        Internationally recognized standards for environmental management, occupational health, and
-                        quality management systems.
-                    </p>
-                </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-5xl mx-auto">
-
-                    <!-- Cert 1 -->
-                    <div onclick="openModal('./img/20260226-ISO-01.jpg')"
-                        class="group relative bg-white p-5 rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.015)] hover:shadow-[0_20px_60px_rgba(11,4,48,0.08)] hover:-translate-y-2.5 transition-all duration-500 cursor-pointer overflow-hidden">
-                        <div
-                            class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        </div>
-                        <div
-                            class="aspect-[3/4] w-full bg-white rounded-2xl overflow-hidden mb-6 border border-slate-100 relative shadow-sm">
-                            <img src="./img/20260226-ISO-01.jpg" alt="ISO 14001:2015"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
-                                <div
-                                    class="bg-brand-gold text-brand-navy w-12 h-12 rounded-full flex items-center justify-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
-                                    <i class="fa-solid fa-expand text-xl"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center px-2">
-                            <h4
-                                class="font-extrabold text-brand-navy text-xl mb-1 group-hover:text-brand-gold transition-colors">
-                                ISO 14001:2015</h4>
-                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Environmental
-                                Management</p>
-                        </div>
-                    </div>
-
-                    <!-- Cert 2 -->
-                    <div onclick="openModal('./img/20260226-ISO-02.jpg')"
-                        class="group relative bg-white p-5 rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.015)] hover:shadow-[0_20px_60px_rgba(11,4,48,0.08)] hover:-translate-y-2.5 transition-all duration-500 cursor-pointer overflow-hidden">
-                        <div
-                            class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        </div>
-                        <div
-                            class="aspect-[3/4] w-full bg-white rounded-2xl overflow-hidden mb-6 border border-slate-100 relative shadow-sm">
-                            <img src="./img/20260226-ISO-02.jpg" alt="ISO 45001:2018"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
-                                <div
-                                    class="bg-brand-gold text-brand-navy w-12 h-12 rounded-full flex items-center justify-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
-                                    <i class="fa-solid fa-expand text-xl"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center px-2">
-                            <h4
-                                class="font-extrabold text-brand-navy text-xl mb-1 group-hover:text-brand-gold transition-colors">
-                                ISO 45001:2018</h4>
-                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Occupational Health
-                                &amp; Safety</p>
-                        </div>
-                    </div>
-
-                    <!-- Cert 3 -->
-                    <div onclick="openModal('./img/20260226-ISO-03.jpg')"
-                        class="group relative bg-white p-5 rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.015)] hover:shadow-[0_20px_60px_rgba(11,4,48,0.08)] hover:-translate-y-2.5 transition-all duration-500 cursor-pointer overflow-hidden">
-                        <div
-                            class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-brand-gold to-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        </div>
-                        <div
-                            class="aspect-[3/4] w-full bg-white rounded-2xl overflow-hidden mb-6 border border-slate-100 relative shadow-sm">
-                            <img src="./img/20260226-ISO-03.jpg" alt="ISO 9001:2015"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
-                                <div
-                                    class="bg-brand-gold text-brand-navy w-12 h-12 rounded-full flex items-center justify-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
-                                    <i class="fa-solid fa-expand text-xl"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center px-2">
-                            <h4
-                                class="font-extrabold text-brand-navy text-xl mb-1 group-hover:text-brand-gold transition-colors">
-                                ISO 9001:2015</h4>
-                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Quality Management
-                                System</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
 
     </main>
 
@@ -1282,7 +1193,7 @@
                         <img src="./img/logo.png" class="w-40" alt="AGGC Logo">
                     </div>
                     <p class="text-slate-300 text-[13px] font-light leading-relaxed max-w-xs">
-                        Aung Gyi Group of Companies. A leading diversified business group in Myanmar operating across
+                        AGGC. A leading diversified business group operating across
                         key industrial sectors. Let's Build Together!
                     </p>
                 </div>
@@ -1395,7 +1306,7 @@
             </div>
             <div
                 class="pt-8 border-t border-white/10 flex flex-col justify-center text-center items-center text-[11px] text-slate-300 font-medium">
-                <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
+                <p>&copy; 2026 AGGC. All rights reserved.</p>
                 
             </div>
         </div>
@@ -1515,7 +1426,7 @@
             // Shared site-effects.js observes these elements on every visit.
         });
     </script>
-    <script src="./site-effects.js?v=20260917-motion6"></script>
+    <script src="./site-effects.js?v=20260918-aggc-copy"></script>
 </body>
 
 </html>

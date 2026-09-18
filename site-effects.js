@@ -22,7 +22,7 @@
                             <img src="${siteUrl('img/logo.png')}" class="w-40 max-h-14 object-contain" alt="AGGC Logo">
                         </div>
                         <p class="text-slate-300 text-[13px] font-light leading-relaxed max-w-xs">
-                            Aung Gyi Group of Companies. A leading diversified business group operating across global industrial sectors. Let's Build Together!
+                            AGGC. A leading diversified business group operating across global industrial sectors. Let's Build Together!
                         </p>
                     </div>
 
@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="pt-8 border-t border-white/10 flex flex-col justify-center text-center items-center text-[11px] text-slate-300 font-medium">
-                    <p>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>
+                    <p>&copy; 2026 AGGC. All rights reserved.</p>
                 </div>
             </div>
         `;

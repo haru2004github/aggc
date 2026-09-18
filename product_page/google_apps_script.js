@@ -86,7 +86,7 @@ function sendEmailNotification(product, name, email, phone, message, timestamp) 
     "<div style='font-family: \"Segoe UI\", Helvetica, Arial, sans-serif; max-width: 600px; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; margin: 0 auto; box-shadow: 0 4px 12px rgba(0,0,0,0.04);'>" +
       // Header Banner with AGGC brand colors (navy #071633 & gold #e1ae31)
       "<div style='background-color: #071633; padding: 28px 24px; text-align: center; border-bottom: 4px solid #e1ae31;'>" +
-        "<h2 style='color: #ffffff; margin: 0; font-size: 20px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;'>Aung Gyi Group of Companies</h2>" +
+        "<h2 style='color: #ffffff; margin: 0; font-size: 20px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;'>AGGC</h2>" +
         "<p style='color: #e1ae31; margin: 6px 0 0 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;'>Product Enquiry Notification</p>" +
       "</div>" +
       
@@ -128,7 +128,7 @@ function sendEmailNotification(product, name, email, phone, message, timestamp) 
       
       // Footer Area
       "<div style='background-color: #f7fafc; padding: 20px 24px; text-align: center; border-top: 1px solid #edf2f7; font-size: 11px; color: #a0aec0;'>" +
-        "<p style='margin: 0 0 6px 0;'>&copy; 2026 Aung Gyi Group of Companies. All rights reserved.</p>" +
+        "<p style='margin: 0 0 6px 0;'>&copy; 2026 AGGC. All rights reserved.</p>" +
         "<p style='margin: 0;'>This is an automated notification. Please reply directly to the customer's email address listed above.</p>" +
       "</div>" +
     "</div>";

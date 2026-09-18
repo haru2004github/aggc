@@ -186,35 +186,133 @@ body.about-page .about-stats .grid > div { transition: scale 350ms ease, backgro
     }
 }
 
-/* Reference-inspired pearl white, flowing silver layers and AGGC accents. */
-#brands.home-product-section {
-    background: linear-gradient(145deg, #f9f9fa 0%, #f0f1f3 52%, #ffffff 100%) !important;
+/* Homepage portfolio follows the shared navy/gold product theme. */
+#brands.home-product-section::before { content: none; display: none; background: none !important; }
+#brands.home-product-section .brand-feature-row { padding: clamp(1.25rem, 3vw, 2.5rem); border-radius: 24px; }
+#brands.home-product-section .brand-feature-media { border-radius: 18px; }
+#brands.home-product-section .brand-feature-media::before { background: none; }
+
+/* Products overview only: flowing navy and gold, without tiled backgrounds. */
+body.products-premium-page .product-premium-hero,
+body.products-premium-page #brands.product-premium-brands {
+    background:
+        radial-gradient(ellipse at 0% 0%, rgba(225, 174, 49, .14), transparent 42%),
+        radial-gradient(ellipse at 100% 80%, rgba(225, 174, 49, .08), transparent 45%),
+        linear-gradient(145deg, #142e52 0%, #0a1e3d 48%, #050f25 100%) !important;
 }
-#brands.home-product-section::before {
+body.products-premium-page .product-premium-hero::before,
+body.products-premium-page #brands.product-premium-brands::before {
+    content: none;
+    display: none;
+    background: none !important;
+    background-size: auto !important;
+}
+body.products-premium-page #brands .brand-feature-media::before {
+    background: none;
+}
+
+/* Combined ISO introduction and certificate gallery. */
+body.about-page #values #certificates.about-iso-card > div:first-child {
+    background: transparent !important;
+    border: 0;
+    box-shadow: none;
+}
+body.about-page #values #certificates #iso-certified-heading { color: #f0c65d !important; }
+body.about-page #values #certificates.about-iso-card p { color: #c4d1e3; }
+#certificates { scroll-margin-top: 110px; }
+
+/* Quiet, balanced certification introduction. */
+body.about-page #values #certificates.about-iso-card > .iso-intro {
+    display: grid;
+    grid-template-columns: 116px minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(24px, 4vw, 44px);
+    padding: 8px 0 0;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+#certificates .iso-seal-frame {
+    width: 116px;
+    height: 132px;
+    display: grid;
+    place-items: center;
+    padding: 10px;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #fff, #f1ead8);
+    border: 1px solid #e1ae3170;
+    box-shadow: 0 12px 28px #020a2040;
+}
+#certificates .iso-seal-frame img { width: 100%; height: 100%; object-fit: contain; border-radius: 14px; }
+#certificates .iso-intro-copy h2 { margin: 0 0 12px; font-family: Poppins, sans-serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; line-height: 1.25; letter-spacing: -.025em; }
+#certificates .iso-intro-copy p { max-width: 70ch; margin: 0; font-size: 14px; line-height: 1.85; }
+#certificates .iso-standard-labels { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 0; padding: 0; list-style: none; }
+#certificates .iso-standard-labels li { display: flex; align-items: center; gap: 9px; padding: 8px 12px; border: 1px solid #e1ae3140; border-radius: 8px; background: #e1ae3108; color: #f1cc70; font-size: 11px; font-weight: 700; letter-spacing: .035em; }
+#certificates .iso-standard-labels span { color: #c1ccdd; font-size: 11px; font-weight: 400; letter-spacing: 0; border-left: 1px solid #e1ae3140; padding-left: 9px; }
+body.about-page #values #certificates > .grid { border-top: 1px solid #e1ae3138; margin-top: 32px; padding-top: 32px; }
+@media (max-width: 640px) {
+    body.about-page #values #certificates.about-iso-card > .iso-intro { grid-template-columns: 1fr; justify-items: center; gap: 22px; text-align: center; }
+    #certificates .iso-seal-frame { width: 96px; height: 110px; }
+    #certificates .iso-standard-labels { justify-content: center; }
+}
+
+/* Independently fitted geographic silhouettes for network cards. */
+.network-country-map { display: block; width: 44px !important; height: 44px !important; object-fit: contain; filter: none !important; }
+
+/* Products overview: left-to-right navy/gold lighting with a slow ambient sweep. */
+:is(body.products-premium-page #brands.product-premium-brands, #brands.home-product-section) {
+    background: radial-gradient(ellipse at 100% 10%, #21457733, transparent 55%), linear-gradient(90deg, #050f26 0%, #0a1c37 55%, #102744 100%) !important;
+}
+:is(body.products-premium-page #brands.product-premium-brands, #brands.home-product-section) .brand-feature-row {
+    overflow: hidden;
+    isolation: isolate;
+    background: radial-gradient(ellipse at 100% 20%, #e1ae3120, transparent 52%), linear-gradient(105deg, #09182f 0%, #112c4e 58%, #183754 100%) !important;
+    border: 1px solid #d6b76c40 !important;
+    box-shadow: 0 20px 48px #02091955, inset 0 1px #fff1 !important;
+    transition: border-color 400ms ease, box-shadow 400ms ease;
+}
+:is(body.products-premium-page #brands.product-premium-brands, #brands.home-product-section) .brand-feature-row::before {
     content: '';
-    display: block;
-    position: absolute;
     inset: 0;
-    background: url('./img/brand-section-waves.svg') center top / 100% 100% no-repeat !important;
-    mask-image: none;
-    -webkit-mask-image: none;
+    z-index: -1;
     opacity: 1;
+    border: 0 !important;
+    border-radius: inherit;
+    background: radial-gradient(ellipse at 90% 20%, #e8c66e12, transparent 55%);
+    transform: none;
+}
+:is(body.products-premium-page #brands.product-premium-brands, #brands.home-product-section) .brand-feature-row::after {
+    content: '';
+    position: absolute;
+    inset: -35% -60%;
+    z-index: -1;
     pointer-events: none;
+    background: linear-gradient(110deg, transparent 36%, #a5c9ef0d 49%, #f7dc8a10 52%, transparent 66%);
+    transform: translateX(-24%);
 }
-#brands.home-product-section h2 {
-    color: #0d082d;
+:is(body.products-premium-page #brands.product-premium-brands, #brands.home-product-section) .brand-feature-media {
+    background: radial-gradient(ellipse at 80% 80%, #597ea518, transparent 65%), linear-gradient(100deg, #06142a, #0b203b 65%, #142e49) !important;
+    border-color: #b8cce426 !important;
 }
-#brands.home-product-section h4 {
-    color: #765215;
+:is(body.products-premium-page #brands.product-premium-brands, #brands.home-product-section) .brand-feature-copy p { color: #edf1f7; }
+:is(body.products-premium-page #brands.product-premium-brands, #brands.home-product-section) .brand-feature-tags li { background: #06162c66; border-color: #b8cce42e; color: #dce6f1; }
+:is(body.products-premium-page #brands.product-premium-brands, #brands.home-product-section) .brand-feature-copy span { color: #edc365; }
+@keyframes aggc-portfolio-light {
+    from { transform: translateX(-24%); opacity: .35; }
+    to { transform: translateX(24%); opacity: .9; }
 }
-#brands.home-product-section p,
-#brands.home-product-section .brand-feature-copy p {
-    color: #485265;
+:root:not([data-motion="reduced"]) :is(body.products-premium-page #brands, #brands.home-product-section) .brand-feature-row.is-revealed::after {
+    animation: aggc-portfolio-light 12s ease-in-out infinite alternate;
 }
-#brands.home-product-section .brand-feature-copy span {
-    color: #765215;
+:root:not([data-motion="reduced"]) :is(body.products-premium-page #brands, #brands.home-product-section) .brand-feature-row:nth-child(even)::after { animation-delay: -6s; }
+@media (hover: hover) {
+    :is(body.products-premium-page #brands.product-premium-brands, #brands.home-product-section) .brand-feature-row:hover { border-color: #e1ae3155 !important; box-shadow: 0 24px 58px #02091977, inset 0 1px #f4d27e18 !important; }
 }
-#brands.home-product-section .brand-feature-row::before {
-    background: linear-gradient(90deg, transparent, rgba(163, 123, 40, 0.06), transparent);
-    border-bottom-color: rgba(118, 82, 21, 0.2) !important;
+@media (prefers-reduced-motion: reduce) {
+    :is(body.products-premium-page #brands, #brands.home-product-section) .brand-feature-row::after { animation: none !important; }
 }
+
+.network-video-frame { line-height: 0; }
+#network-video { width: 100%; height: auto; object-fit: contain; background: #06062a; }
+#network-video-play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 14px 22px; border-radius: 10px; background: #e1ae31; color: #071633; font: 700 13px Poppins, sans-serif; line-height: 1.5; box-shadow: 0 8px 28px #0005; }
+#network-video-play[hidden] { display: none; }
+#network-video-play:focus-visible { outline: 3px solid white; outline-offset: 4px; }
