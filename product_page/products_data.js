@@ -295,6 +295,63 @@ const PRODUCTS_DATABASE = {
     "brandTitle": "SIGMA",
     "brandLogo": "../img/Products/sigma_logo.png",
     "products": [
+{
+        "id": "sm43cbt",
+        "title": "CONCRETE PUMP",
+        "image": "img/sigma/sigma-sm43cbt.jpg",
+        "models": [
+                "SM43 CBT"
+        ],
+        "specs": [
+                [
+                        "Theoretical output",
+                        "120 m³/h"
+                ],
+                [
+                        "Max. concrete pressure",
+                        "8.3 MPa"
+                ],
+                [
+                        "Engine power",
+                        "315 kW"
+                ],
+                [
+                        "Vertical reach",
+                        "43 m"
+                ]
+        ]
+},
+{
+        "id": "sm300wl-1",
+        "title": "WHEEL LOADER",
+        "image": "img/sigma/sigma-sm300wl-1.jpg",
+        "models": [
+                "SM 300WL-1"
+        ],
+        "specs": [
+                [
+                        "Operating weight",
+                        "11,200 kg"
+                ],
+                [
+                        "Engine power",
+                        "112 kW (150 hp)"
+                ],
+                [
+                        "Bucket capacity",
+                        "1.8–2.5 m³"
+                ]
+        ]
+},
+{
+        "id": "sm225c",
+        "title": "CRAWLER EXCAVATOR",
+        "image": "img/sigma/sigma-sm225c.jpg",
+        "models": [
+                "SM 225C"
+        ],
+        "specs": []
+},
         {
             "id": "sm800cmt-concrete-mixer-truck",
             "title": "CONCRETE MIXER TRUCK",

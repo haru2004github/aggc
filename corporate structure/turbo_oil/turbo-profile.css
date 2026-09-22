@@ -1,0 +1,20 @@
+.turbo-profile { max-width: 1180px; margin: 0 auto; padding: 64px 24px 80px; color: #dce6f2; }
+.turbo-profile h2 { color: #f5cc68; font-family: Poppins,sans-serif; font-size: clamp(25px,3vw,38px); font-weight: 800; line-height: 1.2; letter-spacing: -.025em; margin: 0 0 24px; }
+.turbo-profile h3 { color: #fff; font-family: Poppins,sans-serif; font-size: 19px; font-weight: 700; line-height: 1.4; margin-bottom: 12px; }
+.turbo-profile p { line-height: 1.9; font-size: 15px; margin: 0 0 18px; }
+.turbo-section,.turbo-split { margin-bottom: 64px; }
+.turbo-split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 44px; }
+.turbo-profile .turbo-split img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 22px; border: 1px solid #e1ae3155; box-shadow: 0 20px 48px #0003; }
+.turbo-three,.turbo-contact-grid,.turbo-sectors { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+.turbo-three article,.turbo-contact-grid>div { border-top: 2px solid #e1ae3155; padding-top: 22px; }
+.turbo-sectors { margin: 0 0 64px; }
+.turbo-sectors a { display: block; padding: 28px; border: 1px solid #e1ae3140; border-radius: 18px; background: linear-gradient(120deg,#122e50,#091b34); transition: border-color .3s, translate .3s; }
+.turbo-sectors a:hover { border-color: #e1ae31; translate: 0 -3px; }
+.turbo-sectors span,.turbo-contact-grid a { color: #f1c65f; font-size: 13px; overflow-wrap: anywhere; }
+.turbo-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px 24px; }
+.turbo-list li { border-left: 2px solid #e1ae3180; padding: 8px 0 8px 14px; font-size: 14px; line-height: 1.7; }
+.turbo-split .turbo-list { grid-template-columns: 1fr; }
+.turbo-partners { display: flex; flex-wrap: wrap; gap: 20px 44px; color: #fff; font-size: 21px; padding: 24px 0; border-block: 1px solid #ffffff20; }
+@media(max-width:800px) { .turbo-profile{padding:40px 20px 56px;} .turbo-split,.turbo-three,.turbo-contact-grid,.turbo-sectors{grid-template-columns:1fr;gap:24px;} .turbo-list{grid-template-columns:1fr;} .turbo-section,.turbo-split{margin-bottom:44px;} }
+@media(prefers-reduced-motion:reduce) { .turbo-sectors a {transition:none;} .turbo-sectors a:hover{translate:none;} }
+body.turbo-profile-page { background: radial-gradient(ellipse at 100% 0%,#19375b,transparent 45%),#071633 !important; }

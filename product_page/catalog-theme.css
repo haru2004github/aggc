@@ -218,3 +218,8 @@ body.aggc-catalog .product-detail-surface .catalog-card:focus-within { border-co
     body.aggc-catalog .catalog-card .catalog-card-body { padding: 28px 24px !important; }
     body.aggc-catalog .catalog-card .catalog-card-actions button { max-width: none; }
 }
+
+.catalog-product-specs { margin: 20px 0 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px 20px; }
+.catalog-product-specs div { border-top: 1px solid #e1ae3133; padding-top: 10px; }
+.catalog-product-specs dt { font-size: 10px; color: #b5c5da; }
+.catalog-product-specs dd { margin: 4px 0 0; color: #f3ce71; font-size: 14px; font-weight: 700; }

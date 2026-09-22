@@ -111,6 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <h3>${productTitle}</h3>
                     <p class="catalog-model-preview">${product.models.slice(0, 4).map(escapeHTML).join(' / ')}</p>
+                    ${product.specs?.length ? `<dl class="catalog-product-specs">${product.specs.map(([label, value]) => `<div><dt>${escapeHTML(label)}</dt><dd>${escapeHTML(value)}</dd></div>`).join('')}</dl>` : ''}
                     <div class="catalog-card-actions">
                         <button type="button" class="catalog-models-button" aria-label="View ${productTitle} models">View Models <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
                         <button type="button" class="catalog-quote-button" aria-label="Request a quote for ${productTitle}">Request a Quote</button>
