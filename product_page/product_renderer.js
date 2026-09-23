@@ -98,30 +98,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const productTitle = escapeHTML(product.title);
             const productImage = safeAssetUrl(product.image);
+            const gallery = (product.images || []).map(safeAssetUrl).filter(Boolean);
 
             card.innerHTML = `
                 <div class="catalog-card-image">
                     ${productImage ? `<img src="${escapeHTML(productImage)}" alt="${productTitle}" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='img/placeholder.png';">` : ""}
+                    ${product.imageLogo ? `<img class="catalog-source-logo" src="${escapeHTML(safeAssetUrl(product.imageLogo))}" alt="${escapeHTML(brand.brandTitle)}">` : ""}
                 </div>
                 <div class="catalog-card-body">
+                    ${gallery.length > 1 ? `<div class="catalog-image-options" role="group" aria-label="${productTitle} photos">${gallery.map((src, i) => `<button type="button" aria-label="Show ${productTitle} photo ${i + 1}" aria-pressed="${i === 0}" data-gallery-src="${escapeHTML(src)}"><img src="${escapeHTML(src)}" alt="" loading="lazy"></button>`).join('')}</div>` : ''}
                     <div class="catalog-card-topline">
                         <span class="catalog-card-index">${String(index + 1).padStart(2, '0')}</span>
                         <span class="catalog-card-rule"></span>
                         <span>Product line</span>
                     </div>
                     <h3>${productTitle}</h3>
-                    <p class="catalog-model-preview">${product.models.slice(0, 4).map(escapeHTML).join(' / ')}</p>
+                    ${product.models.length ? `<p class="catalog-model-preview">${(brand.showAllModels ? product.models : product.models.slice(0, 4)).map(escapeHTML).join(' / ')}</p>` : ""}
                     ${product.specs?.length ? `<dl class="catalog-product-specs">${product.specs.map(([label, value]) => `<div><dt>${escapeHTML(label)}</dt><dd>${escapeHTML(value)}</dd></div>`).join('')}</dl>` : ''}
                     <div class="catalog-card-actions">
-                        <button type="button" class="catalog-models-button" aria-label="View ${productTitle} models">View Models <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
-                        <button type="button" class="catalog-quote-button" aria-label="Request a quote for ${productTitle}">Request a Quote</button>
+                        ${product.models.length ? `<button type="button" class="catalog-models-button" aria-label="${escapeHTML(product.optionLabel || "View Models")} for ${productTitle}">${escapeHTML(product.optionLabel || "View Models")} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>` : ""}
+                        <button type="button" class="catalog-quote-button" aria-label="Request a quote for ${productTitle}">Request a Quote <span class="catalog-quote-arrow" aria-hidden="true">→</span></button>
                     </div>
                 </div>
             `;
 
-            card.querySelector('.catalog-models-button').addEventListener('click', () => openModelListModal(product));
+            card.querySelectorAll('[data-gallery-src]').forEach(button => {
+                button.addEventListener('click', () => {
+                    card.querySelector('.catalog-card-image img').src = button.dataset.gallerySrc;
+                    card.querySelectorAll('[data-gallery-src]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+                });
+            });
+            card.querySelector('.catalog-models-button')?.addEventListener('click', () => openModelListModal(product));
             card.querySelector('.catalog-quote-button').addEventListener('click', () => {
-                if (product.models.length === 1) openEnquiryFormModal(product, product.models[0]);
+                if (product.models.length <= 1) openEnquiryFormModal(product, product.models[0] || product.title);
                 else openModelListModal(product);
             });
 
@@ -140,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${product.models.map(model => `
                     <div class="flex flex-wrap items-center justify-between gap-3 bg-[#fdf9ee] rounded-xl border border-slate-200 p-4">
                         <span class="font-heading font-bold text-brand-navy">${escapeHTML(model)}</span>
-                        <button type="button" class="enquire-btn rounded-lg px-4 py-3 text-xs font-bold" data-model="${escapeHTML(model)}">Request a Quote</button>
+                        <button type="button" class="enquire-btn rounded-lg px-4 py-3 text-xs font-bold" data-model="${escapeHTML(model)}">Request a Quote <span class="catalog-quote-arrow" aria-hidden="true">→</span></button>
                     </div>`).join('')}
             </div>
             <button type="button" id="modal-close-btn" class="rounded-lg bg-slate-100 p-3 font-bold text-brand-navy">Close</button>`;
@@ -152,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function openEnquiryFormModal(product, modelName) {
-        const productFullName = `${modelName} - ${capitalizeTitle(product.title)}`;
+        const productFullName = modelName === product.title ? capitalizeTitle(product.title) : `${modelName} - ${capitalizeTitle(product.title)}`;
         const productFullNameSafe = escapeHTML(productFullName);
         modalContent.className = "bg-white rounded-[2rem] shadow-2xl border border-slate-100 max-w-lg w-full max-h-[85vh] flex flex-col p-6 sm:p-8 relative overflow-y-auto animate-modal-spring";
 
@@ -224,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         // Back button listener
-        modalContent.querySelector("#form-back-btn").addEventListener("click", () => openModelListModal(product));
+        modalContent.querySelector("#form-back-btn").addEventListener("click", () => product.models.length ? openModelListModal(product) : closeModal());
 
         // Form Submit Handler
         const form = modalContent.querySelector("#enquiry-form");

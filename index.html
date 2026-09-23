@@ -633,6 +633,7 @@
     </style>
     <link rel="stylesheet" href="./site-effects.css?v=20260918-original-logo">
     <link rel="stylesheet" href="./site-polish.css?v=20260918-network-video">
+    <link rel="stylesheet" href="home-contact.css?v=20260923">
 </head>
 
 <body class="bg-[#f8f7f4] text-slate-800 min-h-screen text-[15px] leading-relaxed">
@@ -1421,50 +1422,36 @@
         </div>
     </section>
     <!-- 8. Contact Section -->
-    <section id="contact" class="py-16 sm:py-24 bg-gradient-to-br from-[#eef3f8] via-white to-[#f8f2df] border-t border-[#071633]/10 relative overflow-hidden">
-        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-gold/70 to-transparent"></div>
-        <div class="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-[#071633]/10 to-transparent pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
-                <div class="lg:col-span-5 bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] text-white rounded-2xl p-7 sm:p-9 shadow-[0_24px_60px_rgba(7,22,51,0.18)] border border-white/10">
-                    <h4 class="text-brand-gold font-heading font-bold tracking-[0.2em] uppercase text-[11px] sm:text-[12px] mb-3">Get In Touch</h4>
-                    <h2 class="font-heading text-3xl sm:text-4xl font-black tracking-tight uppercase mb-4">Contact Information</h2>
-                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">Reach our team for product inquiries, project discussions, after-sales support, and business coordination.</p>
-
-                    <div class="space-y-4">
-                        <div class="flex gap-4 rounded-xl bg-white/[0.06] border border-white/10 p-4">
-                            <div class="w-11 h-11 rounded-lg bg-brand-gold text-brand-navy flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-location-dot"></i></div>
-                            <div><h5 class="font-heading font-bold text-white text-sm uppercase tracking-[0.12em]">Head Office</h5><p class="text-slate-300 mt-1 text-sm leading-relaxed">No.901-6, Level 9, Office Tower 3, Times City Complex,<br />Kamayut Township, Yangon.</p></div>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="rounded-xl bg-white/[0.06] border border-white/10 p-4"><div class="w-10 h-10 rounded-lg bg-white/10 text-brand-gold flex items-center justify-center mb-3"><i class="fa-solid fa-phone"></i></div><h5 class="font-heading font-bold text-white text-sm uppercase tracking-[0.12em]">Phone</h5><p class="text-slate-300 mt-1 text-sm leading-relaxed">+959-890 90000 9<br />+959-78 500000 1~5</p></div>
-                            <div class="rounded-xl bg-white/[0.06] border border-white/10 p-4"><div class="w-10 h-10 rounded-lg bg-white/10 text-brand-gold flex items-center justify-center mb-3"><i class="fa-solid fa-envelope"></i></div><h5 class="font-heading font-bold text-white text-sm uppercase tracking-[0.12em]">Email</h5><p class="text-slate-300 mt-1 text-sm leading-relaxed break-all">info@aungyigroup.com</p></div>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 pt-6 border-t border-white/10">
-                        <h5 class="font-heading font-bold text-white text-sm uppercase tracking-[0.14em] mb-4">Follow Us</h5>
-                        <div class="flex space-x-3">
-                            <a href="#" class="w-10 h-10 bg-white/10 text-white rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-navy transition-all shadow-md"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="#" class="w-10 h-10 bg-white/10 text-white rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-navy transition-all shadow-md"><i class="fa-brands fa-linkedin-in"></i></a>
-                            <a href="#" class="w-10 h-10 bg-white/10 text-white rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-navy transition-all shadow-md"><i class="fa-brands fa-youtube"></i></a>
-                            <a href="#" class="w-10 h-10 bg-white/10 text-white rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-navy transition-all shadow-md"><i class="fa-brands fa-tiktok"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-7 bg-white rounded-2xl p-3 sm:p-4 shadow-[0_24px_60px_rgba(7,22,51,0.12)] border border-slate-200 flex">
-                    <div class="min-h-[420px] sm:min-h-[560px] lg:min-h-0 lg:h-full w-full rounded-xl overflow-hidden bg-slate-100">
-                        <iframe
+    <section id="contact" class="py-16 sm:py-24 relative overflow-hidden bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] border-t border-white/10">
+        <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+            <p class="text-brand-gold text-xs font-bold uppercase tracking-[0.2em] mb-3">Get in touch</p>
+            <h2 class="font-heading text-3xl sm:text-4xl font-black text-white">Contact Information</h2>
+        </header>
+        <div class="contact-details-layout max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="contact-reference-grid" aria-label="Contact information">
+                <article class="contact-reference-card">
+                    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                    <div><h2>Address</h2><address>No.901-6, Level 9, Office Tower 3,<br>Times City Complex, Kamayut Township,<br>Yangon, Myanmar.</address></div>
+                </article>
+                <article class="contact-reference-card">
+                    <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                    <div><h2>Phone</h2><a href="tel:+959890900009">09-890900009</a><a href="tel:+959785000001">09-785000001-5</a></div>
+                </article>
+                <article class="contact-reference-card">
+                    <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                    <div><h2>Website</h2><a href="https://www.aggc.biz" target="_blank" rel="noopener noreferrer">www.aggc.biz</a></div>
+                </article>
+                <article class="contact-reference-card">
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                    <div><h2>Email</h2><a href="mailto:info@aggc.biz">info@aggc.biz</a></div>
+                </article>
+            </section>
+            <div class="contact-map-panel"><div class="contact-map-frame"><iframe
                             src="https://www.google.com/maps?q=16.8168754,96.1293773&z=17&output=embed"
                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
-            </div>
+                            referrerpolicy="no-referrer-when-downgrade"></iframe></div></div>
         </div>
     </section>
-
 
     <!-- Footer -->
     <!-- Redesigned Premium Footer (wePro style) -->

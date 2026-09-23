@@ -1,0 +1,41 @@
+
+        .contact-reference-grid {position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;}
+        .contact-reference-card {position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:flex-start;gap:22px;padding:32px;min-height:205px;border:1px solid #ffffff1c;border-radius:20px;background:linear-gradient(120deg,#183959,#102846 55%,#091a32);box-shadow:0 12px 32px #00000018;transition:translate .55s cubic-bezier(.2,1.2,.35,1),border-color .4s,box-shadow .4s;}
+        .contact-reference-card:before {content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 100% 0%,#e1ae3122,transparent 60%),linear-gradient(110deg,transparent 20%,#7eacd21a 50%,transparent 80%);background-size:100% 100%,220% 100%;background-position:0 0,100% 0;opacity:0;transition:opacity .5s,background-position 1.1s;}
+        .contact-reference-card:after {content:"";position:absolute;left:32px;right:32px;top:0;height:1px;background:linear-gradient(90deg,transparent,#e1ae3166,transparent);pointer-events:none;}
+        .contact-reference-card:hover,.contact-reference-card:focus-within {translate:0 -5px;border-color:#e1ae3166;box-shadow:0 22px 45px #00000030;}
+        .contact-reference-card:hover:before,.contact-reference-card:focus-within:before {opacity:1;background-position:0 0,0% 0;}
+        .contact-reference-card>i {display:grid;place-items:center;flex-shrink:0;width:52px;height:52px;border:1px solid #e1ae3140;border-radius:15px;background:linear-gradient(145deg,#e1ae311c,#e1ae3108);color:#edc363;font-size:20px;box-shadow:inset 0 1px 0 #ffffff0c;transition:translate .5s cubic-bezier(.2,1.3,.35,1),background .4s,border-color .4s;}
+        .contact-reference-card:hover>i {translate:0 -3px;border-color:#e1ae3180;background:linear-gradient(145deg,#e1ae3133,#e1ae3110);}
+        .contact-reference-card>div {min-width:0;padding-top:2px;}
+        .contact-reference-card h2 {font-size:18px;line-height:1.4;font-weight:600;letter-spacing:.01em;color:#f5f7fb;margin:0 0 16px;}
+        .contact-reference-card address,.contact-reference-card a {font-size:14px;line-height:1.85;font-style:normal;color:#bfcfe1;}
+        .contact-reference-card a {display:block;width:fit-content;overflow-wrap:anywhere;transition:color .25s;text-decoration:none;}
+        .contact-reference-card a+a {margin-top:4px;}
+        .contact-reference-card a:hover {color:#f4ca58;}
+        .contact-reference-card a:focus-visible {outline:2px solid #e1ae31;outline-offset:4px;border-radius:3px;}
+        @media(max-width:700px){.contact-reference-grid{grid-template-columns:1fr;gap:16px}.contact-reference-card{min-height:160px;padding:26px 22px;gap:18px}.contact-reference-card>i{width:46px;height:46px;border-radius:13px;font-size:18px}.contact-reference-card h2{font-size:17px;margin-bottom:12px}.contact-reference-card address,.contact-reference-card a{font-size:13px}}
+        @media(prefers-reduced-motion:reduce){.contact-reference-card,.contact-reference-card:before,.contact-reference-card>i{transition:none}.contact-reference-card:hover,.contact-reference-card:focus-within,.contact-reference-card:hover>i{translate:none}}
+    
+
+        .contact-details-layout {display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:stretch;}
+        .contact-details-layout .contact-reference-grid {gap:16px;}
+        .contact-details-layout .contact-reference-card {flex-direction:column;gap:16px;padding:24px;min-height:190px;}
+        .contact-details-layout .contact-reference-card h2 {margin-bottom:10px;}
+        #contact .contact-details-layout .contact-map-panel {margin-top:0;min-width:0;}
+        #contact .contact-details-layout .contact-map-frame {height:100%;min-height:460px;}
+        @media(max-width:1000px){.contact-details-layout{grid-template-columns:1fr;gap:24px}.contact-details-layout .contact-reference-card{flex-direction:row}#contact .contact-details-layout .contact-map-frame{height:380px;min-height:0;}}
+        @media(max-width:700px){.contact-details-layout .contact-reference-card{min-height:150px;padding:24px 20px}#contact .contact-details-layout .contact-map-frame{height:340px;}}
+    
+
+        /* Regular, flat-top hexagons with a circular icon inset. */
+        .contact-reference-card>i {position:relative;isolation:isolate;width:64px;height:56px;flex:0 0 auto;border:0;border-radius:0;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);background:linear-gradient(135deg,#ffd34b,#efb51e 70%,#dda219);color:#071633;font-size:21px;box-shadow:none;}
+        .contact-reference-card>i:after {content:"";position:absolute;z-index:-1;width:34px;height:34px;left:50%;top:50%;transform:translate(-50%,-50%);border:1.5px solid #071633;border-radius:50%;}
+        .contact-reference-card>i.fa-globe,.contact-reference-card>i.fa-envelope {color:#f7c435;font-size:21px;}
+        .contact-reference-card>i.fa-globe:after,.contact-reference-card>i.fa-envelope:after {background:#071633;border-color:#071633;}
+        .contact-reference-card:hover>i {background:linear-gradient(135deg,#ffe079,#f7c435 70%,#e1ae31);}
+        @media(max-width:700px){.contact-reference-card>i{width:56px;height:49px;font-size:19px}.contact-reference-card>i:after{width:31px;height:31px}.contact-reference-card>i.fa-globe,.contact-reference-card>i.fa-envelope{font-size:19px}}
+    
+#contact .contact-map-panel{padding:12px;border:1px solid #e1ae3147;border-radius:24px;background:linear-gradient(145deg,#143b78,#071633);box-shadow:0 24px 60px #0003;}
+#contact .contact-map-frame{position:relative;overflow:hidden;border-radius:16px;}
+#contact .contact-map-frame iframe{position:absolute;inset:0;width:100%;height:100%;}

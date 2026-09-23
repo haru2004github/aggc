@@ -75,10 +75,10 @@
             width: 100%;
         }
     </style>
-    <link rel="stylesheet" href="../../site-effects.css?v=20260917-motion5">
-    <link rel="stylesheet" href="../../site-polish.css?v=20260917-motion5">
+    <link rel="stylesheet" href="../../site-effects.css?v=20260918-original-logo">
+    <link rel="stylesheet" href="../../site-polish.css?v=20260918-network-video">
     <link rel="stylesheet" href="turbo-profile.css?v=20260922-profile">
-    <link rel="stylesheet" href="turbo-showcase.css?v=20260922-header">
+    <link rel="stylesheet" href="turbo-showcase.css?v=20260923-header-footer">
 </head>
 
 <body class="home-immersive-header turbo-profile-page bg-slate-50 text-slate-800 min-h-screen flex flex-col">
@@ -422,6 +422,7 @@
         const syncHeader = () => navbar.classList.toggle("header-over-hero", window.scrollY < 24);
         syncHeader();
         window.addEventListener("scroll", syncHeader, { passive: true });
+        window.addEventListener("pageshow", syncHeader);
 
         // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -432,6 +433,7 @@
         function toggleMenu() {
             mobileMenu.classList.toggle('hidden');
             mobileMenuBtn.setAttribute('aria-expanded', String(!mobileMenu.classList.contains('hidden')));
+            mobileMenuBtn.setAttribute('aria-label', mobileMenu.classList.contains('hidden') ? 'Open navigation' : 'Close navigation');
             if (mobileMenu.classList.contains('hidden')) {
                 menuIcon.classList.remove('fa-xmark');
                 menuIcon.classList.add('fa-bars');
