@@ -57,3 +57,46 @@
 /* Match the home navigation treatment with nested-page link paths. */
 body.turbo-profile-page #navbar.header-over-hero a[href="../../contact.html"]{background:rgba(255,255,255,.1)!important;border:1px solid rgba(255,255,255,.22);color:#fff!important;box-shadow:none!important}
 body.turbo-profile-page #mobileMenu{max-height:calc(100dvh - 64px);overflow-y:auto}
+/* Operations, partners and growth: continuation of the corporate profile. */
+.to-operations-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:stretch}
+.to-operations-layout .to-photo img{min-height:100%;height:100%;object-fit:cover}
+.to-operation-list{display:grid;gap:12px}
+.to-operation-list article{display:flex;gap:20px;padding:25px;border:1px solid #ffffff15;border-radius:16px;background:linear-gradient(110deg,#173653,#0b2039 75%,#3c35241c);transition:translate .3s cubic-bezier(.2,1.2,.4,1),border-color .25s}
+.to-operation-list article:hover{translate:5px 0;border-color:#e8bc5860}
+.to-operation-number{color:#e8bc58;font-size:12px;font-weight:700;padding-top:5px}
+.to-operation-list h3{font-size:18px;margin:0 0 9px}.to-operation-list p{margin:0}
+.to-partner-section{padding:38px;border:1px solid #e8bc582d;border-radius:24px;background:linear-gradient(120deg,#153350,#0a1b34 70%,#413925)}
+.to-partner-art{display:block;overflow:hidden;border-radius:16px;border:1px solid #ffffff20;transition:translate .3s ease!important;scale:1!important}
+.to-partner-art img{display:block;width:100%;height:auto}
+.to-partner-art:hover{translate:0 -3px}
+.to-partner-names{display:flex;justify-content:space-around;flex-wrap:wrap;gap:18px;padding-top:25px;color:#d8e4f2;font-size:13px;letter-spacing:.03em}
+.to-forward{display:grid;grid-template-columns:.7fr 1.3fr;gap:35px;padding:30px;border:1px solid #ffffff18;border-radius:24px;background:radial-gradient(ellipse at 100% 100%,#c69e3720,transparent 55%),#0b2039;overflow:hidden}
+.to-forward-portrait{margin:0;overflow:hidden;border-radius:16px;min-height:500px}.to-forward-portrait img{height:100%;width:100%;object-fit:cover;transition:scale 900ms ease}.to-forward-portrait:hover img{scale:1.035}
+.to-forward-banner{display:block;width:100%;height:180px;object-fit:cover;border-radius:14px;margin-bottom:30px}.to-forward-copy .to-eyebrow{margin-bottom:15px}.to-forward-copy h2{font-size:clamp(30px,3vw,44px)}
+.to-next .scroll-reveal{scroll-margin-top:90px}
+@media(max-width:800px){.to-operations-layout,.to-forward{grid-template-columns:1fr;gap:24px}.to-operations-layout .to-photo{height:270px}.to-operation-list article{padding:20px;gap:14px}.to-partner-section{padding:24px 18px}.to-partner-names{font-size:12px;justify-content:flex-start}.to-forward{padding:20px}.to-forward-portrait{min-height:0;height:280px}.to-forward-banner{height:140px}.to-operation-list h3{font-size:17px}}
+@media(prefers-reduced-motion:reduce){.to-operation-list article:hover,.to-partner-art:hover{translate:none}.to-forward-portrait:hover img{scale:1}}
+/* The continuation uses the same replaying motion as the opening profile. */
+.turbo-next .scroll-reveal{scroll-margin-top:90px}
+.to-operation-list article{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(115deg,#173956,#10263e 75%,#3c3529);}
+.to-operation-list article:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at var(--light-x,50%) var(--light-y,20%),#e7bc5718,transparent 65%);opacity:0;transition:opacity .25s}
+.to-operation-list article:hover:after{opacity:1}
+.to-operation-number{display:grid;place-items:center;width:34px;height:34px;flex-shrink:0;border:1px solid #e8bc5840;border-radius:50%;padding:0;background:#e8bc5808}
+.turbo-next .revealed .to-operation-list article{animation:to-arrive .75s both;animation-delay:var(--enter-delay,0ms)}
+.to-operations-layout .to-photo{border-radius:24px 70px 24px 24px}
+.to-partner-section{position:relative;overflow:hidden;isolation:isolate}
+.to-partner-section:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 80% 10%,#e8bc5820,transparent 60%);animation:to-drift 14s ease-in-out infinite alternate;animation-play-state:paused}
+.to-partner-section.revealed:before{animation-play-state:running}
+.to-partner-art:focus-visible{outline:2px solid #e8bc58;outline-offset:5px}
+.to-partner-names{gap:12px;justify-content:center}.to-partner-names span{padding:10px 20px;border:1px solid #ffffff1a;border-radius:30px;background:#ffffff04}
+.to-forward{background:radial-gradient(ellipse at 100% 100%,#d4ac4930,transparent 60%),linear-gradient(120deg,#102f4c,#09192f)}
+.turbo-next .revealed .to-forward-banner{animation:to-arrive .9s both}
+@media(max-width:800px){.to-partner-names span{padding:9px 12px;font-size:11px}.to-operations-layout .to-photo img{min-height:0}.to-operations-layout .to-photo{border-radius:20px 45px 20px 20px}}
+@media(prefers-reduced-motion:reduce){.turbo-next .revealed .to-operation-list article,.turbo-next .revealed .to-forward-banner,.to-partner-section:before{animation:none!important}}
+
+/* Partner artwork stays at its natural size, including hover and scroll. */
+.turbo-profile .to-partner-art,.turbo-profile .to-partner-art:hover,
+.turbo-profile .to-partner-art img,.turbo-profile .to-partner-art:hover img {
+    transform:none!important;scale:1!important;translate:none!important;
+    animation:none!important;transition:none!important;
+}

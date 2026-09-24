@@ -535,7 +535,7 @@ const PRODUCTS_DATABASE = {
         },
         {
             "id": "sm655-c-concrete-pump",
-            "title": "CONCRETE PUMP",
+            "title": "MOBILE AIR COMPRESSOR",
             "image": "img/sigma/sigma-sm655-c-concrete-pump.jpg",
             "models": [
                 "SM655 C"

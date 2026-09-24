@@ -1,11 +1,11 @@
 (() => {
-  const root = document.querySelector('.turbo-showcase');
+  const root = document.querySelector('.turbo-profile');
   if (!root) return;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  root.querySelectorAll('.to-values,.to-activity-grid,.to-strength-grid,.to-service-list').forEach(group => {
+  root.querySelectorAll('.to-values,.to-activity-grid,.to-strength-grid,.to-service-list,.to-operation-list').forEach(group => {
     [...group.children].forEach((card, index) => card.style.setProperty('--enter-delay', `${Math.min(index * 65, 390)}ms`));
   });
-  root.querySelectorAll('.to-value,.to-activity,.to-strength-grid article').forEach(card => {
+  root.querySelectorAll('.to-value,.to-activity,.to-strength-grid article,.to-operation-list article').forEach(card => {
     let frame;
     const reset = () => {
       cancelAnimationFrame(frame);
