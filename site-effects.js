@@ -78,9 +78,10 @@
                             <img src="${siteUrl('img/location-qr.png')}" alt="AGGC location QR code" class="w-full h-full object-cover rounded-lg">
                         </a>
                         <span class="text-[11px] font-heading font-black text-white uppercase tracking-wider">Location</span>
+                        <a href="tel:09789090900" class="text-[12px] text-slate-300 hover:text-brand-gold transition-colors">09789090900</a>
                         <div class="flex items-center space-x-2.5">
                             <a href="https://facebook.com/AungGyiGroup" target="_blank" aria-label="AGGC on Facebook" class="w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-[11px] transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="viber://chat?number=%2B959777555666" aria-label="Chat with AGGC on Viber" class="w-7 h-7 rounded-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] hover:bg-brand-gold hover:text-brand-navy text-white flex items-center justify-center text-[11px] transition-colors"><i class="fa-brands fa-viber"></i></a>
+                            <a href="viber://chat?number=%2B959789090900" aria-label="Chat with AGGC on Viber" class="w-7 h-7 rounded-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] hover:bg-brand-gold hover:text-brand-navy text-white flex items-center justify-center text-[11px] transition-colors"><i class="fa-brands fa-viber"></i></a>
                             <a href="mailto:info@aungyigroup.com" aria-label="Email AGGC" class="w-7 h-7 rounded-full bg-[#e1ae31] hover:bg-[#c99620] text-[#071633] flex items-center justify-center text-[11px] transition-colors"><i class="fa-solid fa-envelope"></i></a>
                         </div>
                     </div>

@@ -316,3 +316,8 @@ body.about-page #values #certificates > .grid { border-top: 1px solid #e1ae3138;
 #network-video-play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 14px 22px; border-radius: 10px; background: #e1ae31; color: #071633; font: 700 13px Poppins, sans-serif; line-height: 1.5; box-shadow: 0 8px 28px #0005; }
 #network-video-play[hidden] { display: none; }
 #network-video-play:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+
+/* Consistent paragraph alignment; short labels and copyright remain natural. */
+main p, .turbo-profile p, footer p:not(:last-child) { text-align: justify; text-align-last: start; }
+#site-footer p { text-align: justify; text-align-last: start; }
+#site-footer > div > div:last-child p { text-align: center; text-align-last: center; }

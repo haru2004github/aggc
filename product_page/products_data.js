@@ -251,7 +251,6 @@ const PRODUCTS_DATABASE = {
                 },
                 {
                         "id": "transformer",
-                        "imageLogo": "img/powermax-final/source-logo.png",
                         "title": "POWERMAX TRANSFORMER",
                         "image": "img/powermax-final/transformer.jpg",
                         "models": []
@@ -278,10 +277,10 @@ const PRODUCTS_DATABASE = {
                 {
                         "id": "aircon",
                         "title": "AIRCON",
-                        "image": "img/izumi-final/aircon-1.jpg",
+                        "image": "img/izumi-final/aircon-1.png",
                         "models": [],
                         "images": [
-                                "img/izumi-final/aircon-1.jpg",
+                                "img/izumi-final/aircon-1.png",
                                 "img/izumi-final/aircon-2.jpg"
                         ]
                 },
@@ -293,15 +292,14 @@ const PRODUCTS_DATABASE = {
                 },
                 {
                         "id": "sanitary-ware",
-                        "imageLogo": "img/izumi-final/source-logo.png",
                         "title": "SANITARY WARE",
-                        "image": "img/izumi-final/sanitary-ware.jpeg",
+                        "image": "img/izumi-final/sanitary-ware-final.jpg",
                         "models": []
                 },
                 {
                         "id": "meters",
                         "title": "METERS",
-                        "image": "img/izumi-final/meters.jpg",
+                        "image": "img/izumi-final/meters.png",
                         "models": []
                 },
                 {
