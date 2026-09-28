@@ -388,3 +388,25 @@ body.aggc-catalog .catalog-quote-button i {transition:translate 200ms ease;}
 @media(hover:hover) and (prefers-reduced-motion:no-preference) {
     body.aggc-catalog .catalog-quote-button:hover i {translate:4px 0;}
 }
+
+/* A single reflected-light pass on each viewport entrance. Transform/opacity only. */
+body.aggc-catalog .catalog-card > .catalog-reveal-sheen {
+    position:absolute;inset:-30% auto -30% 0;width:38%;z-index:4;
+    pointer-events:none;opacity:0;
+    background:linear-gradient(105deg,transparent 8%,rgba(255,226,159,.04) 28%,rgba(255,248,223,.24) 49%,rgba(255,255,255,.34) 51%,rgba(244,207,112,.09) 68%,transparent 92%);
+    transform:translate3d(-160%,0,0) skewX(-16deg);
+}
+@media(prefers-reduced-motion:no-preference) {
+    :root:not([data-motion="reduced"]) body.aggc-catalog .catalog-card.motion-visible > .catalog-reveal-sheen {
+        animation:catalog-reflected-light 1450ms cubic-bezier(.22,.65,.3,1) 220ms both;
+    }
+}
+@keyframes catalog-reflected-light {
+    0% {opacity:0;transform:translate3d(-160%,0,0) skewX(-16deg);}
+    16% {opacity:.8;}
+    65% {opacity:.65;}
+    100% {opacity:0;transform:translate3d(390%,0,0) skewX(-16deg);}
+}
+@media(prefers-reduced-motion:reduce) {
+    body.aggc-catalog .catalog-card > .catalog-reveal-sheen {display:none;animation:none;}
+}

@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const gallery = (product.images || []).map(safeAssetUrl).filter(Boolean);
 
             card.innerHTML = `
+                <span class="catalog-reveal-sheen" aria-hidden="true"></span>
                 <div class="catalog-card-image">
                     ${productImage ? `<img src="${escapeHTML(productImage)}" alt="${productTitle}" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='img/placeholder.png';">` : ""}
                 </div>

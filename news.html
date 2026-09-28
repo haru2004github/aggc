@@ -131,6 +131,8 @@
     <link rel="stylesheet" href="./site-effects.css?v=20260917-motion5">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="./site-polish.css?v=20260925-contact-typography">
+<link rel="stylesheet" href="gallery-navigation.css?v=20260927">
+<script src="gallery-navigation.js?v=20260927"></script>
 </head>
 
 <body class="premium-content-page news-page bg-slate-50 text-slate-800 min-h-screen flex flex-col">
@@ -511,12 +513,10 @@
                     <span
                         class="text-[11px] font-heading font-black text-white uppercase tracking-wider">Location</span>
                     <div class="flex items-center space-x-2.5">
-                        <a href="https://facebook.com/AungGyiGroup" target="_blank"
+                        <a href="https://www.facebook.com/99AGGC99" target="_blank"
                             class="w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-facebook-f"></i></a>
-                        <a href="viber://chat?number=%2B959789090900"
-                            class="w-7 h-7 rounded-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] hover:bg-brand-gold hover:text-brand-navy text-white flex items-center justify-center text-[11px] transition-colors"><i
-                                class="fa-brands fa-viber"></i></a>
+                        
                         <a href="mailto:info@aungyigroup.com"
                             class="w-7 h-7 rounded-full bg-brand-gold hover:bg-brand-gold/85 text-brand-navy flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-solid fa-envelope"></i></a>
@@ -604,19 +604,7 @@
             const headers = rows.shift() || [];
             const indexes = getNewsColumnIndexes(headers);
 
-            newsData = rows.map((row, id) => {
-                const gallery = [indexes.img1, indexes.img2, indexes.img3, indexes.img4]
-                    .map(idx => idx >= 0 ? (row[idx] || '').trim() : '')
-                    .filter(Boolean);
-
-                return {
-                    id: id + 1,
-                    title: (row[indexes.title] || '').trim() || 'Untitled News',
-                    heroImage: (row[indexes.hero] || '').trim() || 'https://placehold.co/800x500/12356c/e1ae31?text=News+Image',
-                    description: (row[indexes.desc] || '').trim() || 'No description available.',
-                    gallery
-                };
-            }).filter(item => item.title !== 'Untitled News');
+            newsData = rows.map((row, id) => normalizeNewsRow(id, indexes, idx => row[idx] ?? '')).filter(Boolean);
 
             newsData.reverse();
             renderNewsCards();
@@ -670,10 +658,33 @@
                 title: fallback(find('title'), 3),
                 hero: fallback(find('hero_image', 'image'), 4),
                 desc: fallback(find('description', 'desription'), 5),
-                img1: find('first'),
+                img1: normalized.findIndex(col => col === 'image' || col === 'images' || col === 'photos' || col.includes('first')),
                 img2: find('second'),
                 img3: find('third'),
                 img4: find('forth', 'fourth')
+            };
+        }
+
+        function parseNewsImages(value) {
+            const text = String(value || '')
+                .replace(/\\([&_])/g, '$1').replace(/&amp;/gi, '&')
+                .replace(/\[[^\]]*\]\(<?([^\s)>]+)[^)]*\)/g, '$1');
+            // Extract complete signed links, including whitespace-separated Tally uploads.
+            const links = text.match(/https?:\/\/[^\s<>"\[\]()]+|(?:\.\.?\/|img\/)[^\s<>"\[\]()]+/gi) || [];
+            return [...new Set(links.flatMap(link => link.split(/,(?=https?:\/\/)/i))
+                .map(link => link.replace(/[,;]+$/, '')).filter(Boolean))];
+        }
+
+        function normalizeNewsRow(id, indexes, getValue) {
+            const title = String(getValue(indexes.title) || '').trim();
+            if (!title || title.toLowerCase() === 'title') return null;
+            const imageColumns = [indexes.hero, indexes.img1, indexes.img2, indexes.img3, indexes.img4];
+            const photos = [...new Set(imageColumns.filter(i => i >= 0).flatMap(i => parseNewsImages(getValue(i))))];
+            return {
+                id: id + 1, title,
+                heroImage: photos[0] || 'https://placehold.co/800x500/12356c/e1ae31?text=News+Image',
+                description: String(getValue(indexes.desc) || '').trim() || 'No description available.',
+                gallery: photos.slice(1), photos
             };
         }
 
@@ -691,41 +702,8 @@
             const cols = json.table.cols.map(c => c ? c.label : '');
             const rows = json.table.rows;
 
-            // Find column indices based on typical headers - robust to null entries
-            const idxTitle = cols.findIndex(c => c && typeof c === 'string' && c.toLowerCase().includes('title'));
-            const idxHero = cols.findIndex(c => c && typeof c === 'string' && c.toLowerCase().includes('hero_image'));
-            const idxDesc = cols.findIndex(c => c && typeof c === 'string' && (c.toLowerCase().includes('description') || c.toLowerCase().includes('desription')));
-            const idxImg1 = cols.findIndex(c => c && typeof c === 'string' && c.toLowerCase().includes('first'));
-            const idxImg2 = cols.findIndex(c => c && typeof c === 'string' && c.toLowerCase().includes('second'));
-            const idxImg3 = cols.findIndex(c => c && typeof c === 'string' && c.toLowerCase().includes('third'));
-            const idxImg4 = cols.findIndex(c => c && typeof c === 'string' && (c.toLowerCase().includes('forth') || c.toLowerCase().includes('fourth')));
-
-            // Fallback to strict column indexes if labels are empty
-            const safeIdxTitle = idxTitle >= 0 ? idxTitle : 3; // D
-            const safeIdxHero = idxHero >= 0 ? idxHero : 4; // E
-            const safeIdxDesc = idxDesc >= 0 ? idxDesc : 5; // F
-
-            newsData = rows.map((row, id) => {
-                // Helper function to extract value
-                const getVal = (idx) => (row.c && row.c[idx] && row.c[idx].v) ? row.c[idx].v : '';
-
-                // Collect gallery images
-                const gallery = [];
-                [idxImg1, idxImg2, idxImg3, idxImg4].forEach(idx => {
-                    if (idx >= 0) {
-                        const imgUrl = getVal(idx);
-                        if (imgUrl) gallery.push(imgUrl);
-                    }
-                });
-
-                return {
-                    id: id + 1, // 1-based indexing to match fallback data IDs
-                    title: getVal(safeIdxTitle) || 'Untitled News',
-                    heroImage: getVal(safeIdxHero) || 'https://placehold.co/800x500/12356c/e1ae31?text=News+Image',
-                    description: getVal(safeIdxDesc) || 'No description available.',
-                    gallery: gallery
-                };
-            }).filter(item => item.title !== 'Untitled News'); // Remove empty rows
+            const indexes = getNewsColumnIndexes(cols);
+            newsData = rows.map((row, id) => normalizeNewsRow(id, indexes, idx => row.c?.[idx]?.v ?? '')).filter(Boolean);
 
             // Reverse to show latest first
             newsData.reverse();
@@ -817,8 +795,8 @@
                 };
 
                 const storyNumber = String(index + 1).padStart(2, '0');
-                const photoCount = Array.isArray(item.gallery) ? item.gallery.length : 0;
-                const galleryBadge = photoCount > 0
+                const photoCount = item.photos?.length || (1 + (item.gallery?.length || 0));
+                const galleryBadge = photoCount > 1
                     ? `<span class="news-card-gallery"><i class="fa-regular fa-images"></i>${photoCount} photo${photoCount === 1 ? '' : 's'}</span>`
                     : '';
 
@@ -874,6 +852,11 @@
             detailTitle.lang = /[\u1000-\u109f]/.test(article.title) ? 'my' : 'en';
             detailHeroImg.src = article.heroImage;
             detailHeroImg.alt = article.title;
+            detailHeroImg.style.cursor = 'zoom-in';
+            detailHeroImg.tabIndex = 0;
+            detailHeroImg.setAttribute('role', 'button');
+            detailHeroImg.onclick = () => openModal(article.heroImage, article.photos || [article.heroImage, ...article.gallery]);
+            detailHeroImg.onkeydown = e => { if(e.key === 'Enter' || e.key === ' ') {e.preventDefault();detailHeroImg.click();} };
             detailDesc.replaceChildren();
             String(article.description || '').split(/\n\s*\n|\r?\n/).filter(line => line.trim()).forEach((text) => {
                 const paragraph = document.createElement('p');
@@ -901,18 +884,20 @@
                 detailGallery.className = gridClasses;
 
                 article.gallery.forEach(imgUrl => {
-                    const imgDiv = document.createElement('div');
+                    const imgDiv = document.createElement('button');
+                    imgDiv.type = 'button';
+                    imgDiv.setAttribute('aria-label', `Open photo ${article.gallery.indexOf(imgUrl) + 2} of ${article.title}`);
 
                     if (article.gallery.length === 1) {
                         // Display style for Single Large Image (Full Width)
                         imgDiv.className = "w-full rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-lg transition-shadow duration-300 group bg-slate-50 border border-slate-200";
-                        imgDiv.onclick = () => openModal(imgUrl);
-                        imgDiv.innerHTML = `<img src="${imgUrl}" class="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-500" alt="Gallery Image">`;
+                        imgDiv.onclick = () => openModal(imgUrl, article.photos || [article.heroImage, ...article.gallery]);
+                        imgDiv.innerHTML = `<img src="${escapeHTML(imgUrl)}" loading="lazy" decoding="async" class="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-500" alt="Gallery Image">`;
                     } else {
                         // Display style for Multiple Images (Grid)
                         imgDiv.className = "aspect-square rounded-xl overflow-hidden cursor-pointer border border-slate-200 shadow-sm hover:shadow-md transition-shadow group bg-slate-50";
-                        imgDiv.onclick = () => openModal(imgUrl);
-                        imgDiv.innerHTML = `<img src="${imgUrl}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Gallery Image">`;
+                        imgDiv.onclick = () => openModal(imgUrl, article.photos || [article.heroImage, ...article.gallery]);
+                        imgDiv.innerHTML = `<img src="${escapeHTML(imgUrl)}" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Gallery Image">`;
                     }
 
                     detailGallery.appendChild(imgDiv);
@@ -975,8 +960,10 @@
         const modalImage = document.getElementById('modalImage');
         const modalContent = document.getElementById('modalContent');
 
+        const photoNavigation = createPhotoNavigation(modal, modalImage, closeModal);
         let imageCloseTimer;
-        function openModal(imageSrc) {
+        function openModal(imageSrc, photos = [imageSrc]) {
+            photoNavigation.open(photos, imageSrc);
             clearTimeout(imageCloseTimer);
             modalImage.src = imageSrc;
             modal.classList.remove('hidden');
@@ -985,6 +972,7 @@
             modalContent.classList.remove('scale-95');
             modalContent.classList.add('scale-100');
             document.body.style.overflow = 'hidden';
+            modal.querySelector('button').focus();
         }
 
         function closeModal() {
@@ -995,6 +983,7 @@
             imageCloseTimer = setTimeout(() => {
                 modal.classList.add('hidden');
                 modalImage.removeAttribute('src');
+                photoNavigation.restoreFocus();
                 document.body.style.overflow = 'auto';
             }, window.aggcMotion.matches ? 0 : 300);
         }
@@ -1047,7 +1036,7 @@
             fetchNewsData();
         };
     </script>
-    <script src="./site-effects.js?v=20260925-contact-typography"></script>
+    <script src="./site-effects.js?v=20260927-footer-social"></script>
 </body>
 
 </html>

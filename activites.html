@@ -84,6 +84,8 @@
     <link rel="stylesheet" href="./site-effects.css?v=20260917-motion5">
     <link rel="stylesheet" href="./activities.css?v=20260917-motion5">
     <link rel="stylesheet" href="./site-polish.css?v=20260925-contact-typography">
+<link rel="stylesheet" href="gallery-navigation.css?v=20260927">
+<script src="gallery-navigation.js?v=20260927"></script>
 </head>
 <body class="premium-content-page gallery-page text-slate-800 min-h-screen flex flex-col">
 
@@ -388,12 +390,10 @@
                     <span
                         class="text-[11px] font-heading font-black text-white uppercase tracking-wider">Location</span>
                     <div class="flex items-center space-x-2.5">
-                        <a href="https://facebook.com/AungGyiGroup" target="_blank"
+                        <a href="https://www.facebook.com/99AGGC99" target="_blank"
                             class="w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-brands fa-facebook-f"></i></a>
-                        <a href="viber://chat?number=%2B959789090900"
-                            class="w-7 h-7 rounded-full bg-gradient-to-br from-[#12356c] via-[#0d2858] to-[#071633] hover:bg-brand-gold hover:text-brand-navy text-white flex items-center justify-center text-[11px] transition-colors"><i
-                                class="fa-brands fa-viber"></i></a>
+                        
                         <a href="mailto:info@aungyigroup.com"
                             class="w-7 h-7 rounded-full bg-brand-gold hover:bg-brand-gold/85 text-brand-navy flex items-center justify-center text-[11px] transition-colors"><i
                                 class="fa-solid fa-envelope"></i></a>
@@ -600,7 +600,7 @@
                     imgContainer.className = "premium-media-tile activity-photo relative overflow-hidden cursor-pointer group";
                     
                     // JavaScript function ဖြင့် တိုက်ရိုက်ချိတ်ဆက်ခြင်း (Tally URL ရှည်လျားမှုကြောင့် Error မတက်စေရန်)
-                    imgContainer.onclick = () => openImageModal(photoUrl, activity.title);
+                    imgContainer.onclick = () => openImageModal(photoUrl, activity.title, activity.photos);
 
                     imgContainer.innerHTML = `
                         <img src="${escapeHTML(photoUrl)}" alt="${safeTitle || 'Activity Image'}" loading="lazy" decoding="async" onload="this.parentElement.classList.toggle('is-portrait', this.naturalHeight > this.naturalWidth)" onerror="this.onerror=null;this.src='${ACTIVITY_FALLBACK_IMAGE}'" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]">
@@ -635,11 +635,13 @@
         const modalImageContent = document.getElementById('modalImageContent');
         const modalCaption = document.getElementById('modalCaption');
 
+        const photoNavigation = createPhotoNavigation(imageModal, fullScreenImage, closeImageModal);
         let modalTrigger = null;
         let modalCloseTimer;
         let modalCaptionTimer;
 
-        function openImageModal(imgSrc, title) {
+        function openImageModal(imgSrc, title, photos = [imgSrc]) {
+            photoNavigation.open(photos, imgSrc);
             clearTimeout(modalCloseTimer);
             clearTimeout(modalCaptionTimer);
             modalTrigger = document.activeElement;
@@ -716,17 +718,6 @@
             }
         });
         
-        // Escape key to close
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Tab' && !imageModal.classList.contains('hidden')) {
-                e.preventDefault();
-                modalCloseBtn.focus();
-            }
-            if (e.key === 'Escape' && !imageModal.classList.contains('hidden')) {
-                closeImageModal();
-            }
-        });
-
         // Initialize Fetch on Page Load
         window.onload = () => {
             fetchActivities();
@@ -785,7 +776,7 @@
             if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMenu(); 
         }));
 </script>
-    <script src="./site-effects.js?v=20260925-contact-typography"></script>
+    <script src="./site-effects.js?v=20260927-footer-social"></script>
 </body>
 </html>
 
