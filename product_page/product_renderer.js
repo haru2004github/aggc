@@ -217,13 +217,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>
 
+                <p class="text-sm text-slate-500">Open your email app with these details prefilled. Attach any photos or files there, then press Send.</p>
                 <!-- Action Buttons -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
                     <button type="button" id="form-back-btn" class="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-700 font-heading font-bold uppercase text-[11px] tracking-wider py-3.5 px-6 rounded-lg transition-colors border border-slate-200">
                         BACK
                     </button>
                     <button type="submit" class="btn-shine w-full sm:w-auto bg-brand-gold hover:bg-brand-navy text-white font-heading font-extrabold uppercase text-[11px] tracking-widest py-3.5 px-8 rounded-lg transition-all duration-300 shadow-md">
-                        Send Enquiry
+                        Open Email App
                     </button>
                 </div>
             </form>
@@ -241,83 +242,37 @@ document.addEventListener("DOMContentLoaded", () => {
         showModalAnim();
     }
 
-    // Google Apps Script Web App URL to save enquiry details to Google Sheet.
-    // Replace this string with your deployed Web App URL after following the setup instructions.
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwmrZeYPYpyUXqlv-cByo9xSaoqviBO6cAIxQsKKawA5LmdbYhadLZAYKH08Bl4P7GlUA/exec";
+    // Trial recipient only. The customer sends the draft from their own mail app.
+    const ENQUIRY_EMAIL = "kayzinmay@aungyigroup.com";
 
     function handleFormSubmit(form, productName) {
-        // Collect form data
-        const formData = {
-            product: productName,
-            name: form.user_name.value.trim(),
-            email: form.user_email.value.trim(),
-            phone: form.user_phone.value.trim(),
-            message: form.user_message.value.trim()
-        };
-
-        // Submit Button Loading state
-        const submitBtn = form.querySelector("button[type='submit']");
-        const backBtn = form.querySelector("#form-back-btn");
-        
-        submitBtn.disabled = true;
-        if (backBtn) backBtn.disabled = true;
-        submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> SUBMITTING...`;
-
-        if (GOOGLE_SCRIPT_URL) {
-            // POST request with URLSearchParameters (mode: 'no-cors' is optimal for Google Script redirect bypass)
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: "POST",
-                mode: "no-cors", 
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: new URLSearchParams(formData).toString()
-            })
-            .then(() => {
-                showSuccessMessage(formData);
-            })
-            .catch(err => {
-                console.error("Submission error:", err);
-                showSubmissionError(form);
-            });
-        } else {
-            showSubmissionError(form);
-        }
-    }
-
-    function showSubmissionError(form) {
-        form.querySelector('.catalog-form-error')?.remove();
-        const notice = document.createElement('p');
-        notice.className = 'catalog-form-error';
-        notice.setAttribute('role', 'alert');
-        notice.textContent = 'Your request could not be sent. Please try again, or contact info@aungyigroup.com.';
-        form.prepend(notice);
-        const submit = form.querySelector('button[type="submit"]');
-        submit.disabled = false;
-        submit.textContent = 'Try again';
-        form.querySelector('#form-back-btn').disabled = false;
-    }
-
-    function showSuccessMessage(formData) {
-        const userName = escapeHTML(formData.name);
-        const productName = escapeHTML(formData.product);
-        // UI Feedback - Show success transition
-        modalContent.innerHTML = `
-            <div class="flex flex-col items-center justify-center py-8 text-center animate-modal-spring">
-                <div class="w-16 h-16 rounded-full bg-emerald-100 border border-emerald-200 flex items-center justify-center mb-5 animate-bounce">
-                    <i class="fa-solid fa-check text-2xl text-emerald-600"></i>
-                </div>
-                <h3 class="font-heading text-xl sm:text-2xl font-bold text-brand-navy mb-3">Request sent for processing</h3>
-                <p class="text-slate-500 text-sm font-light leading-relaxed max-w-sm mb-6">
-                    Thank you, <strong class="text-slate-800">${userName}</strong>. Your enquiry for <strong class="text-brand-navy">${productName}</strong> has been sent for processing. Delivery is not yet confirmed. For urgent assistance, please contact info@aungyigroup.com.
-                </p>
-                <button id="success-close-btn" class="bg-brand-navy hover:bg-brand-gold text-white font-heading font-bold uppercase text-[11px] tracking-wider py-3 px-8 rounded-lg transition-colors shadow">
-                    CLOSE
-                </button>
-            </div>
-        `;
-
-        modalContent.querySelector("#success-close-btn").addEventListener("click", closeModal);
+        if (!form.reportValidity()) return;
+        const field = name => form.elements.namedItem(name).value.trim();
+        const subject = `[AGGC Enquiry] ${productName}`;
+        const body = [
+            'Dear AGGC Team,', '',
+            `Product: ${productName}`,
+            `Name: ${field('user_name')}`,
+            `Email: ${field('user_email')}`,
+            `Phone: ${field('user_phone') || 'Not provided'}`, '',
+            'Message:', field('user_message'), '',
+            'Thank you.'
+        ].join('\r\n');
+        const mailto = `mailto:${ENQUIRY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        form.querySelector('.catalog-mail-status')?.remove();
+        const status = document.createElement('div');
+        status.className = 'catalog-mail-status text-sm text-slate-600';
+        status.setAttribute('role', 'status');
+        const message = document.createElement('p');
+        message.textContent = 'Continue in your email app, attach any files, and press Send. If it did not open, use the link below or configure a default email app.';
+        const link = document.createElement('a');
+        link.href = mailto;
+        link.className = 'text-brand-gold font-bold underline';
+        link.textContent = 'Open email draft again';
+        status.append(message, link);
+        form.append(status);
+        // Stay on the form: opening a mail app is not confirmation of email delivery.
+        link.click();
     }
 
     // --- ANIMATION HELPER FUNCTIONS ---

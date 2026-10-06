@@ -3578,3 +3578,7 @@ body.contact-page .contact-map-frame {
     #sectors .home-sector-card, #sectors .home-sector-card .fa-gear { transition: none !important; }
     #sectors .home-sector-card:hover, #sectors .home-sector-card:hover .fa-gear { transform: none !important; }
 }
+
+/* Keep every homepage news label aligned to the card top. */
+.latest-news-card .latest-news-content {justify-content:flex-start;padding:1.65rem;}
+.latest-news-card .latest-news-link {margin-top:auto;padding-top:1.25rem;}

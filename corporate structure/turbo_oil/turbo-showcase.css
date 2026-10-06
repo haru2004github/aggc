@@ -100,3 +100,7 @@ body.turbo-profile-page #mobileMenu{max-height:calc(100dvh - 64px);overflow-y:au
     transform:none!important;scale:1!important;translate:none!important;
     animation:none!important;transition:none!important;
 }
+
+/* Meaningful purpose icons replace decorative shapes. */
+.to-value:before,.to-product-photo:before{display:none!important}
+.to-value-icon{display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin-bottom:28px;color:#f0c761;font-size:30px;line-height:1}

@@ -1,7 +1,13 @@
 /**
  * Google Apps Script - AGGC Product Enquiry Form Receiver (with Gmail Notifications)
  * 
- * INSTRUCTIONS FOR DEPLOYMENT:
+ * UPDATE AN EXISTING DEPLOYMENT (preserves the website endpoint):
+ * Replace the corresponding receiver code in the existing Apps Script project, save,
+ * then Deploy > Manage deployments > Edit > Version: New version > Deploy.
+ * Saving alone does not update the deployed web app. Keep the existing /exec URL.
+ * Recipients: digitalnest278@gmail.com and kayzinmay@aungyigroup.com.
+ *
+ * INSTRUCTIONS FOR INITIAL DEPLOYMENT:
  * -------------------------------------------------------------
  * 1. Open your Google Sheet: https://docs.google.com/spreadsheets/d/1r_rbQboRSLWl1C6sGCCXLrCYWgWEARkS0UNhyjTdfVY/edit
  * 2. Click on "Extensions" in the top menu bar, then click "Apps Script".
@@ -51,7 +57,7 @@ function doPost(e) {
     // 1. Add data to Google Sheet
     sheet.appendRow([timestamp, product, name, email, phone, message]);
     
-    // 2. Send email notification to digitalnest278@gmail.com
+    // 2. Notify both AGGC enquiry recipients.
     sendEmailNotification(product, name, email, phone, message, timestamp);
     
     // Return success response
@@ -71,7 +77,7 @@ function doPost(e) {
  * Sends a premium-designed HTML notification email to the business email address.
  */
 function sendEmailNotification(product, name, email, phone, message, timestamp) {
-  var recipient = "digitalnest278@gmail.com";
+  var recipient = "digitalnest278@gmail.com,kayzinmay@aungyigroup.com";
   var subject = "[AGGC Enquiry] New Product Request: " + product;
   
   // Format the date/time string safely

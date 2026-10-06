@@ -24,7 +24,7 @@ const PRODUCTS_DATABASE = {
                 {
                         "id": "excavator",
                         "title": "EXCAVATOR",
-                        "image": "img/liugong-final/excavator.jpg",
+                        "image": "img/liugong-final/excavator.png",
                         "models": [
                                 "906F",
                                 "908F",
@@ -38,12 +38,12 @@ const PRODUCTS_DATABASE = {
                         "title": "ROLLER",
                         "image": "img/liugong-final/roller-1.png",
                         "models": [
-                                "CLG 6110E",
-                                "CLG 6611E",
-                                "CLG 6612E",
-                                "CLG 6210E",
-                                "CLG 6516E",
-                                "CLG 6312E"
+                                "CLG 6110",
+                                "CLG 6611",
+                                "CLG 6612",
+                                "CLG 6210",
+                                "CLG 6516",
+                                "CLG 6312"
                         ],
                         "images": [
                                 "img/liugong-final/roller-1.png",
@@ -293,7 +293,7 @@ const PRODUCTS_DATABASE = {
                 {
                         "id": "sanitary-ware",
                         "title": "SANITARY WARE",
-                        "image": "img/izumi-final/sanitary-ware-final.jpg",
+                        "image": "img/izumi-final/sanitary-ware-final.png",
                         "models": []
                 },
                 {
@@ -304,7 +304,7 @@ const PRODUCTS_DATABASE = {
                 },
                 {
                         "id": "switch-and-sockets",
-                        "title": "SWITCH AND SOCKETS",
+                        "title": "SWITCH AND SOCKET",
                         "image": "img/izumi-final/switch-and-sockets.jpg",
                         "models": []
                 }
