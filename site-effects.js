@@ -19,7 +19,8 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 lg:gap-6 mb-12">
                     <div class="col-span-2 flex flex-col space-y-4">
                         <div class="footer-logo-reversed w-fit">
-                            <img src="${siteUrl('img/Products/reversed/aggc-logo.png')}" class="w-40 max-h-14 object-contain" alt="AGGC Logo">
+                            <img src="${siteUrl('img/logo.png')}" class="footer-logo-base" alt="AGGC Partners">
+                            <img src="${siteUrl('img/logo.png')}" class="footer-logo-wordmark" alt="" aria-hidden="true">
                         </div>
                         <p class="text-slate-300 text-[13px] font-light leading-relaxed max-w-xs">
                             AGGC. A leading diversified business group operating across global industrial sectors. Let's Build Together!

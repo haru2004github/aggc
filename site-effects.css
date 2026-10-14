@@ -3599,4 +3599,26 @@ body.contact-page .contact-map-frame {
     border: 0;
     box-shadow: none;
 }
-#site-footer .footer-logo-reversed img { filter: none; }
+/* Preserve the original gold emblem; reverse only the lettering. Both layers
+   share one intrinsic ratio so the mark stays aligned at every viewport. */
+#site-footer .footer-logo-reversed {
+    position: relative;
+    width: 200px;
+    max-width: 100%;
+}
+#site-footer .footer-logo-reversed img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+}
+#site-footer .footer-logo-base {
+    clip-path: inset(0 68% 0 0);
+    filter: none;
+}
+#site-footer .footer-logo-wordmark {
+    position: absolute;
+    inset: 0;
+    clip-path: inset(0 0 0 32%);
+    filter: brightness(0) invert(1);
+}
