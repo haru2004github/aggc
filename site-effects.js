@@ -18,8 +18,8 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 lg:gap-6 mb-12">
                     <div class="col-span-2 flex flex-col space-y-4">
-                        <div class="bg-white/95 p-2 rounded-xl w-fit shadow-lg">
-                            <img src="${siteUrl('img/logo.png')}" class="w-40 max-h-14 object-contain" alt="AGGC Logo">
+                        <div class="footer-logo-reversed w-fit">
+                            <img src="${siteUrl('img/Products/reversed/aggc-logo.png')}" class="w-40 max-h-14 object-contain" alt="AGGC Logo">
                         </div>
                         <p class="text-slate-300 text-[13px] font-light leading-relaxed max-w-xs">
                             AGGC. A leading diversified business group operating across global industrial sectors. Let's Build Together!
@@ -60,7 +60,7 @@
                         <h4 class="font-heading font-extrabold text-[13px] text-white uppercase tracking-wider mb-4">Media</h4>
                         <ul class="space-y-2.5 text-[12px]">
                             <li><a href="${siteUrl('activites.html')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Gallery</a></li>
-                            <li><a href="${siteUrl('news.html')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Announcements</a></li>
+                            
                             <li><a href="${siteUrl('news.html')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Latest News</a></li>
                         </ul>
                     </div>
@@ -68,7 +68,7 @@
                     <div>
                         <h4 class="font-heading font-extrabold text-[13px] text-white uppercase tracking-wider mb-4">Careers</h4>
                         <ul class="space-y-2.5 text-[12px]">
-                            <li><a href="${siteUrl('careers.html')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Open Roles</a></li>
+                            
                             <li><a href="${siteUrl('careers.html')}" class="text-slate-300 hover:text-brand-gold font-medium transition-colors">Join Us</a></li>
                         </ul>
                     </div>

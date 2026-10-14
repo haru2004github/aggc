@@ -38,7 +38,7 @@ function updateHeaders(directory) {
                                     class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Powermax</a>
                                 <a href="${prefix}izumi.html"
                                     class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Izumi</a>
-                                <a href="${rootPrefix}products.html#brand-turboil"
+                                <a href="${rootPrefix}corporate%20structure/turbo_oil/Turbo_Oil.html"
                                     class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider border-b border-slate-50/50">Turboil</a>
                                 <a href="${prefix}sigma.html"
                                     class="block px-5 py-2.5 text-[11px] font-heading font-bold text-slate-600 hover:text-brand-navy hover:bg-slate-50 uppercase tracking-wider">Sigma</a>
@@ -52,7 +52,7 @@ function updateHeaders(directory) {
                             class="text-[12px] font-heading font-medium text-slate-500 hover:text-brand-navy">Powermax</a>
                         <a href="${prefix}izumi.html"
                             class="text-[12px] font-heading font-medium text-slate-500 hover:text-brand-navy">Izumi</a>
-                        <a href="${rootPrefix}products.html#brand-turboil"
+                        <a href="${rootPrefix}corporate%20structure/turbo_oil/Turbo_Oil.html"
                             class="text-[12px] font-heading font-medium text-slate-500 hover:text-brand-navy">Turboil</a>
                         <a href="${prefix}sigma.html"
                             class="text-[12px] font-heading font-medium text-slate-500 hover:text-brand-navy">Sigma</a>

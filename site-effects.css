@@ -3582,3 +3582,21 @@ body.contact-page .contact-map-frame {
 /* Keep every homepage news label aligned to the card top. */
 .latest-news-card .latest-news-content {justify-content:flex-start;padding:1.65rem;}
 .latest-news-card .latest-news-link {margin-top:auto;padding-top:1.25rem;}
+
+/* Reversed brand marks on the navy product showcase. */
+#brands .brand-feature-heading .brand-feature-logo {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    object-position: left center;
+    filter: none;
+}
+#site-footer .footer-logo-reversed {
+    background: transparent;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+}
+#site-footer .footer-logo-reversed img { filter: none; }

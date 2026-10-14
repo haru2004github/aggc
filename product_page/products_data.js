@@ -62,7 +62,7 @@ const PRODUCTS_DATABASE = {
                 {
                         "id": "bulldozer",
                         "title": "BULLDOZER",
-                        "image": "img/liugong-final/bulldozer.jpg",
+                        "image": "img/liugong-final/bulldozer.png",
                         "models": [
                                 "LD 20D",
                                 "LD 26D",
@@ -287,7 +287,7 @@ const PRODUCTS_DATABASE = {
                 {
                         "id": "elevators-and-escalators",
                         "title": "LIFTS",
-                        "image": "img/izumi-final/elevators-and-escalators.jpg",
+                        "image": "img/izumi-final/elevators-and-escalators.png",
                         "models": []
                 },
                 {
@@ -297,9 +297,9 @@ const PRODUCTS_DATABASE = {
                         "models": []
                 },
                 {
-                        "id": "meters",
-                        "title": "METERS",
-                        "image": "img/izumi-final/meters.png",
+                        "id": "pumps",
+                        "title": "PUMPS",
+                        "image": "img/izumi-final/pumps.png",
                         "models": []
                 },
                 {
@@ -437,7 +437,7 @@ const PRODUCTS_DATABASE = {
 {
         "id": "sm43cbt",
         "title": "CONCRETE PUMP",
-        "image": "img/sigma/sigma-sm43cbt.jpg",
+        "image": "img/sigma/sigma-sm43cbt.png",
         "models": [
                 "SM43 CBT"
         ],
