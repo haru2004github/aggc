@@ -1623,9 +1623,15 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
     filter: saturate(1.08) contrast(1.06);
 }
 
-#sectors .business-divisions-graphic,
+#sectors .business-divisions-graphic {
+    border-radius: 12px;
+}
+#sectors .business-divisions-graphic > div {
+    border-radius: inherit;
+}
 #sectors img[src*="what_we_do_business_divisions"] {
     border-radius: 0;
+    object-fit: contain;
 }
 
 .latest-news-bento {
