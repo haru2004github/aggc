@@ -1623,8 +1623,9 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
     filter: saturate(1.08) contrast(1.06);
 }
 
+#sectors .business-divisions-graphic,
 #sectors img[src*="what_we_do_business_divisions"] {
-    border-radius: 34px;
+    border-radius: 0;
 }
 
 .latest-news-bento {
@@ -1997,7 +1998,7 @@ body > section:first-of-type > .absolute.inset-0[style*="background-image"],
     }
 
     #sectors img[src*="what_we_do_business_divisions"] {
-        border-radius: 26px;
+        border-radius: 0;
     }
 }
 
@@ -3599,8 +3600,7 @@ body.contact-page .contact-map-frame {
     border: 0;
     box-shadow: none;
 }
-/* Preserve the original gold emblem; reverse only the lettering. Both layers
-   share one intrinsic ratio so the mark stays aligned at every viewport. */
+/* Display the supplied footer logo in its original colors and proportions. */
 #site-footer .footer-logo-reversed {
     position: relative;
     width: 200px;
@@ -3612,13 +3612,13 @@ body.contact-page .contact-map-frame {
     height: auto;
     max-height: none;
 }
-#site-footer .footer-logo-base {
-    clip-path: inset(0 68% 0 0);
-    filter: none;
-}
-#site-footer .footer-logo-wordmark {
-    position: absolute;
-    inset: 0;
-    clip-path: inset(0 0 0 32%);
-    filter: brightness(0) invert(1);
+#site-footer .footer-logo-reversed img { filter: none; clip-path: none; }
+
+/* Keep four branch locations balanced in one desktop row. */
+.branches-fresh .branch-cards-grid > .group { display: flex; flex-direction: column; min-width: 0; }
+.branches-fresh .branch-cards-grid > .group > div:first-child > div { flex-shrink: 0; }
+.branches-fresh .branch-cards-grid > .group > div:last-child { margin-top: auto; }
+@media (min-width: 1024px) {
+    .branches-fresh .branch-cards-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .branches-fresh .branch-cards-grid > .group { padding: 1.25rem; }
 }
