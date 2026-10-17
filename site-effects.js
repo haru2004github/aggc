@@ -16,7 +16,7 @@
         footer.setAttribute('data-unified-footer', 'true');
         footer.innerHTML = `
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 lg:gap-6 mb-12">
+                <div class="footer-navigation-grid grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 lg:gap-6 mb-12">
                     <div class="col-span-2 flex flex-col space-y-4">
                         <div class="footer-logo-reversed w-fit">
                             <img src="${siteUrl('img/logo-hero.png')}" alt="AGGC Partners">
@@ -73,7 +73,7 @@
                         </ul>
                     </div>
 
-                    <div class="flex flex-col items-center sm:items-start space-y-4">
+                    <div class="footer-connect flex flex-col items-center sm:items-start space-y-4">
                         <a href="https://maps.google.com/?q=Aung+Gyi+Group+of+Companies+Yangon" target="_blank" aria-label="Open AGGC location in Google Maps" class="w-[100px] h-[100px] bg-white/10 border border-white/15 rounded-xl p-2 flex items-center justify-center shadow-sm hover:border-brand-gold/70 transition-colors">
                             <img src="${siteUrl('img/location-qr.png')}" alt="AGGC location QR code" class="w-full h-full object-cover rounded-lg">
                         </a>

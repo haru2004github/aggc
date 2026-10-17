@@ -117,7 +117,7 @@ body.news-page #view-detail.aggc-article {
 .article-back:hover { color: #e1ae31; }
 .article-kicker { display: flex; align-items: center; gap: 12px; color: #e1ae31; font-size: 10px; font-weight: 700; letter-spacing: .2em; margin-bottom: 20px; }
 .article-kicker > span { display: block; width: 30px; height: 2px; background: #e1ae31; }
-body.news-page #detail-title { color: #fff !important; font-size: clamp(1.8rem, 3.2vw, 2.8rem); line-height: 1.65; font-weight: 750; letter-spacing: -.02em; text-align: left; max-width: 25ch; margin-bottom: 30px; }
+body.news-page #detail-title { color: #fff !important; font-size: clamp(1.375rem, 2.2vw, 2rem); line-height: 1.5; font-weight: 700; letter-spacing: 0; text-align: left; max-width: 100%; overflow-wrap: break-word; text-wrap: pretty; margin-bottom: 24px; }
 .article-byline { display: flex; align-items: center; gap: 16px; color: #d5dfed; font-size: 12px; line-height: 1.8; }
 .article-byline small { color: #97abc6; font-size: 11px; }
 .article-brand-mark { display: grid; place-items: center; width: 55px; height: 55px; flex-shrink: 0; border: 1px solid #e1ae3170; color: #e1ae31; font-size: 13px; font-weight: 800; border-radius: 50%; }
@@ -134,7 +134,7 @@ body.news-page #detail-desc p[lang="my"] { font-family: 'Noto Sans Myanmar', 'My
 .article-endnote button { color: #071633; font-size: 12px; font-weight: 700; min-height: 44px; display: inline-flex; align-items: center; gap: 12px; }
 @media(max-width: 640px) {
     .aggc-article-header { padding: 24px; }
-    body.news-page #detail-title { font-size: 25px; line-height: 1.7; }
+    body.news-page #detail-title { font-size: 22px; line-height: 1.6; }
     .aggc-article-paper { padding: 22px; }
     .article-back { margin-bottom: 20px; }
     .article-hero-frame { margin-bottom: 28px; }
@@ -173,7 +173,7 @@ body.news-article-open > main { padding-top: 112px; }
 }
 #about-intro h1 > span { transition: text-shadow 450ms ease; }
 body.about-page .about-stats .grid > div { transition: scale 350ms ease, background-color 350ms ease, box-shadow 350ms ease; }
-.about-chairman-portrait { transition: box-shadow 500ms ease, border-color 500ms ease; }
+.about-chairman-portrait { height: auto; aspect-ratio: auto; border-radius: 0; transition: box-shadow 500ms ease, border-color 500ms ease; }
 .about-chairman-portrait img { display: block; width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; }
 @media (hover: hover) {
     :root:not([data-motion="reduced"]) {
@@ -330,3 +330,18 @@ main p, .turbo-profile p, footer p:not(:last-child) { text-align: justify; text-
     text-align: center;
     text-align-last: center;
 }
+
+/* News headings: compact hierarchy and comfortable Myanmar line spacing. */
+body.news-page > .unified-page-hero h1 {
+    font-size: clamp(1.875rem, 3vw, 2.75rem) !important;
+    line-height: 1.2;
+    font-weight: 700;
+}
+body.news-page .news-card-title {
+    font-family: 'Poppins', 'Noto Sans Myanmar', sans-serif;
+    font-size: clamp(1rem, 1.3vw, 1.125rem);
+    font-weight: 600;
+    line-height: 1.65;
+    letter-spacing: 0;
+}
+body.news-page #detail-title[lang="my"] { line-height: 1.7; font-weight: 600; }
