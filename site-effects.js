@@ -80,7 +80,7 @@
                         <span class="text-[11px] font-heading font-black text-white uppercase tracking-wider">Location</span>
                         <div class="flex items-center space-x-2.5">
                             <a href="https://www.facebook.com/99AGGC99" target="_blank" aria-label="AGGC on Facebook" class="w-7 h-7 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-[11px] transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="mailto:info@aungyigroup.com" aria-label="Email AGGC" class="w-7 h-7 rounded-full bg-[#e1ae31] hover:bg-[#c99620] text-[#071633] flex items-center justify-center text-[11px] transition-colors"><i class="fa-solid fa-envelope"></i></a>
+                            <a href="mailto:info@aggc.biz" aria-label="Email AGGC" class="w-7 h-7 rounded-full bg-[#e1ae31] hover:bg-[#c99620] text-[#071633] flex items-center justify-center text-[11px] transition-colors"><i class="fa-solid fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
